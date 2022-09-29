@@ -4,7 +4,7 @@
 > please put your full names here and student numbers
 
 - [Cassim Chifamba u19024895](https://github.com/catsums)
-- Ayla
+- Ayla Inggs - u19236272
 - Kiara Jaimungal - u19023210
 - Mark Grosvenor - 20426985
 - Ayaaz Street - u20427248
