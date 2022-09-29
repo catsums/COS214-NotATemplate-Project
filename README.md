@@ -13,7 +13,7 @@
 ## Task breakdown
 TBC because we still need to plan how we gonna handle this stuff
 
-#Project Information Spec
+# Project Information Spec
 Check below for the stuff about the spec
 
 ## Spec Overview:
