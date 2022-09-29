@@ -3,7 +3,7 @@
 ## Group Members:
 > please put your full names here and student numbers
 
-- Cassim Chifamba (u19024895)
+- [Cassim Chifamba (u19024895)](https://github.com/catsums)
 - Ayla
 - Kiara
 - Mark
