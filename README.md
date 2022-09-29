@@ -3,11 +3,11 @@
 ## Group Members:
 > please put your full names here and student numbers
 
-- [Cassim Chifamba (u19024895)](https://github.com/catsums)
+- [Cassim Chifamba u19024895](https://github.com/catsums)
 - Ayla
-- Kiara
-- Mark
-- Ayaaz
+- Kiara Jaimungal - u19023210
+- Mark Grosvenor - 20426985
+- Ayaaz Street - u20427248
 - Tanaka
 
 ## Task breakdown
