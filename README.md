@@ -3,12 +3,12 @@
 ## Group Members:
 > please put your full names here and student numbers
 
--Cassim Chifamba (u19024895)
--Ayla
--Kiara
--Mark
--Ayaaz
--Tanaka
+- Cassim Chifamba (u19024895)
+- Ayla
+- Kiara
+- Mark
+- Ayaaz
+- Tanaka
 
 ## Task breakdown
 TBC because we still need to plan how we gonna handle this stuff
