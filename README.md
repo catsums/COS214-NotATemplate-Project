@@ -29,7 +29,7 @@ f. a will-to-conflict
 For an indepth study into war refer to the notes of R.J. Rummel https://www.hawaii.edu/powerkills/UCW.HTM. [1, 2, 3, 4]
 In this project a war simulator software system will be constructed. The design of the software system must be conducted using the design patterns as identified by Gamma et. al.
 
-For more information check the spec here
+For more information [check the spec here](https://github.com/catsums/COS214-NotATemplate-Project/blob/main/COS214%20Project%20Specification%202022_V1.1.pdf)
 
 ## Tasks:
 
