@@ -8,7 +8,7 @@
 - Kiara Jaimungal - u19023210
 - Mark Grosvenor - 20426985
 - Ayaaz Street - u20427248
-- Tanaka
+- Tanaka Humbani - u15057420
 
 ## Task breakdown
 TBC because we still need to plan how we gonna handle this stuff
