@@ -11,7 +11,7 @@ class Citizen
 protected:
 
 	int HP; //health of citizen
-	string Country; //TODO: change to type country once it's been made
+	string country; //TODO: change to type country once it's been made
 	
 
 
@@ -23,8 +23,8 @@ public:
 	virtual ~Citizen(); //destructor
 
 
-	void setHP();
-	void setCountry();
+	void setHP(int);
+	void setCountry(string);
 
 
 	int getHP();

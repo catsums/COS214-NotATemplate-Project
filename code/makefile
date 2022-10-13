@@ -3,7 +3,7 @@ gpp_o = g++ -c -std=c++11
 
 main: $(ofiles)
 	g++ -std=c++11  $(ofiles) -o main
-main.o: main.cpp Citizen.h 
+main.o: main.cpp Citizen.h Soldier.h 
 	$(gpp_o) main.cpp
 
 

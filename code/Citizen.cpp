@@ -7,22 +7,22 @@ using namespace std;
 	Citizen::Citizen()// default constuctor 
 	{
 		HP=0;
-		Country="NA";
+		country="NA";
 
 		cout<< "Citizen’s Information:"<<endl;
 		cout<<"Health: "<<HP<<endl;
-		cout<<"Country: "<<Country<<endl;
+		cout<<"Country: "<<country<<endl;
 
 	} 
 
 	Citizen::Citizen(int h , string c)// param constuctor 
 	{
 		HP=h;
-		Country=c;
+		country=c;
 
 		cout<< "Citizen’s Information:"<<endl;
 		cout<<"Health: "<<HP<<endl;
-		cout<<"Country: "<<Country<<endl;
+		cout<<"Country: "<<country<<endl;
 
 	}
 
@@ -34,14 +34,14 @@ using namespace std;
 
 	
 	//setters
-	void Citizen::setHP() 
+	void Citizen::setHP(int h) 
 	{
-
+		HP = h;
 	}
 
-	void Citizen::setCountry()
+	void Citizen::setCountry(string c)
 	{
-
+		country = c;
 	}
 
 
@@ -53,7 +53,7 @@ using namespace std;
 
 	string Citizen::getCountry()
 	{
-		return Country;
+		return country;
 	}
 
 	
