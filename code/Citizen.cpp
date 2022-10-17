@@ -7,13 +7,12 @@ using namespace std;
 	Citizen::Citizen()// default constuctor 
 	{
 		HP=0;
-		country="NA";
+		country=" ";
+		type = "Citizen";
+		theatre = "NA";
+		influence = "NA";
+		status = "NA";
 
-		cout<<endl;
-		cout<< "Citizen’s Information:"<<endl;
-		cout<< "______________________"<<endl;
-		cout<<"Health: "<<HP<<endl;
-		cout<<"Country: "<<country<<endl;
 
 	} 
 
@@ -21,6 +20,17 @@ using namespace std;
 	{
 		HP=h;
 		country=c;
+		theatre = "NA";
+		influence = "NA";
+		status = "NA";
+
+		
+
+	}
+
+
+	void Citizen::printInfo()
+	{
 
 		cout<<endl;
 		cout<< "Citizen’s Information:"<<endl;
@@ -28,6 +38,31 @@ using namespace std;
 		cout<<"Health: "<<HP<<endl;
 		cout<<"Country: "<<country<<endl;
 
+		if(type== "Soldier")
+		{
+			cout<<"Type: Soldier"<<endl;
+			cout<<"Status: "<<status<<endl;
+		    cout<<"Theatre: "<<theatre<<endl;
+		}
+
+		else if (type== "Medic")
+		{
+			/* code */
+		}
+
+		else if (type== "Informant")
+		{
+			/* code */
+		}
+
+
+		else if (type== "Politician")
+		{
+			/* code */
+		}
+
+		
+		
 	}
 
 	
@@ -49,6 +84,31 @@ using namespace std;
 	}
 
 
+	void Citizen::setType(string ty)
+	{
+		type = ty;
+	}
+
+
+	void Citizen::setThreatre(string th)
+	{
+		theatre = th;
+	}
+
+
+
+	void Citizen::setInfluence(string i)
+	{
+		influence = i;
+	}
+
+	void Citizen::setStatus(string s)
+	{
+		status = s;
+	}
+
+
+
 	//getters
 	int Citizen::getHP()
 	{
@@ -60,5 +120,26 @@ using namespace std;
 		return country;
 	}
 
+	string Citizen::getType()
+	{
+		return type;
+	}
+
+
+	string Citizen::getTheatre()
+	{
+		return theatre;
+	}
+
+
+	string Citizen::getInfluence()
+	{
+		return influence;
+	}
+
+	string Citizen::getStatus()
+	{
+		return status;
+	}
 	
 

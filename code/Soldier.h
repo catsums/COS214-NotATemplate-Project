@@ -25,20 +25,10 @@ public:
 	virtual ~Soldier(); //destructor
 
 
-	void print();
-
-
-	//setter
-	void setStatus(string);
-
-	void setThreatre(string);
 	
 
 
-	//getters
-	string getStatus();
 	
-	string getTheatre();
 	
 
 

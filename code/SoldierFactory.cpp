@@ -21,10 +21,16 @@ using namespace std;
 
 	
 	Citizen* SoldierFactory::createEntity(int health,string country)
-	{
-		Citizen *myCitizen= new Soldier();
+	{	
+		Soldier *myS= new Soldier();
+		Citizen *myCitizen= myS;
 		myCitizen->setHP(health);
 		myCitizen->setCountry(country);
+		myCitizen->printInfo();
+		myS->printSoldierInfo();
+
+
+
 		return myCitizen;
 	}
 
