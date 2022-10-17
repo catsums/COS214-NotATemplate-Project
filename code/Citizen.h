@@ -22,6 +22,9 @@ public:
 	
 	virtual ~Citizen(); //destructor
 
+	void printInfo();
+
+
 
 	void setHP(int);
 	void setCountry(string);

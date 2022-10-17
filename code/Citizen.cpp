@@ -9,7 +9,9 @@ using namespace std;
 		HP=0;
 		country="NA";
 
+		cout<<endl;
 		cout<< "Citizen’s Information:"<<endl;
+		cout<< "______________________"<<endl;
 		cout<<"Health: "<<HP<<endl;
 		cout<<"Country: "<<country<<endl;
 
@@ -20,7 +22,9 @@ using namespace std;
 		HP=h;
 		country=c;
 
+		cout<<endl;
 		cout<< "Citizen’s Information:"<<endl;
+		cout<< "______________________"<<endl;
 		cout<<"Health: "<<HP<<endl;
 		cout<<"Country: "<<country<<endl;
 

@@ -13,8 +13,8 @@ class Soldier : public Citizen
 
 protected:
 
-	string status;
-	string theatre;
+	string status = "NA";
+	string theatre = "NA";
 
 
 public: 
@@ -23,6 +23,9 @@ public:
 	Soldier(int,string,string,string);// param constuctor 
 	
 	virtual ~Soldier(); //destructor
+
+
+	void print();
 
 
 	//setter

@@ -7,11 +7,14 @@ using namespace std;
 
 	Soldier::Soldier() : Citizen()// default constuctor 
 	{
-	
+		
 		status = "NA";
 		theatre = "NA";
+
+		cout<<"Type: Soldier"<<endl;
 		cout<<"Status: "<<status<<endl;
 		cout<<"Theatre: "<<theatre<<endl;
+		cout<<endl;
 		
 
 	} 
@@ -21,8 +24,11 @@ using namespace std;
 		
 		status = stat;
 		theatre = theat;
+
+		cout<<"Type: Soldier"<<endl;
 		cout<<"Status: "<<status<<endl;
 		cout<<"Theatre: "<<theatre<<endl;
+		cout<<endl;
 		
 		
 
@@ -32,6 +38,12 @@ using namespace std;
 	Soldier::~Soldier() //destructor
 	{
 		cout<<"Soldier’s Destructor was Called"<<endl;
+	}
+
+
+	void print()
+	{
+		
 	}
 
 	
@@ -58,5 +70,5 @@ using namespace std;
 		return theatre;
 	}
 
-	
+
 
