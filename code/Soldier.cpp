@@ -10,7 +10,7 @@ using namespace std;
 			
 
 		setType("Soldier");
-		printInfo();
+		//printInfo();
 		
 
 	} 
@@ -22,7 +22,7 @@ using namespace std;
 		setType("Soldier");
 		setThreatre(theat);
 		setStatus(stat);
-		printInfo();
+		//printInfo();
 		
 		
 		
@@ -32,7 +32,7 @@ using namespace std;
 	
 	Soldier::~Soldier() //destructor
 	{
-		cout<<"Soldier’s Destructor was Called"<<endl;
+		// /cout<<"Soldier’s Destructor was Called"<<endl;
 	}
 
 

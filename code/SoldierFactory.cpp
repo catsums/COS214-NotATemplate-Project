@@ -27,7 +27,7 @@ using namespace std;
 		myCitizen->setHP(health);
 		myCitizen->setCountry(country);
 		myCitizen->printInfo();
-		myS->printSoldierInfo();
+		//myS->printSoldierInfo();
 
 
 

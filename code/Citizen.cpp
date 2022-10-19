@@ -9,9 +9,9 @@ using namespace std;
 		HP=0;
 		country=" ";
 		type = "Citizen";
-		theatre = "NA";
-		influence = "NA";
-		status = "NA";
+		theatre = "unknown";
+		influence = "unknown";
+		status = "unknown";
 
 
 	} 
@@ -20,9 +20,9 @@ using namespace std;
 	{
 		HP=h;
 		country=c;
-		theatre = "NA";
-		influence = "NA";
-		status = "NA";
+		theatre = "unknown";
+		influence = "unknown";
+		status = "unknown";
 
 		
 
@@ -47,18 +47,22 @@ using namespace std;
 
 		else if (type== "Medic")
 		{
-			/* code */
+			cout<<"Type: Medic"<<endl;
+			cout<<"Status: "<<status<<endl;
+		    cout<<"Theatre: "<<theatre<<endl;
 		}
 
 		else if (type== "Informant")
 		{
-			/* code */
+			cout<<"Type: Informant"<<endl;
+			cout<<"Status: "<<status<<endl;
 		}
 
 
 		else if (type== "Politician")
 		{
-			/* code */
+			cout<<"Type: Politician"<<endl;
+			cout<<"Influence: "<<influence<<endl;
 		}
 
 		
@@ -68,7 +72,7 @@ using namespace std;
 	
 	Citizen::~Citizen() //destructor
 	{
-		cout<<"Citizen’s Destructor was Called"<<endl;
+		//cout<<"Citizen’s Destructor was Called"<<endl;
 	}
 
 	

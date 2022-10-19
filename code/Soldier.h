@@ -13,8 +13,7 @@ class Soldier : public Citizen
 
 protected:
 
-	string status = "NA";
-	string theatre = "NA";
+	
 
 
 public: 

@@ -9,11 +9,8 @@ using namespace std;
 	{
 		
 		
-		influence = "NA";
-
-		cout<<"Type: Politician"<<endl;
-		cout<<"Influence: "<<influence<<endl;
-		cout<<endl;
+		setType("Politician");
+		//printInfo();
 		
 
 	} 
@@ -22,12 +19,10 @@ using namespace std;
 	{
 		
 		
-		influence = inf;
-
-		cout<<"Type: Politician"<<endl;
-		cout<<"Influence: "<<influence<<endl;
-		cout<<endl;
-
+		
+		setType("Politician");
+		setInfluence(inf);
+		//printInfo();
 		
 		
 
@@ -36,26 +31,11 @@ using namespace std;
 	
 	Politician::~Politician() //destructor
 	{
-		cout<<"Politician’s Destructor was Called"<<endl;
+		//cout<<"Politician’s Destructor was Called"<<endl;
 	}
 
 	
-	//setters
 	
-
-	void Politician::setInfluence(string t)
-	{
-		influence = t;
-	}
-
-
-	//getters
-	
-
-	string Politician::getInfluence()
-	{
-		return influence;
-	}
 
 	
 

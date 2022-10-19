@@ -13,8 +13,6 @@ class Medic : public Citizen
 
 protected:
 
-	string status;
-	string theatre;
 
 
 public: 
@@ -25,18 +23,7 @@ public:
 	virtual ~Medic(); //destructor
 
 
-	//setter
-	void setStatus(string);
 
-	void setThreatre(string);
-	
-
-
-	//getters
-	string getStatus();
-	
-	string getTheatre();
-	
 
 
 		
