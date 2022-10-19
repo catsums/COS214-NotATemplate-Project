@@ -10,6 +10,9 @@
 - Ayaaz Street - u20427248
 - Tanaka Humbani - u15057420
 
+## Google Link drive to documentation:
+
+- https://docs.google.com/document/d/1CWKPtvwzalVicWGzoLPOSx-pxNT21ZMXWQfRGWV7Td4/edit?usp=sharing
 ## Task breakdown
 TBC because we still need to plan how we gonna handle this stuff
 
