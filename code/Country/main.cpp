@@ -1,6 +1,9 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <random>
+#include <cmath>
+#include <math.h>
 
 #include "Country.h"
 // #include "Citizen.h"
@@ -8,6 +11,20 @@
 
 
 using namespace std;
+
+int getRandomInt(int a, int b){
+    int max, min;
+    if(a>b){
+        max = a; min = b;
+    }else{
+        max = b; min = a;
+    }
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_real_distribution<double> distr(min, max);
+
+    return (int) distr(gen);
+}
 
 int main()
 {
@@ -17,13 +34,12 @@ int main()
     int r = 0, s = 0 , t = 0;
     cout <<"Welcome to country simulator"<<endl;
     // create a main country
-    Country Zim;
-    Zim.setName("Zimbabwe");
-    Zim.setReserves(400000);
-    Zim.setStrength(1999.999);
-    Zim.setTotalArmy(1000000);
+    Country* Zim = new Country();
+    Zim->setName("Zimbabwe");
+    Zim->setReserves(400000);
+    Zim->setStrength(1999.999);
+    Zim->setTotalArmy(1000000);
 
-    // Country** arr = new Country*[3];
     // for(int i=0; i<3;i++){
     //     arr[i] = new Country();
     // }
@@ -32,50 +48,44 @@ int main()
     // arr[1]->setName("Deez");
     // arr[2]->setName("Deez");
 
-    // Country *e = new Country[2];
-    // Country *a = new Country[3];
-    // // enemies
-    // for(int i=0; i<2;i++){
-    //     Country temp;
-    //     e[i] = temp;
-    // }
-    // for(int i=0; i<3;i++){
-    //     Country temp;
-    //     a[i] = temp;
-    // }
-    // e[0].setName("England");
-    // e[1].setName("USA");
-    // // allies
-    // a[0].setName("China");
-    // a[1].setName("Russia");
-    // a[2].setName("Russia");
+    Country **e = new Country*[2];
+    Country **a = new Country*[3];
+    // enemies
+    for(int i=0; i<2;i++){
+        e[i] = new Country();
+    }
+    e[0]->setName("England");
+    e[1]->setName("USA");
+    // allies
+    for(int i=0; i<3;i++){
+        a[i] = new Country();
+    }
+    a[0]->setName("China");
+    a[1]->setName("Russia");
+    a[2]->setName("Russia");
 
 
-    // for(int i = 0 ; i < 2 ; i++)
-    // {
-    //     t = (rand() % (max - min + 1) + min);
-    //     r = (rand() % (450000 - 100000) + 100000);
-    //     s = (rand() % (10000 - 2999) + 2999);
-    // // populating each country's attributes
-    //     e[i].setStrength(s);
-    //     e[i].setReserves(r);
-    //     e[i].setTotalArmy(t);
-    // }
-    // // allies 
-    // for(int k = 0 ; k < 3 ; k++)
-    // {
-    //     t = (rand() % (max - min + 1) + min);
-    //     r = (rand() % (450000 - 100000) + 100000);
-    //     s = (rand() % (10000 - 2999) + 2999);
-    // // populating each country's attributes
-    //     e[k].setStrength(s);
-    //     e[k].setReserves(r);
-    //     e[k].setTotalArmy(t);
-    // }
-    // Zim.setAllies(a, 3);
-    // Zim.setEnemies(e, 2);
+    for(int i = 0 ; i < 2 ; i++)
+    {
+
+    // populating each country's attributes
+        e[i]->setStrength(getRandomInt(min,max));
+        e[i]->setReserves(getRandomInt(100000,450000));
+        e[i]->setTotalArmy(getRandomInt(2999,10000));
+    }
+    // allies 
+    for(int k = 0 ; k < 3 ; k++)
+    {
+
+    // populating each country's attributes
+        a[k]->setStrength(getRandomInt(min,max));
+        a[k]->setReserves(getRandomInt(100000,450000));
+        a[k]->setTotalArmy(getRandomInt(2999,10000));
+    }
+    Zim->setAllies(a, 3);
+    Zim->setEnemies(e, 2);
     cout <<"Show country statistics"<<endl;
-    // Zim.print();
+    Zim->print();
 
     return 0;
 }

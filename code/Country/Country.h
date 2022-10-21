@@ -22,9 +22,9 @@ class Country
         void setReserves(int);
         void setName(string);
         void setStrength(double);
-        void setAllies(Country*, int);
-        void setEnemies(Country*, int);
-        Country* getAllies(); // returns an array of type country.
+        void setAllies(Country**, int);
+        void setEnemies(Country**, int);
+        Country** getAllies(); // returns an array of type country.
         void print();
         double getStrength();
         int getTotal();
@@ -35,8 +35,8 @@ class Country
     private:
         string name;
         double strength;    //based on military size?
-        Country *enemies;  // All the other countries that are not allies.
-        Country *allies;   
+        Country** enemies;  // All the other countries that are not allies.
+        Country** allies;   
         // Citizen politician; 
         // Army Defense;
         int totalArmy;

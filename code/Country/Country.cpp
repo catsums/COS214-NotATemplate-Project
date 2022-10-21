@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Country* Country::getAllies()
+Country** Country::getAllies()
 {
     return allies;
 }
@@ -43,7 +43,7 @@ void Country::print()
     cout <<"Total reserves = "<<this->reserves<<endl;
     // other stuff to be implemented later..
 }
-void Country::setAllies(Country *a, int size)
+void Country::setAllies(Country **a, int size)
 {
     cout <<"set allies works"<<endl;
     for(int i = 0 ; i < size ;i++)
@@ -51,7 +51,7 @@ void Country::setAllies(Country *a, int size)
         enemies[i] = a[i]; 
     }
 }
-void Country::setEnemies(Country *a, int size)
+void Country::setEnemies(Country **a, int size)
 {
     cout <<"set enemies works"<<endl;
     for(int i = 0 ; i < size ;i++)
@@ -61,11 +61,14 @@ void Country::setEnemies(Country *a, int size)
 }
 Country::Country()
 {
-    // enemies = new Country[2];
-    // allies = new Country[3];
+    // cout<<"Country made"<<endl;
+    enemies = new Country*[2];
+    allies = new Country*[3];
 }
 Country::~Country()
 {
     enemies =  NULL;
     allies = NULL;
 }
+
+/// 
