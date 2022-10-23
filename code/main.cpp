@@ -6,13 +6,6 @@
 #include "Politician.cpp"
 #include "Entity.cpp"
 #include "SoldierFactory.cpp"
-<<<<<<< Updated upstream
-#include "MedicFactory.cpp"
-#include "InformantFactory.cpp"
-#include "PoliticianFactory.cpp"
-=======
-
->>>>>>> Stashed changes
 
 
 using namespace std; 
@@ -27,12 +20,12 @@ int main()
 	//Medic testing
 	// Citizen *myMedic= new Medic(20,"Russia", "Stationed");
 
-<<<<<<< Updated upstream
+
 	// Citizen *mySoldier= new Soldier(50,"South Africa", "Stationed", "Land");
 	// Citizen *myMedic= new Medic(20,"Russia", "Stationed", "Sea");
-=======
+
 	//Informant testing
->>>>>>> Stashed changes
+
 	// Citizen *myInformant= new Informant(20,"United Kingdom", "Undercover");
 
 	//Politician testing
@@ -43,7 +36,7 @@ int main()
 	// delete myInformant;
 	// delete myPolitician;
 
-<<<<<<< Updated upstream
+
 
 	Entity* test1 = new SoldierFactory();
 
@@ -84,23 +77,13 @@ int main()
 
 	delete myInfor;
 	delete test3;
-=======
+
 
 	//SoldierFactory testing 
 	Entity* test1 = new SoldierFactory();
 
 	Citizen* mySoldier1 = test1->createEntity(50,"SA");
 
->>>>>>> Stashed changes
-
-	delete myPoli;
-	delete test4;
-
-<<<<<<< Updated upstream
-=======
-	delete mySoldier1;
-	delete test1;
->>>>>>> Stashed changes
 
 
 

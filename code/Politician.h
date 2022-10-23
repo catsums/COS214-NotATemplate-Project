@@ -15,10 +15,7 @@ protected:
 
 	
 	
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 
 public: 
 
@@ -28,11 +25,6 @@ public:
 	virtual ~Politician(); //destructor
 
 
-<<<<<<< Updated upstream
-	
-=======
->>>>>>> Stashed changes
-	
 
 
 		
