@@ -6,26 +6,45 @@
 #include "Politician.cpp"
 #include "Entity.cpp"
 //#include "SoldierFactory.cpp"
-
-
+#include "Map.cpp"
+#include "Zone.cpp"
 
 using namespace std; 
 
+void Testing();
+void MarkTestCode();
+void OtherTestCode();
 
 int main()
 {
+	Testing();
+}
 
+void Testing()
+{
+	MarkTestCode();
+	//OtherTestCode();
+}
+
+void MarkTestCode()
+{
+	Map* m = new Map();
+	cout << m->getZoneCount() << endl;
+}
+
+void OtherTestCode()
+{
 	// Citizen myCitizen;
 
 	// myCitizen.setType("Soldier");
 	// myCitizen.printInfo();
 
-	Citizen *mySoldier= new Soldier(50,"South Africa", "Stationed", "Land");
+	//Citizen *mySoldier= new Soldier(50,"South Africa", "Stationed", "Land");
 	// Citizen *myMedic= new Medic(20,"Russia", "Stationed", "Sea");
 	// Citizen *myInformant= new Informant(20,"United Kingdom", "Undercover");
 	// Citizen *myPolitician= new Politician(10,"Romania", "Moderate");
 
-	delete mySoldier;
+	//delete mySoldier;
 	// delete myMedic;
 	// delete myInformant;
 
@@ -37,7 +56,4 @@ int main()
 
 	//delete mySoldier;
 	//delete test1;
-
-
-
 }
