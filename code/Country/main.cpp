@@ -4,14 +4,14 @@
 #include <random>
 #include <cmath>
 #include <math.h>
+#include <vector>
 
 #include "Country.h"
 // #include "Citizen.h"
 // #include "Army.h"
 
-
 using namespace std;
-
+//for generating random numbers
 int getRandomInt(int a, int b){
     int max, min;
     if(a>b){
@@ -40,16 +40,10 @@ int main()
     Zim->setStrength(1999.999);
     Zim->setTotalArmy(1000000);
 
-    // for(int i=0; i<3;i++){
-    //     arr[i] = new Country();
-    // }
 
-    // arr[0]->setName("Deez");
-    // arr[1]->setName("Deez");
-    // arr[2]->setName("Deez");
 
-    Country **e = new Country*[2];
-    Country **a = new Country*[3];
+    Country **e = new Country*[2];   //enemies
+    Country **a = new Country*[3];      //allies
     // enemies
     for(int i=0; i<2;i++){
         e[i] = new Country();
@@ -86,6 +80,7 @@ int main()
     Zim->setEnemies(e, 2);
     cout <<"Show country statistics"<<endl;
     Zim->print();
-
+    cout <<"Countries battle it out"<<endl;
+    
     return 0;
 }
