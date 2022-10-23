@@ -16,11 +16,23 @@ using namespace std;
 
 int main(){
 
-	Country* zim = new Country("Zimbabwe");
+	War* war = new War(new PhaseNeutral());
 
-	zim->addAlly(new Country("Phillipines"));
+	Country* c0 = new Country("NewZealand");
+	Country* c1 = new Country("Russia");
+	Country* c2 = new Country("Zimbabwe");
+	Country* c3 = new Country("USA");
 
-	zim->print();
+	war->addCountry(c0,0);
+	war->addCountry(c1,0);
+	war->addCountry(c2,1);
+	war->addCountry(c3,1);
+
+	war->printSides();
+
+	war->removeCountry(c0,0);
+
+	war->printSides();
 
 	return 0;
 }
