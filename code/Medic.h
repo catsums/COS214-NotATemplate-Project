@@ -13,17 +13,26 @@ class Medic : public Citizen
 
 protected:
 
+<<<<<<< Updated upstream
+=======
+	string status;
+	//string theatre;
+>>>>>>> Stashed changes
 
 
 public: 
 
 	Medic();// default constuctor 
-	Medic(int,string,string,string);// param constuctor 
+	Medic(int,string,string);// param constuctor 
 	
 	virtual ~Medic(); //destructor
 
 
+<<<<<<< Updated upstream
 
+=======
+	
+>>>>>>> Stashed changes
 
 
 		

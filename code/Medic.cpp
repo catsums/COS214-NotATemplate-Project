@@ -9,18 +9,30 @@ using namespace std;
 	{
 		
 		setType("Medic");
+<<<<<<< Updated upstream
 		//printInfo();
+=======
+		printInfo();
+		cout<<endl;
+>>>>>>> Stashed changes
 		
 
 	} 
 
-	Medic::Medic(int h , string c, string stat, string theat): Citizen( h ,  c)// param constuctor 
+	Medic::Medic(int h , string c, string stat): Citizen( h ,  c)// param constuctor 
 	{
 		
 		setType("Medic");
+<<<<<<< Updated upstream
 		setThreatre(theat);
 		setStatus(stat);
 		//printInfo();
+=======
+		
+		setStatus(stat);
+		printInfo();
+		cout<<endl;
+>>>>>>> Stashed changes
 
 		
 		
@@ -35,5 +47,9 @@ using namespace std;
 
 	
 	
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 	
 

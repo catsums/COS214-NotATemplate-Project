@@ -10,7 +10,12 @@ using namespace std;
 		
 		
 		setType("Politician");
+<<<<<<< Updated upstream
 		//printInfo();
+=======
+		printInfo();
+		cout<<endl;
+>>>>>>> Stashed changes
 		
 
 	} 
@@ -19,10 +24,18 @@ using namespace std;
 	{
 		
 		
+<<<<<<< Updated upstream
 		
 		setType("Politician");
 		setInfluence(inf);
 		//printInfo();
+=======
+		setType("Politician");
+		setInfluence(inf);
+		printInfo();
+		cout<<endl;
+
+>>>>>>> Stashed changes
 		
 		
 

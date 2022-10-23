@@ -9,9 +9,15 @@ using namespace std;
 		HP=0;
 		country=" ";
 		type = "Citizen";
+<<<<<<< Updated upstream
 		theatre = "unknown";
 		influence = "unknown";
 		status = "unknown";
+=======
+		//theatre = "NA";
+		influence = "NA";
+		status = "NA";
+>>>>>>> Stashed changes
 
 
 	} 
@@ -20,9 +26,15 @@ using namespace std;
 	{
 		HP=h;
 		country=c;
+<<<<<<< Updated upstream
 		theatre = "unknown";
 		influence = "unknown";
 		status = "unknown";
+=======
+		//theatre = "NA";
+		influence = "NA";
+		status = "NA";
+>>>>>>> Stashed changes
 
 		
 
@@ -42,14 +54,17 @@ using namespace std;
 		{
 			cout<<"Type: Soldier"<<endl;
 			cout<<"Status: "<<status<<endl;
-		    cout<<"Theatre: "<<theatre<<endl;
+		    //cout<<"Theatre: "<<theatre<<endl;
 		}
 
 		else if (type== "Medic")
 		{
 			cout<<"Type: Medic"<<endl;
 			cout<<"Status: "<<status<<endl;
+<<<<<<< Updated upstream
 		    cout<<"Theatre: "<<theatre<<endl;
+=======
+>>>>>>> Stashed changes
 		}
 
 		else if (type== "Informant")
@@ -94,10 +109,10 @@ using namespace std;
 	}
 
 
-	void Citizen::setThreatre(string th)
-	{
-		theatre = th;
-	}
+	// void Citizen::setThreatre(string th)
+	// {
+	// 	theatre = th;
+	// }
 
 
 
@@ -130,10 +145,10 @@ using namespace std;
 	}
 
 
-	string Citizen::getTheatre()
-	{
-		return theatre;
-	}
+	// string Citizen::getTheatre()
+	// {
+	// 	return theatre;
+	// }
 
 
 	string Citizen::getInfluence()

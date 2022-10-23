@@ -10,19 +10,28 @@ using namespace std;
 			
 
 		setType("Soldier");
+<<<<<<< Updated upstream
 		//printInfo();
+=======
+		printInfo();
+		cout<<endl;
+>>>>>>> Stashed changes
 		
 
 	} 
 
-	Soldier::Soldier(int h , string c, string stat, string theat): Citizen( h ,  c)// param constuctor 
+	Soldier::Soldier(int h , string c, string stat): Citizen( h ,  c)// param constuctor 
 	{
 		
 	
 		setType("Soldier");
-		setThreatre(theat);
 		setStatus(stat);
+<<<<<<< Updated upstream
 		//printInfo();
+=======
+		printInfo();
+		cout<<endl;
+>>>>>>> Stashed changes
 		
 		
 		

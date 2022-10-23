@@ -9,7 +9,12 @@ using namespace std;
 	{
 		
 		setType("Informant");
+<<<<<<< Updated upstream
 		//printInfo();
+=======
+		printInfo();
+		cout<<endl;
+>>>>>>> Stashed changes
 		
 
 	} 
@@ -19,7 +24,12 @@ using namespace std;
 		
 		setType("Informant");
 		setStatus(stat);
+<<<<<<< Updated upstream
 		//printInfo();
+=======
+		printInfo();
+		cout<<endl;
+>>>>>>> Stashed changes
 
 		
 		
@@ -33,7 +43,11 @@ using namespace std;
 	}
 
 	
+<<<<<<< Updated upstream
 	
+=======
+
+>>>>>>> Stashed changes
 	
 	
 
