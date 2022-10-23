@@ -38,45 +38,6 @@ int main()
 
 
 
-	Entity* test1 = new SoldierFactory();
-
-	Citizen* mySoldier = test1->createEntity(50,"SA");
-
-	cout<<endl;
-
-
-	Entity* test2 = new MedicFactory();
-
-	Citizen* myMedic = test2->createEntity(20,"UK");
-
-	cout<<endl;
-
-
-	Entity* test3 = new InformantFactory();
-
-	Citizen* myInfor = test3->createEntity(30,"USA");
-
-	cout<<endl;
-
-
-	Entity* test4 = new PoliticianFactory();
-
-	Citizen* myPoli = test4->createEntity(10,"UAE");
-
-	cout<<endl;
-
-
-
-
-	delete mySoldier;
-	delete test1;
-
-	delete myMedic;
-	delete test2;
-
-
-	delete myInfor;
-	delete test3;
 
 
 	//SoldierFactory testing 
@@ -85,6 +46,7 @@ int main()
 	Citizen* mySoldier1 = test1->createEntity(50,"SA");
 
 
-
+	delete mySoldier1;
+	delete test1;
 
 }

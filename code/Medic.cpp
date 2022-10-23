@@ -9,13 +9,10 @@ using namespace std;
 	{
 		
 		setType("Medic");
-<<<<<<< Updated upstream
-		//printInfo();
-=======
+
 		printInfo();
 		cout<<endl;
->>>>>>> Stashed changes
-		
+
 
 	} 
 
@@ -23,16 +20,10 @@ using namespace std;
 	{
 		
 		setType("Medic");
-<<<<<<< Updated upstream
-		setThreatre(theat);
-		setStatus(stat);
-		//printInfo();
-=======
-		
 		setStatus(stat);
 		printInfo();
 		cout<<endl;
->>>>>>> Stashed changes
+
 
 		
 		
@@ -46,10 +37,6 @@ using namespace std;
 	}
 
 	
-	
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 	
 

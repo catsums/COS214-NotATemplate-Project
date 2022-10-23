@@ -13,12 +13,10 @@ class Soldier : public Citizen
 
 protected:
 
-<<<<<<< Updated upstream
-	
-=======
+
 	string status = "NA";
 	//string theatre = "NA";
->>>>>>> Stashed changes
+
 
 
 public: 
