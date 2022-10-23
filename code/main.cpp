@@ -6,6 +6,9 @@
 #include "Politician.cpp"
 #include "Entity.cpp"
 #include "SoldierFactory.cpp"
+#include "MedicFactory.cpp"
+#include "InformantFactory.cpp"
+#include "PoliticianFactory.cpp"
 
 
 using namespace std; 
@@ -48,5 +51,33 @@ int main()
 
 	delete mySoldier1;
 	delete test1;
+
+	//MedicFactory testing 
+	Entity* test2 = new MedicFactory();
+
+	Citizen* myMedic1 = test2->createEntity(10,"USA");
+
+
+	delete myMedic1;
+	delete test2;
+
+	//InformantFactory testing 
+	Entity* test3 = new InformantFactory();
+
+	Citizen* myInformant1 = test3->createEntity(20,"UAE");
+
+
+	delete myInformant1;
+	delete test3;
+
+
+	//PoliticianFactory testing 
+	Entity* test4 = new PoliticianFactory();
+
+	Citizen* myPolitician1 = test4->createEntity(8,"UK");
+
+
+	delete myPolitician1;
+	delete test4;
 
 }
