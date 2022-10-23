@@ -1,43 +1,26 @@
 #include <iostream>
-#include "Citizen.cpp"
-#include "Soldier.cpp"
-#include "Medic.cpp"
-#include "Informant.cpp"
-#include "Politician.cpp"
-#include "Entity.cpp"
-//#include "SoldierFactory.cpp"
+#include <cstdlib>
+#include <ctime>
+#include <random>
+#include <cmath>
+#include <math.h>
 
+#include <functional>
 
+#include "Country/Country.h"
+#include "SignalHandler/SignalHandler.h"
+#include "War/War.h"
+#include "myHelper.cpp"
 
-using namespace std; 
+using namespace std;
 
+int main(){
 
-int main()
-{
+	Country* zim = new Country("Zimbabwe");
 
-	// Citizen myCitizen;
+	zim->addAlly(new Country("Phillipines"));
 
-	// myCitizen.setType("Soldier");
-	// myCitizen.printInfo();
+	zim->print();
 
-	Citizen *mySoldier= new Soldier(50,"South Africa", "Stationed", "Land");
-	// Citizen *myMedic= new Medic(20,"Russia", "Stationed", "Sea");
-	// Citizen *myInformant= new Informant(20,"United Kingdom", "Undercover");
-	// Citizen *myPolitician= new Politician(10,"Romania", "Moderate");
-
-	delete mySoldier;
-	// delete myMedic;
-	// delete myInformant;
-
-
-	//Entity* test1 = new SoldierFactory();
-
-	//Citizen* mySoldier = test1->createEntity(50,"Sa");
-
-
-	//delete mySoldier;
-	//delete test1;
-
-
-
+	return 0;
 }
