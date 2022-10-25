@@ -46,7 +46,7 @@ int main()
 	//SoldierFactory testing 
 	Entity* test1 = new SoldierFactory();
 
-	Citizen* mySoldier1 = test1->createEntity(50,"SA");
+	Citizen* mySoldier1 = test1->createEntity(50,"Ukraine");
 
 
 	delete mySoldier1;

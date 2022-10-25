@@ -31,7 +31,7 @@ using namespace std;
 	}
 
 
-	void Citizen::printInfo()
+	void Citizen::printInfo() 
 	{
 
 		cout<<endl;
