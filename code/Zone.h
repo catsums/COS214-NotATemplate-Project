@@ -1,14 +1,18 @@
 #ifndef ZONE_H
 #define ZONE_H
 
-#include <vector>
-
 using namespace std;
 
 class Zone
 {
     public:
-        Zone(int x_in, int y_in, int pv_in, bool l_in); //Parameterised constructor
+        Zone(int x, int y, int pv, bool l); //Parameterised constructor
+        
+        //accessor methods
+        int getX();
+        int getY();
+        int getPv();
+        bool isLand();
 
     private:
         int x; //x coordinate of zone
