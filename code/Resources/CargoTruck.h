@@ -1,5 +1,5 @@
-#ifndef TANK_H
-#define TANK_H
+#ifndef CARGOTRUCK_H
+#define CARGOTRUCK_H
 
 #include <string>
 #include "LandVehicle.h"
@@ -7,21 +7,21 @@
 
 using namespace std; 
 
-class Tank
+class CargoTruck: public LandVehicle
 {
 
 private:
 
-	int fuel;
+	
 	
 
 
 
 public: 
 
-	Tank();// default constuctor
+	CargoTruck();// default constuctor
 
-	virtual ~Tank(); //destructor
+	virtual ~CargoTruck(); //destructor
 	
 	virtual void moveVehicle(int); // will decrease the fuel of a vehicle
 
