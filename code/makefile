@@ -10,9 +10,10 @@ TARGET   := main
 TARGETS   := all build clean
 INCLUDE  := -Iinclude/
 SRC      := 	\
-	$(wildcard Country/*.cpp) \
-	$(wildcard SignalHandler/*.cpp) \
-	$(wildcard War/*.cpp) \
+	$(filter-out Country/main.cpp, $(wildcard Country/*.cpp)) \
+	$(filter-out SignalHandler/main.cpp, $(wildcard SignalHandler/*.cpp)) \
+	$(filter-out ActionManager/main.cpp, $(wildcard ActionManager/*.cpp)) \
+	$(filter-out War/main.cpp, $(wildcard War/*.cpp)) \
 	$(wildcard *.cpp) \
 
 CPP_OBJ  := $(SRC:%.cpp=$(OBJ_DIR)/%.o)

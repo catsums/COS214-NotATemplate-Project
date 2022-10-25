@@ -28,8 +28,9 @@ class Country
         void setEnemies(Country**, int);
         void setEnemies(vector<Country*>); //added by Cass
 
-        Country** getAllies(); // returns an array of type country.
-        Country** getEnemies(); // returns an array of type country.
+        Country** getAlliesAsArray(); // returns an array of type country.
+        Country** getEnemiesAsArray(); // returns an array of type country.
+
         void print();
         double getStrength();
         int getTotal();
@@ -49,6 +50,12 @@ class Country
         double getStrength() const;
         int getTotalArmy() const;
         int getReserveCount() const;
+
+        int getNumberOfAllies();
+        int getNumberOfEnemies();
+
+        vector<Country*>* getAllies(); // returns an array of type country.
+        vector<Country*>* getEnemies(); // returns an array of type country.
 
         string getID() const;
 

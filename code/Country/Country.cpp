@@ -1,15 +1,56 @@
 #include "Country.h"
 #include <iostream>
-#include "../myHelper.cpp"
+#include <cstdlib>
+#include <ctime>
+#include <random>
+#include <cmath>
+#include <math.h>
+// #include "myHelper.cpp"
 
 using namespace std;
 
+static int getRandomInt(int a, int b){
+    int max, min;
+    if(a>b){
+        max = a; min = b;
+    }else{
+        max = b; min = a;
+    }
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_real_distribution<double> distr(min, max);
 
-Country** Country::getAllies()
+    return (int) distr(gen);
+}
+static string randomString(int len = 9) {
+    const char alphanum[] =
+        "0123456789"
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        "abcdefghijklmnopqrstuvwxyz";
+    int stringLen = sizeof(alphanum) - 1;
+
+    string str;
+    for (int i = 0; i < len; i++) {
+        int rnd = getRandomInt(0, stringLen);
+        str += alphanum[rnd % stringLen];
+    }
+    return str;
+}
+
+
+vector<Country*>* Country::getAllies()
+{
+    return &allies;
+}
+vector<Country*>* Country::getEnemies()
+{
+    return &enemies;
+}
+Country** Country::getAlliesAsArray()
 {
     return &allies[0];
 }
-Country** Country::getEnemies()
+Country** Country::getEnemiesAsArray()
 {
     return &enemies[0];
 }
@@ -48,6 +89,28 @@ void Country::print()
     cout <<"Total army = "<<this->totalArmy<<endl;
     cout <<"Total reserves = "<<this->reserves<<endl;
     // other stuff to be implemented later..
+    if(allies.empty())
+    {
+        cout <<"This country has no allies"<<endl;
+    }
+    else{
+        cout << this->getName() <<" has the following allies"<<endl;
+        for(int i = 0 ; i < allies.size() ; i++)
+        {
+            cout <<allies[i]->getName()<<endl;
+        }
+    }
+    if(enemies.empty())
+    {
+        cout <<this->getName() << " has no enemies"<<endl;
+    }
+    else{
+        cout << this->getName() <<" has the following enemies"<<endl;
+        for(int i = 0 ; i < enemies.size() ; i++)
+        {
+            cout <<enemies[i]->getName()<<endl;
+        }
+    }
 }
 void Country::setAllies(Country **a, int size)
 {
@@ -75,7 +138,7 @@ void Country::setEnemies(Country **a, int size)
 }
 Country::Country()
 {
-    id = myHelper::randomString(8);
+    id = randomString(8);
     name = "";
     strength = 0;
     totalArmy = 0;
@@ -86,7 +149,7 @@ Country::Country()
 }
 Country::Country(string n)
 {
-    id = myHelper::randomString(8);
+    id = randomString(8);
     name = n;
     strength = 0;
     totalArmy = 0;
@@ -165,6 +228,13 @@ void Country::addEnemy(Country* c){
         }
         enemies.push_back(c);
     }
+}
+
+int Country::getNumberOfAllies(){
+    return (int) allies.size();
+}
+int Country::getNumberOfEnemies(){
+    return (int) enemies.size();
 }
 // double Country::getStrength() const{
 //     return strength;
