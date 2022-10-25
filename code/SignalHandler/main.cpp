@@ -7,7 +7,8 @@
 
 #include <functional>
 
-#include "SignalHandler.h"
+#include "SignalBus.h"
+#include "ObjectSignalHandler.h"
 #include "../myHelper.cpp"
 // #include "Citizen.h"
 // #include "Army.h"
