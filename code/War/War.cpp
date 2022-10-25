@@ -6,7 +6,7 @@
 
 // #include "../Country/Country.h"
 // #include "WarPhase.h"
-#include "../SignalHandler/SignalHandler.h"
+#include "../SignalHandler/ObjectSignalHandler.h"
 #include "War.h"
 
 War::War(){
