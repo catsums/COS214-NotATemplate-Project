@@ -21,9 +21,9 @@ public:
 
 	virtual LandVehicle* createLandVehicle(); 
 	
-	//virtual AirVehicle* createAirVehicle();	
+	virtual AirVehicle* createAirVehicle();	
 
-	//virtual SeaVehicle* createSeaVehicle();	
+	virtual SeaVehicle* createSeaVehicle();	
 
 
 	

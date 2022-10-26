@@ -3,6 +3,8 @@
 
 #include <string>
 #include "LandVehicle.h"
+#include "AirVehicle.h"
+#include "SeaVehicle.h"
 
 
 using namespace std; 
@@ -24,9 +26,9 @@ public:
 
 	virtual LandVehicle* createLandVehicle() =0; // TODO: Change return type 
 	
-	//virtual void createAirVehicle() =0;	// TODO: Change return type
+	virtual AirVehicle* createAirVehicle() =0;	// TODO: Change return type
 
-	//virtual void createSeaVehicle() =0;	// TODO: Change return type
+	virtual SeaVehicle*  createSeaVehicle() =0;	// TODO: Change return type
 
 
 	

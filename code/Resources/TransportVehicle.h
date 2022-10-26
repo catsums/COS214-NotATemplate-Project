@@ -1,5 +1,5 @@
-#ifndef TransportVEHICLE_H
-#define TransportVEHICLE_H
+#ifndef TRANSPORTVEHICLE_H
+#define TRANSPORTVEHICLE_H
 
 #include <string>
 
@@ -21,9 +21,9 @@ public:
 
 	virtual LandVehicle* createLandVehicle(); 
 	
-	//virtual void createAirVehicle();	// TODO: Change return type
+	virtual AirVehicle* createAirVehicle();	// TODO: Change return type
 
-	//virtual void createSeaVehicle();	// TODO: Change return type
+	virtual SeaVehicle* createSeaVehicle();	// TODO: Change return type
 
 
 	

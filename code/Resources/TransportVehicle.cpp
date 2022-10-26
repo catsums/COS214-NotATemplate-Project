@@ -4,6 +4,10 @@
 #include "TransportVehicle.h"
 #include "LandVehicle.h"
 #include "CargoTruck.h"
+#include "AirVehicle.h"
+#include "CargoPlane.h"
+#include "SeaVehicle.h"
+#include "CargoShip.h"
 
 
 using namespace std;
@@ -27,5 +31,17 @@ using namespace std;
 		return myCargoTruck;
 	}
 
-	
+	AirVehicle* TransportVehicle::createAirVehicle()
+	{
+		AirVehicle *myCargoPlane = new CargoPlane();
 
+		return myCargoPlane;
+	}
+
+	SeaVehicle* TransportVehicle::createSeaVehicle()
+	{
+		SeaVehicle *myCargoShip = new CargoShip();
+
+		return myCargoShip;
+	}
+	
