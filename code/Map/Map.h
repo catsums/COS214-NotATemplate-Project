@@ -20,7 +20,7 @@ class Map
 
         void genStandardMap(); //Generates default map
 
-        vector<Zone*> getAdjacent(Zone*); //returns all adjacent zones
+        vector<Zone*> getAdjacent(Zone*); //returns all adjacent
 
         //accessor methods
         int getZoneCount();

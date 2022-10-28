@@ -6,8 +6,8 @@
 #include "Politician.cpp"
 #include "Entity.cpp"
 //#include "SoldierFactory.cpp"
-#include "Map.cpp"
-#include "Zone.cpp"
+#include "Map/Map.cpp"
+#include "Map/Zone.cpp"
 
 using namespace std; 
 
