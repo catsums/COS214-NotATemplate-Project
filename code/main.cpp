@@ -18,6 +18,8 @@ void OtherTestCode();
 int main()
 {
 	Testing();
+
+	return 0;
 }
 
 void Testing()
