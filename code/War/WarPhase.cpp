@@ -25,26 +25,26 @@ PhaseNeutral::PhaseNeutral():WarPhase("neutral"){
 PhaseNeutral::~PhaseNeutral(){
 
 }
-void PhaseNeutral::handle(vector<Country*> a, vector<Country*> b){
-	for(int i=0; i<a.size(); i++){
-		Country* curr = a[i];
+void PhaseNeutral::handle(vector<Country*>* a, vector<Country*>* b){
+	for(int i=0; i<(int)a->size(); i++){
+		Country* curr = (*a)[i];
 
-		for(int j=0; i<b.size(); i++){
-			Country* other = b[i];
+		for(int j=0; i<(int)b->size(); i++){
+			Country* other = (*b)[i];
 
 			if(curr->isAlly(other)){
 				//other is ally of curr
-
+				cout<<"Handling allies"<<endl;
 				//try to interact with the country
 
 			}else if(curr->isEnemy(other)){
 				//other is enemy of curr
-
+				cout<<"Handling enemies"<<endl;
 				//avoid the country as much as possible
 
 			}else{
 				//other and curr have no relation
-
+				cout<<"Handling others"<<endl;
 				//dont mind country unless they interact with you
 
 			}
@@ -58,7 +58,7 @@ PhasePeace::PhasePeace():WarPhase("peace"){
 PhasePeace::~PhasePeace(){
 
 }
-void PhasePeace::handle(vector<Country*> a, vector<Country*> b){
+void PhasePeace::handle(vector<Country*>* a, vector<Country*>* b){
 
 }
 
@@ -69,7 +69,7 @@ PhaseOpenConflict::PhaseOpenConflict():WarPhase("openConflict"){
 PhaseOpenConflict::~PhaseOpenConflict(){
 	
 }
-void PhaseOpenConflict::handle(vector<Country*> a, vector<Country*> b){
+void PhaseOpenConflict::handle(vector<Country*>* a, vector<Country*>* b){
 
 }
 
@@ -79,7 +79,7 @@ PhaseCrisis::PhaseCrisis():WarPhase("crisis"){
 PhaseCrisis::~PhaseCrisis(){
 	
 }
-void PhaseCrisis::handle(vector<Country*> a, vector<Country*> b){
+void PhaseCrisis::handle(vector<Country*>* a, vector<Country*>* b){
 	
 }
 
@@ -89,7 +89,7 @@ PhaseWar::PhaseWar():WarPhase("war"){
 PhaseWar::~PhaseWar(){
 	
 }
-void PhaseWar::handle(vector<Country*> a, vector<Country*> b){
+void PhaseWar::handle(vector<Country*>* a, vector<Country*>* b){
 	
 }
 
@@ -99,7 +99,7 @@ PhaseNegotiations::PhaseNegotiations():WarPhase("negotiations"){
 PhaseNegotiations::~PhaseNegotiations(){
 	
 }
-void PhaseNegotiations::handle(vector<Country*> a, vector<Country*> b){
+void PhaseNegotiations::handle(vector<Country*>* a, vector<Country*>* b){
 	
 }
 
