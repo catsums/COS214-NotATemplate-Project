@@ -59,6 +59,7 @@ public:
 };
 
 class baseAdapter{
+public:
 	string id;
 	vector<string> types;
 	SignalBus* signalBus;
@@ -67,6 +68,9 @@ class baseAdapter{
 	baseAdapter(){
 		id = myHelper::randomString(8);
 		types.push_back("OBJECT");
+	}
+	string getID(){
+		return id;
 	}
 
 	virtual void emit(string n){
@@ -78,8 +82,8 @@ class baseAdapter{
 	virtual void unsubscribe(string n, SignalHandler* h){
 		signalBus->unsubscribe(n, h);
 	}
-	virtual void onHandle(SignalEvent* e) = 0;
-	virtual void onFulFilled(SignalEvent* e) = 0;
+	// virtual void onHandle(SignalEvent* e) = 0;
+	// virtual void onFulFilled(SignalEvent* e) = 0;
 
 	void addHandler(string n, SignalHandler* handler){
 		if(handlers.count(n)<=0){
@@ -102,14 +106,44 @@ class baseAdapter{
 		}
 		return false;
 	}
+	string getType(){
+		return (types.back());
+	}
 };
 
 class AdapterManager{
 public:
-	map<string,vector<baseAdapter>> list;
+	map<string, map<string, baseAdapter*>*> lists;
 
 	AdapterManager(){
 
+	}
+	~AdapterManager(){
+
+	}
+
+	void addAdapter(baseAdapter* adp){
+		string type = adp->getType();
+		string id = adp->getID();
+		if(!lists.count(type)){
+			lists[type] = new map<string,baseAdapter*>();
+		}
+		map<string, baseAdapter*>* _list = lists[type];
+
+		(*_list)[id] = adp;
+
+	}
+
+	baseAdapter* getAdapter(string type, string id){
+
+		if(lists.count(type)>0){
+			map<string, baseAdapter*>* _list = lists[type];
+			if(_list->count(id)>0){
+				baseAdapter* adp = (*_list)[id];
+				return adp;
+			}
+		}
+		return NULL;
 	}
 };
 
@@ -120,9 +154,12 @@ public:
 
 	FunctionHandler* handler;
 
+	AdapterManager* manager;
+
 	myContext* ctx;
-	myAdapter(myContext* _ctx){
+	myAdapter(myContext* _ctx, AdapterManager* mng){
 		ctx = _ctx;
+		manager = mng;
 
 		handlers["requestHandle"] = new FunctionHandler([this](SignalEvent* e){
 			onHandle(e);
@@ -130,9 +167,14 @@ public:
 		handlers["requestFulFill"] = new FunctionHandler([this](SignalEvent* e){
 			onFulFilled(e);
 		});
+
+		if(manager){
+			manager->addAdapter(this);
+		}
 	}
 	~myAdapter(){
 		ctx = NULL;
+		manager = NULL;
 		delete handler;
 		handler = NULL;
 	}
@@ -141,7 +183,7 @@ public:
 		if(ctx){
 			return ctx->name;
 		}
-		return "";
+		return "[NULL]";
 	}
 
 	void checkRequests(){
@@ -174,10 +216,6 @@ public:
 
 	void onProcess(ActionResult* res){
 		
-	}
-
-	void onFulFilled(SignalEvent* e){
-
 	}
 
 	bool attack(string id, string type){
@@ -271,7 +309,7 @@ public:
 				map<string,string> reqData;
 				reqData["fix"] = ctx->getName();
 				ActionRequest* req = ctx->createRequest(reqData, &actionManager);
-				cout<<ctx->name<<" opened a request: "<<req->getID()<<" waiting "<<req->getStartCount()<<endl;
+				cout<<ctx->getName()<<" opened a request: "<<req->getID()<<" waiting "<<req->getStartCount()<<endl;
 			}
 		}
 	}
@@ -280,15 +318,16 @@ public:
 void managerTest()
 {
 	StepManager manager;
+	AdapterManager adpManager;
 
 	myAdapter* adp1 = new myAdapter(
-		new myContext("cake")
+		new myContext("cake"), &adpManager
 	);
 	myAdapter* adp2 = new myAdapter(
-		new myContext("tart")
+		new myContext("tart"), &adpManager
 	);
 	myAdapter* adp3 = new myAdapter(
-		new myContext("cookie")
+		new myContext("cookie"), &adpManager
 	);
 
 	manager.arr.push_back(adp1);
