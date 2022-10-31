@@ -92,11 +92,11 @@ int main()
 
     /*Countries lose troops everytime that they are attacked*/
     // Troop types
-    // GroundForce ground;
-    // NavalForce navy;
-    // AirForce air;
+    GroundForce ground;
+    NavalForce navy;
+    AirForce air;
 
-    // Army attack;
+    Army attack;
 
     cout <<"End of army class"<<endl;
 

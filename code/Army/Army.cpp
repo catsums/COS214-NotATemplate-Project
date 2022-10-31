@@ -8,8 +8,14 @@ Army::Army()
 {
     cout <<"Army created"<<endl;
 }
-bool Army::attack()
+bool const Army::attack()
 {
+    m_attack->attack();
     return false;
 }
+void Army::set_attack(ArmyForce* a)
+{
+    m_attack = a;
+}
+
 

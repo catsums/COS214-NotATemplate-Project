@@ -11,7 +11,8 @@ private:
     ArmyForce *m_attack;
 public:
     Army();
-    bool attack();
+    void set_attack(ArmyForce* a);
+    bool const attack();
 };
 
 #endif
