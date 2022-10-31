@@ -48,7 +48,6 @@ static string randomString(int len = 9) {
 
 ///ActionManager
 ActionManager::ActionManager(){
-	
 
 }
 ActionManager::~ActionManager(){
