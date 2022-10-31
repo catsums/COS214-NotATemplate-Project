@@ -10,7 +10,7 @@ Entity::Entity(int hp, string c, string t){
 	setCountry(c);
 	setType(t);
 }
-~Entity::Entity(){
+Entity::~Entity(){
 
 }
 

@@ -3,6 +3,7 @@
 
 #include "EntityFactory.h"
 #include "Entity.h"
+#include "Citizen.h"
 
 class CitizenFactory : public EntityFactory
 {
@@ -11,7 +12,10 @@ private:
 public:
     CitizenFactory(/* args */);
     ~CitizenFactory();
-    Entity* createCitizen(int, string, string);
+    Entity* createEntity(int hp, string c, string citizen){
+        return new Citizen(hp, c, citizen);
+    }
+    
 
 };
 

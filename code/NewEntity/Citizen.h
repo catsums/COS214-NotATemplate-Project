@@ -9,12 +9,19 @@ private:
     /* data */
     string influence;
 public:
-    Citizen(/* args */);
+    Citizen(int, string, string);
     ~Citizen();
     bool takeDamage();
-    void heal(int);
-    void travel();
-    virtual void attack(Entity&);
+    virtual void heal(int hp){
+        this->HP += hp;
+    }
+	virtual bool travel(int x, int y){
+        this->zone.x = x;
+        this->zone.y = y;
+    }
+    virtual void attack(Entity&e){
+        
+    }
 };
 
 #endif
