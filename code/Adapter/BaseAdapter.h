@@ -32,12 +32,24 @@ public:
 	}
 
 	virtual ActionRequest* createRequest(SignalHandler* handler, int waitTime){
+		ActionRequest* req = new ActionRequest(waitTime, [this](SignalEvent* e){
+			onFulFilled(e);
+		},[this](SignalEvent* e){
+			onHandle(e);
+		});
 
+		return req;
 	}
 	virtual ActionRequest* createRequest(map<string,string> data, SignalHandler* handler, int waitTime){
+		ActionRequest* req = new ActionRequest(waitTime, data, [this](SignalEvent* e){
+			onFulFilled(e);
+		},[this](SignalEvent* e){
+			onHandle(e);
+		});
 
+		return req;
 	}
-	virtual void action() = 0;
+	virtual void action(string actionName) = 0;
 
 	virtual void onHandle(SignalEvent* e) = 0;
 	virtual void onFulFilled(SignalEvent* e) = 0;
