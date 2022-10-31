@@ -19,6 +19,7 @@ void EntityAdapter::onHandle(SignalEvent* e){
 		if(res->isFinished()){
 			if(res->isSuccess()){
 				//do stuff when its fulfilled success
+
 			}else{
 				//do stuff when its failed
 			}
@@ -36,6 +37,9 @@ void EntityAdapter::onFulFilled(SignalEvent* e){
 
 		if(res->isSuccess()){
 			//do stuff on success
+			if(res->getData("action")){
+				action(res->getData("action"));
+			}
 		}else{
 			//do stuff on fail
 		}

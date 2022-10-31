@@ -7,6 +7,9 @@
 
 #include "../Country/Country.h"
 #include "../SignalHandler/SignalHandler.h"
+#include "../ActionManager/ActionManager.h"
+#include "../Adapter/Adapter.h"
+#include "../Map/Map.h"
 #include "WarPhase.h"
 
 class War{
@@ -14,6 +17,7 @@ public:
 	War();
 	War(WarPhase* startState);
 	~War();
+
 	void changePhase(WarPhase* newState); //change warstate
 
 	void handlePhase(); //execute phase
@@ -45,6 +49,9 @@ private:
 	map<int,vector<Country*>*> sides;
 
 	SignalHandler* warHandler;
+	SignalBus* signalBus;
+	ActionManager* actionManager;
+	Map* warMap;
 
 	WarPhase* warState;
 };

@@ -4,30 +4,48 @@
 #include <string>
 #include <vector>
 
-// #include "../Country/Country.h"
-// #include "WarPhase.h"
-#include "../SignalHandler/ObjectSignalHandler.h"
 #include "War.h"
 
 War::War(){
 	warState = new PhaseNeutral();
 
-	function<void(SignalEvent*)> f = [this](SignalEvent* e){
+    warHandler = new FunctionHandler([this](SignalEvent* e){
         onWarEvent(e);
-    };
-    warHandler = new FunctionHandler(f);
+    });
+
+    signalBus = new ObjectSignalBus<string>();
+
+    signalBus->subscribe("warState", warHandler);
+
+    actionManager = new ActionManager();
+
+    warMap = new Map();
 }
 War::War(WarPhase* startState){
 	warState = startState;
 
-	function<void(SignalEvent*)> f = [this](SignalEvent* e){
+	warHandler = new FunctionHandler([this](SignalEvent* e){
         onWarEvent(e);
-    };
-    warHandler = new FunctionHandler(f);
+    });
+
+    signalBus = new ObjectSignalBus<string>();
+
+    signalBus->subscribe("warState", warHandler);
+
+    actionManager = new ActionManager();
 }
 War::~War(){
+	delete warState;
 	warState = NULL;
+
+	delete warHandler;
 	warHandler = NULL;
+
+	delete signalBus;
+	signalBus = NULL;
+
+	delete actionManager;
+	actionManager = NULL;
 }
 
 void War::changePhase(WarPhase* newState){
@@ -94,7 +112,7 @@ int War::getSide(Country* c){
 			}
 		}
 	}
-	return -1;
+	return -1; //means country has no side
 }
 
 

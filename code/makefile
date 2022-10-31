@@ -13,7 +13,12 @@ SRC      := 	\
 	$(filter-out Country/main.cpp, $(wildcard Country/*.cpp)) \
 	$(filter-out SignalHandler/main.cpp, $(wildcard SignalHandler/*.cpp)) \
 	$(filter-out ActionManager/main.cpp, $(wildcard ActionManager/*.cpp)) \
+	$(filter-out Map/main.cpp, $(wildcard Map/*.cpp)) \
+	$(filter-out Adapter/main.cpp, $(wildcard Adapter/*.cpp)) \
+	$(filter-out Entity/main.cpp, $(wildcard Entity/*.cpp)) \
+	$(filter-out Resouces/main.cpp, $(wildcard Resouces/*.cpp)) \
 	$(filter-out War/main.cpp, $(wildcard War/*.cpp)) \
+	$(filter-out WarEngine/main.cpp, $(wildcard WarEngine/*.cpp)) \
 	$(wildcard *.cpp) \
 
 CPP_OBJ  := $(SRC:%.cpp=$(OBJ_DIR)/%.o)
