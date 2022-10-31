@@ -19,6 +19,11 @@ public:
 	virtual void attack(Entity* target);
 protected:
 	int fuel;
+
+private:
+	virtual void useOn(Entity* ent){
+		return;
+	}
 };
 
 #endif
