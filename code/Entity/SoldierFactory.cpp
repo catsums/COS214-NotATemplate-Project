@@ -26,8 +26,9 @@ using namespace std;
 		Citizen *myCitizen= myS;
 		myCitizen->setHP(health);
 		myCitizen->setCountry(country);
+
 		myCitizen->printInfo();
-		myS->printSoldierInfo();
+		
 
 
 

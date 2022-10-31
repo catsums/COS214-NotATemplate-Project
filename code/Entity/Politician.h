@@ -14,7 +14,7 @@ class Politician : public Citizen
 protected:
 
 	
-	string influence; // low,moderate,high
+	
 
 
 public: 
@@ -25,16 +25,6 @@ public:
 	virtual ~Politician(); //destructor
 
 
-	//setter
-	
-	void setInfluence(string);
-	
-
-
-	//getters
-		
-	string getInfluence();
-	
 
 
 		

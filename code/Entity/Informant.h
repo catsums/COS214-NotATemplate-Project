@@ -13,7 +13,7 @@ class Informant : public Citizen
 
 protected:
 
-	string status;
+	
 	
 
 
@@ -25,15 +25,7 @@ public:
 	virtual ~Informant(); //destructor
 
 
-	//setter
-	void setStatus(string);
-
 	
-	
-
-
-	//getters
-	string getStatus();
 	
 	
 	

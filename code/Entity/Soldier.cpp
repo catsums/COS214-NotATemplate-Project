@@ -10,19 +10,25 @@ using namespace std;
 			
 
 		setType("Soldier");
+
+		//printInfo();
+
 		printInfo();
+		cout<<endl;
+
 		
 
 	} 
 
-	Soldier::Soldier(int h , string c, string stat, string theat): Citizen( h ,  c)// param constuctor 
+	Soldier::Soldier(int h , string c, string stat): Citizen( h ,  c)// param constuctor 
 	{
 		
 	
 		setType("Soldier");
-		setThreatre(theat);
 		setStatus(stat);
 		printInfo();
+		cout<<endl;
+
 		
 		
 		
@@ -32,7 +38,7 @@ using namespace std;
 	
 	Soldier::~Soldier() //destructor
 	{
-		cout<<"Soldier’s Destructor was Called"<<endl;
+		// /cout<<"Soldier’s Destructor was Called"<<endl;
 	}
 
 

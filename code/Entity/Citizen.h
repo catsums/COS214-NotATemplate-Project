@@ -13,7 +13,7 @@ protected:
 	int HP; //health of citizen
 	string country;//TODO: change to type country once it's been made
 	string type; // Soldier,Medic,Informant,Politician
-	string theatre; //sea,land,air
+	//string theatre; //sea,land,air
 	string influence; //high,moderate,low
 	string status;
 	
@@ -34,7 +34,7 @@ public:
 	void setHP(int);
 	void setCountry(string);
 	void setType(string);
-	void setThreatre(string);
+	//void setThreatre(string);
 	void setInfluence(string);
 	void setStatus(string);
 
@@ -42,7 +42,7 @@ public:
 	int getHP();
 	string getCountry();
 	string getType();
-	string getTheatre();
+	//string getTheatre();
 	string getInfluence();
 	string getStatus();
 

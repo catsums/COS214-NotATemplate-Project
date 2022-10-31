@@ -9,9 +9,11 @@ using namespace std;
 		HP=0;
 		country=" ";
 		type = "Citizen";
-		theatre = "NA";
+
+		//theatre = "NA";
 		influence = "NA";
 		status = "NA";
+
 
 
 	} 
@@ -20,16 +22,16 @@ using namespace std;
 	{
 		HP=h;
 		country=c;
-		theatre = "NA";
 		influence = "NA";
 		status = "NA";
+
 
 		
 
 	}
 
 
-	void Citizen::printInfo()
+	void Citizen::printInfo() 
 	{
 
 		cout<<endl;
@@ -42,23 +44,27 @@ using namespace std;
 		{
 			cout<<"Type: Soldier"<<endl;
 			cout<<"Status: "<<status<<endl;
-		    cout<<"Theatre: "<<theatre<<endl;
+		    //cout<<"Theatre: "<<theatre<<endl;
 		}
 
 		else if (type== "Medic")
 		{
-			/* code */
+			cout<<"Type: Medic"<<endl;
+			cout<<"Status: "<<status<<endl;
+
 		}
 
 		else if (type== "Informant")
 		{
-			/* code */
+			cout<<"Type: Informant"<<endl;
+			cout<<"Status: "<<status<<endl;
 		}
 
 
 		else if (type== "Politician")
 		{
-			/* code */
+			cout<<"Type: Politician"<<endl;
+			cout<<"Influence: "<<influence<<endl;
 		}
 
 		
@@ -68,7 +74,7 @@ using namespace std;
 	
 	Citizen::~Citizen() //destructor
 	{
-		cout<<"Citizen’s Destructor was Called"<<endl;
+		//cout<<"Citizen’s Destructor was Called"<<endl;
 	}
 
 	
@@ -90,10 +96,10 @@ using namespace std;
 	}
 
 
-	void Citizen::setThreatre(string th)
-	{
-		theatre = th;
-	}
+	// void Citizen::setThreatre(string th)
+	// {
+	// 	theatre = th;
+	// }
 
 
 
@@ -126,10 +132,10 @@ using namespace std;
 	}
 
 
-	string Citizen::getTheatre()
-	{
-		return theatre;
-	}
+	// string Citizen::getTheatre()
+	// {
+	// 	return theatre;
+	// }
 
 
 	string Citizen::getInfluence()
