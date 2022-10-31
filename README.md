@@ -4,11 +4,11 @@
 > please put your full names here and student numbers
 
 - [Cassim Chifamba u19024895](https://github.com/catsums)
-- Ayla Inggs - u19236272
-- Kiara Jaimungal - u19023210
-- Mark Grosvenor - 20426985
-- Ayaaz Street - u20427248
-- Tanaka Humbani - u15057420
+- [Ayla Inggs - u19236272](https://github.com/aylainggs)
+- [Kiara Jaimungal - u19023210](https://github.com/KiaraJaimungal)
+- [Mark Grosvenor - 20426985](https://github.com/TheMythik)
+- [Ayaaz Street - u20427248](https://github.com/AyaazStreet)
+- [Tanaka Humbani - u15057420](https://github.com/Tanaka9612)
 
 ## Google Link drive to documentation:
 
