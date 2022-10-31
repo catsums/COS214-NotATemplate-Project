@@ -15,7 +15,7 @@ SRC      := 	\
 	$(filter-out ActionManager/main.cpp, $(wildcard ActionManager/*.cpp)) \
 	$(filter-out Map/main.cpp, $(wildcard Map/*.cpp)) \
 	$(filter-out Adapter/main.cpp, $(wildcard Adapter/*.cpp)) \
-	$(filter-out Entity/main.cpp, $(wildcard Entity/*.cpp)) \
+	$(filter-out NewEntity/main.cpp, $(wildcard NewEntity/*.cpp)) \
 	$(filter-out Resouces/main.cpp, $(wildcard Resouces/*.cpp)) \
 	$(filter-out War/main.cpp, $(wildcard War/*.cpp)) \
 	$(filter-out WarEngine/main.cpp, $(wildcard WarEngine/*.cpp)) \
