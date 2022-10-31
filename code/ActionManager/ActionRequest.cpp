@@ -8,71 +8,107 @@
 
 using namespace std;
 
-// static int getRandomInt(int a, int b){
-//     int max, min;
-//     if(a>b){
-//         max = a; min = b;
-//     }else{
-//         max = b; min = a;
-//     }
-//     random_device rd;
-//     mt19937 gen(rd());
-//     uniform_real_distribution<double> distr(min, max);
+static int getRandomInt(int a, int b){
+    int max, min;
+    if(a>b){
+        max = a; min = b;
+    }else{
+        max = b; min = a;
+    }
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_real_distribution<double> distr(min, max);
 
-//     return (int) distr(gen);
-// }
-// static string randomString(int len = 9) {
-//     const char alphanum[] =
-//         "0123456789"
-//         "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-//         "abcdefghijklmnopqrstuvwxyz";
-//     int stringLen = sizeof(alphanum) - 1;
+    return (int) distr(gen);
+}
+static string randomString(int len = 9) {
+    const char alphanum[] =
+        "0123456789"
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        "abcdefghijklmnopqrstuvwxyz";
+    int stringLen = sizeof(alphanum) - 1;
 
-//     string str;
-//     for (int i = 0; i < len; i++) {
-//         int rnd = getRandomInt(0, stringLen);
-//         str += alphanum[rnd % stringLen];
-//     }
-//     return str;
-// }
+    string str;
+    for (int i = 0; i < len; i++) {
+        int rnd = getRandomInt(0, stringLen);
+        str += alphanum[rnd % stringLen];
+    }
+    return str;
+}
 
 ActionRequest::ActionRequest(int _wait, map<string,string> _data, function<void(SignalEvent*)> func){
-	id = myHelper::randomString(8);
+	id = randomString(8);
 
 	waitCount = _wait;
-	currWaitCount = _wait;
+	startCount = _wait;
 	requestData = _data;
 	actionHandler = new FunctionHandler(func);
+	processHandler = new FunctionHandler([this](SignalEvent* e){
+		_process(e);
+	});
+
+	// result = new ActionResult(getID(), this);
+}
+ActionRequest::ActionRequest(int _wait, map<string,string> _data, function<void(SignalEvent*)> func, function<void(SignalEvent*)> func2){
+	id = randomString(8);
+
+	waitCount = _wait;
+	startCount = _wait;
+	requestData = _data;
+	actionHandler = new FunctionHandler(func);
+	processHandler = new FunctionHandler(func2);
 
 	// result = new ActionResult(getID(), this);
 }
 ActionRequest::ActionRequest(int _wait, function<void(SignalEvent*)> func){
-	id = myHelper::randomString(8);
+	id = randomString(8);
 
 	waitCount = _wait;
-	currWaitCount = _wait;
+	startCount = _wait;
 	actionHandler = new FunctionHandler(func);
+	processHandler = new FunctionHandler([this](SignalEvent* e){
+		_process(e);
+	});
+	// result = new ActionResult(getID(), this);
+}
+ActionRequest::ActionRequest(int _wait, function<void(SignalEvent*)> func, function<void(SignalEvent*)> func2){
+	id = randomString(8);
+
+	waitCount = _wait;
+	startCount = _wait;
+	actionHandler = new FunctionHandler(func);
+	processHandler = new FunctionHandler(func2);
 
 	// result = new ActionResult(getID(), this);
 }
 ActionRequest::ActionRequest(ActionRequest& other){
-	id = myHelper::randomString(8);
+	id = randomString(8);
 
+	startCount = other.waitCount;
 	waitCount = other.waitCount;
-	currWaitCount = other.waitCount;
 
 	requestData = other.requestData;
 	actionHandler = new FunctionHandler(*(other.actionHandler));
-
+	processHandler = new FunctionHandler(*(other.processHandler));
 	// result = new ActionResult(getID(), this);
 }
 ActionRequest::~ActionRequest(){
 	actionHandler = NULL;
+	processHandler = NULL;
 	// result = NULL;
 }
-string ActionRequest::getID(){
-	return id;
+
+ActionRequest* ActionRequest::clone(){
+	return new ActionRequest(*this);
 }
+
+void ActionRequest::changeStatus(ARS newState){
+	ARS oldState = status;
+	status = newState;
+
+	//maybe emit signal or run onStateChange
+}
+
 string* ActionRequest::getData(string key){
 	if(requestData.count(key)>0){
 		return &(requestData[key]);
@@ -91,69 +127,43 @@ void ActionRequest::setDataMap(map<string,string> newData){
 	requestData = newData;
 }
 
-// void ActionRequest::handle(){
+void ActionRequest::handle(ActionResult* res){
 	
-// }
-
-SignalHandler* ActionRequest::getActionHandler(){
-	return actionHandler;
 }
 
-// void ActionRequest::_process(SignalEvent* e){
+void ActionRequest::onStateChange(SignalEvent* e){
 
-// 	ActionResult* newResult = static_cast<ActionResult*>(e);
+	ActionResult* newResult = static_cast<ActionResult*>(e);
 	
-// 	if(result->getStatus() == ARS::SUCCESS || result->getStatus() == ARS::FAIL){
-// 		//do nothing
-// 	}
-// 	currWaitCount--;
-// 	if(result->getStatus() == ARS::STARTED){
-// 		newResult->changeResultState(ARS::PENDING);
-// 	}
-// 	if(result->getStatus() == ARS::PENDING && currWaitCount<=0){
-// 		newResult->changeResultState(ARS::PROCESSING);
-// 	}
-	
-// }
-// ActionResult* ActionRequest::process(){
-// 	SignalEvent* e = result->clone();
-// 	ActionResult* newResult = static_cast<ActionResult*>(e);
-	
-// 	_process(e);
-// 	return newResult;
-// }
-// ActionResult* ActionRequest::process(map<string,string> newData){
-// 	SignalEvent* e = result->clone();
-// 	ActionResult* newResult = static_cast<ActionResult*>(e);
-	
-// 	for(map<string,string>::iterator it=newData.begin(); it!=newData.end();++it){
-// 		string k =  it->first;
-
-// 		newResult->setData(k, newData[k]);
-// 	}
-
-// 	_process(e);
-// 	return newResult;
-// }
-
-// ActionResult* ActionRequest::getResult(){
-// 	if(!result){
-// 		result = new ActionResult(getID(),this);
-// 		result->setDataMap(this->requestData);
-// 	}
-
-// 	return result;
-// }
-
-int ActionRequest::getStartCount(){
-	return waitCount;
+	//do smt on state change
 }
-int ActionRequest::getWaitCount(){
-	return currWaitCount;
+ActionResult* ActionRequest::process(ActionResult* oldRes){
+	ActionResult* newRes = new ActionResult(*oldRes);
+	
+	if(status == ARS::PENDING){
+		changeStatus(ARS::PROCESSING);
+	}
+	if(status == ARS::PROCESSING){
+		if(waitCount==0){
+			changeStatus(ARS::FULFILLED);
+			newRes->resolve(true);
+		}else if(waitCount<0){
+			newRes->resolve(false);
+		}
+
+		_process(newRes);
+		SignalHandler* _handler = getProcessHandler();
+		_handler->handle(newRes);
+	}
+	return newRes;
+}
+void ActionRequest::_process(SignalEvent* e){
+	
+	ActionResult* res  = static_cast<ActionResult*>(e);
+
+	res->setDataMap(requestData);
+
 }
 
-ActionRequest* ActionRequest::clone(){
-	return new ActionRequest(*this);
-}
 
 #endif

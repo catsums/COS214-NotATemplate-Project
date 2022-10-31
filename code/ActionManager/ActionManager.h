@@ -29,7 +29,8 @@ public:
 
 	bool handleCurrRequest();
 	void pushRequest(ActionRequest* req);
-	ActionResult* removeRequest(string id);
+	ActionRequest* removeRequest(string id);
+	ActionResult* removeResult(string id);
 
 	ActionRequest* getRequestByID(string id);
 	ActionResult* getResultByID(string id);
@@ -51,15 +52,15 @@ protected:
 	// virtual void sendEvent(string n, SignalEvent* event);
 	virtual SignalEvent* createSignalEvent(string n);
 
-	void pushToQueue(ActionResult* res);
-	void pushToNext(ActionResult* res);
-	ActionResult* popFromQueue();
+	void pushToQueue(ActionRequest* req);
+	void pushToNext(ActionRequest* req);
+	ActionRequest* popFromQueue();
 
-	// map<string, ActionRequest*> requests;
+	map<string, ActionRequest*> requests;
 	map<string, ActionResult*> results;
 	// queue<ActionRequest*> actionQueue;
-	queue<ActionResult*> actionQueue;
-	queue<ActionResult*> nextQueue;
+	queue<ActionRequest*> actionQueue;
+	queue<ActionRequest*> nextQueue;
 };
 
 

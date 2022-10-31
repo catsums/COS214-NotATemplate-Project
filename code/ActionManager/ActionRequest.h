@@ -13,41 +13,89 @@
 
 #include "../SignalHandler/SignalHandler.h"
 
+#include "ActionResult.h"
+
 using namespace std;
 
-// class ActionResult;
+enum ARS{
+	PENDING,
+	PROCESSING,
+	FULFILLED
+};
 
 class ActionRequest{
 	friend class ActionManager;
 public:
 	ActionRequest(int _wait, map<string,string> _data, function<void(SignalEvent*)> func);
+	ActionRequest(int _wait, map<string,string> _data, function<void(SignalEvent*)> func, function<void(SignalEvent*)> proc);
 	ActionRequest(int _wait, function<void(SignalEvent*)> func);
+	ActionRequest(int _wait, function<void(SignalEvent*)> func, function<void(SignalEvent*)> proc);
 	ActionRequest(ActionRequest& other);
 	~ActionRequest();
 
 	ActionRequest* clone();
-	// virtual ActionResult* process();
-	// virtual ActionResult* process(map<string,string> newData);
-	// void handle();
+	ActionResult* process(ActionResult* oldRes);
+	virtual void onStateChange(SignalEvent* res);
+	
+	virtual void handle(ActionResult* res);
+
 	string* setData(string key, string val);
 	void setDataMap(map<string,string> newData);
 	string* getData(string key);
 
-	// ActionResult* getResult();
-	
-	int getWaitCount();
-	int getStartCount();
+	void changeStatus(ARS newState);	
+	int getWaitCount(){
+		return waitCount;
+	}
+	int getStartCount(){
+		return startCount;
+	}
 
-	SignalHandler* getActionHandler();
+	SignalHandler* getActionHandler(){
+		return actionHandler;
+	}
+	SignalHandler* getProcessHandler(){
+		return processHandler;
+	}
 
-	string getID();
+	string getID(){
+		return id;
+	}
+
+	string getStatusAsString(){
+		return ActionRequest::statusToString(getStatus());
+	}
+
+	ARS getStatus(){
+		return status;
+	}
+
+	static string statusToString(ARS status){
+		switch(status){
+			case (ARS::PENDING): return "PENDING";
+			case (ARS::PROCESSING): return "PROCESSING";
+			case (ARS::FULFILLED): return "FULFILLED";
+			default: return "UNKNOWN";
+		}
+	}
+
+	bool isWaiting(){
+		return (status != ARS::FULFILLED);
+	}
+
+	virtual void waitOnce(){
+		waitCount--;
+	}
 protected:
-	// virtual void _process(SignalEvent* e);
+	virtual void _process(SignalEvent* res);
 	int waitCount;
-	int currWaitCount;
+	int startCount;
+
+	ARS status;
 	
 	map<string,string> requestData;
 	FunctionHandler* actionHandler;
+	FunctionHandler* processHandler;
 	// ActionResult* result;
 private:
 	string id;

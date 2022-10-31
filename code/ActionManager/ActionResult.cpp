@@ -7,54 +7,46 @@
 
 using namespace std;
 
-ActionResult::ActionResult(ActionRequest* req){
-	if(req){
-		name = req->getID();
-	}
-	request = req;
-	resultState = ARS::STARTED;
+ActionResult::ActionResult(string _id){
+	id = _id;
+	success = false;
 
-	finished = false;
 }
-ActionResult::ActionResult(ActionRequest* req, ARS newState){
-	if(req){
-		name = req->getID();
-	}
-	request = req;
-	resultState = newState;
-
-	finished = false;
+ActionResult::ActionResult(string _id, bool s){
+	id = _id;
+	success = s;
+}
+ActionResult::ActionResult(string _id, bool s, std::map<string, string> _data){
+	id = _id;
+	success = s;
+	resultData = _data;
 }
 ActionResult::ActionResult(ActionResult& other){
-	name = other.name;
-	request = other.request;
-	resultState = other.resultState;
-	resultData = other.resultData;
-
+	id = other.id;
+	success = other.success;
 	finished = other.finished;
+	resultData = other.resultData;
 }
 ActionResult::~ActionResult(){
-	request = NULL;
+	
+}
+
+void ActionResult::resolve(bool s){
+	if(!finished){
+		finished = true;
+		success = s;
+	}
 }
 
 SignalEvent* ActionResult::clone(){
 	return new ActionResult(*this);
 }
 
-void ActionResult::changeResultState(ARS newState){
-	resultState = newState;
-}
-ARS ActionResult::getStatus(){
-	return resultState;
-}
-ActionRequest* ActionResult::getOriginalRequest(){
-	return request;
-}
 bool ActionResult::isFinished(){
 	return finished;
 }
 bool ActionResult::isSuccess(){
-	return (resultState == ARS::SUCCESS);
+	return success;
 }
 
 string* ActionResult::getData(string key){
@@ -70,6 +62,12 @@ string* ActionResult::setData(string key, string val){
 	}
 	resultData[key] = val;
 	return _val;
+}
+
+map<string,string> ActionResult::setDataMap(map<string,string> newData){
+	map<string,string> temp = resultData;
+	resultData = newData;
+	return temp;
 }
 
 #endif

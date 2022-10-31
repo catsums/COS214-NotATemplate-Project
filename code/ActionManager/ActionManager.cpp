@@ -52,75 +52,81 @@ ActionManager::ActionManager(){
 
 }
 ActionManager::~ActionManager(){
+	if(hasAnyRequests()){
+		while(hasAnyRequests()){
+			ActionRequest* req  = popFromQueue();
+			ActionResult* res = getResultByID(req->getID());
 
+			if(req){
+				emit(req->getID());
+				if(res){
+					req->handle(res);
+				}
+				removeRequest(req->getID());
+				removeResult(req->getID());
+			}
+		}
+	}
 }
 
 bool ActionManager::hasAnyRequests(){
-	return (!results.empty());
+	return (!requests.empty());
 }
 
 bool ActionManager::isEmptyQueue(){
 	return actionQueue.empty();
 }
+
+
 bool ActionManager::handleCurrRequest(){
-	ActionResult* res = popFromQueue();
-	ActionRequest* req = res->getOriginalRequest();
+	ActionRequest* req  = popFromQueue();
 	if(req){
-		// ActionResult* preRes = req->getResult();
-		res = results[req->getID()];
 
-		if(res->getOriginalRequest() != req){
-			res->changeResultState(ARS::FAIL);
-		}
+		ActionResult* newRes = processRequest(req);
+		ActionResult* oldRes = getResultByID(req->getID());
 
-		if(!res->isFinished()){
-			ARS status = res->getStatus();
-			if(req->getWaitCount() <= 0){
-				res->finished = true;
-				if(status==ARS::PROCESSING){
-					res->changeResultState(ARS::SUCCESS);
-				}else if(status==ARS::PENDING){
-					res->changeResultState(ARS::FAIL);
-				}else if(status==ARS::STARTED){
-					res->finished = false;
-				}
-			}else if(status==ARS::FAIL || status==ARS::SUCCESS){
-				res->finished = true;
-			}
-			
+		ARS status = req->getStatus();
+
+		if(status == ARS::FULFILLED){
 			emit(req->getID());
-			ActionResult* newRes = processRequest(req);
-			results[req->getID()] = newRes;
+			req->handle(newRes);
 		}
-		
-		if(!res->isFinished()){
-			pushToNext(res);
+		if(req->isWaiting()){
+			pushToNext(req);
+			results[req->getID()] = newRes;
 		}else{
 			removeRequest(req->getID());
+			removeResult(req->getID());
 		}
+		
 		return true;
 	}
 	return false;
 }
 
 ActionResult* ActionManager::processRequest(ActionRequest* req){
-	ActionResult* res = getResultByID(req->getID());
 
-	SignalEvent* e = res->clone();
+	ActionResult* oldRes = getResultByID(req->getID());
 
-	ActionResult* newRes = static_cast<ActionResult*>(e);
+	ActionResult* newRes = NULL;
+	
+	if(req->isWaiting()){
+		ARS oldState = req->getStatus();
 
-	if(res->getStatus() == ARS::SUCCESS || res->getStatus() == ARS::FAIL){
-		//do nothing
-	}
-	req = newRes->getOriginalRequest();
-	req->currWaitCount--;
-	if(res->getStatus() == ARS::STARTED){
-		newRes->changeResultState(ARS::PENDING);
-	}else if(res->getStatus() == ARS::PENDING && req->getWaitCount() <= 0){
-		newRes->changeResultState(ARS::PROCESSING);
-	}else if(res->getStatus() == ARS::PROCESSING && req->getWaitCount() < 0){
-		newRes->changeResultState(ARS::FAIL);
+		if(oldState == ARS::PROCESSING){
+			req->waitOnce();
+		}
+		ActionResult* newRes = req->process(oldRes);
+
+		ARS newState = req->getStatus();
+
+		if(newState != oldState){
+			req->onStateChange(newRes);
+		}
+
+		return newRes;
+	}else{
+		newRes = new ActionResult(*oldRes);
 	}
 
 	return newRes;
@@ -129,10 +135,7 @@ ActionResult* ActionManager::processRequest(ActionRequest* req){
 ActionRequest* ActionManager::getCurrentRequest(){
 	ActionRequest* req = NULL;
 	if(!actionQueue.empty()){
-		ActionResult* res = actionQueue.front();
-		if(res){
-			return res->getOriginalRequest();
-		}
+		req = actionQueue.front();
 	}
 	return req;
 }
@@ -140,16 +143,26 @@ ActionRequest* ActionManager::getCurrentRequest(){
 void ActionManager::pushRequest(ActionRequest* req){
 	if(req==NULL) return;
 	if(results.count(req->getID())<=0){
-		// requests[req->getID()] = req;
-		ActionResult* res = new ActionResult(req);
-		results[req->getID()] = res;
+
+		requests[req->getID()] = req;
+		results[req->getID()] = new ActionResult(req->getID());
 
 		subscribe(req->getID(), req->getActionHandler());
 
-		pushToQueue(res);
+		pushToQueue(req);
 	}
 }
-ActionResult* ActionManager::removeRequest(string id){
+ActionRequest* ActionManager::removeRequest(string id){
+	ActionRequest* req = NULL;
+	if(requests.count(id)>0){
+		req = requests[id];
+		if(req){
+			requests.erase(id);
+		}
+	}
+	return req;
+}
+ActionResult* ActionManager::removeResult(string id){
 	ActionResult* res = NULL;
 	if(results.count(id)>0){
 		res = results[id];
@@ -160,27 +173,26 @@ ActionResult* ActionManager::removeRequest(string id){
 	return res;
 }
 
-void ActionManager::pushToQueue(ActionResult* res){
-	actionQueue.push(res);
+void ActionManager::pushToQueue(ActionRequest* req){
+	actionQueue.push(req);
 }
 
-void ActionManager::pushToNext(ActionResult* res){
-	nextQueue.push(res);
+void ActionManager::pushToNext(ActionRequest* req){
+	nextQueue.push(req);
 }
 
-ActionResult* ActionManager::popFromQueue(){
-	ActionResult* res = NULL;
+ActionRequest* ActionManager::popFromQueue(){
+	ActionRequest* req = NULL;
 	if(!actionQueue.empty()){
-		res = actionQueue.front();
+		req = actionQueue.front();
 		actionQueue.pop();
 	}
-	return res;
+	return req;
 }
 
 ActionRequest* ActionManager::getRequestByID(string id){
-	ActionResult* res = getResultByID(id);
-	if(res){
-		return res->getOriginalRequest();
+	if(requests.count(id)>0){
+		return requests[id];
 	}
 	return NULL;
 }
@@ -209,7 +221,8 @@ SignalEvent* ActionManager::createSignalEvent(string n){
 
 void ActionManager::placeNextQueue(){
 	actionQueue = nextQueue;
-	nextQueue = *(new queue<ActionResult*>);
+	queue<ActionRequest*> newQueue;
+	nextQueue = newQueue;
 }
 
 #endif
