@@ -6,5 +6,5 @@ using namespace std;
 
 bool NavalForce::attack()
 {
-    
+    return false;
 }

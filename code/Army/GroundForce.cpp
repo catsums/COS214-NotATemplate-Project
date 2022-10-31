@@ -5,5 +5,5 @@ using namespace std;
 
 bool GroundForce::attack()
 {
-  
+  return false;
 }

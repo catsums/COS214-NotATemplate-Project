@@ -6,5 +6,5 @@ using namespace std;
 
 bool AirForce::attack()
 {
-     
+     return false;
 }

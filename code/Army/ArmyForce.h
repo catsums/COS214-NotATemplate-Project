@@ -8,7 +8,7 @@ private:
     /* data */
 public:
     ArmyForce(){};
-    virtual bool attack();
+    virtual bool attack() = 0;
 };
 
 #endif
