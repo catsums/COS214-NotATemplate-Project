@@ -14,6 +14,9 @@ class Vehicle: public Entity, private Resource{
 public:
 	Vehicle(int hp, string c, string t, int f);
 	~Vehicle();
+
+	virtual bool travel(int x, int y);
+	virtual void attack(Entity* target);
 protected:
 	int fuel;
 };
