@@ -39,6 +39,8 @@ class Zone
 			return pos;
 		}
 
+		bool moveEntity(Entity* ent);
+		
 		bool addEntity(Entity* ent);
 		Entity* removeEntity(Entity* ent);
 		bool hasEntity(Entity* ent);

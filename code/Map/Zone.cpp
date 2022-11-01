@@ -19,6 +19,14 @@ int Zone::getY(){ return pos.y; }
 int Zone::getPv(){ return productionValue; }
 bool Zone::isLand(){ return land; }
 
+bool Zone::moveEntity(Entity* ent){
+	if(addEntity()){
+		ent->travel(getPosition());
+		return true;
+	}
+	return false;
+}
+
 bool Zone::addEntity(Entity* ent){
 	if(!hasEntity(ent)){
 		if((ent->canTravelLand() && isLand()) || (ent->canTravelSea() && !isLand())){
@@ -61,7 +69,7 @@ Facility* Zone::removeFacility(Facility* fac){
 		_fac = facilities[fac->getID()];
 		facilities.erase(fac->getID());
 	}
-	return _ent;
+	return _fac;
 }
 
 bool Zone::hasFacility(Facility* fac){

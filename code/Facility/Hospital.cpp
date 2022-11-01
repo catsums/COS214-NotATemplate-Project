@@ -3,7 +3,14 @@
 
 using namespace std;
 
-Hospital::Hospital(int c, int l) : capacity(c), techLevel(l){}
+Hospital::Hospital(string c, int cap, int lvl) : Facility(){
+    capacity = cap;
+    techLevel = lvl;
+}
+Hospital::Hospital(string c, int cap, int lvl) : Facility(c){
+    capacity = cap;
+    techLevel = lvl;
+}
 
 void Hospital::displayFacility()
 {

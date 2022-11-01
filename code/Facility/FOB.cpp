@@ -4,7 +4,9 @@
 
 using namespace std;
 
-FOB::FOB(){}
+FOB::FOB():Facility(){
+
+}
 
 void FOB::displayFacility()
 {
@@ -15,7 +17,36 @@ void FOB::displayFacility()
     }
 }
 
-void FOB::addFacility(Facility* f)
-{
-    facilities.push_back(f);
+bool Zone::addFacility(Facility* fac){
+    if(!hasFacility(fac)){
+        if((fac->isOnLand() == this->isOnLand()) && (fac->isOnSea() == this->isOnSea())){
+            facilities.push_back(fac);
+            return true;
+        }
+    }
+    return false;
+}
+Facility* Zone::removeFacility(Facility* fac){
+    Facility* _fac = NULL;
+    for(int i=0;i<(int)facilities.size();i++){
+        Facility* f = facilities[i];
+        if(f==fac || f->getID() == fac){
+            _fac = f;
+            facilities.erase(i);
+            break;
+        }
+    }
+    return _fac;
+}
+
+bool Zone::hasFacility(Facility* fac){
+    if(!fac) return false;
+    for(int i=0;i<(int)facilities.size();i++){
+        Facility* f = facilities[i];
+        if(f==fac || f->getID() == fac){
+            return true;
+        }
+    }
+
+    return false;
 }

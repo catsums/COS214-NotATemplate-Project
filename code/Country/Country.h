@@ -8,8 +8,8 @@
 #define COUNTRY_H
 
 // includes
-// #include "Citizen.h"
-// #include "Army.h"
+#include "../NewEntity/Entity.h"
+#include "../Army/Army.h"
 
 #include <string>
 #include <vector>
