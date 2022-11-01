@@ -13,19 +13,19 @@ protected:
 public:
     Medic(int hp, string c) : Citizen(hp, c)
     {
-        type = "Medic";
+        types.push_back("Medic");
         healingAmt = 2;
     }
     Medic(int hp, string c, int healing) : Citizen(hp, c)
     {
-        type = "Medic";
+        types.push_back("Medic");
         healingAmt = healing;
     }
     Medic(Citizen& ent):Citizen(ent){
-        type = "Medic";
+        types.push_back("Medic");
     }
     Medic(Medic& ent):Citizen(ent){
-        type = "Medic";
+        types.push_back("Medic");
         healingAmt = ent.healingAmt;
     }
     ~Medic();

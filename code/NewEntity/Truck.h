@@ -15,11 +15,11 @@ using namespace std;
 class Truck: public TransportVehicle, public LandVehicle{
 public:
 	Truck(int hp, string c, int f):TransportVehicle(hp,c,f),LandVehicle(hp,c,f){
-		type = "Truck";
+		types.push_back("Truck");
 		capacity = 6;
 	}
 	Truck(Truck& ent):TransportVehicle(ent), LandVehicle(ent){
-		type = "Truck";
+		types.push_back("Truck");
 		capacity = 6;
 	}
 	~Truck(){

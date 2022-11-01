@@ -13,11 +13,11 @@ using namespace std;
 class LandVehicle: public Vehicle{
 public:
 	LandVehicle(int hp, string c, int f):Vehicle(hp,c,f){
-		type = "LandVehicle";
+		types.push_back("LandVehicle");
 		land = true;
 	}
 	LandVehicle(LandVehicle& ent):Vehicle(ent){
-		type = "LandVehicle";
+		types.push_back("LandVehicle");
 		land = true;
 	}
 	~LandVehicle(){

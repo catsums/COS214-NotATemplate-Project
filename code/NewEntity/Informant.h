@@ -10,17 +10,17 @@ protected:
 public:
     Informant(int hp, string c) : Citizen(hp, c)
     {
-        type = "Informant";
+        types.push_back("Informant");
     }
     // Informant(int hp, string c) : Citizen(hp, c)
     // {
-    //     type = "Informant";
+    //     types.push_back("Informant");
     // }
     Informant(Citizen& ent):Citizen(ent){
-        type = "Informant";
+        types.push_back("Informant");
     }
     Informant(Informant& ent):Citizen(ent){
-        type = "Informant";
+        types.push_back("Informant");
         //maybe something unique to informat
     }
     ~Informant();

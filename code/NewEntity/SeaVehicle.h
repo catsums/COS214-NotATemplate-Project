@@ -13,11 +13,11 @@ using namespace std;
 class SeaVehicle: public Vehicle{
 public:
 	SeaVehicle(int hp, string c, int f):Vehicle(hp,c,f){
-		type = "SeaVehicle";
+		types.push_back("SeaVehicle");
 		sea = true;
 	}
 	SeaVehicle(SeaVehicle& ent):Vehicle(ent){
-		type = "SeaVehicle";
+		types.push_back("SeaVehicle");
 		sea = true;
 	}
 	~SeaVehicle(){

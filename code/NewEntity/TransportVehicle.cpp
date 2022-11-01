@@ -6,10 +6,10 @@
 using namespace std;
 
 TransportVehicle::TransportVehicle(int hp, string c, int f):Vehicle(hp,c,f){
-	type = "TransportVehicle";
+	types.push_back("TransportVehicle");
 }
 TransportVehicle::TransportVehicle(TransportVehicle& ent):Vehicle(ent){
-	type = "TransportVehicle";
+	types.push_back("TransportVehicle");
 	capacity = ent.capacity;
 }
 

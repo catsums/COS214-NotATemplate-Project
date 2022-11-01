@@ -6,16 +6,16 @@
 using namespace std;
 
 BattleVehicle::BattleVehicle(int hp, string c, int f):Vehicle(hp,c,f){
-	type = "BattleVehicle";
+	types.push_back("BattleVehicle");
 	ammo = 100;
 }
 BattleVehicle::BattleVehicle(int hp, string c, int f, int dmg):Vehicle(hp,c,f){
-	type = "BattleVehicle";
+	types.push_back("BattleVehicle");
 	strength = dmg;
 	ammo = 100;
 }
 BattleVehicle::BattleVehicle(BattleVehicle& ent):Vehicle(ent){
-	type = "BattleVehicle";
+	types.push_back("BattleVehicle");
 	strength = ent.strength;
 	ammo = ent.ammo;
 }

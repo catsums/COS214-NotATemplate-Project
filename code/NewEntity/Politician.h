@@ -9,17 +9,17 @@ private:
     /* data */
 public:
     Politician(int hp, string c):Citizen(hp,c){
-        type = "Politician";
+        types.push_back("Politician");
     }
     // Politician(int hp, string c, int str):Citizen(hp,c){
     //     type = "Politician";
     //     damage = str;
     // }
     Politician(Citizen& ent):Citizen(ent){
-        type = "Politician";
+        types.push_back("Politician");
     }
     Politician(Politician& ent):Citizen(ent){
-        type = "Politician";
+        types.push_back("Politician");
 
     }
     ~Politician(){

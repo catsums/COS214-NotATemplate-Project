@@ -64,11 +64,23 @@ public:
 	}
 
 	string getType(){
-		return type;
+		return types.back();
+	}
+	vector<string> getTypes(){
+		return types;
+	}
+	bool isType(string type){
+		for(int i=0;i<(int)types.size();i++){
+			if(types[i]==type){
+				return true;
+			}
+		}
+		return false;
 	}
 	string setType(string t){
-		string temp = type;
-		type = t;
+		string temp = types.back();
+		types.pop_back();
+		types.push_back(t);
 		return temp;
 	}
 
@@ -88,7 +100,7 @@ protected:
 	bool alive = true;
 	int HP;
 	string country;
-	string type;
+	vector<string> types;
 	Position zone;
 	bool land;
 	bool sea;

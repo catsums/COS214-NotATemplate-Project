@@ -37,7 +37,7 @@ Entity::Entity(int hp, string c){
 	id = randomString(8);
 	setHP(hp);
 	setCountry(c);
-	type = "Entity";
+	types.push_back("Entity");
 
 	alive = true;
 }

@@ -19,7 +19,7 @@ protected:
     Item* item;
 public:
     Citizen(int hp, string c):Entity(hp,c){
-        type = "Citizen";
+        types.push_back("Citizen");
         influence = "medium";
         item = NULL;
 
@@ -27,7 +27,7 @@ public:
         sea = false;
     }
     Citizen(Citizen& ent):Entity(ent){
-        type = "Citizen";
+        types.push_back("Citizen");
         influence = ent.influence;
         if(ent.item){
             item = ent.item->clone();

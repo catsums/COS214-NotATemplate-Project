@@ -11,17 +11,17 @@ protected:
     int damage = 2;
 public:
     Soldier(int hp, string c):Citizen(hp,c){
-        type = "Soldier";
+        types.push_back("Soldier");
     }
     Soldier(int hp, string c, int str):Citizen(hp,c){
-        type = "Soldier";
+        types.push_back("Soldier");
         damage = str;
     }
     Soldier(Citizen& ent):Citizen(ent){
-        type = "Soldier";
+        types.push_back("Soldier");
     }
     Soldier(Soldier& ent):Citizen(ent){
-        type = "Soldier";
+        types.push_back("Soldier");
         damage = ent.damage;
     }
     ~Soldier(){
