@@ -19,6 +19,15 @@ public:
 	virtual bool travel(int x, int y);
 	virtual void attack(Entity* target);
 	virtual Resource* clone();
+
+	///set/get
+
+	void setFuel(int f){
+		fuel = f;
+	}
+	int getFuel(){
+		return fuel;
+	}
 protected:
 	int fuel;
 

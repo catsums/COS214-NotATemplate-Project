@@ -2,8 +2,11 @@
 #define ENTITY_H
 
 #include <iostream>
-#include <iomanip>
-#include <string>
+#include <cstdlib>
+#include <ctime>
+#include <random>
+#include <cmath>
+#include <math.h>
 
 using namespace std;
 
@@ -22,6 +25,8 @@ public:
 	virtual void heal(int hp);
 	virtual bool travel(int x, int y) = 0;
 	virtual void attack(Entity* target) = 0;
+
+	virtual void die();
 
 	//setters and getters
 	void setHP(int hp){
@@ -76,7 +81,7 @@ public:
 
 protected:
 	string id;
-	bool alive;
+	bool alive = true;
 	int HP;
 	string country;
 	string type;

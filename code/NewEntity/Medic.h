@@ -14,6 +14,7 @@ public:
     Medic(int hp, string c) : Citizen(hp, c)
     {
         type = "Medic";
+        healingAmt = 2;
     }
     Medic(int hp, string c, int healing) : Citizen(hp, c)
     {

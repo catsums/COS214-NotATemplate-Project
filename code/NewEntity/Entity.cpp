@@ -38,6 +38,8 @@ Entity::Entity(int hp, string c){
 	setHP(hp);
 	setCountry(c);
 	type = "Entity";
+
+	alive = true;
 }
 Entity::Entity(Entity& ent){
 	id = randomString(8);
@@ -55,12 +57,17 @@ bool Entity::takeDamage(int dmg){
 	HP -= dmg;
 	if(HP<=0){
 		HP = 0;
+		die();
 		return true;
 	}
 	return false;
 }
 void Entity::heal(int hp){
 	HP += hp;
+}
+
+void Entity::die(){
+	alive = false;
 }
 
 #endif

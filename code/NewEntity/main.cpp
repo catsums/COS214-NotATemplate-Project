@@ -12,15 +12,16 @@
 #include "Soldier.h"
 
 #include "TransportVehicle.h"
+#include "BattleVehicle.h"
 
 using namespace std;
 
 int main(){
 
-	Citizen* entA = new Citizen(10, "USA");
+	Citizen* entA = new Citizen(20, "USA");
 	Citizen* entB = new Soldier(10, "USA");
 
-	Citizen* medicA = new Medic(*entA);
+	Medic* medicA = new Medic(*entA);
 
 	TransportVehicle* truck = new TransportVehicle(30,"USA",100);
 	truck->carryEntity(medicA);
@@ -30,11 +31,16 @@ int main(){
 
 	Citizen* ddd = static_cast<Citizen*>(entA);
 
-	if(ddd == entA){
-		cout<<"SUCCESS"<<endl;
-	}else{
-		cout<<"HUH."<<endl;
-	}
+	BattleVehicle* tank = new BattleVehicle(100,"Zimbabwe",100,5);
+
+	cout<<"Soldier hp: "<<entB->getHP()<<endl;
+
+	tank->attack(entB);
+
+	medicA->healPerson(entB);
+
+	cout<<"Soldier hp: "<<entB->getHP()<<endl;
+
 
 	return 0;
 }

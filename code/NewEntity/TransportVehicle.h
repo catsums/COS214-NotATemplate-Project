@@ -24,6 +24,8 @@ public:
 
 	virtual bool travel(int x, int y);
 
+	///set/get
+
 	int getCapacity(){
 		return capacity;
 	}
