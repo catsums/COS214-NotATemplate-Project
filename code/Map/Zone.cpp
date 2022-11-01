@@ -3,10 +3,10 @@
 //Parameterised constructor
 Zone::Zone(int x, int y, int pv, bool l)
 {
-    this->x = x;
-    this->y = y;
-    this->productionValue = pv;
-    this->land = l;
+	this->x = x;
+	this->y = y;
+	this->productionValue = pv;
+	this->land = l;
 }
 
 //accessor methods

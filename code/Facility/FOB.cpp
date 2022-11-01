@@ -9,9 +9,9 @@ FOB::FOB(){}
 void FOB::displayFacility()
 {
     cout << "Forward Operating Base comprising of: " << endl;
-    for(auto i : facilities)
+    for(auto fac : facilities)
     {
-        i->displayFacility();
+        fac->displayFacility();
     }
 }
 
