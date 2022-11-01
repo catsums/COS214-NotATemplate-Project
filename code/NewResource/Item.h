@@ -7,12 +7,34 @@
 #include <vector>
 
 #include "Resource.h"
+#include "../NewEntity/Entity.h"
 
 class Item: public Resource{
-	Item();
-	~Item();
+public:
+	Item():Resource(){
+
+	}
+	Item(int amt):Resource(){
+		amount = amt;
+	}
+	Item(Item& item):Resource(){
+		amount = item.amount;
+	}
+	~Item(){
+
+	}
+
+	virtual Resource* clone(){
+		return new Item(*this);
+	}
 
 	virtual void useOn(Entity* ent) = 0;
+
+	int getAmount(){
+		return amount;
+	}
+protected:
+	int amount = 1;
 }
 
 #endif
