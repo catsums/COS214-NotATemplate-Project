@@ -18,13 +18,13 @@ public:
 	Adapter(AdapterManager* mng);
 	~Adapter();
 
-	virtual void action(string actionName) = 0;
+	virtual void action(string actionName);
 
 	virtual void onHandle(SignalEvent* e);
 	virtual void onFulFilled(SignalEvent* e);
 
 protected:
-	void* adaptee; //just a wacky silly pointer to store anything
+	// void* adaptee; //just a wacky silly pointer to store anything
 	AdapterManager* manager;
 };
 

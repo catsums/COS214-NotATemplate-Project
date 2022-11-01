@@ -8,12 +8,13 @@
 #include <vector>
 
 #include "Adapter.h"
+#include "../NewEntity/Entity.h"
 
 using namespace std;
 
 class EntityAdapter: public Adapter{
 public:
-	EntityAdapter(AdapterManager* mng);
+	EntityAdapter(Entity* ent, AdapterManager* mng);
 	~EntityAdapter();
 
 	virtual void action(string actionName);
@@ -32,8 +33,14 @@ public:
 	virtual bool travel(int x, int y) = 0;
 	virtual bool attack(EntityAdapter* adp) = 0;
 	virtual bool attack(string id) = 0;
+	virtual bool die() = 0;
+
+	Entity* getEntity(){
+		return entity;
+	}
 protected:
 	SignalHandler* entityHandler;
+	Entity* entity;
 };
 
 #endif

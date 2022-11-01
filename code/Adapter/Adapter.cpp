@@ -12,6 +12,10 @@ Adapter::~Adapter(){
 	manager = NULL;
 }
 
+void Adapter::action(string actionName){
+	
+}
+
 void Adapter::onHandle(SignalEvent* e){
 	try{
 		ActionResult* res = dynamic_cast<ActionResult*>(e);

@@ -93,6 +93,10 @@ public:
 		return id;
 	}
 
+	vector<string> getAllTypes(){
+		return types;
+	}
+
 protected:
 	virtual void onHandle(SignalEvent* e);
 

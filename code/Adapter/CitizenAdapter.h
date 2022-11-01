@@ -23,12 +23,11 @@ public:
 	//Entity stuffs
 	virtual string getInfluence();
 
-	virtual bool takeDamage(int dmg);
-	virtual bool travel();
-	virtual bool attack(EntityAdapter* adp);
-	virtual bool attack(string id);
+	// virtual bool takeDamage(int dmg);
+	// virtual bool travel();
+	// virtual bool attack(EntityAdapter* adp);
+	// virtual bool attack(string id);
 protected:
-	Citizen* entity;
 }
 
 #endif
