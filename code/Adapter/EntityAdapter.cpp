@@ -63,6 +63,14 @@ bool EntityAdapter::attack(string id){
 	return false;
 }
 
+Zone* EntityAdapter::getZone(Map* zoneMap){
+	if(zoneMap && entity){
+		Position pos = entity->getPosition();
+		Zone* zone = zoneMap->getZone(pos.x,pos.y);
+	}
+	return NULL;
+}
+
 void EntityAdapter::onHandle(SignalEvent* e){
 	try{
 		ActionResult* res = dynamic_cast<ActionResult*>(e);

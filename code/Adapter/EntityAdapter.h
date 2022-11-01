@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "Adapter.h"
+#include "../Map/Map.h"
 #include "../NewEntity/Entity.h"
 
 using namespace std;
@@ -27,6 +28,8 @@ public:
 	virtual string getCountry();
 	virtual bool isAlive();
 	virtual map<string,int> getPosition();
+
+	virtual Zone* getZone(Map* zoneMap);
 
 	virtual bool takeDamage(int dmg) = 0;
 	virtual bool heal(int amt) = 0;

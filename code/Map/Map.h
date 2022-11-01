@@ -25,6 +25,19 @@ class Map
         //accessor methods
         int getZoneCount();
 
+        ///added by Cassim
+
+        Zone* getZone(int x, int y){
+            for(int r=0; r<(int)zones.size();r++){
+                vector<Zone> row = zones[r];
+                for(int c=0; c<(int)zones.size();c++){
+                    Zone zone = zones[r][c];
+                    return &zone;
+                }
+            }
+            return NULL;
+        }
+
     private:
         vector<vector<Zone>> zones;
         int zoneCount;
