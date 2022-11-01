@@ -98,8 +98,6 @@ int main()
 
     Army attack;
 
-    attack(&ground);
-
     cout <<"End of army class"<<endl;
 
 

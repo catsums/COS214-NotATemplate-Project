@@ -1,7 +1,7 @@
 #ifndef AIRFORCE_H
 #define AIRFORCE_H
 
-using namespace std;
+#include "Country.h"
 
 class AirForce
 {
@@ -10,7 +10,7 @@ private:
 public:
     AirForce(/* args */);
     ~AirForce();
-    void attack();
+    virtual bool attack();
 };
 
 #endif
