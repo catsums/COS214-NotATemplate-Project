@@ -63,12 +63,14 @@ class Country
         string id;
 
         string name;
-        double strength;    //based on military size?
+        // double strength;    //based on military size?
         vector<Country*> enemies;  // All the other countries that are not allies.
         vector<Country*> allies;   
         // Citizen politician; 
-        // Army Defense;
+        Army army;
         int totalArmy;
         int reserves;
+
+        vector<Citizen*> citizens;
 };
 #endif
