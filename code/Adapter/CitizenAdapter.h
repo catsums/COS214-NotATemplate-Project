@@ -21,7 +21,25 @@ public:
 	virtual void onFulFilled(SignalEvent* e);
 
 	//Entity stuffs
-	virtual string getInfluence();
+	virtual string getInfluence(){
+		Citizen* ctn = getEntityAsCitizen();
+		if(ctn){
+			return ctn->getInfluence();
+		}
+		return "";
+	}
+
+	virtual Citizen* getEntityAsCitizen(){
+		if(entity){
+			try{
+				Citizen* ctn = static_cast<Citizen*>(entity);
+				return ctn;
+			}catch(const exception& err){
+
+			}
+		}
+		return NULL;
+	}
 
 	// virtual bool takeDamage(int dmg);
 	// virtual bool travel();

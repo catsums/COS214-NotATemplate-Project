@@ -22,21 +22,21 @@ CitizenAdapter::void onFulFilled(SignalEvent* e){
 }
 
 	//Entity stuffs
-CitizenAdapter::string getInfluence(){
+// CitizenAdapter::string getInfluence(){
 
-}
+// }
 
-CitizenAdapter::bool takeDamage(int dmg){
+// CitizenAdapter::bool takeDamage(int dmg){
 
-}
-CitizenAdapter::bool travel(){
+// }
+// CitizenAdapter::bool travel(){
 
-}
-CitizenAdapter::bool attack(EntityAdapter* adp){
+// }
+// CitizenAdapter::bool attack(EntityAdapter* adp){
 
-}
-CitizenAdapter::bool attack(string id){
+// }
+// CitizenAdapter::bool attack(string id){
 
-}
+// }
 
 #endif
