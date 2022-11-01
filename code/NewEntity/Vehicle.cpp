@@ -10,11 +10,11 @@ using namespace std;
 
 Vehicle::Vehicle(int hp, string c, int f):Entity(hp,c),Resource(){
 	fuel = f;
-	type = "Vehicle";
+	types.push_back("Vehicle");
 }
 Vehicle::Vehicle(Vehicle& ent):Entity(ent){
 	fuel = ent.fuel;
-	type = "Vehicle";
+	types.push_back("Vehicle");
 }
 Vehicle::~Vehicle(){
 
