@@ -12,7 +12,7 @@ private:
 public:
     CitizenFactory(/* args */);
     ~CitizenFactory();
-    Entity* createEntity(int hp, string c){
+    virtual Entity* createEntity(int hp, string c){
         return new Citizen(hp, c);
     }
     
