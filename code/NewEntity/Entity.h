@@ -14,7 +14,8 @@ struct Position{
 
 class Entity{
 public:
-	Entity(int hp, string c, string t);
+	Entity(int hp, string c);
+	Entity(Entity& ent);
 	~Entity();
 
 	virtual bool takeDamage(int dmg);
@@ -69,7 +70,12 @@ public:
 		return temp;
 	}
 
+	string getID(){
+		return id;
+	}
+
 protected:
+	string id;
 	bool alive;
 	int HP;
 	string country;

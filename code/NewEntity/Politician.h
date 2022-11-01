@@ -8,8 +8,25 @@ class Politician : public Citizen
 private:
     /* data */
 public:
-    Politician(int, string, string);
-    ~Politician();
+    Politician(int hp, string c):Citizen(hp,c){
+        type = "Politician";
+    }
+    // Politician(int hp, string c, int str):Citizen(hp,c){
+    //     type = "Politician";
+    //     damage = str;
+    // }
+    Politician(Citizen& ent):Citizen(ent){
+        type = "Politician";
+    }
+    Politician(Politician& ent):Citizen(ent){
+        type = "Politician";
+
+    }
+    ~Politician(){
+
+    }
+
+    ///set/get
 };
 
 #endif

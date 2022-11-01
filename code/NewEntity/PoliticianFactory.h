@@ -11,7 +11,14 @@ private:
 public:
     PoliticianFactory(/* args */);
     ~PoliticianFactory();
-    Citizen *createPolitician(int, string, string);
+    Entity* createEntity(int hp, string c){
+        return new Politician(hp, c);
+    }
+    Politician* createPolitician(Citizen* ent, int amt){
+        Politician* person = new Politician(ent);
+        
+        return person;
+    }
 };
 
 #endif

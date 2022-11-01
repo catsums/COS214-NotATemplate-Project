@@ -10,13 +10,15 @@
 
 using namespace std;
 
-class Vehicle: public Entity, private Resource{
+class Vehicle: public Entity, public Resource{
 public:
-	Vehicle(int hp, string c, string t, int f);
+	Vehicle(int hp, string c, int f);
+	Vehicle(Vehicle& ent);
 	~Vehicle();
 
 	virtual bool travel(int x, int y);
 	virtual void attack(Entity* target);
+	virtual Resource* clone();
 protected:
 	int fuel;
 

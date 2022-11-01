@@ -11,7 +11,14 @@ private:
 public:
     InformantFactory(/* args */);
     ~InformantFactory();
-    Citizen *createInformant(int, string, string);
+    Entity* createEntity(int hp, string c){
+        return new Informant(hp, c);
+    }
+    Informant* createInformant(Citizen* ent, int amt){
+        Informant* person = new Informant(ent);
+        
+        return person;
+    }
 };
 
 #endif

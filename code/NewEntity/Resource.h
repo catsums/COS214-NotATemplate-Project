@@ -11,16 +11,21 @@ using namespace std;
 
 class Resource{
 public:
-	Resource();
-	~Resource();
+	Resource(){
+		used = false;
+	}
+	~Resource(){
+
+	}
 
 	virtual void useOn(Entity* ent) = 0;
+	virtual Resource* clone() = 0;
 
 	bool isUsed(){
 		return used;
 	}
 protected:
 	bool used;
-}
+};
 
 #endif

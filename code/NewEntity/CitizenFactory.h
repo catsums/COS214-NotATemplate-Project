@@ -12,8 +12,8 @@ private:
 public:
     CitizenFactory(/* args */);
     ~CitizenFactory();
-    Entity* createEntity(int hp, string c, string citizen){
-        return new Citizen(hp, c, citizen);
+    Entity* createEntity(int hp, string c){
+        return new Citizen(hp, c);
     }
     
 
