@@ -13,6 +13,10 @@ TransportVehicle::TransportVehicle(TransportVehicle& ent):Vehicle(ent){
 	capacity = ent.capacity;
 }
 
+TransportVehicle::~TransportVehicle(){
+	
+}
+
 Resource* TransportVehicle::clone(){
 	return new TransportVehicle(*this);
 }
