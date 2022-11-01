@@ -17,18 +17,15 @@ class Zone
 {
 	public:
 		Zone(int x, int y, int pv, bool l); //Parameterised constructor
-		
+		~Zone();
 		//accessor methods
 		int getX();
 		int getY();
 		int getPv();
 		bool isLand();
 
-		
-
 	private:
-		int x; //x coordinate of zone
-		int y; //x coordinate of zone
+		Position pos;
 
 		int productionValue; //Determines how much money zone produces for occupant
 
@@ -38,56 +35,17 @@ class Zone
 		int getProductionValue(){
 			return productionValue;
 		}
-
-		bool addEntity(Entity* ent){
-			if(!hasEntity(ent)){
-				entities[ent->getID()] = ent;
-				return true;
-			}
-			return false; //entity already in the zone
-			
-		}
-		Entity* removeEntity(Entity* ent){
-			Entity* _ent = NULL;
-			if(hasEntity(ent)){
-				_ent = entities[ent->getID()];
-				entities.erase(ent->getID());
-			}
-			return _ent;
+		Position getPosition(){
+			return pos;
 		}
 
-		bool hasEntity(Entity* ent){
-			if(!ent) return false;
-			if(entities.count(ent->getID())>0){
-				return (entities[ent->getID()]==ent);
-			}
-			return false;
-		}
+		bool addEntity(Entity* ent);
+		Entity* removeEntity(Entity* ent);
+		bool hasEntity(Entity* ent);
 
-		bool addFacility(Facility* fac){
-			if(!hasFacility(fac)){
-				facilities[fac->getID()] = fac;
-				return true;
-			}
-			return false; /
-			
-		}
-		Facility* removeFacility(Facility* fac){
-			Facility* _fac = NULL;
-			if(hasFacility(fac)){
-				_fac = facilities[fac->getID()];
-				facilities.erase(fac->getID());
-			}
-			return _ent;
-		}
-
-		bool hasFacility(Facility* fac){
-			if(!fac) return false;
-			if(facilities.count(fac->getID())>0){
-				return (facilities[fac->getID()]==fac);
-			}
-			return false;
-		}
+		bool addFacility(Facility* fac);
+		Facility* removeFacility(Facility* fac);
+		bool hasFacility(Facility* fac);
 
 
 	protected:
@@ -97,15 +55,18 @@ class Zone
 		map<string, Facility*> facilities;
 };
 
+struct ZoneCircle{
+	Zone* curr;
 
+	Zone* left;
+	Zone* right;
+	Zone* top;
+	Zone* bottom;
 
-
-
-
-
-
-
-
-
+	Zone* topLeft;
+	Zone* topRight;
+	Zone* bottomLeft;
+	Zone* bottomRight;
+};
 
 #endif

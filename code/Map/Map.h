@@ -1,6 +1,10 @@
 #ifndef MAP_H
 #define MAP_H
 
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <cstdlib>
 #include <vector>
 
 #include "Zone.h"
@@ -11,6 +15,8 @@ class Map
 {
     public:
         Map();
+        Map(int w, int h);
+        ~Map();
 
         //method to generate randomised map based on:
         //      size(number of zones)
@@ -22,25 +28,38 @@ class Map
 
         vector<Zone*> getAdjacent(Zone*); //returns all adjacent
 
+        ZoneCircle getZoneCircle(Zone*);
+
         //accessor methods
-        int getZoneCount();
+        int getZoneCount(){
+            return (mapSize.x * mapSize.y);
+        }
+
+        int getMapWidth(){
+            return mapSize.x;
+        }
+        int getMapHeight(){
+            return mapSize.y;
+        }
 
         ///added by Cassim
 
         Zone* getZone(int x, int y){
             for(int r=0; r<(int)zones.size();r++){
-                vector<Zone> row = zones[r];
-                for(int c=0; c<(int)zones.size();c++){
-                    Zone zone = zones[r][c];
-                    return &zone;
+                vector<Zone*>* row = zones[r];
+                for(int c=0; c<(int)zones->size();c++){
+                    Zone* zone = (*zones)[r][c];
+                    return zone;
                 }
             }
             return NULL;
         }
 
-    private:
-        vector<vector<Zone>> zones;
-        int zoneCount;
+    protected:
+        void initialiseRows();
+
+        vector<vector<Zone*>*> zones;
+        Position mapSize;
 };
 
 #endif
