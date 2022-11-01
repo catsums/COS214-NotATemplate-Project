@@ -6,7 +6,7 @@
 #include <string>
 
 #include "Entity.h"
-#include "Resource.h"
+#include "../NewResource/Resource.h"
 
 using namespace std;
 
@@ -31,10 +31,6 @@ public:
 protected:
 	int fuel;
 
-private:
-	virtual void useOn(Entity* ent){
-		return;
-	}
 };
 
 #endif

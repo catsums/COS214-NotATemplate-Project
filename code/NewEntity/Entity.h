@@ -8,12 +8,9 @@
 #include <cmath>
 #include <math.h>
 
-using namespace std;
+#include "../Structs.h"
 
-struct Position{
-	int x = 0;
-	int y = 0;
-};
+using namespace std;
 
 class Entity{
 public:
@@ -79,6 +76,13 @@ public:
 		return id;
 	}
 
+	bool canTravelLand(){
+		return land;
+	}
+	bool canTravelSea(){
+		return sea;
+	}
+
 protected:
 	string id;
 	bool alive = true;
@@ -86,6 +90,8 @@ protected:
 	string country;
 	string type;
 	Position zone;
+	bool land;
+	bool sea;
 };
 
 

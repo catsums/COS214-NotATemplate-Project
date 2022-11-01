@@ -5,26 +5,26 @@
 #include <iomanip>
 #include <string>
 
+#include "../Structs.h"
 #include "Entity.h"
-#include "Resource.h"
+#include "../NewResource/Item.h"
 
 using namespace std;
-
-enum influence{
-    LOW, MEDIUM, HIGH
-};
 
 class Citizen : public Entity
 {
 protected:
     /* data */
     string influence;
-    Resource* item;
+    Item* item;
 public:
     Citizen(int hp, string c):Entity(hp,c){
         type = "Citizen";
         influence = "medium";
         item = NULL;
+
+        land = true;
+        sea = false;
     }
     Citizen(Citizen& ent):Entity(ent){
         type = "Citizen";
@@ -32,6 +32,9 @@ public:
         if(ent.item){
             item = ent.item->clone();
         }
+
+        land = true;
+        sea = false;
     }
     ~Citizen(){
         item = NULL;
@@ -58,13 +61,13 @@ public:
         return;
     }
 
-    virtual Resource* equipItem(Resource* _item){
-        Resource* temp = item;
+    virtual Item* equipItem(Item* _item){
+        Item* temp = item;
         item = _item;
         return temp;
     }
     virtual Resource* unequipItem(){
-        Resource* temp = item;
+        Item* temp = item;
         item = NULL;
         return temp;
     }
@@ -76,7 +79,7 @@ public:
     }
 
     /////set/get
-    Resource* getItem(){
+    Item* getItem(){
         return item;
     }
     string getInfluence(){

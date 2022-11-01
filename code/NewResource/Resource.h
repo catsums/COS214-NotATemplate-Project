@@ -18,7 +18,6 @@ public:
 
 	}
 
-	virtual void useOn(Entity* ent) = 0;
 	virtual Resource* clone() = 0;
 
 	bool isUsed(){
