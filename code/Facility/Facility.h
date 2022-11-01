@@ -41,6 +41,13 @@ public:
         return country;
     }
 
+    bool isOnLand(){
+        return land;
+    }
+    bool isOnSea(){
+        return sea;
+    }
+
     virtual void displayFacility() = 0;
 
 private:

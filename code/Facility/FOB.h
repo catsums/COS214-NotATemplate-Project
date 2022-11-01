@@ -10,8 +10,11 @@ class FOB : public Facility
 {
     public:
         FOB();
+        ~FOB();
         void displayFacility();
         void addFacility(Facility* f);
+        Facility* removeFacility(Facility* f);
+        void hasFacility(Facility* f);
 
     private:
         vector<Facility*> facilities;
