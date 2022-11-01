@@ -31,12 +31,16 @@ public:
 
 	virtual Zone* getZone(Map* zoneMap);
 
-	virtual bool takeDamage(int dmg) = 0;
-	virtual bool heal(int amt) = 0;
-	virtual bool travel(int x, int y) = 0;
-	virtual bool attack(EntityAdapter* adp) = 0;
-	virtual bool attack(string id) = 0;
-	virtual bool die() = 0;
+	virtual bool takeDamage(int dmg);
+	virtual bool heal(int amt);
+	virtual bool travel(int x, int y);
+	virtual bool travelToZone(Zone* z);
+	virtual bool attack(EntityAdapter* adp);
+	virtual bool attack(string id);
+	virtual bool die();
+
+	virtual bool canTravelSea();
+	virtual bool canTravelLand();
 
 	Entity* getEntity(){
 		return entity;

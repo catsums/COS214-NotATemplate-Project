@@ -45,6 +45,16 @@ bool EntityAdapter::travel(int x,int y){
 	}
 	return false;
 }
+bool EntityAdapter::travelToZone(Zone* z){
+	if(entity && z){
+		if( z->isLand() && entity->canTravelLand() || !z->isLand() && entity->canTravelSea() ){
+			Position pos = 
+			entity->travel(x,y);
+			return true;
+		}
+	}
+	return false;
+}
 bool EntityAdapter::attack(EntityAdapter* adp){
 	if(entity && adp->getEntity()){
 		entity->attack(adp->getEntity());
