@@ -19,4 +19,11 @@ int main()
 
 	delete test;
 
+
+	Entity *test2 = new Vehicle(12,"Uk",12,4,5);
+
+	test2->infoSummary();
+
+	delete test2;
+
 }

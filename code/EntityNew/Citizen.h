@@ -13,7 +13,7 @@ class Citizen: public Entity
 public: 
 
 	Citizen();// default constuctor 
-	Citizen(int,string);// param constuctor 
+	Citizen(int,string,int,int,int);// param constuctor 
 	
 	virtual ~Citizen(); //destructor
 

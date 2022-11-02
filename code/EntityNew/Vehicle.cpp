@@ -7,7 +7,7 @@ using namespace std;
 	Vehicle::Vehicle()// default constuctor 
 	{
 		
-		cout<<"Vehicle’s Constructor was Called"<<endl;
+		//cout<<"Vehicle’s Constructor was Called"<<endl;
 		setHp(10);
 		setDamage(10);
 		setCountry("SA");
@@ -15,11 +15,22 @@ using namespace std;
 		setYpos(2);
 
 	} 
+
+
+	Vehicle::Vehicle(int h,string c, int d, int x , int y )// param constuctor 
+	{
+		setHp(h);
+		setDamage(d);
+		setCountry(c);
+		setXpos(x);
+		setYpos(y);
+	}
+
 	
 	
 	Vehicle::~Vehicle() //destructor
 	{
-		cout<<"Vehicle’s Destructor was Called"<<endl;
+		//cout<<"Vehicle’s Destructor was Called"<<endl;
 	}
 
 

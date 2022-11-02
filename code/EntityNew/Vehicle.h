@@ -13,7 +13,7 @@ class Vehicle: public Entity
 public: 
 
 	Vehicle();// default constuctor 
-	Vehicle(int,string);// param constuctor 
+	Vehicle(int,string,int,int,int);// param constuctor 
 	
 	virtual ~Vehicle(); //destructor
 

@@ -7,7 +7,7 @@ using namespace std;
 
 	Entity::Entity()// default constuctor 
 	{
-		cout<<"Entity’s Constructor was Called"<<endl;
+		//cout<<"Entity’s Constructor was Called"<<endl;
 
 
 	} 
@@ -15,7 +15,7 @@ using namespace std;
 	
 	Entity::~Entity() //destructor
 	{
-		cout<<"Entity’s Destructor was Called"<<endl;
+		//cout<<"Entity’s Destructor was Called"<<endl;
 	}
 
 	void Entity::setHp(int h)

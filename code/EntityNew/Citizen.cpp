@@ -7,7 +7,7 @@ using namespace std;
 	Citizen::Citizen()// default constuctor 
 	{
 		
-		cout<<"Citizen’s Constructor was Called"<<endl;
+		//cout<<"Citizen’s Constructor was Called"<<endl;
 		setHp(10);
 		setDamage(10);
 		setCountry("SA");
@@ -15,11 +15,21 @@ using namespace std;
 		setYpos(2);
 
 	} 
+
+
+	Citizen::Citizen(int h,string c, int d, int x , int y )// param constuctor 
+	{
+		setHp(h);
+		setDamage(d);
+		setCountry(c);
+		setXpos(x);
+		setYpos(y);
+	}
 	
 	
 	Citizen::~Citizen() //destructor
 	{
-		cout<<"Citizen’s Destructor was Called"<<endl;
+		//cout<<"Citizen’s Destructor was Called"<<endl;
 	}
 
 
@@ -37,7 +47,7 @@ using namespace std;
 
 	void Citizen::dealDamage()
 	{
-		
+
 	}
 
 	
