@@ -11,6 +11,8 @@
 #include "SeaVehicle.cpp"
 #include "Submarine.cpp"
 #include "CargoShip.cpp"
+#include "Resources.cpp"
+#include "../Entity/Entity.cpp"
 
 
 

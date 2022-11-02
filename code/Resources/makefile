@@ -3,7 +3,7 @@ gpp_o = g++ -c -std=c++11
 
 main: $(ofiles)
 	g++ -std=c++11  $(ofiles) -o main
-main.o: main.cpp Vehicle.h ArmyVehicle.h TransportVehicle.h LandVehicle.h Tank.h CargoTruck.h AirVehicle.h SeaVehicle.h Fighterjet.h CargoPlane.h Submarine.h CargoShip.h
+main.o: main.cpp Vehicle.h ArmyVehicle.h TransportVehicle.h LandVehicle.h Tank.h CargoTruck.h AirVehicle.h SeaVehicle.h Fighterjet.h CargoPlane.h Submarine.h CargoShip.h Resources.h
 	$(gpp_o) main.cpp
 
 

@@ -3,13 +3,15 @@
 
 #include <string>
 #include "LandVehicle.h"
+#include "Resources.h"
 #include "AirVehicle.h"
 #include "SeaVehicle.h"
+//#include "../Entity/Entity.h"
 
 
 using namespace std; 
 
-class Vehicle
+class Vehicle: public Resources
 {
 
 
