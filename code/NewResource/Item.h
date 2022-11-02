@@ -24,9 +24,7 @@ public:
 
 	}
 
-	virtual Resource* clone(){
-		return new Item(*this);
-	}
+	virtual Resource* clone() = 0;
 
 	virtual void useOn(Entity* ent) = 0;
 
@@ -35,6 +33,6 @@ public:
 	}
 protected:
 	int amount = 1;
-}
+};
 
 #endif

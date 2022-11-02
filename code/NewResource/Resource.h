@@ -5,8 +5,6 @@
 #include <iomanip>
 #include <string>
 
-#include "Entity.h"
-
 using namespace std;
 
 class Resource{
