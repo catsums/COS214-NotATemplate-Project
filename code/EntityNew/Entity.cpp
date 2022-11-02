@@ -8,6 +8,8 @@ using namespace std;
 	Entity::Entity()// default constuctor 
 	{
 		cout<<"Entity’s Constructor was Called"<<endl;
+
+		
 	} 
 
 	

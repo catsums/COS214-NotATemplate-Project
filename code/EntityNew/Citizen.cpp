@@ -8,6 +8,11 @@ using namespace std;
 	{
 		
 		cout<<"Citizen’s Constructor was Called"<<endl;
+		setHp(10);
+		setDamage(10);
+		setCountry("SA");
+		setXpos(2);
+		setYpos(2);
 
 	} 
 	
@@ -22,9 +27,9 @@ using namespace std;
 
 	void Citizen::takeDamage(int d)
 	{
-		int tempdamage = getDamage();
-		tempdamage = tempdamage-d;
-		setDamage(tempdamage);
+		
+		hp=hp-d;
+		
 	}
 	
 
@@ -47,9 +52,7 @@ using namespace std;
 	
 	void Citizen::recieveHp(int h)
 	{
-		int temphp = getHp();
-		temphp = temphp+h;
-		setHp(temphp);
+		hp= hp + h;
 	}
 
 	

@@ -9,7 +9,7 @@ using namespace std;
 class Entity
 {
 
-private:
+protected:
 
 	int hp; // health of each entity 
 	string country; // country each entity belongs to 
