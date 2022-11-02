@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class BattleVehicle: public Vehicle{
+class BattleVehicle: public virtual Vehicle{
 public:
 	BattleVehicle(int hp, string c, int f);
 	BattleVehicle(int hp, string c, int f, int dmg);
@@ -31,6 +31,10 @@ public:
 	int getAmmo(){
 		return ammo;
 	}
+
+	virtual int getOverallStrength(){
+        return HP + strength;
+    }
 
 protected:
 	int strength = 5;

@@ -19,6 +19,9 @@ BattleVehicle::BattleVehicle(BattleVehicle& ent):Vehicle(ent){
 	strength = ent.strength;
 	ammo = ent.ammo;
 }
+BattleVehicle::~BattleVehicle(){
+	
+}
 
 void BattleVehicle::attack(Entity* target){
 	if(ammo>0){
