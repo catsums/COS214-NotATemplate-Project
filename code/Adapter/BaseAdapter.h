@@ -7,6 +7,8 @@
 #include <map>
 #include <vector>
 
+#include <functional>
+
 #include "../SignalHandler/SignalBus.h"
 #include "../ActionManager/ActionManager.h"
 #include "../myHelper.cpp"
@@ -81,6 +83,9 @@ public:
 	string getType(){
 		return (types.back());
 	}
+	vector<string> getTypes(){
+		return types;
+	}
 	bool isType(string n){
 		for(int i=0; i<(int)types.size();i++){
 			string _type = types[i];
@@ -98,7 +103,6 @@ public:
 	}
 
 protected:
-	virtual void onHandle(SignalEvent* e);
 
 	string id;
 	vector<string> types;

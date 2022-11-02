@@ -8,8 +8,6 @@ using namespace std;
 EntityAdapter::EntityAdapter(Entity* ent, AdapterManager* mng):Adapter(mng){
 	types.push_back("ENTITY");
 	entity = ent;
-
-	enti
 }
 EntityAdapter::~EntityAdapter(){
 	entity = NULL;
@@ -17,6 +15,39 @@ EntityAdapter::~EntityAdapter(){
 
 void EntityAdapter::action(string actionName){
 
+}
+
+int EntityAdapter::getHP(){
+	if(entity){
+		return entity->getHP();
+	}
+	return 0;
+}
+string EntityAdapter::getCountry(){
+	if(entity){
+		return entity->getCountry();
+	}
+	return "";
+}
+bool EntityAdapter::isAlive(){
+	if(entity){
+		return entity->isAlive();
+	}
+	return false;
+}
+Position EntityAdapter::getPosition(){
+	if(entity){
+		return entity->getPosition();
+	}
+	return Position(0,0);
+}
+
+Zone* EntityAdapter::getZone(Map* zoneMap){
+	if(zoneMap && entity){
+		Position pos = entity->getPosition();
+		return zoneMap->getZone(pos.x,pos.y);
+	}
+	return NULL;
 }
 
 bool EntityAdapter::takeDamage(int dmg){
@@ -27,14 +58,7 @@ bool EntityAdapter::takeDamage(int dmg){
 }
 bool EntityAdapter::heal(int amt){
 	if(entity){
-		return entity->heal(dmg);
-	}
-	return false;
-}
-bool EntityAdapter::heal(int amt){
-	if(entity){
-		entity->heal(dmg);
-		return true;
+		return entity->heal(amt);
 	}
 	return false;
 }
@@ -48,8 +72,7 @@ bool EntityAdapter::travel(int x,int y){
 bool EntityAdapter::travelToZone(Zone* z){
 	if(entity && z){
 		if( z->isLand() && entity->canTravelLand() || !z->isLand() && entity->canTravelSea() ){
-			Position pos = 
-			entity->travel(x,y);
+			z->moveEntity(entity);
 			return true;
 		}
 	}
@@ -63,23 +86,43 @@ bool EntityAdapter::attack(EntityAdapter* adp){
 	return false;
 }
 bool EntityAdapter::attack(string id){
-	BaseAdapter* adp = mng->getAdapter("ENTITY",id);
+	BaseAdapter* adp = manager->getAdapter("ENTITY",id);
 	if(adp){
-		if(entity && adp->getEntity()){
-			entity->attack(adp->getEntity());
-			return true;
+		try{
+			EntityAdapter* _adp = static_cast<EntityAdapter*>(adp);
+			if(entity && _adp->getEntity()){
+				entity->attack(_adp->getEntity());
+				return true;
+			}
+		}catch(const exception& err){
+			return false;
 		}
+		
 	}
 	return false;
 }
 
-Zone* EntityAdapter::getZone(Map* zoneMap){
-	if(zoneMap && entity){
-		Position pos = entity->getPosition();
-		Zone* zone = zoneMap->getZone(pos.x,pos.y);
+bool EntityAdapter::die(){
+	if(entity){
+		entity->die();
+		return true;
 	}
-	return NULL;
+	return false;
 }
+
+bool EntityAdapter::canTravelSea(){
+	if(entity){
+		return entity->canTravelSea();
+	}
+	return false;
+}
+bool EntityAdapter::canTravelLand(){
+	if(entity){
+		return entity->canTravelLand();
+	}
+	return false;
+}
+
 
 void EntityAdapter::onHandle(SignalEvent* e){
 	try{
@@ -106,8 +149,9 @@ void EntityAdapter::onFulFilled(SignalEvent* e){
 
 		if(res->isSuccess()){
 			//do stuff on success
-			if(res->getData("action")){
-				action(res->getData("action"));
+			string* _action = res->getData("action");
+			if(_action){
+				action(*_action);
 			}
 		}else{
 			//do stuff on fail

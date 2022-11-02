@@ -7,9 +7,10 @@
 #include <map>
 #include <vector>
 
+#include <functional>
+
 #include "Adapter.h"
 #include "../Map/Map.h"
-#include "../NewEntity/Entity.h"
 
 using namespace std;
 
@@ -27,7 +28,7 @@ public:
 	virtual int getHP();
 	virtual string getCountry();
 	virtual bool isAlive();
-	virtual map<string,int> getPosition();
+	virtual Position getPosition();
 
 	virtual Zone* getZone(Map* zoneMap);
 

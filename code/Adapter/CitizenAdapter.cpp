@@ -6,19 +6,18 @@
 
 using namespace std;
 
-CitizenAdapter::CitizenAdapter(Citizen* ent, AdapterManager* mng)EntityAdapter(mng){
+CitizenAdapter::CitizenAdapter(Citizen* ent, AdapterManager* mng):EntityAdapter(ent, mng){
 	types.push_back("CITIZEN");
-	entity = ent;
 }
 CitizenAdapter::~CitizenAdapter(){
 	entity = NULL;
 }
 
-CitizenAdapter::void onHandle(SignalEvent* e){
-
+void CitizenAdapter::onHandle(SignalEvent* e){
+	EntityAdapter::onHandle(e);
 }
-CitizenAdapter::void onFulFilled(SignalEvent* e){
-
+void CitizenAdapter::onFulFilled(SignalEvent* e){
+	EntityAdapter::onFulFilled(e);
 }
 
 	//Entity stuffs

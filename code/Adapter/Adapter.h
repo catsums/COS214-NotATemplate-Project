@@ -9,7 +9,6 @@
 
 #include "BaseAdapter.h"
 #include "AdapterManager.h"
-#include "../myHelper.cpp"
 
 using namespace std;
 

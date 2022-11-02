@@ -7,7 +7,7 @@
 #include <map>
 #include <vector>
 
-#include "Citizen.h"
+#include "../NewEntity/Citizen.h"
 #include "EntityAdapter.h"
 
 using namespace std;
@@ -46,6 +46,6 @@ public:
 	// virtual bool attack(EntityAdapter* adp);
 	// virtual bool attack(string id);
 protected:
-}
+};
 
 #endif
