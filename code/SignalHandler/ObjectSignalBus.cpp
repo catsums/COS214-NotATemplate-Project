@@ -1,34 +1,12 @@
-#ifndef OBJECTSIGNALHANDLER_CPP
-#define OBJECTSIGNALHANDLER_CPP
+#ifndef OBJECTSIGNALBUS_CPP
+#define OBJECTSIGNALBUS_CPP
 
-#include "ObjectSignalHandler.h"
+#include "ObjectSignalBus.h"
 
 using namespace std;
 
 template<class T>
-ObjectSignalEvent<T>::ObjectSignalEvent(string n, T* _data):SignalEvent(n){
-	data = _data;
-}
-template<class T>
-ObjectSignalEvent<T>::ObjectSignalEvent(ObjectSignalEvent& other){
-	this->data = other.data;
-	this->name = other.name;
-}
-template<class T>
-ObjectSignalEvent<T>::~ObjectSignalEvent(){
-	data = NULL;
-}
-template<class T>
-SignalEvent* ObjectSignalEvent<T>::clone(){
-	return new ObjectSignalEvent(*this);
-}
-template<class T>
-T* ObjectSignalEvent<T>::getData() const{
-	return data;
-}
-
-template<class T>
-ObjectSignalBus<T>::ObjectSignalBus():SignalBus(){
+ObjectSignalBus<T>::ObjectSignalBus(){
 	
 }
 template<class T>
