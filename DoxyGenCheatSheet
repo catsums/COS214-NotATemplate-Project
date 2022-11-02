@@ -1,3 +1,27 @@
+From my research these comments should only be in the header files not in the source files. So all .h should contain comments liek this. 
+
+****************************************************************************************************************************
+@file 
+
+Place this at the tope of your header file showcasing the name of the header file . AFTER this place the @brief to give a brief description of what the file does. 
+
+Example:
+
+/** @file header.h
+ *  @brief Provides stuff for my great program.
+ *
+ *  Detailed description here, if any.
+ */
+
+
+#ifndef MYHEADER_H
+#define MYHEADER_H
+
+#define __USE_GLIBC
+
+#endif
+
+****************************************************************************************************************************
 For doxygen to parse a comment you must use 
 ///  -> THREE slashes instead of two 
 /** -> DOUBLE astriks instead of one 
@@ -29,14 +53,14 @@ Gives a brief description of what you are trying to do. Preferable placed at the
 
 Example:
 
-The @brief is IN the comment
+The @brief is IN the comment and in only ONE SENTENCE
 
 #ifndef MYCLASS_HH
 #define MYCLASS_HH
 
 /** @brief Dummy class used for illustration purposes. Doing something with it.
     Detailed description follows here.
-    @author X. XYZ, DESY
+    @author X. XYZ, DESY  ----------------------------------------------------------> Team member that did that specific .h file
     @date March 2008
     */
 class myClass{
