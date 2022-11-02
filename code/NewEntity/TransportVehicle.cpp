@@ -64,4 +64,12 @@ bool TransportVehicle::travel(int x, int y){
 	return canTravel;
 }
 
+void TransportVehicle::die(){
+	Vehicle::die();
+	for(int i=0; i<(int)entities.size();i++){
+		Entity* ent = entities[i];
+		ent->die();
+	}
+}
+
 #endif

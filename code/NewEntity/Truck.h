@@ -12,13 +12,13 @@
 
 using namespace std;
 
-class Truck: public TransportVehicle, public LandVehicle{
+class Truck:public LandVehicle, public TransportVehicle{
 public:
-	Truck(int hp, string c, int f):TransportVehicle(hp,c,f),LandVehicle(hp,c,f){
+	Truck(int hp, string c, int f):Vehicle(hp,c,f),LandVehicle(hp,c,f),TransportVehicle(hp,c,f){
 		types.push_back("Truck");
 		capacity = 6;
 	}
-	Truck(Truck& ent):TransportVehicle(ent), LandVehicle(ent){
+	Truck(Truck& ent):Vehicle(ent),LandVehicle(ent),TransportVehicle(ent){
 		types.push_back("Truck");
 		capacity = 6;
 	}

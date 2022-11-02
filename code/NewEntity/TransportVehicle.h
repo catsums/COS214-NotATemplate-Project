@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class TransportVehicle: public Vehicle{
+class TransportVehicle: public virtual Vehicle{
 public:
 	TransportVehicle(int hp, string c, int f);
 	TransportVehicle(TransportVehicle& ent);
@@ -23,11 +23,23 @@ public:
 	virtual Entity* dropOff(Entity* ent);
 
 	virtual bool travel(int x, int y);
+	virtual void die();
 
 	///set/get
 
 	int getCapacity(){
 		return capacity;
+	}
+
+	virtual int getStrength(){
+		int str = 0;
+		for(int i=0; i<(int)entities.size();i++){
+			Entity* ent = entities[i];
+			if(ent){
+				str += ent->getStrength();
+			}
+		}
+		return str;
 	}
 
 protected:

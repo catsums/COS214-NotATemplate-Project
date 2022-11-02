@@ -11,18 +11,18 @@
 
 using namespace std;
 
-class Tank: public BattleVehicle, public LandVehicle{
+class Tank: public LandVehicle, public BattleVehicle{
 public:
-	Tank(int hp, string c, int f):BattleVehicle(hp,c,f),LandVehicle(hp,c,f){
+	Tank(int hp, string c, int f):Vehicle(hp,c,f),LandVehicle(hp,c,f),BattleVehicle(hp,c,f){
 		types.push_back("Tank");
 		strength = 20;
 		ammo = 50;
 	}
-	Tank(int hp, string c, int f, int dmg):BattleVehicle(hp,c,f,dmg),LandVehicle(hp,c,f){
+	Tank(int hp, string c, int f, int dmg):Vehicle(hp,c,f),LandVehicle(hp,c,f),BattleVehicle(hp,c,f,dmg){
 		types.push_back("Tank");
 		ammo = 50;
 	}
-	Tank(Tank& ent):BattleVehicle(ent), LandVehicle(ent){
+	Tank(Tank& ent):Vehicle(ent),LandVehicle(ent),BattleVehicle(ent){
 		types.push_back("Tank");
 	}
 	~Tank(){
@@ -41,8 +41,6 @@ public:
 	}
 
 	///set/get
-
-protected:
 
 };
 

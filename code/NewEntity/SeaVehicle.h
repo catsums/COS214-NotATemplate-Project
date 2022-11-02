@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class SeaVehicle: public Vehicle{
+class SeaVehicle: public virtual Vehicle{
 public:
 	SeaVehicle(int hp, string c, int f):Vehicle(hp,c,f){
 		types.push_back("SeaVehicle");
