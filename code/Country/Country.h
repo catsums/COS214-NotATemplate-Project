@@ -7,22 +7,34 @@
 #ifndef COUNTRY_H
 #define COUNTRY_H
 
-// includes
-#include "../NewEntity/Entity.h"
-#include "../Army/Army.h"
-
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <random>
+#include <cmath>
+#include <math.h>
 #include <string>
 #include <vector>
+
+// includes
+#include "../NewEntity/Citizen.h"
+#include "../NewResource/Resource.h"
+#include "../Facility/Facility.h"
+#include "../Army/Army.h"
+
 
 using namespace std;
 
 class Country
 {
     public:
-        void setTotalArmy(int);
+        Country();
+        Country(string n);
+        ~Country();
+        // void setTotalArmy(int);
         void setReserves(int);
         void setName(string);
-        void setStrength(double);
+        // void setStrength(double);
         void setAllies(Country**, int);
         void setAllies(vector<Country*>); //added by Cass
         void setEnemies(Country**, int);
@@ -32,12 +44,10 @@ class Country
         Country** getEnemiesAsArray(); // returns an array of type country.
 
         void print();
-        double getStrength();
+        // double getStrength();
         int getTotal();
         int getReserves();
-        Country();
-        Country(string n);
-        ~Country();
+        
 
         //added by Cassim
         bool isAlly(Country* c);
@@ -47,8 +57,8 @@ class Country
         void addEnemy(Country* c);
 
         string getName() const;
-        double getStrength() const;
-        int getTotalArmy() const;
+        // double getStrength() const;
+        // int getTotalArmy() const;
         int getReserveCount() const;
 
         int getNumberOfAllies();
@@ -68,9 +78,13 @@ class Country
         vector<Country*> allies;   
         // Citizen politician; 
         Army army;
-        int totalArmy;
+        // int totalArmy;
         int reserves;
 
         vector<Citizen*> citizens;
+
+        vector<Resource*> resources;
+
+        vector<Facility*> facilities;
 };
 #endif

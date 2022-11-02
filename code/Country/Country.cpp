@@ -1,10 +1,8 @@
+#ifndef COUNTRY_CPP
+#define COUNTRY_CPP
+
 #include "Country.h"
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <random>
-#include <cmath>
-#include <math.h>
+
 // #include "myHelper.cpp"
 
 using namespace std;
@@ -37,6 +35,31 @@ static string randomString(int len = 9) {
     return str;
 }
 
+Country::Country()
+{
+    id = randomString(8);
+    name = "";
+    // strength = 0;
+    // totalArmy = 0;
+    reserves = 0;
+    // cout<<"Country made"<<endl;
+    // enemies = vector
+    // allies = new Country*[3];
+}
+Country::Country(string n)
+{
+    id = randomString(8);
+    name = n;
+    // strength = 0;
+    // totalArmy = 0;
+    reserves = 0;
+}
+Country::~Country()
+{
+    // enemies = NULL;
+    // allies = NULL;
+}
+
 
 vector<Country*>* Country::getAllies()
 {
@@ -58,35 +81,35 @@ void Country::setName(string n)
 {
     this->name = n;
 }
-void Country::setTotalArmy(int t)
-{
-    this->totalArmy = t;
-}
+// void Country::setTotalArmy(int t)
+// {
+//     this->totalArmy = t;
+// }
 void Country::setReserves(int r)
 {
     this->reserves = r;
 }
-void Country::setStrength(double s)
-{
-    this->strength = s;
-}
+// void Country::setStrength(double s)
+// {
+//     this->strength = s;
+// }
 int Country::getReserves()
 {
     return reserves;
 }
-double Country::getStrength()
-{
-    return strength;
-}
-int Country::getTotal()
-{
-    return totalArmy;
-}
+// double Country::getStrength()
+// {
+//     return strength;
+// }
+// int Country::getTotal()
+// {
+//     return totalArmy;
+// }
 void Country::print()
 {
     cout <<this->name<<" has the following attributes "<<endl;
-    cout <<"Strength = "<<this->strength<<endl;
-    cout <<"Total army = "<<this->totalArmy<<endl;
+    // cout <<"Strength = "<<this->strength<<endl;
+    // cout <<"Total army = "<<this->totalArmy<<endl;
     cout <<"Total reserves = "<<this->reserves<<endl;
     // other stuff to be implemented later..
     if(allies.empty())
@@ -135,30 +158,6 @@ void Country::setEnemies(Country **a, int size)
         }
     }
     enemies = arr;
-}
-Country::Country()
-{
-    id = randomString(8);
-    name = "";
-    strength = 0;
-    totalArmy = 0;
-    reserves = 0;
-    // cout<<"Country made"<<endl;
-    // enemies = vector
-    // allies = new Country*[3];
-}
-Country::Country(string n)
-{
-    id = randomString(8);
-    name = n;
-    strength = 0;
-    totalArmy = 0;
-    reserves = 0;
-}
-Country::~Country()
-{
-    // enemies = NULL;
-    // allies = NULL;
 }
 
 /// added by Cassim
@@ -245,3 +244,5 @@ int Country::getNumberOfEnemies(){
 // int Country::getReserveCount() const{
 //     return reserves;
 // }
+
+#endif
