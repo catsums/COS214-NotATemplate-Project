@@ -31,6 +31,7 @@ public:
 	string* getData(string key);
 	string* setData(string key, string val);
 	map<string,string> setDataMap(map<string,string> newData);
+	map<string,string> getDataMap();
 
 	string getRequestID(){
 		return id;

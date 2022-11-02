@@ -69,5 +69,8 @@ map<string,string> ActionResult::setDataMap(map<string,string> newData){
 	resultData = newData;
 	return temp;
 }
+map<string,string> ActionResult::getDataMap(){
+	return resultData;
+}
 
 #endif
