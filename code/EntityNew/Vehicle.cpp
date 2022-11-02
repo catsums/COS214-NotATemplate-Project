@@ -46,9 +46,9 @@ using namespace std;
 
 	
 
-	void Vehicle::dealDamage()
+	int Vehicle::dealDamage()
 	{
-		
+		return damage;
 	}
 
 	

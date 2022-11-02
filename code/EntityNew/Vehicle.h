@@ -35,7 +35,7 @@ public:
 
 	*/
 
-	virtual void dealDamage();
+	virtual int dealDamage();
 
 	
 	/*

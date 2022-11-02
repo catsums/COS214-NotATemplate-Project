@@ -4,6 +4,7 @@
 #include "Citizen.cpp"
 #include "Vehicle.cpp"
 #include "Soldier.cpp"
+#include "Medic.cpp"
 
 
 
@@ -18,13 +19,24 @@ int main()
 
 	test->infoSummary();
 
+	
+
+
+	Citizen *test2 = new Medic();
+
+	test2->infoSummary();
+
+
+	test->recieveHp(test2->getHeal());
+
+
+	cout<<endl;
+
+
+	test->infoSummary();
+
+
 	delete test;
-
-
-	// Entity *test2 = new Vehicle(12,"Uk",12,4,5);
-
-	// test2->infoSummary();
-
-	// delete test2;
+	delete test2;
 
 }

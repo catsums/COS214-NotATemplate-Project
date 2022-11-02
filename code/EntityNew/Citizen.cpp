@@ -45,9 +45,9 @@ using namespace std;
 
 	
 
-	void Citizen::dealDamage()
+	int Citizen::dealDamage()
 	{
-
+		return damage;
 	}
 
 	
@@ -67,6 +67,9 @@ using namespace std;
 	}
 
 	
-	
+	int Citizen::getHeal()
+	{
+		return 0;
+	}
 	
 

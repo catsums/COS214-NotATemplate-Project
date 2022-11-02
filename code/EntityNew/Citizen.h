@@ -35,7 +35,7 @@ public:
 
 	*/
 
-	virtual void dealDamage();
+	virtual int dealDamage();
 
 	
 	/*
@@ -56,7 +56,12 @@ public:
 
 	virtual void recieveHp(int);
 
-
+	/*
+	This function will provide health to other entities.
+	It returns an integer value that will be added to an entity's health
+	Only implemented in Medic
+	*/
+	virtual int getHeal();
 
 		
 	

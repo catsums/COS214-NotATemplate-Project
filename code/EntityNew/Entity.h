@@ -78,7 +78,7 @@ public:
 
 	*/
 
-	virtual void dealDamage()=0;
+	virtual int dealDamage()=0;
 
 	
 	/*
