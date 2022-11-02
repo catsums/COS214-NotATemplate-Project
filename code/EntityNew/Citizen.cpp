@@ -37,7 +37,7 @@ using namespace std;
 
 	void Citizen::dealDamage()
 	{
-
+		
 	}
 
 	
@@ -45,7 +45,8 @@ using namespace std;
 
 	void Citizen::move(int x,int y)
 	{
-
+		xpos=x;
+		ypos=y;
 	}
 
 

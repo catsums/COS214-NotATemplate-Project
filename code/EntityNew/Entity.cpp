@@ -9,7 +9,7 @@ using namespace std;
 	{
 		cout<<"Entity’s Constructor was Called"<<endl;
 
-		
+
 	} 
 
 	
@@ -73,7 +73,14 @@ using namespace std;
 	}
 
 	
-
+	void Entity::infoSummary()
+	{
+		cout<<"*Entity Details*:"<<endl;
+		cout<<"Health: " <<hp<<endl;
+		cout<<"Country: " <<country<<endl;
+		cout<<"Damage: " <<damage<<endl;
+		cout<<"Position: (" <<xpos<<","<<ypos<<")"<<endl;
+	}
 	
 
 	

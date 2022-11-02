@@ -1,0 +1,66 @@
+#ifndef VEHICLE_H
+#define VEHICLE_H
+
+#include <string>
+#include "Entity.h"
+
+using namespace std; 
+
+class Vehicle: public Entity
+{
+
+
+public: 
+
+	Vehicle();// default constuctor 
+	Vehicle(int,string);// param constuctor 
+	
+	virtual ~Vehicle(); //destructor
+
+	
+
+	/*
+
+	This function takes in an integer amount that will decrease 
+	the entity's hp
+
+	*/
+
+	virtual void takeDamage(int);
+	
+
+	/*
+
+	This function will deal a damage amount to another entity
+
+	*/
+
+	virtual void dealDamage();
+
+	
+	/*
+
+	This function allow the entity to move
+
+	*/
+
+	virtual void move(int,int);
+
+
+	/*
+
+	This function will allow an entity to recieve more hp 
+	eg. From a medic
+
+	*/
+
+	virtual void recieveHp(int);
+
+
+
+		
+	
+	
+};
+
+#endif

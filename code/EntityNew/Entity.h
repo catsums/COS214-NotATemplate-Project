@@ -49,6 +49,18 @@ public:
 	int getXpos();
 
 	int getYpos();
+
+
+	//Other functions 
+
+
+	/*
+
+	This function couts all the entity variables
+
+	*/
+
+	void infoSummary();
 	
 	/*
 
