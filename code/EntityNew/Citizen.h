@@ -5,13 +5,8 @@
 
 using namespace std; 
 
-class Citizen
+class Citizen: public Entity
 {
-
-protected:
-
-	
-	
 
 
 public: 
@@ -22,27 +17,43 @@ public:
 	virtual ~Citizen(); //destructor
 
 	
-	void printInfo();
+
+	/*
+
+	This function takes in an integer amount that will decrease 
+	the entity's hp
+
+	*/
+
+	virtual void takeDamage(int);
+	
+
+	/*
+
+	This function will deal a damage amount to another entity
+
+	*/
+
+	virtual void dealDamage();
+
+	
+	/*
+
+	This function allow the entity to move
+
+	*/
+
+	virtual void move(int,int);
 
 
+	/*
 
-	void setHP(int);
-	void setCountry(string);
-	void setType(string);
-	//void setThreatre(string);
-	void setInfluence(string);
-	void setStatus(string);
+	This function will allow an entity to recieve more hp 
+	eg. From a medic
 
+	*/
 
-	int getHP();
-	string getCountry();
-	string getType();
-	//string getTheatre();
-	string getInfluence();
-	string getStatus();
-
-
-
+	virtual void recieveHp(int);
 
 
 

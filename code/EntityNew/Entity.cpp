@@ -1,11 +1,7 @@
 #include <string>
 #include <iostream>
 #include "Entity.h"
-#include "Citizen.h"
-#include "Soldier.h"
-#include "Medic.h"
-#include "Informant.h"
-#include "Politician.h"
+
 
 using namespace std;
 
@@ -28,6 +24,24 @@ using namespace std;
 	void Entity::setCountry(string c)
 	{
 		country = c;
+	}
+
+
+	void Entity::setDamage(int d)
+	{
+		hp = h;
+	}
+
+
+	void Entity::setXpos(int h)
+	{
+		hp = h;
+	}
+
+
+	void Entity::setYpos(int h)
+	{
+		hp = h;
 	}
 	
 
