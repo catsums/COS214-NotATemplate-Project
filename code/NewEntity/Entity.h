@@ -19,8 +19,11 @@ public:
 	~Entity();
 
 	virtual bool takeDamage(int dmg);
-	virtual void heal(int hp);
+	virtual bool heal(int hp);
 	virtual bool travel(int x, int y) = 0;
+	virtual bool travel(Position pos){
+		return travel(pos.x,pos.y);
+	}
 	virtual void attack(Entity* target) = 0;
 
 	virtual void die();
@@ -93,6 +96,10 @@ public:
 	}
 	bool canTravelSea(){
 		return sea;
+	}
+
+	virtual int getOverallStrength(){
+		return HP;
 	}
 
 protected:

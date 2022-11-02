@@ -46,7 +46,7 @@ Entity::Entity(Entity& ent){
 	HP = ent.HP;
     alive = ent.alive;
     country = ent.country;
-    type = "Entity";
+    types.push_back("Entity");
     zone = ent.zone;
 }
 Entity::~Entity(){
@@ -56,18 +56,21 @@ Entity::~Entity(){
 bool Entity::takeDamage(int dmg){
 	HP -= dmg;
 	if(HP<=0){
-		HP = 0;
 		die();
 		return true;
 	}
 	return false;
 }
-void Entity::heal(int hp){
-	HP += hp;
+bool Entity::heal(int hp){
+    if(isAlive()){
+	   HP += hp;
+    }
+    return isAlive();
 }
 
 void Entity::die(){
 	alive = false;
+    HP = 0;
 }
 
 #endif

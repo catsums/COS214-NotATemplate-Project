@@ -30,7 +30,12 @@ public:
         types.push_back("Citizen");
         influence = ent.influence;
         if(ent.item){
-            item = ent.item->clone();
+            try{
+                Resource* r = ent.item->clone();
+                item = static_cast<Item*>(r);
+            }catch(const exception& err){
+                item = NULL;
+            }
         }
 
         land = true;
@@ -47,10 +52,11 @@ public:
         }
         return false;
     }
-    virtual void heal(int hp){
+    virtual bool heal(int hp){
         if(this->isAlive()){
             this->HP += hp;
         }
+        return this->isAlive();
     }
 	virtual bool travel(int x, int y){
         this->zone.x = x;

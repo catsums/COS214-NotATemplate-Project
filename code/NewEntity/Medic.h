@@ -33,7 +33,7 @@ public:
     {
         return;
     }
-    bool healPerson(Citizen* ent){
+    virtual bool healPerson(Citizen* ent){
         if(ent->isAlive()){
             ent->heal(healingAmt);
             return true;

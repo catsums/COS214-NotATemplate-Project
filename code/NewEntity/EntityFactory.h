@@ -20,3 +20,5 @@ public:
 
 	virtual Entity* createEntity(int hp, string country) = 0;
 };
+
+#endif
