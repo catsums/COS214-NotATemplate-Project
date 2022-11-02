@@ -1,9 +1,9 @@
 #ifndef AIRFORCE_H
 #define AIRFORCE_H
 
-#include "Country.h"
+#include "ArmyForce.h"
 
-class AirForce
+class AirForce:public ArmyForce
 {
 private:
     /* data */

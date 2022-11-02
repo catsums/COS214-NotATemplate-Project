@@ -1,6 +1,7 @@
 #ifndef ARMYFORCE_H
 #define ARMYFORCE_H
 
+using namespace std;
 
 class ArmyForce
 {

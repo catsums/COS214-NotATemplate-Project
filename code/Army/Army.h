@@ -1,18 +1,22 @@
 #ifndef ARMY_H
 #define ARMY_H
 
+#include <iostream>
+#include <string>
+#include <vector>
 
 #include "ArmyForce.h"
 
+using namespace std;
 
-class Army
-{
+class Army{
 private:
-    ArmyForce *m_attack;
+    ArmyForce* m_attack;
 public:
     Army();
+    ~Army();
     void set_attack(ArmyForce* a);
-    bool const attack();
+    bool attack();
 };
 
 #endif
