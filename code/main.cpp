@@ -8,9 +8,9 @@
 #include <functional>
 
 // #include "Country/Country.h"
-// #include "SignalHandler/SignalBus.h"
+#include "SignalHandler/SignalBus.h"
 
-// #include "ActionManager/ActionManager.h"
+#include "ActionManager/ActionManager.h"
 
 #include "NewEntity/SoldierFactory.h"
 #include "NewEntity/MedicFactory.h"
@@ -30,32 +30,32 @@ string getRandomString(int size){
 	return myHelper::randomString(size);
 }
 
-int main(){
+// int main(){
 
-	string nationA = "Japan";
-	string nationB = "Korea";
+// 	string nationA = "Japan";
+// 	string nationB = "Korea";
 
-	Citizen* ctn1 = new Citizen(20, nationA);
-	Citizen* ctn2 = new Citizen(25, nationA);
+// 	Citizen* ctn1 = new Citizen(20, nationA);
+// 	Citizen* ctn2 = new Citizen(25, nationA);
 
-	SoldierFactory* barracks = new SoldierFactory();
+// 	SoldierFactory* barracks = new SoldierFactory();
 
-	Soldier* s1 = barracks->createSoldier(ctn2, 16);
+// 	Soldier* s1 = barracks->createSoldier(ctn2, 16);
 
-	Tank* tank = new Tank(50,nationB,100);
-	Truck* truck = new Truck(40,nationA,100);
+// 	Tank* tank = new Tank(50,nationB,100);
+// 	Truck* truck = new Truck(40,nationA,100);
 
-	truck->carryPassenger(ctn1);
-	truck->carryPassenger(s1);
+// 	truck->carryPassenger(ctn1);
+// 	truck->carryPassenger(s1);
 
-	cout<<"s1 alive:"<<s1->isAlive()<<endl;
-	tank->attack(truck);
-	tank->attack(truck);
-	tank->attack(truck);
-	cout<<"s1 alive:"<<s1->isAlive()<<endl;
+// 	cout<<"s1 alive:"<<s1->isAlive()<<endl;
+// 	tank->attack(truck);
+// 	tank->attack(truck);
+// 	tank->attack(truck);
+// 	cout<<"s1 alive:"<<s1->isAlive()<<endl;
 
-	return 0;
-}
+// 	return 0;
+// }
 
 // class myContext{
 // public:
@@ -297,81 +297,82 @@ int main(){
 
 
 
-// class StepManager{
-// public:
-// 	ActionManager actionManager;
-// 	vector<myAdapter*> arr;
-// 	int step = 0;
-// 	int maxStep = 9;
-// 	StepManager(){
+class StepManager{
+public:
+	ActionManager actionManager;
+	AdapterManager adpManager;
+	int step = 0;
+	int maxStep = 9;
+	StepManager(){
 		
-// 	}
-// 	~StepManager(){
+	}
+	~StepManager(){
 
-// 	}
-// 	void start(){
-// 		mainLoop();
-// 	}
-// 	void mainLoop(){
-// 		while(step<maxStep){
-// 			cout<<"----Step "<<step<<"----"<<endl;
-// 			cout<<"------------------------"<<endl;
+	}
+	void start(){
+		mainLoop();
+	}
+	void mainLoop(){
+		while(step<maxStep){
+			cout<<"----Step "<<step<<"----"<<endl;
+			cout<<"------------------------"<<endl;
 
-// 			///try to get requests
-// 			cout<<">>> Pushing requests"<<endl;
-// 			checkEnvironment();
-// 			cout<<"------------------------"<<endl;
-// 			///run all requests
-// 			cout<<">>> Running requests"<<endl;
-// 			while(!actionManager.isEmptyQueue()){
-// 				actionManager.handleCurrRequest();
-// 			}
-// 			//get queue for next step
-// 			actionManager.placeNextQueue();
-// 			///increment step count
-// 			step++;
-// 		}
-// 	}
-// 	void checkEnvironment(){
-// 		for(int i=0; i<(int)arr.size();i++){
-// 			myAdapter* ctx = arr[i];
-// 			// cout<<">> Checking Context["<<ctx->name<<"]..."<<endl;
-// 			int coin = getRandomInt(0,1);
-// 			if(coin==0 && ctx->reqCount>0){
-// 				map<string,string> reqData;
-// 				reqData["fix"] = ctx->getName();
-// 				ActionRequest* req = ctx->createRequest(reqData, &actionManager);
-// 				cout<<ctx->getName()<<" opened a request: "<<req->getID()<<" waiting "<<req->getStartCount()<<endl;
-// 			}
-// 		}
-// 	}
-// };
+			///try to get requests
+			cout<<">>> Pushing requests"<<endl;
+			checkEnvironment();
+			cout<<"------------------------"<<endl;
+			///run all requests
+			cout<<">>> Running requests"<<endl;
+			while(!actionManager.isEmptyQueue()){
+				actionManager.handleCurrRequest();
+			}
+			//get queue for next step
+			actionManager.placeNextQueue();
+			///increment step count
+			step++;
+		}
+	}
+	void checkEnvironment(){
+		for(int i=0; i<(int)arr.size();i++){
+			Adapter* adp = arr[i];
+			// cout<<">> Checking Context["<<ctx->name<<"]..."<<endl;
+			int coin = getRandomInt(0,1);
+			if(coin==0 && ctx->reqCount>0){
+				map<string,string> reqData;
+				reqData["fix"] = ctx->getName();
+				ActionRequest* req = ctx->createRequest(reqData, &actionManager);
+				cout<<ctx->getName()<<" opened a request: "<<req->getID()<<" waiting "<<req->getStartCount()<<endl;
+			}
+		}
+	}
+};
 
-// void managerTest()
-// {
-// 	StepManager manager;
-// 	AdapterManager adpManager;
+void managerTest()
+{
+	/////////////////////
+	// StepManager manager;
+	// AdapterManager adpManager;
 
-// 	myAdapter* adp1 = new myAdapter(
-// 		new myContext("cake"), &adpManager
-// 	);
-// 	myAdapter* adp2 = new myAdapter(
-// 		new myContext("tart"), &adpManager
-// 	);
-// 	myAdapter* adp3 = new myAdapter(
-// 		new myContext("cookie"), &adpManager
-// 	);
+	// myAdapter* adp1 = new myAdapter(
+	// 	new myContext("cake"), &adpManager
+	// );
+	// myAdapter* adp2 = new myAdapter(
+	// 	new myContext("tart"), &adpManager
+	// );
+	// myAdapter* adp3 = new myAdapter(
+	// 	new myContext("cookie"), &adpManager
+	// );
 
-// 	manager.arr.push_back(adp1);
-// 	manager.arr.push_back(adp2);
-// 	manager.arr.push_back(adp3);
+	// manager.arr.push_back(adp1);
+	// manager.arr.push_back(adp2);
+	// manager.arr.push_back(adp3);
 
-// 	manager.start();
+	// manager.start();
 
-// }
+}
 
-// int main(){
-// 	managerTest();
+int main(){
+	managerTest();
 
-// 	return 0;
-// }
+	return 0;
+}
