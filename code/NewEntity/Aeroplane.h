@@ -1,5 +1,5 @@
-#ifndef TRUCK_H
-#define TRUCK_H
+#ifndef AEROPLAN_H
+#define AEROPLAN_H
 
 #include <iostream>
 #include <iomanip>
@@ -7,26 +7,26 @@
 #include <vector>
 
 #include "TransportVehicle.h"
-#include "LandVehicle.h"
+#include "AirVehicle.h"
 #include "Citizen.h"
 
 using namespace std;
 
-class Truck:public LandVehicle, public TransportVehicle{
-	static int SEATCAPACITY = 6;
-	static int CARGOCAPACITY = 2;
+class Aeroplane:public AirVehicle, public TransportVehicle{
+	static int SEATCAPACITY = 20;
+	static int CARGOCAPACITY = 10;
 public:
-	Truck(int hp, string c, int f):Vehicle(hp,c,f),LandVehicle(hp,c,f),TransportVehicle(hp,c,f){
-		types.push_back("Truck");
+	Aeroplane(int hp, string c, int f):Vehicle(hp,c,f),AirVehicle(hp,c,f),TransportVehicle(hp,c,f){
+		types.push_back("Aeroplane");
 		entityCapacity = SEATCAPACITY;
 		resourceCapacity = CARGOCAPACITY;
 	}
-	Truck(Truck& ent):Vehicle(ent),LandVehicle(ent),TransportVehicle(ent){
-		types.push_back("Truck");
+	Aeroplane(Truck& ent):Vehicle(ent),AirVehicle(ent),TransportVehicle(ent){
+		types.push_back("Aeroplane");
 		entityCapacity = SEATCAPACITY;
 		resourceCapacity = CARGOCAPACITY;
 	}
-	~Truck(){
+	~Aeroplane(){
 
 	}
 
@@ -35,7 +35,7 @@ public:
 	}
 	Citizen* dropOffPassenger(){
 		try{
-			Entity* ent = dropOffEntity();
+			Entity* ent = dropOff();
 			if(ent){
 				Citizen* ctn = static_cast<Citizen*>(ent);
 				return ctn;
@@ -48,7 +48,7 @@ public:
 	}
 	Citizen* dropOffPassenger(Citizen* _ent){
 		try{
-			Entity* ent = dropOffEntity(_ent);
+			Entity* ent = dropOff(_ent);
 			if(ent){
 				Citizen* ctn = static_cast<Citizen*>(ent);
 				return ctn;

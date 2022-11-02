@@ -30,7 +30,7 @@ bool TransportVehicle::carryEntity(Entity* ent){
 	return false;
 }
 
-Entity* TransportVehicle::dropOff(){
+Entity* TransportVehicle::dropOffEntity(){
 	if(!entities.empty()){
 		Entity* ent = entities.back();
 		entities.pop_back();
@@ -39,13 +39,44 @@ Entity* TransportVehicle::dropOff(){
 	return NULL;
 }
 
-Entity* TransportVehicle::dropOff(Entity* ent){
+Entity* TransportVehicle::dropOffEntity(Entity* ent){
 	if(!entities.empty()){
 		for(int i=0;i<(int)entities.size();i++){
 			if(entities[i] == ent){
-				Entity* res = entities[i];
+				Entity* _ent = entities[i];
 				entities.erase(entities.begin()+i);
-				return res;
+				return _ent;
+			}
+		}
+	}
+	return NULL;
+}
+
+bool TransportVehicle::carryResource(Resource* reso){
+	if(resources.size() < capacity){
+		resources.push_back(reso);
+		reso->setPosition(zone);
+		return true;
+	}
+	return false;
+}
+
+Resource* TransportVehicle::dropOffResource(){
+	if(!resources.empty()){
+		Resource* reso = resources.back();
+		resources.pop_back();
+		return reso;
+	}
+	return NULL;
+}
+
+Resource* TransportVehicle::dropOffResource(Resource* reso){
+	if(!resources.empty()){
+		for(int i=0;i<(int)resources.size();i++){
+			if(resources[i] == reso){
+				Resource* _reso = resources[i];
+				resources.erase(resources.begin()+i);
+				return _reso;
 			}
 		}
 	}

@@ -22,7 +22,6 @@
 #include "../Facility/Facility.h"
 #include "../Army/Army.h"
 
-
 using namespace std;
 
 class Country

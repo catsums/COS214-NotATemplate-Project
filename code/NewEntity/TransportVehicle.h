@@ -19,16 +19,30 @@ public:
 	virtual Resource* clone();
 
 	virtual bool carryEntity(Entity* ent);
-	virtual Entity* dropOff();
-	virtual Entity* dropOff(Entity* ent);
+	virtual Entity* dropOffEntity();
+	virtual Entity* dropOffEntity(Entity* ent);
+
+	virtual bool carryResource(Resource* ent);
+	virtual Resource* dropOffResource();
+	virtual Resource* dropOffResource(Resource* ent);
 
 	virtual bool travel(int x, int y);
 	virtual void die();
 
 	///set/get
 
-	int getCapacity(){
-		return capacity;
+	int getEntityCapacity(){
+		return entityCapacity;
+	}
+	int getResourceCapacity(){
+		return resourceCapacity;
+	}
+
+	int getNumberOfEntities(){
+		return (int) entities.size();
+	}
+	int getNumberOfResources(){
+		return (int) resources.size();
 	}
 
 	virtual int getStrength(){
@@ -44,7 +58,9 @@ public:
 
 protected:
 	vector<Entity*> entities;
-	int capacity = 1;
+	vector<Resource*> resources;
+	int entityCapacity = 1;
+	int resourceCapacity = 1;
 };
 
 #endif
