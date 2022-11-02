@@ -10,7 +10,8 @@ TransportVehicle::TransportVehicle(int hp, string c, int f):Vehicle(hp,c,f){
 }
 TransportVehicle::TransportVehicle(TransportVehicle& ent):Vehicle(ent){
 	types.push_back("TransportVehicle");
-	capacity = ent.capacity;
+	entityCapacity = ent.entityCapacity;
+	resourceCapacity = ent.resourceCapacity;
 }
 
 TransportVehicle::~TransportVehicle(){
@@ -22,7 +23,7 @@ Resource* TransportVehicle::clone(){
 }
 
 bool TransportVehicle::carryEntity(Entity* ent){
-	if(entities.size() < capacity){
+	if(entities.size() < entityCapacity){
 		entities.push_back(ent);
 		ent->setPosition(zone);
 		return true;
@@ -53,9 +54,8 @@ Entity* TransportVehicle::dropOffEntity(Entity* ent){
 }
 
 bool TransportVehicle::carryResource(Resource* reso){
-	if(resources.size() < capacity){
+	if(resources.size() < resourceCapacity){
 		resources.push_back(reso);
-		reso->setPosition(zone);
 		return true;
 	}
 	return false;

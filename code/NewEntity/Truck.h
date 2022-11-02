@@ -13,8 +13,8 @@
 using namespace std;
 
 class Truck:public LandVehicle, public TransportVehicle{
-	static int SEATCAPACITY = 6;
-	static int CARGOCAPACITY = 2;
+	static const int SEATCAPACITY = 6;
+	static const int CARGOCAPACITY = 2;
 public:
 	Truck(int hp, string c, int f):Vehicle(hp,c,f),LandVehicle(hp,c,f),TransportVehicle(hp,c,f){
 		types.push_back("Truck");
