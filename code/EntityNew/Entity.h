@@ -11,8 +11,10 @@ class Entity
 
 private:
 
-	//Citizen *myCitizen; // product 
-	
+	int hp; // health of each entity 
+	string country // country each entity belongs to 
+	// TODO: change to country type
+
 
 
 public: 
@@ -20,9 +22,19 @@ public:
 	Entity();// default constuctor
 	virtual ~Entity(); //destructor
 
-	//void makeEntity()
+	
+	void setHp(int);
 
-	virtual Citizen* createEntity(int,string) =0;// factory method
+	void setCountry(string);
+	
+
+
+	int getHp();
+
+	string getCountry();
+	
+
+	
 	
 
 
