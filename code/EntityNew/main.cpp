@@ -5,6 +5,8 @@
 #include "Vehicle.cpp"
 #include "Soldier.cpp"
 #include "Medic.cpp"
+#include "Informant.cpp"
+#include "Politician.cpp"
 
 
 
@@ -15,28 +17,28 @@ using namespace std;
 int main()
 {
 
-	Citizen *test = new Soldier();
+	// Citizen *test = new Soldier();
 
-	test->infoSummary();
+	// test->infoSummary();
 
 	
 
 
-	Citizen *test2 = new Medic();
+	// Citizen *test2 = new Medic();
 
-	test2->infoSummary();
-
-
-	test->recieveHp(test2->getHeal());
+	// test2->infoSummary();
 
 
-	cout<<endl;
+	// test->recieveHp(test2->getHeal());
 
 
-	test->infoSummary();
+	// cout<<endl;
 
 
-	delete test;
-	delete test2;
+	// test->infoSummary();
+
+
+	// delete test;
+	// delete test2;
 
 }
