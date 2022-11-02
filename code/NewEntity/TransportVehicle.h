@@ -45,12 +45,12 @@ public:
 		return (int) resources.size();
 	}
 
-	virtual int getStrength(){
-		int str = 0;
+	virtual int getOverallStrength(){
+		int str = HP;
 		for(int i=0; i<(int)entities.size();i++){
 			Entity* ent = entities[i];
 			if(ent){
-				str += ent->getStrength();
+				str += ent->getOverallStrength();
 			}
 		}
 		return str;
