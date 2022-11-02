@@ -6,6 +6,7 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <sstream>
 
 #include <functional>
 
@@ -33,7 +34,7 @@ public:
 		signalBus = NULL;
 	}
 
-	virtual ActionRequest* createRequest(SignalHandler* handler, int waitTime){
+	virtual ActionRequest* createRequest(int waitTime){
 		ActionRequest* req = new ActionRequest(waitTime, [this](SignalEvent* e){
 			onFulFilled(e);
 		},[this](SignalEvent* e){
@@ -42,7 +43,7 @@ public:
 
 		return req;
 	}
-	virtual ActionRequest* createRequest(map<string,string> data, SignalHandler* handler, int waitTime){
+	virtual ActionRequest* createRequest(map<string,string> data,int waitTime){
 		ActionRequest* req = new ActionRequest(waitTime, data, [this](SignalEvent* e){
 			onFulFilled(e);
 		},[this](SignalEvent* e){
@@ -51,7 +52,21 @@ public:
 
 		return req;
 	}
-	virtual void action(string actionName) = 0;
+	virtual ActionRequest* createRequest(function<void(SignalEvent*)> f, int waitTime){
+		ActionRequest* req = new ActionRequest(waitTime, [this](SignalEvent* e){
+			onFulFilled(e);
+		},f);
+
+		return req;
+	}
+	virtual ActionRequest* createRequest(function<void(SignalEvent*)> f, map<string,string> data, int waitTime){
+		ActionRequest* req = new ActionRequest(waitTime, data, [this](SignalEvent* e){
+			onFulFilled(e);
+		},f);
+
+		return req;
+	}
+	virtual void action(map<string,string> data) = 0;
 
 	virtual void onHandle(SignalEvent* e) = 0;
 	virtual void onFulFilled(SignalEvent* e) = 0;

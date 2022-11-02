@@ -16,13 +16,20 @@ using namespace std;
 
 class EntityAdapter: public Adapter{
 public:
-	EntityAdapter(Entity* ent, AdapterManager* mng);
+	EntityAdapter(Entity* ent);
 	~EntityAdapter();
 
-	virtual void action(string actionName);
+	virtual void action(map<string,string> data);
 
 	virtual void onHandle(SignalEvent* e);
 	virtual void onFulFilled(SignalEvent* e);
+
+	//request stuff
+	virtual ActionRequest* requestAttack(string target);
+	virtual ActionRequest* requestHeal(int amt);
+	virtual ActionRequest* requestTakeDamage(int amt);
+	virtual ActionRequest* requestTravel(Zone* zone);
+	virtual ActionRequest* requestDeath();
 
 	//Entity stuff
 	virtual int getHP();

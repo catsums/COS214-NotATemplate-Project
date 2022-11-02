@@ -6,7 +6,7 @@
 
 using namespace std;
 
-CitizenAdapter::CitizenAdapter(Citizen* ent, AdapterManager* mng):EntityAdapter(ent, mng){
+CitizenAdapter::CitizenAdapter(Citizen* ent):EntityAdapter(ent){
 	types.push_back("CITIZEN");
 }
 CitizenAdapter::~CitizenAdapter(){

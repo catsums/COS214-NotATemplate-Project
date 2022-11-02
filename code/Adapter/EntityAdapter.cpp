@@ -5,7 +5,7 @@
 
 using namespace std;
 
-EntityAdapter::EntityAdapter(Entity* ent, AdapterManager* mng):Adapter(mng){
+EntityAdapter::EntityAdapter(Entity* ent):Adapter(){
 	types.push_back("ENTITY");
 	entity = ent;
 }
@@ -13,8 +13,81 @@ EntityAdapter::~EntityAdapter(){
 	entity = NULL;
 }
 
-void EntityAdapter::action(string actionName){
+ActionRequest* EntityAdapter::requestAttack(string target){
+	map<string, string> data {
+		{"action":"attack"},
+		{"target":target}
+	};
+	return createRequest(data, 1);
+}
+ActionRequest* EntityAdapter::requestHeal(int amt){
+	map<string, string> data {
+		{"action":"heal"},
+		{"amount":to_string(amt)}
+	};
+	return createRequest(data, 1);
+}
+ActionRequest* EntityAdapter::requestTakeDamage(int amt){
+	map<string, string> data {
+		{"action":"takeDamage"},
+		{"amount":to_string(amt)}
+	};
+	return createRequest(data, 1);
+}
+ActionRequest* EntityAdapter::requestTravel(Zone* zone){
+	if(!zone) return NULL;
+	Position zone->getPosition();
+	map<string, string> data {
+		{"action":"travel"},
+		{"x":to_string(pos.x)},
+		{"y":to_string(pos.y)}
+	};
+	return createRequest(data, 1);
+}
+ActionRequest* EntityAdapter::requestDeath(){
+	map<string, string> data {
+		{"action":"die"}
+	};
+	return createRequest(data, 1);
+}
 
+void EntityAdapter::action(map<string,string> data){
+	if(data.count("action")>0){
+		string _action = data["action"];
+		if(_action == "attack"){
+			if(data.count("target")){
+				attack(data["target"]);
+			}
+		}
+		if(_action == "heal"){
+			if(data.count("amount")>0){
+				int amt;
+				istringstream iss(data["amount"]);
+				iss >> amt;
+				heal(amt);
+			}
+		}
+		if(_action == "takeDamage"){
+			if(data.count("amount")>0){
+				int amt;
+				istringstream iss(data["amount"]);
+				iss >> amt;
+				takeDamage(amt);
+			}
+		}
+		if(_action == "travel"){
+			if(data.count("x")>0 && data.count("y")>0){
+				int x, y;
+				istringstream issX(data["x"]);
+				istringstream issY(data["y"]);
+				issX >> x; issY >> y;
+				travel(x,y);
+			}
+		}
+		if(_action == "die"){
+			die();
+		}
+	}
 }
 
 int EntityAdapter::getHP(){
@@ -151,7 +224,9 @@ void EntityAdapter::onFulFilled(SignalEvent* e){
 			//do stuff on success
 			string* _action = res->getData("action");
 			if(_action){
-				action(*_action);
+				if(_action == "attack"){
+
+				}
 			}
 		}else{
 			//do stuff on fail
