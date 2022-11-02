@@ -2,7 +2,6 @@
 #define SOLDIER_H
 
 #include "Citizen.h"
-#include "Resource.h"
 
 class Soldier : public Citizen
 {
@@ -42,6 +41,10 @@ public:
     }
     int getDamage(){
         return damage;
+    }
+
+    virtual int getOverallStrength(){
+        return HP + damage;
     }
 
 };
