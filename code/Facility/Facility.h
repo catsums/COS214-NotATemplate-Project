@@ -34,6 +34,27 @@ public:
         return id;
     }
 
+    string getType(){
+        return types.back();
+    }
+    vector<string> getTypes(){
+        return types;
+    }
+    bool isType(string type){
+        for(int i=0;i<(int)types.size();i++){
+            if(types[i]==type){
+                return true;
+            }
+        }
+        return false;
+    }
+    string setType(string t){
+        string temp = types.back();
+        types.pop_back();
+        types.push_back(t);
+        return temp;
+    }
+
     void setCountry(string c){
         country = c;
     }
@@ -53,6 +74,7 @@ public:
 private:
     string id;
     string country;
+    vector<string> types;
     Position zone; //coords for zone
     bool land;
     bool sea;

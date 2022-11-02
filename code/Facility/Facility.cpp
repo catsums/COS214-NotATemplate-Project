@@ -35,12 +35,16 @@ Facility::Facility(){
 	id = randomString(8);
 	land = false;
 	sea = false;
+
+    types.push_back("Facility");
 }
 Facility::Facility(string c){
 	id = randomString(8);
 	country = c;
 	land = false;
 	sea = false;
+
+    types.push_back("Facility");
 }
 Facility::~Facility(){
 
