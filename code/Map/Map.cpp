@@ -93,11 +93,11 @@ ZoneCircle Map::getZoneCircle(Zone* zone){
     circ.right = getZone(x+1,y);
 
 
-    circ.topleft = getZone(x-1,y-1);
-    circ.bottomleft = getZone(x-1,y+1);
+    circ.topLeft = getZone(x-1,y-1);
+    circ.bottomLeft = getZone(x-1,y+1);
     
-    circ.topright = getZone(x+1,y-1);
-    circ.bottomright = getZone(x+1,y+1);
+    circ.topRight = getZone(x+1,y-1);
+    circ.bottomRight = getZone(x+1,y+1);
 
     return circ;
 }

@@ -24,7 +24,7 @@ class Zone
 		int getPv();
 		bool isLand();
 
-	private:
+	protected:
 		Position pos;
 
 		int productionValue; //Determines how much money zone produces for occupant

@@ -1,10 +1,20 @@
+#ifndef ZONE_CPP
+#define ZONE_CPP
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <map>
+#include <vector>
+
 #include "Zone.h"
+
+using namespace std;
 
 //Parameterised constructor
 Zone::Zone(int x, int y, int pv, bool l)
 {
-	pos.x = x;
-	pos.y = y;
+	pos.x = x; pos.y = y;
 	this->productionValue = pv;
 	this->land = l;
 }
@@ -20,7 +30,7 @@ int Zone::getPv(){ return productionValue; }
 bool Zone::isLand(){ return land; }
 
 bool Zone::moveEntity(Entity* ent){
-	if(addEntity()){
+	if(addEntity(ent)){
 		ent->travel(getPosition());
 		return true;
 	}
@@ -79,3 +89,5 @@ bool Zone::hasFacility(Facility* fac){
 	}
 	return false;
 }
+
+#endif

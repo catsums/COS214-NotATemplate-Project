@@ -47,8 +47,8 @@ class Map
         Zone* getZone(int x, int y){
             for(int r=0; r<(int)zones.size();r++){
                 vector<Zone*>* row = zones[r];
-                for(int c=0; c<(int)zones->size();c++){
-                    Zone* zone = (*zones)[r][c];
+                for(int c=0; c<(int)row->size();c++){
+                    Zone* zone = (*row)[c];
                     return zone;
                 }
             }
