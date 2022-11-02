@@ -4,6 +4,8 @@
 #include <string>
 #include "../Country/Country.h"
 
+using namespace std;
+
 class WarPhase{
 public:
 	virtual void handle(vector<Country*>* a, vector<Country*>* b) = 0;
