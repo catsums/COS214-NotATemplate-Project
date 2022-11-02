@@ -6,11 +6,13 @@
 #include <vector>
 
 #include "../Country/Country.h"
-#include "../SignalHandler/SignalHandler.h"
+#include "../SignalHandler/ObjectSignalBus.h"
 #include "../ActionManager/ActionManager.h"
 #include "../Adapter/Adapter.h"
 #include "../Map/Map.h"
 #include "WarPhase.h"
+
+using namespace std;
 
 class War{
 public:

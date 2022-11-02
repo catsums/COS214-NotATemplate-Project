@@ -6,6 +6,8 @@
 
 #include "War.h"
 
+using namespace std;
+
 War::War(){
 	warState = new PhaseNeutral();
 
@@ -13,7 +15,7 @@ War::War(){
         onWarEvent(e);
     });
 
-    signalBus = new ObjectSignalBus<string>();
+    signalBus = new SignalBus();
 
     signalBus->subscribe("warState", warHandler);
 
@@ -28,7 +30,7 @@ War::War(WarPhase* startState){
         onWarEvent(e);
     });
 
-    signalBus = new ObjectSignalBus<string>();
+    signalBus = new SignalBus();
 
     signalBus->subscribe("warState", warHandler);
 
