@@ -7,13 +7,13 @@ using namespace std;
 
 	Entity::Entity()// default constuctor 
 	{
-		//cout<<"Entity’s Constructor was Called"<<endl;
+		cout<<"Entity’s Constructor was Called"<<endl;
 	} 
 
 	
 	Entity::~Entity() //destructor
 	{
-		//cout<<"Entity’s Destructor was Called"<<endl;
+		cout<<"Entity’s Destructor was Called"<<endl;
 	}
 
 	void Entity::setHp(int h)
@@ -29,19 +29,19 @@ using namespace std;
 
 	void Entity::setDamage(int d)
 	{
-		hp = h;
+		damage = d;
 	}
 
 
-	void Entity::setXpos(int h)
+	void Entity::setXpos(int x)
 	{
-		hp = h;
+		xpos = x;
 	}
 
 
-	void Entity::setYpos(int h)
+	void Entity::setYpos(int y)
 	{
-		hp = h;
+		ypos = y;
 	}
 	
 
@@ -55,7 +55,21 @@ using namespace std;
 		return country;
 	}
 
-	
+	int Entity::getDamage()
+	{
+		return damage;
+	}
+
+	int Entity::getXpos()
+	{
+		return xpos;
+	}
+
+	int Entity::getYpos()
+	{
+		return ypos;
+	}
+
 	
 
 	
