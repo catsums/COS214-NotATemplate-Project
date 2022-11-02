@@ -3,9 +3,11 @@
 
 class WarEngine {
   public:
-	static WarEngine& instance(); 
-	void updateWarEngineData();
+	static WarEngine& instance();
 	void printWarEngineData();
+
+	void initialiseWar(int c, int st);
+	bool runTurn();
   protected:
 	WarEngine();
 	WarEngine(const WarEngine&);
@@ -13,6 +15,9 @@ class WarEngine {
 	~WarEngine();
   private:
     //classes variables
+	vector<Country*> countries;
+	int numCountries;
+	int aSize;
 };
 
 #endif
