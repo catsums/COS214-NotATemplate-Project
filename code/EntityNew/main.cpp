@@ -2,11 +2,13 @@
 
 #include "Entity.cpp"
 #include "Citizen.cpp"
-#include "Vehicle.cpp"
 #include "Soldier.cpp"
 #include "Medic.cpp"
 #include "Informant.cpp"
 #include "Politician.cpp"
+
+#include "Vehicle.cpp"
+#include "Artillery.cpp"
 
 
 
@@ -17,9 +19,9 @@ using namespace std;
 int main()
 {
 
-	// Citizen *test = new Soldier();
+	Vehicle *test = new Artillery();
 
-	// test->infoSummary();
+	test->infoSummary();
 
 	
 
@@ -38,7 +40,7 @@ int main()
 	// test->infoSummary();
 
 
-	// delete test;
+	delete test;
 	// delete test2;
 
 }
