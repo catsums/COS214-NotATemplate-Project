@@ -8,34 +8,16 @@
 
 using namespace std;
 
-War::War(){
-	warState = new PhaseNeutral();
-
-    handlers["warEvent"] = new FunctionHandler([this](SignalEvent* e){
-        onWarEvent(e);
-    });
-
-    signalBus = new SignalBus();
-
-    signalBus->subscribe("warEvent", handlers["warEvent"]);
-
-    actionManager = new ActionManager();
-    adapterManager = new AdapterManager();
-
-    warMap = new Map();
-
-    warMap->genStandardMap();
-}
 War::War(WarPhase* startState){
 	warState = startState;
 
-	handlers["warEvent"] = new FunctionHandler([this](SignalEvent* e){
-        onWarEvent(e);
+	handlers["warState"] = new FunctionHandler([this](SignalEvent* e){
+        onWarPhaseChange(e);
     });
 
     signalBus = new SignalBus();
 
-   	signalBus->subscribe("warEvent", handlers["warEvent"]);
+   	signalBus->subscribe("warState", handlers["warState"]);
 
     actionManager = new ActionManager();
     adapterManager = new AdapterManager();
@@ -48,8 +30,8 @@ War::~War(){
 	delete warState;
 	warState = NULL;
 
-	delete warHandler;
-	warHandler = NULL;
+	delete warMap;
+	warMap = NULL;
 
 	delete signalBus;
 	signalBus = NULL;
@@ -78,7 +60,7 @@ void War::handlePhase(){
 	
 }
 
-void War::onWarEvent(SignalEvent* _e){
+void War::onWarPhaseChange(SignalEvent* _e){
 	
 	ObjectSignalEvent<string>* e = static_cast<ObjectSignalEvent<string>*>(_e);
 
