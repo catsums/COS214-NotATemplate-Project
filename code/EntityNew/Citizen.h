@@ -24,7 +24,7 @@ public:
     */
 	Citizen();
 
-	/** A parameter constructer taht initializes 5 parameters 
+	/** A parameter constructer that initializes 5 parameters 
 	*
 	*	@param int variable that represents the health
 	*	@param string variable that represents the country

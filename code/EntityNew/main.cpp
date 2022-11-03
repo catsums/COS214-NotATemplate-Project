@@ -63,4 +63,69 @@ int main()
 	delete mySoldier;
 	delete myFactory;
 
+
+	cout<<"Creating an EntityFactory"<<endl;
+	cout<<endl;
+
+	EntityFactory * myFactory2 = new MedicFactory();
+
+	cout<<"EntityFactory created"<<endl;
+	cout<<endl;
+
+	cout<<"Creating a CitizenFactory and MedicFactory"<<endl;
+	cout<<endl;
+
+	Entity* myMedic = myFactory2->createCitizen();
+
+	
+
+	myMedic->infoSummary();
+	cout<<endl;
+
+	delete myMedic;
+	delete myFactory2;
+
+
+	cout<<"Creating an EntityFactory"<<endl;
+	cout<<endl;
+
+	EntityFactory * myFactory3 = new InformantFactory();
+
+	cout<<"EntityFactory created"<<endl;
+	cout<<endl;
+
+	cout<<"Creating a CitizenFactory and MedicFactory"<<endl;
+	cout<<endl;
+
+	Entity* myInfo = myFactory3->createCitizen();
+
+	
+
+	myMedic->infoSummary();
+	cout<<endl;
+
+	delete myInfo;
+	delete myFactory3;
+
+
+	cout<<"Creating an EntityFactory"<<endl;
+	cout<<endl;
+
+	EntityFactory * myFactory4 = new PoliticianFactory();
+
+	cout<<"EntityFactory created"<<endl;
+	cout<<endl;
+
+	cout<<"Creating a CitizenFactory and MedicFactory"<<endl;
+	cout<<endl;
+
+	Entity* myPoli = myFactory4->createCitizen();
+
+	
+
+	myMedic->infoSummary();
+	cout<<endl;
+
+	delete myPoli;
+	delete myFactory4;
 }
