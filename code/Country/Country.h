@@ -8,10 +8,14 @@ using namespace std;
 class Country
 {
     public:
-        Country(string cName, bool a);
+        Country(string n, bool s);
         ~Country();
+
+        bool getSide();
+        string getName();
     private:
-        
+        bool side;
+        string name;
 };
 
 #endif

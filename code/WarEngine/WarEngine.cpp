@@ -3,7 +3,6 @@
 #include <fstream>
 
 #include "WarEngine.h"
-#include "../Country/Country.h"
 
 using namespace std;
 
@@ -11,7 +10,7 @@ WarEngine::WarEngine(){
 
 }
 
-void WarEngine::initialiseWar(int numCountries, int aSize){
+void WarEngine::initialiseWar(int numCountries, int sSize){
 
   string cName;
   ifstream ifile("countryNames.txt");
@@ -22,11 +21,11 @@ void WarEngine::initialiseWar(int numCountries, int aSize){
 
     if(i < aSize)
     {
-      countries.push_back(new Country(cName, 0));
+      countryArr.push_back(new Country(cName, 0));
     }
     else
     {
-      countries.push_back(new Country(cName, 1));
+      countryArr.push_back(new Country(cName, 1));
     }
     
   }
@@ -36,6 +35,16 @@ void WarEngine::initialiseWar(int numCountries, int aSize){
 
 bool WarEngine::runTurn(){
   
+}
+
+void WarEngine::printWarEngineData()
+{
+  cout << "Countries participating in the war:" << endl;
+  for(int i = 0; i < countryArr.size(); i++)
+  {
+    if(countryArr[i]->getSide())
+    cout << "Countries participating in the war:" << endl;
+  }
 }
 
 WarEngine::~WarEngine(){}
