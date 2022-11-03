@@ -5,7 +5,7 @@
 
 using namespace std;
 
-	Soldier::Soldier() : Citizen()// default constuctor 
+	Soldier::Soldier() : Citizen()
 	{
 			
 
@@ -20,7 +20,7 @@ using namespace std;
 
 	} 
 
-	Soldier::Soldier(int h , string c, string stat): Citizen( h ,  c)// param constuctor 
+	Soldier::Soldier(int h , string c, string stat): Citizen( h ,  c) 
 	{
 		
 	
@@ -36,7 +36,7 @@ using namespace std;
 	}
 
 	
-	Soldier::~Soldier() //destructor
+	Soldier::~Soldier()
 	{
 		// /cout<<"Soldier’s Destructor was Called"<<endl;
 	}

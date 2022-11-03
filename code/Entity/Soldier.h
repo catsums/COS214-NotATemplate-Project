@@ -1,3 +1,9 @@
+/** @file Soldier.h
+ *  @brief Class for one of our entities "Soldiers"
+ *	@author Ayla 
+ *  This class creates soldiers from regular citizens which are entities in our war simulator. 
+ */
+
 #ifndef SOLDIER_H
 #define SOLDIER_H
 
@@ -14,17 +20,28 @@ class Soldier : public Citizen
 protected:
 
 
-	string status = "NA";
-	//string theatre = "NA";
+	string status = "NA"; /**<variable status that takes in a string*/
+
 
 
 
 public: 
+	/** Default constructor for the soldier*/
+	Soldier();
 
-	Soldier();// default constuctor 
-	Soldier(int,string,string);// param constuctor 
+	/**
+	Soldeir constructor that takes in two parameters 
+
+	@param int first parameter that takes in health of soldier 
+	@param string second parameter that takes in country of soldier 
+	@param string that takes in third parameter of the statistics 
+
+	*/
+	Soldier(int,string,string); 
 	
-	virtual ~Soldier(); //destructor
+
+	/** Deconstructer for the soldier*/
+	virtual ~Soldier(); 
 
 
 	
