@@ -28,6 +28,10 @@ public:
 	void addCountry(Country* c, int side);
 	void removeCountry(Country* c, int side);
 
+	Country* getCountryByName(string n);
+
+	vector<Country*>* getCountriesOnSide(int side);
+
 	int getSide(Country* c);
 
 	void printSides(){
@@ -42,18 +46,34 @@ public:
 	}
 
 	SignalHandler* getWarHandler(){
-		return warHandler;
+		return handlers["warEvent"];
 	}
+
+	void addHandler(string n, SignalHandler* handler){
+		if(handlers.count(n)<=0){
+			handlers[n] = handler;
+		}
+	}
+	SignalHandler* removeHandler(string n){
+		SignalHandler* handler = NULL;
+		if(handlers.count(n)>0){
+			handler = handlers[n];
+			handlers.erase(n);
+		}
+		return handler;
+	}
+
+	SignalBus* signalBus;
+	ActionManager* actionManager;
+	AdapterManager* adapterManager;
+	SignalHandler* warHandler;
+	Map* warMap;
 
 private:
 	int phaseCount;
 
 	map<int,vector<Country*>*> sides;
-
-	SignalHandler* warHandler;
-	SignalBus* signalBus;
-	ActionManager* actionManager;
-	Map* warMap;
+	map<string, SignalHandler*> handlers;
 
 	WarPhase* warState;
 };
