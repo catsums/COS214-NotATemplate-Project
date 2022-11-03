@@ -32,6 +32,7 @@ using namespace std;
 
 int main()
 {
+
 	cout<<"This shows the Abstarct Factory Method application"<<endl;
 
 	cout<<endl;
@@ -52,6 +53,7 @@ int main()
 	
 
 	mySoldier->infoSummary();
+	cout<<endl;
 
 	
 	
