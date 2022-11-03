@@ -8,7 +8,9 @@ using namespace std;
 
 class Artillery: public Vehicle
 {
+private:
 
+	int feul;
 
 public: 
 
@@ -17,11 +19,25 @@ public:
 	
 	virtual ~Artillery(); //destructor
 
-	
+
+	/*
+	This function will decrease the feul of a vehicle
+	it takes in a pointer to an artillery and an int amount to decrease the feul
+
+	*/
+
+	virtual void decreaseFeul(Artillery*,int)=0;
 
 	
 	
-	
+	//getters
+
+	int getFeul();
+
+
+	//setter 
+
+	void setFeul(int);
 };
 
 #endif

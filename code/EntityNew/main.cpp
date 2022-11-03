@@ -19,9 +19,9 @@ using namespace std;
 int main()
 {
 
-	Vehicle *test = new Artillery();
+	//Vehicle *test = new Transport();
 
-	test->infoSummary();
+	//test->infoSummary();
 
 	
 
@@ -40,7 +40,7 @@ int main()
 	// test->infoSummary();
 
 
-	delete test;
+	//delete test;
 	// delete test2;
 
 }

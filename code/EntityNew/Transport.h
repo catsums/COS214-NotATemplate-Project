@@ -9,6 +9,10 @@ using namespace std;
 class Transport: public Vehicle
 {
 
+private:
+
+	int feul;
+
 
 public: 
 
@@ -18,7 +22,18 @@ public:
 	virtual ~Transport(); //destructor
 
 	
+	virtual void decreaseFeul(Transport*,int)=0;
 
+	
+	
+	//getters
+
+	int getFeul();
+
+
+	//setter 
+
+	void setFeul(int);
 	
 	
 	
