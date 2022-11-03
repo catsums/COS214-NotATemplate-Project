@@ -13,7 +13,7 @@ int Country::generateResources()
 {
     resources += territory * 10;
     //check for resource gen buildings
-    
+
     return resources;
 }
 
@@ -23,4 +23,8 @@ bool Country::getSide(){
 
 string Country::getName(){
     return name;
+}
+
+int Country::getTerritory(){
+    return territory;
 }

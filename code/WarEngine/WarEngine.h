@@ -6,18 +6,23 @@
 
 using namespace std;
 
-class WarEngine {
+class WarEngine 
+{
   public:
 	static WarEngine& instance();
 	void printWarEngineData();
+	void printSide(bool side)
 
 	void initialiseWar(int c, int ss, int maxTurn);
 	bool runTurn();
+	bool determineCurrentVictor();
+
   protected:
 	WarEngine();
 	WarEngine(const WarEngine&);
 	WarEngine& operator=(const WarEngine&);
 	~WarEngine();
+
   private:
     //classes variables
 	vector<Country*> countryArr;

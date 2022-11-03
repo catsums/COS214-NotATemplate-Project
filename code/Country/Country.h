@@ -15,6 +15,7 @@ class Country
 
         bool getSide();
         string getName();
+        int getTerritory();
     private:
         bool side;
         string name;

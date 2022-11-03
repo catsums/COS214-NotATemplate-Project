@@ -88,24 +88,41 @@ bool WarEngine::runTurn(){
   }
 }
 
+bool WarEngine::determineCurrentVictor()
+{
+  int tA = 0;
+  int tB = 0;
+  for(int i = 0; i < countryArr.size(); i++)
+  {
+    if(countryArr[i]->getSide() == 0)
+    {
+      tA += countryArr[i]->getTerritory();
+    }
+    else
+    {
+      tB += countryArr[i]->getTerritory();
+    }
+  }
+
+  return (tA >= tB) ? (true) : (false);
+}
+
 void WarEngine::printWarEngineData()
 {
   cout << "Countries participating in the war:" << endl;
 
   cout << "Side A:" << endl;
-  for(int i = 0; i < countryArr.size(); i++)
-  {
-    if(countryArr[i]->getSide() == 0)
-    {
-      cout << countryArr[i]->getName() << endl;
-    }
-    cout << endl;
-  }
+  printSide(0);
 
   cout << "Side B:" << endl;
+  printSide(1);
+}
+
+void WarEngine::printSide(bool side)
+{
   for(int i = 0; i < countryArr.size(); i++)
   {
-    if(countryArr[i]->getSide() == 1)
+    if(countryArr[i]->getSide() == side)
     {
       cout << countryArr[i]->getName() << endl;
     }
