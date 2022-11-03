@@ -12,20 +12,7 @@ using namespace std;
 
 class myHelper{
 public:
-	static string randomString(int len = 9) {
-		const char alphanum[] =
-	        "0123456789"
-	        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	        "abcdefghijklmnopqrstuvwxyz";
-	    int stringLen = sizeof(alphanum) - 1;
 
-	    string str;
-	    for (int i = 0; i < len; i++) {
-	    	int rnd = uniformDistribution<int>(0, stringLen);
-	     	str += alphanum[rnd % stringLen];
-	    }
-	    return str;
-	}
 	template <typename T>
 	static T uniformDistribution(T a, T b){
 		T max, min;
@@ -54,4 +41,46 @@ public:
 		return (T) res;
 
 	}
+	
+	static int randomInt(int a, int b){
+		if(a>b){
+			int temp = a;
+			a = b;
+			b = temp;
+		}
+		return (int) uniformDistribution<int>(a,b);
+	}
+	static double randomDouble(double a, double b){
+		if(a>b){
+			double temp = a;
+			a = b;
+			b = temp;
+		}
+		return (double) uniformDistribution<double>(a,b);
+	}
+	static string randomString(int len = 9) {
+		const char alphanum[] =
+	        "0123456789"
+	        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	        "abcdefghijklmnopqrstuvwxyz";
+	    int stringLen = sizeof(alphanum) - 1;
+
+	    string str;
+	    for (int i = 0; i < len; i++) {
+	    	int rnd = randomInt(0, stringLen);
+	     	str += alphanum[rnd % stringLen];
+	    }
+	    return str;
+	}
+
+	static int coinFlip(){
+		return randomInt(0,2);
+	}
+	static int diceRoll(){
+		return randomInt(1,7);
+	}
+	static int diceRoll(int size){
+		return randomInt(1,size+1);
+	}
+	
 };
