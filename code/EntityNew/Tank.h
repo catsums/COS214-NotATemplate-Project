@@ -1,5 +1,5 @@
-#ifndef Tank_H
-#define Tank_H
+#ifndef TANK_H
+#define TANK_H
 
 #include <string>
 #include "Vehicle.h"
