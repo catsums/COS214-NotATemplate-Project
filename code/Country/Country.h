@@ -21,6 +21,9 @@
 #include "../NewResource/Resource.h"
 #include "../Facility/Facility.h"
 #include "../Army/Army.h"
+#include "../Map/LandZone.h"
+#include "../Map/SeaZone.h"
+#include "../SignalHandler/SignalBus.h"
 
 using namespace std;
 
@@ -68,6 +71,69 @@ class Country
 
         string getID() const;
 
+        void addCitizen(Citizen* ctn);
+        Citizen* removeCitizen(Citizen* ctn);
+        bool hasCitizen(Citizen* ctn);
+
+        void addFacility(Facility* fac);
+        Facility* removeFacility(Facility* fac);
+        bool hasFacility(Facility* fac);
+
+        void addResource(Resource* reso);
+        Resource* removeResource(Resource* reso);
+        bool hasResource(Resource* reso);
+
+        void addZone(Zone* zone);
+        Zone* removeZone(Zone* zone);
+        bool hasZone(Zone* zone);
+
+        virtual string printInfo(){
+            stringstream ss;
+
+            ss << "COUNTRY-"<<getID();
+            ss << "\n";
+            ss << " Name: " << getName() << " | ";
+
+            ss << "\n[";
+            ss << getInfo();
+            ss << "\n]";
+
+            return ss.str();
+        }
+
+        virtual string getInfo(){
+            stringstream ss;
+            
+            ss<<"\n\t Citizens:"<<"\n";
+            for(auto const&ent :citizens){
+                if(ent){
+                    ss << ent->printInfo() << endl;
+                }
+            }
+
+            ss<<"\n\t Facilities:"<<"\n";
+            for(auto const&fac :facilities){
+                if(fac){
+                    ss << fac->printInfo() << endl;
+                }
+            }
+            
+            ss<<"\n\t Resources:"<<"\n";
+            for(auto const&reso :resources){
+                if(reso){
+                    ss << reso->printInfo() << endl;
+                }
+            }
+
+            ss<<"\n\t Zones:"<<"\n";
+            for(auto const&zone :zones){
+                if(zone){
+                    ss << zone->printInfo() << endl;
+                }
+            }
+
+            return ss.str();
+        }
     private:
         string id;
 
@@ -85,5 +151,9 @@ class Country
         vector<Resource*> resources;
 
         vector<Facility*> facilities;
+
+        vector<Zone*> zones;
+
+        SignalBus signalBus;
 };
 #endif

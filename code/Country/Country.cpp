@@ -39,25 +39,18 @@ Country::Country()
 {
     id = randomString(8);
     name = "";
-    // strength = 0;
-    // totalArmy = 0;
-    reserves = 0;
-    // cout<<"Country made"<<endl;
-    // enemies = vector
-    // allies = new Country*[3];
+    // reserves = 0;
+    
 }
 Country::Country(string n)
 {
     id = randomString(8);
     name = n;
-    // strength = 0;
-    // totalArmy = 0;
-    reserves = 0;
+    // reserves = 0;
 }
 Country::~Country()
 {
-    // enemies = NULL;
-    // allies = NULL;
+    
 }
 
 
@@ -244,5 +237,139 @@ int Country::getNumberOfEnemies(){
 // int Country::getReserveCount() const{
 //     return reserves;
 // }
+
+void Country::addCitizen(Citizen* ctn){
+    if(!hasCitizen(ctn)){
+        citizens.push_back(ctn);
+        ctn->setCountry(this->name);
+    }
+}
+Citizen* Country::removeCitizen(Citizen* ctn){
+    Citizen* _ctn = NULL;
+    if(hasCitizen(ctn)){
+        for(int i=0; i<(int)citizens.size();i++){
+            Citizen* ent = citizens[i];
+            if(ent == ctn || ent->getID() == ctn->getID()){
+                _ctn = ent;
+                ctn->setCountry("");
+                citizens.erase(citizens.begin()+i);
+                break;
+            }
+        }
+    }
+    return _ctn;
+}
+bool Country::hasCitizen(Citizen* ctn){
+    if(ctn){
+        for(int i=0; i<(int)citizens.size();i++){
+            Citizen* _ctn = citizens[i];
+            if(_ctn == ctn || _ctn->getID() == ctn->getID()){
+                return true;
+            }
+        }
+    } 
+    return false;
+}
+
+void Country::addFacility(Facility* fac){
+    if(!hasFacility(fac)){
+        facilities.push_back(fac);
+        fac->setCountry(this->name);
+    }
+}
+Facility* Country::removeFacility(Facility* fac){
+    Facility* _fac = NULL;
+    if(hasFacility(fac)){
+        for(int i=0; i<(int)facilities.size();i++){
+            Facility* ent = facilities[i];
+            if(ent == fac || ent->getID() == fac->getID()){
+                _fac = ent;
+                fac->setCountry("");
+                facilities.erase(facilities.begin()+i);
+                break;
+            }
+        }
+    }
+    return _fac;
+}
+bool Country::hasFacility(Facility* fac){
+    if(fac){
+        for(int i=0; i<(int)facilities.size();i++){
+            Facility* _fac = facilities[i];
+            if(_fac == fac || _fac->getID() == fac->getID()){
+                return true;
+            }
+        }
+    } 
+    return false;
+}
+
+void Country::addResource(Resource* reso){
+    if(!hasResource(reso)){
+        resources.push_back(reso);
+        // reso->setCountry(this->name);
+    }
+}
+Resource* Country::removeResource(Resource* reso){
+    Resource* _reso = NULL;
+    if(hasResource(reso)){
+        for(int i=0; i<(int)resources.size();i++){
+            Resource* ent = resources[i];
+            if(ent == reso){
+                _reso = ent;
+                // reso->setCountry("");
+                resources.erase(resources.begin()+i);
+                break;
+            }
+        }
+    }
+    return _reso;
+}
+bool Country::hasResource(Resource* reso){
+    if(reso){
+        for(int i=0; i<(int)resources.size();i++){
+            Resource* _reso = resources[i];
+            if(_reso == reso){
+                return true;
+            }
+        }
+    } 
+    return false;
+}
+
+void Country::addZone(Zone* zone){
+    if(!hasZone(zone)){
+        zones.push_back(zone);
+        zone->setCountry(this->name);
+    }
+}
+Zone* Country::removeZone(Zone* zone){
+    Zone* _zone = NULL;
+    if(hasZone(zone)){
+        for(int i=0; i<(int)zones.size();i++){
+            Zone* z = zones[i];
+            if(z == zone){
+                _zone = z;
+                zone->setCountry("");
+                zones.erase(zones.begin()+i);
+                break;
+            }
+        }
+    }
+    return _zone;
+}
+bool Country::hasZone(Zone* zone){
+    if(zone){
+        for(int i=0; i<(int)zones.size();i++){
+            Zone* _zone = zones[i];
+            if(_zone == zone){
+                return true;
+            }
+        }
+    } 
+    return false;
+}
+
+///
 
 #endif
