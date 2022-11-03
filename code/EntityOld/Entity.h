@@ -20,9 +20,9 @@ public:
 	Entity();// default constuctor
 	virtual ~Entity(); //destructor
 
-	//void makeEntity()
+	
 
-	virtual Citizen* createEntity(int,string) =0;// factory method
+	
 	
 
 
