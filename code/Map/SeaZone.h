@@ -11,7 +11,10 @@
 
 class SeaZone: public Zone{
 public:
-	SeaZone(int x,int y, int pv):Zone(x,y,false){
+	SeaZone(int x,int y, int pv):Zone(x,y,pv,false){
+
+	}
+	SeaZone(int x,int y, int pv, string c):Zone(x,y,pv,false, c){
 
 	}
 	~SeaZone(){}
