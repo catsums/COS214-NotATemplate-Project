@@ -19,6 +19,9 @@
 
 #include "EntityFactory.cpp"
 #include "CitizenFactory.cpp"
+#include "VehicleFactory.cpp"
+#include "SoldierFactory.cpp"
+
 
 
 
@@ -29,36 +32,35 @@ using namespace std;
 
 int main()
 {
+	cout<<"This shows the Abstarct Factory Method application"<<endl;
 
-	// Transport *test = new CargoTruck();
+	cout<<endl;
 
-	// test->infoSummary();
+	cout<<"Creating an EntityFactory"<<endl;
+	cout<<endl;
 
-	// cout<<endl;
-	// test->decreaseFeul(test,5);
+	EntityFactory * myFactory = new SoldierFactory();
 
+	cout<<"EntityFactory created"<<endl;
+	cout<<endl;
 
+	cout<<"Creating a CitizenFactory and SoldierFactory"<<endl;
+	cout<<endl;
 
-	// test->infoSummary();
-	// cout<<endl;
+	Entity* mySoldier = myFactory->createCitizen();
+
+	
+
+	mySoldier->infoSummary();
+
+	
 	
 
 
-	// Citizen *test2 = new Medic();
-
-	// test2->infoSummary();
+	
 
 
-	// test->recieveHp(test2->getHeal());
-
-
-	// cout<<endl;
-
-
-	// test->infoSummary();
-
-
-	//delete test;
-	// delete test2;
+	delete mySoldier;
+	delete myFactory;
 
 }
