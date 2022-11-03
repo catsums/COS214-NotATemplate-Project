@@ -11,11 +11,15 @@ class Country
         Country(string n, bool s);
         ~Country();
 
+        int generateResources();
+
         bool getSide();
         string getName();
     private:
         bool side;
         string name;
+        int resources;
+        int territory;
 };
 
 #endif

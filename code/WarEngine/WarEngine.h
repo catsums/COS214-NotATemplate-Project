@@ -11,7 +11,7 @@ class WarEngine {
 	static WarEngine& instance();
 	void printWarEngineData();
 
-	void initialiseWar(int c, int ss);
+	void initialiseWar(int c, int ss, int maxTurn);
 	bool runTurn();
   protected:
 	WarEngine();
@@ -21,8 +21,8 @@ class WarEngine {
   private:
     //classes variables
 	vector<Country*> countryArr;
-	int numCountries;
-	int aSize;
+	int currTurn;
+	int maxTurn;
 };
 
 #endif
