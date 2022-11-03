@@ -7,9 +7,8 @@
 
 using namespace std; 
 
-class EntityFactory: 
+class EntityFactory
 {
-
 
 public: 
 
@@ -18,8 +17,16 @@ public:
 	
 	virtual ~EntityFactory(); //destructor
 
-	
+	/*
+	This function instantiates new citizen entities 
+	and returns a refernce to it
+	*/
 	virtual Citizen* createCitizen() =0;
+
+	/*
+	This function instantiates new vehicle entities 
+	and returns a refernce to it
+	*/
 	virtual Vehicle* createVehicle() =0;
 
 	

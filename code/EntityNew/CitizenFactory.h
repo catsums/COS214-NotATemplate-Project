@@ -13,10 +13,11 @@ class CitizenFactory: public EntityFactory
 public: 
 
 	CitizenFactory();// default constuctor 
-	CitizenFactory(int,string,int,int,int);// param constuctor 
+	
 	
 	virtual ~CitizenFactory(); //destructor
 
+	virtual Citizen* createCitizen()=0;
 	
 
 	

@@ -17,6 +17,11 @@
 #include "CargoPlane.cpp"
 #include "CargoShip.cpp"
 
+#include "EntityFactory.cpp"
+#include "CitizenFactory.cpp"
+
+
+
 
 
 using namespace std; 
@@ -25,17 +30,17 @@ using namespace std;
 int main()
 {
 
-	Transport *test = new CargoTruck();
+	// Transport *test = new CargoTruck();
 
-	test->infoSummary();
+	// test->infoSummary();
 
-	cout<<endl;
-	test->decreaseFeul(test,5);
+	// cout<<endl;
+	// test->decreaseFeul(test,5);
 
 
 
-	test->infoSummary();
-	cout<<endl;
+	// test->infoSummary();
+	// cout<<endl;
 	
 
 
@@ -53,7 +58,7 @@ int main()
 	// test->infoSummary();
 
 
-	delete test;
+	//delete test;
 	// delete test2;
 
 }
