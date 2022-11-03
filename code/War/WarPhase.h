@@ -1,64 +1,37 @@
 #ifndef WARPHASE_H
 #define WARPHASE_H
 
+#include <iostream>
+#include <vector>
 #include <string>
-#include "../Country/Country.h"
+#include "BaseWarPhase.h"
+#include "War.h"
 
 using namespace std;
 
-class WarPhase{
+/*	
+	WarPhase object takes a war object in order to implement the state methods for the War object and uses Dependancy injection
+	to allow the WarPhase and WarPhase to refer to each other simultaneously
+*/
+
+class WarPhase: public BaseWarPhase{
 public:
-	virtual void handle(vector<Country*>* a, vector<Country*>* b) = 0;
-	WarPhase(string s);
+	//creates warphase object with war obj and state name
+	WarPhase(War* _war, string s);
 	~WarPhase();
-
-	string getState();
+	//function handles two sides of objects in the war
+	virtual void handle(vector<Country*>* a, vector<Country*>* b);
+	//setter for war object
+	void setWarObject(War* w){
+		war = w;
+	}
+	//getter for war object
+	War* getWarObject(){
+		return war;
+	}
 private:
-	string state;
-};
-
-class PhaseNeutral: public WarPhase{
-public:
-	PhaseNeutral();
-	~PhaseNeutral();
-	void handle(vector<Country*>* a, vector<Country*>* b);
-
-};
-
-class PhasePeace: public WarPhase{
-public:
-	PhasePeace();
-	~PhasePeace();
-	void handle(vector<Country*>* a, vector<Country*>* b);
-
-};
-
-class PhaseOpenConflict: public WarPhase{
-public:
-	PhaseOpenConflict();
-	~PhaseOpenConflict();
-	void handle(vector<Country*>* a, vector<Country*>* b);
-};
-
-class PhaseCrisis: public WarPhase{
-public:
-	PhaseCrisis();
-	~PhaseCrisis();
-	void handle(vector<Country*>* a, vector<Country*>* b);
-};
-
-class PhaseWar: public WarPhase{
-public:
-	PhaseWar();
-	~PhaseWar();
-	void handle(vector<Country*>* a, vector<Country*>* b);
-};
-
-class PhaseNegotiations: public WarPhase{
-public:
-	PhaseNegotiations();
-	~PhaseNegotiations();
-	void handle(vector<Country*>* a, vector<Country*>* b);
+	//war object that uses this specific warphase to behave
+	War* war;
 };
 
 #endif

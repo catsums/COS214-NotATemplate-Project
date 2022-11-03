@@ -1,34 +1,21 @@
 #ifndef WARPHASE_CPP
 #define WARPHASE_CPP
 
-#include <iostream>
-#include <string>
 #include <vector>
-#include "WarPhase.h"
+#include "War.h"
 
 using namespace std;
 
-WarPhase::WarPhase(string s){
-	state = s;
-}
+WarPhase::WarPhase(War* _war, string s):BaseWarPhase(s){
+		war = _war;
+	}
 WarPhase::~WarPhase(){
-
+	war = NULL;
 }
 
-string WarPhase::getState(){
-	return state;
-}
-
-PhaseNeutral::PhaseNeutral():WarPhase("neutral"){
-
-}
-PhaseNeutral::~PhaseNeutral(){
-
-}
-void PhaseNeutral::handle(vector<Country*>* a, vector<Country*>* b){
+void WarPhase::handle(vector<Country*>* a, vector<Country*>* b){
 	for(int i=0; i<(int)a->size(); i++){
 		Country* curr = (*a)[i];
-
 		for(int j=0; i<(int)b->size(); i++){
 			Country* other = (*b)[i];
 
@@ -51,56 +38,3 @@ void PhaseNeutral::handle(vector<Country*>* a, vector<Country*>* b){
 		}
 	}
 }
-
-PhasePeace::PhasePeace():WarPhase("peace"){
-
-}
-PhasePeace::~PhasePeace(){
-
-}
-void PhasePeace::handle(vector<Country*>* a, vector<Country*>* b){
-
-}
-
-
-PhaseOpenConflict::PhaseOpenConflict():WarPhase("openConflict"){
-
-}
-PhaseOpenConflict::~PhaseOpenConflict(){
-	
-}
-void PhaseOpenConflict::handle(vector<Country*>* a, vector<Country*>* b){
-
-}
-
-PhaseCrisis::PhaseCrisis():WarPhase("crisis"){
-
-}
-PhaseCrisis::~PhaseCrisis(){
-	
-}
-void PhaseCrisis::handle(vector<Country*>* a, vector<Country*>* b){
-	
-}
-
-PhaseWar::PhaseWar():WarPhase("war"){
-
-}
-PhaseWar::~PhaseWar(){
-	
-}
-void PhaseWar::handle(vector<Country*>* a, vector<Country*>* b){
-	
-}
-
-PhaseNegotiations::PhaseNegotiations():WarPhase("negotiations"){
-
-}
-PhaseNegotiations::~PhaseNegotiations(){
-	
-}
-void PhaseNegotiations::handle(vector<Country*>* a, vector<Country*>* b){
-	
-}
-
-#endif
