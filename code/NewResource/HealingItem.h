@@ -11,13 +11,20 @@
 class HealingItem: public Item{
 public:
 	HealingItem():Item(1){
-		HealingItem = 10;
+		healingAmt = 10;
+		types.push_back("HealingItem");
 	}
-	HealingItem(int dmg, int amt):Item(amt){
-		healingAmt = dmg;
+	HealingItem(int amt, int healAmt):Item(amt){
+		healingAmt = healAmt;
+		types.push_back("HealingItem");
 	}
-	HealingItem(HealingItem& wpn):Item(wpn){
-		healingAmt = wpn.healingAmt;
+	HealingItem(int healAmt):Item(1){
+		healingAmt = healAmt;
+		types.push_back("HealingItem");
+	}
+	HealingItem(HealingItem& item):Item(item){
+		healingAmt = item.healingAmt;
+		types.push_back("HealingItem");
 	}
 	~HealingItem(){
 
