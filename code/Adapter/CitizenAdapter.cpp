@@ -20,6 +20,24 @@ void CitizenAdapter::onFulFilled(SignalEvent* e){
 	EntityAdapter::onFulFilled(e);
 }
 
+void CitizenAdapter::action(map<string,string> data){
+	EntityAdapter::action(data);
+
+	if(data.count("action")>0){
+		string _action = data["action"];
+
+		if(_action == "equip"){
+
+		}
+		if(_action == "unequip"){
+
+		}
+		if(_action == "useItem"){
+
+		}
+	}
+}
+
 	//Entity stuffs
 // CitizenAdapter::string getInfluence(){
 

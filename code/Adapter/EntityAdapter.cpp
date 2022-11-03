@@ -14,39 +14,39 @@ EntityAdapter::~EntityAdapter(){
 }
 
 ActionRequest* EntityAdapter::requestAttack(string target){
-	map<string, string> data {
-		{"action":"attack"},
-		{"target":target}
+	map<string, string> data = {
+		{"action","attack"},
+		{"target",target}
 	};
 	return createRequest(data, 1);
 }
 ActionRequest* EntityAdapter::requestHeal(int amt){
-	map<string, string> data {
-		{"action":"heal"},
-		{"amount":to_string(amt)}
+	map<string, string> data = {
+		{"action","heal"},
+		{"amount",to_string(amt)}
 	};
 	return createRequest(data, 1);
 }
 ActionRequest* EntityAdapter::requestTakeDamage(int amt){
-	map<string, string> data {
-		{"action":"takeDamage"},
-		{"amount":to_string(amt)}
+	map<string, string> data = {
+		{"action","takeDamage"},
+		{"amount",to_string(amt)}
 	};
 	return createRequest(data, 1);
 }
 ActionRequest* EntityAdapter::requestTravel(Zone* zone){
 	if(!zone) return NULL;
-	Position zone->getPosition();
-	map<string, string> data {
-		{"action":"travel"},
-		{"x":to_string(pos.x)},
-		{"y":to_string(pos.y)}
+	Position pos = zone->getPosition();
+	map<string, string> data = {
+		{"action","travel"},
+		{"x",to_string(pos.x)},
+		{"y",to_string(pos.y)}
 	};
 	return createRequest(data, 1);
 }
 ActionRequest* EntityAdapter::requestDeath(){
-	map<string, string> data {
-		{"action":"die"}
+	map<string, string> data = {
+		{"action","die"}
 	};
 	return createRequest(data, 1);
 }
@@ -54,6 +54,7 @@ ActionRequest* EntityAdapter::requestDeath(){
 void EntityAdapter::action(map<string,string> data){
 	if(data.count("action")>0){
 		string _action = data["action"];
+
 		if(_action == "attack"){
 			if(data.count("target")){
 				attack(data["target"]);
@@ -222,12 +223,8 @@ void EntityAdapter::onFulFilled(SignalEvent* e){
 
 		if(res->isSuccess()){
 			//do stuff on success
-			string* _action = res->getData("action");
-			if(_action){
-				if(_action == "attack"){
-
-				}
-			}
+			map<string,string> _data = res->getDataMap();
+			action(_data);
 		}else{
 			//do stuff on fail
 		}

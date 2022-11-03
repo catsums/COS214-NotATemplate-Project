@@ -14,8 +14,10 @@ using namespace std;
 
 class CitizenAdapter: public EntityAdapter{
 public:
-	CitizenAdapter(Citizen* ent, AdapterManager* mng);
+	CitizenAdapter(Citizen* ent);
 	~CitizenAdapter();
+
+	virtual void action(map<string,string> _data);
 
 	virtual void onHandle(SignalEvent* e);
 	virtual void onFulFilled(SignalEvent* e);
@@ -40,6 +42,9 @@ public:
 		}
 		return NULL;
 	}
+
+	// virtual bool equipItem(Item* item);
+	// virtual bool equipItem(string id);
 
 	// virtual bool takeDamage(int dmg);
 	// virtual bool travel();
