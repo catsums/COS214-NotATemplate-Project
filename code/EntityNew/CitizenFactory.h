@@ -1,3 +1,10 @@
+/** @file CitizenFactory.h
+ *  @brief This is the header file to create many citizen.
+ *
+ *  An abstract factory that creates many entities that will be used as citizens or vehicles
+ * 
+ */
+
 #ifndef CITIZENFACTORY_H
 #define CITIZENFACTORY_H
 
@@ -12,11 +19,18 @@ class CitizenFactory: public EntityFactory
 
 public: 
 
-	CitizenFactory();// default constuctor 
+	/** Default constructor for citizen
+    */
+	CitizenFactory();
 	
-	
-	virtual ~CitizenFactory(); //destructor
+	/** Destructor 
+    */
+	virtual ~CitizenFactory(); 
 
+	/** This function instantiates new citizen entities 
+	*	and returns a refernce to it. A pure virtual 
+	*	function inherets from Entity factory.
+	*/
 	virtual Citizen* createCitizen()=0;
 	
 

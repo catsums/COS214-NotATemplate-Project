@@ -1,3 +1,11 @@
+/** @file EntityFactory.h
+ *  @brief This is the header file to create many entities.
+ *
+ *  An abstract factory that creates many entities that will be used as citizens or vehicles
+ * 
+ */
+
+
 #ifndef ENTITYFACTORY_H
 #define ENTITYFACTORY_H
 
@@ -13,20 +21,21 @@ class EntityFactory
 
 public: 
 
-	EntityFactory();// default constuctor 
+	/** Default constructor for citizen
+    */
+	EntityFactory(); 
 	 
-	
-	virtual ~EntityFactory(); //destructor
+	/** Destructor 
+    */
+	virtual ~EntityFactory(); 
 
-	/*
-	This function instantiates new citizen entities 
-	and returns a refernce to it
+	/** This function instantiates new citizen entities 
+	*	and returns a refernce to it
 	*/
 	virtual Citizen* createCitizen();
 
-	/*
-	This function instantiates new vehicle entities 
-	and returns a refernce to it
+	/** This function instantiates new vehicle entities 
+	*	and returns a refernce to it
 	*/
 	virtual Vehicle* createVehicle();
 
