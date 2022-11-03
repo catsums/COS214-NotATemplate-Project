@@ -4,13 +4,20 @@ using namespace std;
 
 Map::Map() //default constructor
 {
-    mapSize.x = 20;
-    mapSize.y = 20;
+    mapSize.x = 3;
+    mapSize.y = 3;
 
     initialiseRows();
 }
 Map::Map(int w, int h) //default constructor
 {
+    mapSize.x = abs(w);
+    mapSize.y = abs(h);
+
+    initialiseRows();
+}
+
+void Map::setSize(int w, int h){
     mapSize.x = abs(w);
     mapSize.y = abs(h);
 
