@@ -12,12 +12,19 @@ class WeaponItem: public Item{
 public:
 	WeaponItem():Item(1){
 		damage = 10;
+		types.push_back("WeaponItem");
 	}
-	WeaponItem(int dmg, int amt):Item(amt){
+	WeaponItem(int amt, int dmg):Item(amt){
 		damage = dmg;
+		types.push_back("WeaponItem");
+	}
+	WeaponItem(int dmg):Item(1){
+		damage = dmg;
+		types.push_back("WeaponItem");
 	}
 	WeaponItem(WeaponItem& wpn):Item(wpn){
 		damage = wpn.damage;
+		types.push_back("WeaponItem");
 	}
 	~WeaponItem(){
 

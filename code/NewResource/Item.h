@@ -12,13 +12,15 @@
 class Item: public Resource{
 public:
 	Item():Resource(){
-
+		types.push_back("Item");
 	}
 	Item(int amt):Resource(){
 		amount = amt;
+		types.push_back("Item");
 	}
-	Item(Item& item):Resource(){
+	Item(Item& item):Resource(item){
 		amount = item.amount;
+		types.push_back("Item");
 	}
 	~Item(){
 
