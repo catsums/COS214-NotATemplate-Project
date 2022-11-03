@@ -18,6 +18,14 @@ protected:
     string influence;
     Item* item;
 public:
+    Citizen(int hp):Entity(hp){
+        types.push_back("Citizen");
+        influence = "medium";
+        item = NULL;
+
+        land = true;
+        sea = false;
+    }
     Citizen(int hp, string c):Entity(hp,c){
         types.push_back("Citizen");
         influence = "medium";
@@ -93,6 +101,19 @@ public:
     }
     void setInfluence(string inf){
         influence = inf;
+    }
+
+    virtual string getInfo(){
+        stringstream ss;
+
+        string initInfo = Entity::getInfo();
+
+        ss << initInfo;
+        ss << " Influence: " << getInfluence() << "|";
+        ss << " HasItem: " << ((item) ? "Y" : "N") << "|";
+
+
+        return ss.str();
     }
 };
 

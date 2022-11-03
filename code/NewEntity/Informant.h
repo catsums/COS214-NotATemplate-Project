@@ -8,6 +8,10 @@ class Informant : public Citizen
 protected:
     /* data */
 public:
+    Informant(int hp) : Citizen(hp)
+    {
+        types.push_back("Informant");
+    }
     Informant(int hp, string c) : Citizen(hp, c)
     {
         types.push_back("Informant");

@@ -9,6 +9,9 @@ protected:
     /* data */
     int damage = 2;
 public:
+    Soldier(int hp):Citizen(hp){
+        types.push_back("Soldier");
+    }
     Soldier(int hp, string c):Citizen(hp,c){
         types.push_back("Soldier");
     }
@@ -45,6 +48,18 @@ public:
 
     virtual int getOverallStrength(){
         return HP + damage;
+    }
+
+    virtual string getInfo(){
+        stringstream ss;
+
+        string initInfo = Citizen::getInfo();
+
+        ss << initInfo;
+        ss << " Damage: " << getDamage();
+
+
+        return ss.str();
     }
 
 };

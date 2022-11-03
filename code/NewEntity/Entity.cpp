@@ -32,7 +32,14 @@ static string randomString(int len = 9) {
     }
     return str;
 }
+Entity::Entity(int hp){
+    id = randomString(8);
+    HP = hp;
+    country = "";
+    types.push_back("Entity");
 
+    alive = true;
+}
 Entity::Entity(int hp, string c){
 	id = randomString(8);
 	setHP(hp);

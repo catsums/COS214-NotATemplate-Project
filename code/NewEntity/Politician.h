@@ -8,6 +8,9 @@ class Politician : public Citizen
 private:
     /* data */
 public:
+    Politician(int hp):Citizen(hp){
+        types.push_back("Politician");
+    }
     Politician(int hp, string c):Citizen(hp,c){
         types.push_back("Politician");
     }
@@ -24,6 +27,19 @@ public:
     }
     ~Politician(){
 
+    }
+
+    virtual string getInfo(){
+        stringstream ss;
+
+        string initInfo = Citizen::getInfo();
+
+        ss << initInfo;
+        // ss << " Influence: " << getInfluence();
+        // ss << " HasItem: " << (item) ? "Y" : "N";
+
+
+        return ss.str();
     }
 
     ///set/get

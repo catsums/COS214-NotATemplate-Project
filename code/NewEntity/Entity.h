@@ -7,6 +7,7 @@
 #include <random>
 #include <cmath>
 #include <math.h>
+#include <sstream>
 
 #include "../Structs.h"
 
@@ -14,6 +15,7 @@ using namespace std;
 
 class Entity{
 public:
+	Entity(int hp);
 	Entity(int hp, string c);
 	Entity(Entity& ent);
 	~Entity();
@@ -100,6 +102,28 @@ public:
 
 	virtual int getOverallStrength(){
 		return HP;
+	}
+
+	string printInfo(){
+		stringstream ss;
+
+		ss << "ENTITY-" << getID() << "{" << getInfo() << "}";
+
+		return ss.str();
+	}
+
+	virtual string getInfo(){
+		stringstream ss;
+
+		ss << " Type: " << getType() << "|";
+		ss << " HP: " << HP << "|";
+		ss << " Pos: " << zone.x << "," << zone.y << "|";
+		ss << " Alive: " << ((alive) ? "Y" : "N") << "|";
+		ss << " Country: " << country << " | ";
+		ss << " OverallStrength: " << getOverallStrength() << "|";
+
+
+		return ss.str();
 	}
 
 protected:

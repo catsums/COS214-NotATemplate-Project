@@ -11,6 +11,11 @@ protected:
     int healingAmt = 2;
 
 public:
+    Medic(int hp) : Citizen(hp)
+    {
+        types.push_back("Medic");
+        healingAmt = 2;
+    }
     Medic(int hp, string c) : Citizen(hp, c)
     {
         types.push_back("Medic");
@@ -51,6 +56,18 @@ public:
     }
     int getHealingAmt(){
         return healingAmt;
+    }
+
+    virtual string getInfo(){
+        stringstream ss;
+
+        string initInfo = Citizen::getInfo();
+
+        ss << initInfo;
+        ss << " HealingAmt: " << getHealingAmt() << "|";
+
+
+        return ss.str();
     }
 };
 
