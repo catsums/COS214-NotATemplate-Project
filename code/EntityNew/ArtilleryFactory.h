@@ -1,4 +1,4 @@
-/** @file EntityFactory.h
+/** @file ArtilleryFactory.h
  *  @brief This is the header file to create many entities.
  *
  *  An abstract factory that creates many entities that will be used as citizens or vehicles
@@ -6,33 +6,30 @@
  */
 
 
-#ifndef ENTITYFACTORY_H
-#define ENTITYFACTORY_H
+#ifndef ArtilleryFACTORY_H
+#define ArtilleryFACTORY_H
 
 #include <string>
-#include "Citizen.h"
 #include "Vehicle.h"
 
 
 using namespace std; 
 
-class EntityFactory
+class ArtilleryFactory:public VehicleFactory
 {
+protected:
+
+	Vehicle * myVehicle;
 
 public: 
 
 	/** Default constructor for citizen
     */
-	EntityFactory(); 
+	ArtilleryFactory(); 
 	 
 	/** Destructor 
     */
-	virtual ~EntityFactory(); 
-
-	/** This function instantiates new citizen entities 
-	*	and returns a refernce to it
-	*/
-	virtual Citizen* createCitizen();
+	virtual ~ArtilleryFactory(); 
 
 	/** This function instantiates new vehicle entities 
 	*	based on the string paramter value passed in,
@@ -40,6 +37,8 @@ public:
 	* 	and returns a refernce to it
 	*/
 	virtual Vehicle* createVehicle(string);
+
+	
 
 	
 	

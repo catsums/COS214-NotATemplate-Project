@@ -17,7 +17,14 @@ public:
 	
 	virtual ~VehicleFactory(); //destructor
 
-	virtual Vehicle* createVehicle()=0;
+
+	/** This function instantiates new vehicle entities 
+	*	based on the string paramter value passed in,
+	* 	it will know whether to be a land,sea or air vehicle
+	* 	and returns a refernce to it
+	*/
+
+	virtual Vehicle* createVehicle(string)=0;
 	
 
 	
