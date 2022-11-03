@@ -297,82 +297,119 @@ string getRandomString(int size){
 
 
 
-class StepManager{
-public:
-	ActionManager actionManager;
-	AdapterManager adpManager;
-	int step = 0;
-	int maxStep = 9;
-	StepManager(){
+// class StepManager{
+// public:
+// 	ActionManager actionManager;
+// 	AdapterManager adpManager;
+// 	int step = 0;
+// 	int maxStep = 9;
+// 	StepManager(){
 		
-	}
-	~StepManager(){
+// 	}
+// 	~StepManager(){
 
-	}
-	void start(){
-		mainLoop();
-	}
-	void mainLoop(){
-		while(step<maxStep){
-			cout<<"----Step "<<step<<"----"<<endl;
-			cout<<"------------------------"<<endl;
+// 	}
+// 	void start(){
+// 		mainLoop();
+// 	}
+// 	void mainLoop(){
+// 		while(step<maxStep){
+// 			cout<<"----Step "<<step<<"----"<<endl;
+// 			cout<<"------------------------"<<endl;
 
-			///try to get requests
-			cout<<">>> Pushing requests"<<endl;
-			checkEnvironment();
-			cout<<"------------------------"<<endl;
-			///run all requests
-			cout<<">>> Running requests"<<endl;
-			while(!actionManager.isEmptyQueue()){
-				actionManager.handleCurrRequest();
-			}
-			//get queue for next step
-			actionManager.placeNextQueue();
-			///increment step count
-			step++;
-		}
-	}
-	void checkEnvironment(){
-		for(int i=0; i<(int)arr.size();i++){
-			Adapter* adp = arr[i];
-			// cout<<">> Checking Context["<<ctx->name<<"]..."<<endl;
-			int coin = getRandomInt(0,1);
-			if(coin==0 && ctx->reqCount>0){
-				map<string,string> reqData;
-				reqData["fix"] = ctx->getName();
-				ActionRequest* req = ctx->createRequest(reqData, &actionManager);
-				cout<<ctx->getName()<<" opened a request: "<<req->getID()<<" waiting "<<req->getStartCount()<<endl;
-			}
-		}
-	}
-};
+// 			///try to get requests
+// 			cout<<">>> Pushing requests"<<endl;
+// 			checkEnvironment();
+// 			cout<<"------------------------"<<endl;
+// 			///run all requests
+// 			cout<<">>> Running requests"<<endl;
+// 			while(!actionManager.isEmptyQueue()){
+// 				actionManager.handleCurrRequest();
+// 			}
+// 			//get queue for next step
+// 			actionManager.placeNextQueue();
+// 			///increment step count
+// 			step++;
+// 		}
+// 	}
+// 	void checkEnvironment(){
+// 		for(int i=0; i<(int)arr.size();i++){
+// 			Adapter* adp = arr[i];
+// 			// cout<<">> Checking Context["<<ctx->name<<"]..."<<endl;
+// 			int coin = getRandomInt(0,1);
+// 			if(coin==0 && ctx->reqCount>0){
+// 				map<string,string> reqData;
+// 				reqData["fix"] = ctx->getName();
+// 				ActionRequest* req = ctx->createRequest(reqData, &actionManager);
+// 				cout<<ctx->getName()<<" opened a request: "<<req->getID()<<" waiting "<<req->getStartCount()<<endl;
+// 			}
+// 		}
+// 	}
+// };
 
 void managerTest()
 {
-	/////////////////////
-	// StepManager manager;
-	// AdapterManager adpManager;
 
-	// myAdapter* adp1 = new myAdapter(
-	// 	new myContext("cake"), &adpManager
-	// );
-	// myAdapter* adp2 = new myAdapter(
-	// 	new myContext("tart"), &adpManager
-	// );
-	// myAdapter* adp3 = new myAdapter(
-	// 	new myContext("cookie"), &adpManager
-	// );
+	War* war = new War();
 
-	// manager.arr.push_back(adp1);
-	// manager.arr.push_back(adp2);
-	// manager.arr.push_back(adp3);
+	Country* countryA = new Country("Ares");
+	Country* countryB = new Country("Bethlen");
+	Country* countryC = new Country("Catia");
 
-	// manager.start();
+
+	war->addCountry(countryA, 0);
+	war->addCountry(countryB, 0);
+	war->addCountry(countryC, 1);
+
+	war->changePhase(new PhaseWar());
+
+	war->warMap->setSize(3,3);
+	war->warMap->genStandardMap();
+
+	countryA->addZone(war->warMap->getZone(0,0));
+	countryA->addZone(war->warMap->getZone(0,1));
+	countryB->addZone(war->warMap->getZone(1,0));
+	countryC->addZone(war->warMap->getZone(2,2));
+
+	int citNum = 5;
+
+	Position mapSize = war->warMap->getMapSize();
+	
+
+	for(int i=0;i<2;i++){
+		vector<Country*>* side = war->getCountriesOnSide(i);
+		if(side){
+			cout<<"-----SIDE "<<i<<"------"<<endl;
+			for(int j=0;j<side->size();j++){
+				Country* country = side->at(j);
+				if(country){
+					for(int i=0;i<citNum;i++){
+						Citizen* ctn = new Citizen(100);
+						country->addCitizen(ctn);
+
+						for(int r=0; r<mapSize.x;r++){
+							for(int c=0; c<mapSize.y;c++){
+								Zone* zone = war->warMap->getZone(r,c);
+								if(zone && country->hasZone(zone)){
+									if(myHelper::coinFlip() == 0){
+										war->warMap->moveEntity(zone, ctn);
+									}
+								}
+							}
+						}
+					}
+				}
+
+				cout<<country->printInfo()<<endl;
+			}
+		}
+	}
 
 }
 
 int main(){
 	managerTest();
+	// cout<<"Coin "<<myHelper::coinFlip()<<endl;
 
 	return 0;
 }
