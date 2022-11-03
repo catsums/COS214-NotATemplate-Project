@@ -45,17 +45,13 @@ BaseAdapter* AdapterManager::removeAdapter(string type, string id){
 	}
 	return adp;
 }
-// BaseAdapter* AdapterManager::removeAdapter(string id){
-// 	BaseAdapter* adp = NULL;
-// 	if(lists.count(type)>0){
-// 		map<string, BaseAdapter*>* _list = lists[type];
-// 		if(_list->count(id)>0){
-// 			BaseAdapter* adp = (*_list)[id];
-// 			_list->erase(id);
-// 		}
-// 	}
-// 	return adp;
-// }
+void AdapterManager::removeAdapter(BaseAdapter* adp){
+	vector<string> types = adp->getTypes();
+	string id = adp->getID();
+	for(int i=0; i<(int)types.size();i++){
+		removeAdapter(types[i], id);
+	}
+}
 BaseAdapter* AdapterManager::getAdapter(string type, string id){
 	if(lists.count(type)>0){
 		map<string, BaseAdapter*>* _list = lists[type];

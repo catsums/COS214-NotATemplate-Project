@@ -16,6 +16,7 @@ public:
 
 	bool addAdapter(BaseAdapter* adp);
 	BaseAdapter* removeAdapter(string type, string id);
+	void removeAdapter(BaseAdapter* adp);
 	BaseAdapter* getAdapter(string type, string id);
 protected:
 	map<string, map<string, BaseAdapter*>*> lists;
