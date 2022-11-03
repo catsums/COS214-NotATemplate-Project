@@ -25,7 +25,7 @@
 #include "InformantFactory.cpp"
 #include "VehicleFactory.cpp"
 #include "ArtilleryFactory.cpp"
-//#include "TankFactory.cpp"
+#include "TransportFactory.cpp"
 
 
 
@@ -162,4 +162,74 @@ int main()
 	
 	delete myTank;
 	delete myFactory5;
+
+
+	cout<<"Creating an EntityFactory"<<endl;
+	cout<<endl;
+
+	EntityFactory * myFactory6 = new ArtilleryFactory();
+
+	cout<<"EntityFactory created"<<endl;
+	cout<<endl;
+
+	cout<<"Creating an ArtilleryFactory and FighterJetFactory"<<endl;
+	cout<<endl;
+
+	Entity* myJet = myFactory6->createVehicle("air");
+
+	
+
+	myJet->infoSummary();
+	cout<<endl;
+
+	
+	delete myJet;
+	delete myFactory6;
+
+
+
+	cout<<"Creating an EntityFactory"<<endl;
+	cout<<endl;
+
+	EntityFactory * myFactory7 = new ArtilleryFactory();
+
+	cout<<"EntityFactory created"<<endl;
+	cout<<endl;
+
+	cout<<"Creating a ArtilleryFactory and SubmarineFactory"<<endl;
+	cout<<endl;
+
+	Entity* mySubmarine = myFactory7->createVehicle("sea");
+
+	
+
+	mySubmarine->infoSummary();
+	cout<<endl;
+
+	
+	delete mySubmarine;
+	delete myFactory7;
+
+
+	cout<<"Creating an EntityFactory"<<endl;
+	cout<<endl;
+
+	EntityFactory * myFactory8 = new TransportFactory();
+
+	cout<<"EntityFactory created"<<endl;
+	cout<<endl;
+
+	cout<<"Creating a TransportFactory and TruckFactory"<<endl;
+	cout<<endl;
+
+	Entity* myTruck = myFactory8->createVehicle("land");
+
+	
+
+	myTruck->infoSummary();
+	cout<<endl;
+
+	
+	delete myTruck;
+	delete myFactory8;
 }
