@@ -12,6 +12,10 @@
 
 using namespace std;
 
+/*	
+	An adapter that wraps around the citizen entity
+*/
+
 class CitizenAdapter: public EntityAdapter{
 public:
 	CitizenAdapter(Citizen* ent);
@@ -22,7 +26,7 @@ public:
 	virtual void onHandle(SignalEvent* e);
 	virtual void onFulFilled(SignalEvent* e);
 
-	//Entity stuffs
+	//gets the citizen's influence
 	virtual string getInfluence(){
 		Citizen* ctn = getEntityAsCitizen();
 		if(ctn){
@@ -30,7 +34,7 @@ public:
 		}
 		return "";
 	}
-
+	//gets the adaptee as a citizen
 	virtual Citizen* getEntityAsCitizen(){
 		if(entity){
 			try{
@@ -42,14 +46,6 @@ public:
 		}
 		return NULL;
 	}
-
-	// virtual bool equipItem(Item* item);
-	// virtual bool equipItem(string id);
-
-	// virtual bool takeDamage(int dmg);
-	// virtual bool travel();
-	// virtual bool attack(EntityAdapter* adp);
-	// virtual bool attack(string id);
 protected:
 };
 

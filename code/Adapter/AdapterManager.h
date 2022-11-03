@@ -9,16 +9,27 @@
 
 #include "BaseAdapter.h"
 
+/*	
+	Manager that allows other adapters to find other adapters using simply the id and type and perform actions on them implicitly
+	This acts as a mediator between adapters that are not able to interact with each other direcrly
+*/
+
 class AdapterManager{
 public:
+	//creates the Manager with empty lists
 	AdapterManager();
 	~AdapterManager();
 
+	//adds an adapter to the manager and puts it in the lists based on its type
 	bool addAdapter(BaseAdapter* adp);
+	//removes an adapter from a list based on the type and id
 	BaseAdapter* removeAdapter(string type, string id);
+	//removes the adapter from all the lists it is present in
 	void removeAdapter(BaseAdapter* adp);
+	//get a specific adapter based on its type and id
 	BaseAdapter* getAdapter(string type, string id);
 protected:
+	//has many lists all split by type and each list has a list of adapters sorted by id
 	map<string, map<string, BaseAdapter*>*> lists;
 };
 
