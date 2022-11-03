@@ -1,5 +1,5 @@
-Main: Battle.o Country.o WarEngine.o main.cpp
-	g++ Battle.o Country.o WarEngine.o main.cpp -o Main
+main: Battle.o Country.o WarEngine.o main.cpp
+	g++ Battle.o Country.o WarEngine.o main.cpp -o main
 
 Battle.o: ./Battle/Battle.cpp ./Battle/Battle.h
 	g++ -c ./Battle/Battle.cpp
