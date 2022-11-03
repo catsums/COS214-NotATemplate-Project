@@ -7,7 +7,8 @@
 #include <cstdlib>
 #include <vector>
 
-#include "Zone.h"
+#include "SeaZone.h"
+#include "LandZone.h"
 
 using namespace std;
 
@@ -24,7 +25,21 @@ class Map
         //      bodyPercentage(percentage of map that should be covered in water i.e. sea zones, divided into bodies for realism)
         //void genRandomMap(int size, int numBodies, double bodyPercentage); 
 
-        void genStandardMap(); //Generates default map
+        void genStandardMap(){
+            vector<vector<Zone*>*> initZones;
+            for(int r=0; r<mapSize.x; r++){
+                vector<Zone*>* row = new vector<Zone*>();
+                for(int c=0; c<mapSize.y; c++){
+                    // cout<<"> "<<r<<" "<<c<<endl;
+                    Zone* z = new LandZone(r,c,100);
+                    // cout<<"***"<<z->printInfo()<<endl;
+                    row->push_back(z);
+                }
+                initZones.push_back(row);
+            }
+
+            zones = initZones;
+        }
 
         vector<Zone*> getAdjacent(Zone*); //returns all adjacent
 
@@ -44,16 +59,39 @@ class Map
 
         ///added by Cassim
 
+        Position getMapSize(){
+            return mapSize;
+        }
+
+        Zone* getZone(Position pos){
+            return getZone(pos.x,pos.y);
+        }
         Zone* getZone(int x, int y){
-            for(int r=0; r<(int)zones.size();r++){
-                vector<Zone*>* row = zones[r];
-                for(int c=0; c<(int)row->size();c++){
-                    Zone* zone = (*row)[c];
+            if(x>=0 && x<mapSize.x){
+                vector<Zone*>* row = zones[x];
+                if(y>=0 && y<mapSize.y){
+                    Zone* zone = (*row)[y];
                     return zone;
                 }
             }
             return NULL;
         }
+
+        bool moveEntity(Zone* zone, Entity* ent){
+            if(zone && ent){
+                Zone* newZone = getZone(zone->getPosition());
+                Zone* oldZone = getZone(ent->getPosition());
+
+                Entity* _ent = oldZone->removeEntity(ent);
+
+                if( (!_ent) || (_ent == ent) || _ent->getID() == ent->getID() ){
+                    return newZone->moveEntity(ent);
+                }
+            }
+            return false;
+        }
+
+        void setSize(int w, int h);
 
     protected:
         void initialiseRows();
