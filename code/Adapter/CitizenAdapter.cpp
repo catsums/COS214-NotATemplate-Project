@@ -38,22 +38,5 @@ void CitizenAdapter::action(map<string,string> data){
 	}
 }
 
-	//Entity stuffs
-// CitizenAdapter::string getInfluence(){
-
-// }
-
-// CitizenAdapter::bool takeDamage(int dmg){
-
-// }
-// CitizenAdapter::bool travel(){
-
-// }
-// CitizenAdapter::bool attack(EntityAdapter* adp){
-
-// }
-// CitizenAdapter::bool attack(string id){
-
-// }
 
 #endif
