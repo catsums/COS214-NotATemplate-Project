@@ -8,7 +8,7 @@ using namespace std;
 	{
 		
 		//cout<<"Tank’s Constructor was Called"<<endl;
-
+		
 		setHp(22);
 		setDamage(5);
 		setCountry("SA");

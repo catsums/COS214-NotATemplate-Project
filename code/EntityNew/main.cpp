@@ -10,6 +10,8 @@
 #include "Vehicle.cpp"
 #include "Artillery.cpp"
 #include "Tank.cpp"
+#include "FighterJet.cpp"
+#include "Submarine.cpp"
 #include "Transport.cpp"
 
 
