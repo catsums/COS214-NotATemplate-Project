@@ -7,7 +7,7 @@
 
 using namespace std; 
 
-class CargoTruck: public Artillery
+class CargoTruck: public Transport
 {
 
 
@@ -18,7 +18,7 @@ public:
 	
 	virtual ~CargoTruck(); //destructor
 
-	virtual void decreaseFeul(Artillery*,int);
+	virtual void decreaseFeul(Transport*,int);
 	
 
 	

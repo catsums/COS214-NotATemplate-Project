@@ -13,6 +13,8 @@
 #include "FighterJet.cpp"
 #include "Submarine.cpp"
 #include "Transport.cpp"
+#include "CargoTruck.cpp"
+#include "CargoPlane.cpp"
 
 
 
@@ -22,7 +24,7 @@ using namespace std;
 int main()
 {
 
-	Artillery *test = new Tank();
+	Transport *test = new CargoTruck();
 
 	test->infoSummary();
 

@@ -19,7 +19,7 @@ using namespace std;
 	} 
 
 
-	CargoTruck::CargoTruck(int h,string c, int d, int x , int y ):Artillery(h,c,d,x,y)// param constuctor 
+	CargoTruck::CargoTruck(int h,string c, int d, int x , int y ):Transport(h,c,d,x,y)// param constuctor 
 	{
 		setHp(h);
 		setDamage(d);
@@ -34,7 +34,7 @@ using namespace std;
 		//cout<<"CargoTruck’s Destructor was Called"<<endl;
 	}
 
-	void CargoTruck::decreaseFeul(Artillery* a,int f)
+	void CargoTruck::decreaseFeul(Transport* a,int f)
 	{
 		int temp = a->getFeul();
 
