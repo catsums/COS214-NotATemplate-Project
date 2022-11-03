@@ -126,6 +126,9 @@ string* ActionRequest::setData(string key, string val){
 void ActionRequest::setDataMap(map<string,string> newData){
 	requestData = newData;
 }
+map<string,string> ActionRequest::getDataMap(){
+	return requestData;
+}
 
 void ActionRequest::handle(ActionResult* res){
 	
