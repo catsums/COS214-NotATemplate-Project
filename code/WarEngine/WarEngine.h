@@ -11,7 +11,7 @@ class WarEngine
   public:
 	static WarEngine& instance();
 	void printWarEngineData();
-	void printSide(bool side)
+	void printSide(bool side);
 
 	void initialiseWar(int c, int ss, int maxTurn);
 	bool runTurn();

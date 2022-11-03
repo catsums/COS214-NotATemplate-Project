@@ -47,10 +47,12 @@ bool WarEngine::runTurn(){
     switch (action)
     {
       case 1: //land attack
+        int theatre = 1;
         Country* target;
         int targetId = rand() % countryArr.size();
 
-        //Battle b = new Battle(countryArr[i], target);
+        //Battle b = new Battle(countryArr[i], target, theatre);
+        //b.commence
 
         break;
       default:
