@@ -60,7 +60,7 @@ public:
 
 	*/
 
-	void infoSummary();
+	virtual void infoSummary();
 	
 	/*
 

@@ -68,6 +68,13 @@ using namespace std;
 	}
 
 	
-	
+	void Vehicle::infoSummary()
+	{
+		cout<<"*Entity Details*:"<<endl;
+		cout<<"Health: " <<hp<<endl;
+		cout<<"Country: " <<country<<endl;
+		cout<<"Damage: " <<damage<<endl;
+		cout<<"Position: (" <<xpos<<","<<ypos<<")"<<endl;
+	}
 	
 

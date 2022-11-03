@@ -46,3 +46,14 @@ using namespace std;
 		return feul;
 	}
 
+
+	void Artillery::infoSummary()
+	{
+		cout<<"*Entity Details*:"<<endl;
+		cout<<"Health: " <<hp<<endl;
+		cout<<"Country: " <<country<<endl;
+		cout<<"Damage: " <<damage<<endl;
+		cout<<"Position: (" <<xpos<<","<<ypos<<")"<<endl;
+		cout<<"Feul: "<<getFeul()<<endl;
+	}
+

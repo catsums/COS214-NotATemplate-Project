@@ -34,9 +34,13 @@ using namespace std;
 		//cout<<"Tank’s Destructor was Called"<<endl;
 	}
 
-	void Tank::decreaseFeul(Artillery* a,int)
+	void Tank::decreaseFeul(Artillery* a,int f)
 	{
+		int temp = a->getFeul();
 
+		temp = temp - f;
+
+		a->setFeul(temp);
 	}
 
 
