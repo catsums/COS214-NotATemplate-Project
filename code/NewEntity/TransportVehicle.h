@@ -12,6 +12,7 @@ using namespace std;
 
 class TransportVehicle: public virtual Vehicle{
 public:
+	TransportVehicle(int hp, int f);
 	TransportVehicle(int hp, string c, int f);
 	TransportVehicle(TransportVehicle& ent);
 	~TransportVehicle();
@@ -55,6 +56,21 @@ public:
 		}
 		return str;
 	}
+
+	virtual string getInfo(){
+        stringstream ss;
+
+        string initInfo = Vehicle::getInfo();
+
+        ss << initInfo;
+        ss << " EntityCap: " << entityCapacity << "|";
+        ss << " ResourceCap: " << resourceCapacity << "|";
+        ss << " NumOfEntities: " << getNumberOfEntities() << "|";
+        ss << " NumOfResources: " << getNumberOfResources() << "|";
+
+
+        return ss.str();
+    }
 
 protected:
 	vector<Entity*> entities;

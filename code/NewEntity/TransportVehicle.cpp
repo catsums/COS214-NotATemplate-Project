@@ -5,11 +5,17 @@
 
 using namespace std;
 
+TransportVehicle::TransportVehicle(int hp, int f):Vehicle(hp,f){
+	Entity::types.push_back("TransportVehicle");
+	Resource::types.push_back("TransportVehicle");
+}
 TransportVehicle::TransportVehicle(int hp, string c, int f):Vehicle(hp,c,f){
-	types.push_back("TransportVehicle");
+	Entity::types.push_back("TransportVehicle");
+	Resource::types.push_back("TransportVehicle");
 }
 TransportVehicle::TransportVehicle(TransportVehicle& ent):Vehicle(ent){
-	types.push_back("TransportVehicle");
+	Entity::types.push_back("TransportVehicle");
+	Resource::types.push_back("TransportVehicle");
 	entityCapacity = ent.entityCapacity;
 	resourceCapacity = ent.resourceCapacity;
 }
