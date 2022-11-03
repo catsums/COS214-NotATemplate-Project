@@ -15,6 +15,7 @@
 #include "Transport.cpp"
 #include "CargoTruck.cpp"
 #include "CargoPlane.cpp"
+#include "CargoShip.cpp"
 
 
 
