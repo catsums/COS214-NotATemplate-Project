@@ -17,7 +17,14 @@ public:
 	
 	virtual ~Vehicle(); //destructor
 
-	
+
+	/*
+
+	This function couts all the entity variables
+
+	*/
+
+	virtual void infoSummary();
 
 	/*
 

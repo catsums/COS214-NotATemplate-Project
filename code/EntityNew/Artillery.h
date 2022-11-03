@@ -25,6 +25,14 @@ public:
 
 
 	/*
+
+	This function couts all the entity variables
+
+	*/
+
+	virtual void infoSummary();
+	
+	/*
 	This function will decrease the feul of a vehicle
 	it takes in a pointer to an artillery and an int amount to decrease the feul
 

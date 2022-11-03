@@ -10,7 +10,20 @@
 #include "Vehicle.cpp"
 #include "Artillery.cpp"
 #include "Tank.cpp"
+#include "FighterJet.cpp"
+#include "Submarine.cpp"
 #include "Transport.cpp"
+#include "CargoTruck.cpp"
+#include "CargoPlane.cpp"
+#include "CargoShip.cpp"
+
+#include "EntityFactory.cpp"
+#include "CitizenFactory.cpp"
+#include "VehicleFactory.cpp"
+#include "SoldierFactory.cpp"
+
+
+
 
 
 
@@ -20,35 +33,36 @@ using namespace std;
 int main()
 {
 
-	Artillery *test = new Tank();
-
-	test->infoSummary();
+	cout<<"This shows the Abstarct Factory Method application"<<endl;
 
 	cout<<endl;
-	test->decreaseFeul(test,5);
 
-
-
-	test->infoSummary();
+	cout<<"Creating an EntityFactory"<<endl;
 	cout<<endl;
+
+	EntityFactory * myFactory = new SoldierFactory();
+
+	cout<<"EntityFactory created"<<endl;
+	cout<<endl;
+
+	cout<<"Creating a CitizenFactory and SoldierFactory"<<endl;
+	cout<<endl;
+
+	Entity* mySoldier = myFactory->createCitizen();
+
+	
+
+	mySoldier->infoSummary();
+	cout<<endl;
+
+	
 	
 
 
-	// Citizen *test2 = new Medic();
-
-	// test2->infoSummary();
+	
 
 
-	// test->recieveHp(test2->getHeal());
-
-
-	// cout<<endl;
-
-
-	// test->infoSummary();
-
-
-	delete test;
-	// delete test2;
+	delete mySoldier;
+	delete myFactory;
 
 }

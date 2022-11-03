@@ -8,7 +8,7 @@ using namespace std;
 	{
 		
 		//cout<<"Tank’s Constructor was Called"<<endl;
-
+		
 		setHp(22);
 		setDamage(5);
 		setCountry("SA");
@@ -34,9 +34,13 @@ using namespace std;
 		//cout<<"Tank’s Destructor was Called"<<endl;
 	}
 
-	void Tank::decreaseFeul(Artillery* a,int)
+	void Tank::decreaseFeul(Artillery* a,int f)
 	{
+		int temp = a->getFeul();
 
+		temp = temp - f;
+
+		a->setFeul(temp);
 	}
 
 
