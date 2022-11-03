@@ -43,20 +43,29 @@ bool WarEngine::runTurn(){
     countryArr[i]->generateResources();
 
     //decision making
-    int action;
+    int action = 0;
     switch (action)
     {
       case 1: //land attack
+      {
         int theatre = 1;
         Country* target;
         int targetId = rand() % countryArr.size();
 
-        //Battle b = new Battle(countryArr[i], target, theatre);
-        //b.commence
+        Battle* b = new Battle(countryArr[i], target, theatre);
+        b->commence();
+      } 
+      break;
+      case 2: //sea attack
+      {
+        int theatre = 2;
+        Country* target;
+        int targetId = rand() % countryArr.size();
 
-        break;
-      default:
-        //idle
+        Battle* b = new Battle(countryArr[i], target, theatre);
+        b->commence();
+      }
+      break;
     }
     
   }

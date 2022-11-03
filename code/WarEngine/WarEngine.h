@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "../Country/Country.h"
+#include "../Battle/Battle.h"
 
 using namespace std;
 
