@@ -1,19 +1,19 @@
-/** @file SoldierFactory.h
- *  @brief This is the header file to create many citizens of type soldier.
+/** @file InformantFactory.h
+ *  @brief This is the header file to create many citizens of type informant.
  *
  *  An abstract factory that creates many entities that will be used as citizens or vehicles
  * 
  */
 
-#ifndef SOLDIERFACTORY_H
-#define SOLDIERFACTORY_H
+#ifndef INFORMANTFACTORY_H
+#define INFORMANTFACTORY_H
 
 #include <string>
 #include "Citizen.h"
 
 using namespace std; 
 
-class SoldierFactory: public CitizenFactory
+class InformantFactory: public CitizenFactory
 {
 
 protected:
@@ -22,9 +22,9 @@ protected:
 
 public: 
 
-	/** Default constructor for soldier
+	/** Default constructor for informant
     */
-	SoldierFactory(); 
+	InformantFactory(); 
 
 	/** A parameter constructer taht initializes 5 parameters inherits the variables from the soldier factory class  
 	*
@@ -35,11 +35,11 @@ public:
 	*	@param int variable that represents the y-coordinates 
     */
 
-	SoldierFactory(int,string,int,int,int); 
+	InformantFactory(int,string,int,int,int); 
 	
 	/** Destructor 
     */
-	virtual ~SoldierFactory(); 
+	virtual ~InformantFactory(); 
 
 	/** This function instantiates new citizen entities 
 	*	and returns a refernce to it. A pure virtual 

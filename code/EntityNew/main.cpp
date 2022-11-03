@@ -21,6 +21,10 @@
 #include "CitizenFactory.cpp"
 #include "VehicleFactory.cpp"
 #include "SoldierFactory.cpp"
+#include "MedicFactory.cpp"
+#include "PoliticianFactory.cpp"
+#include "InformantFactory.cpp"
+
 
 
 
@@ -56,12 +60,6 @@ int main()
 	cout<<endl;
 
 	
-	
-
-
-	
-
-
 	delete mySoldier;
 	delete myFactory;
 
