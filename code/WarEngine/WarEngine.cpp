@@ -44,29 +44,29 @@ bool WarEngine::runTurn(){
 
     //decision making
     int action = 0;
-    switch (action)
-    {
-      case 1: //land attack
-      {
-        int theatre = 1;
-        Country* target;
-        int targetId = rand() % countryArr.size();
+    // switch (action)
+    // {
+    //   case 1: //land attack
+    //   {
+    //     int theatre = 1;
+    //     Country* target;
+    //     int targetId = rand() % countryArr.size();
 
-        Battle* b = new Battle(countryArr[i], target, theatre);
-        b->commence();
-      } 
-      break;
-      case 2: //sea attack
-      {
-        int theatre = 2;
-        Country* target;
-        int targetId = rand() % countryArr.size();
+    //     Battle* b = new Battle(countryArr[i], target, theatre);
+    //     b->commence();
+    //   } 
+    //   break;
+    //   case 2: //sea attack
+    //   {
+    //     int theatre = 2;
+    //     Country* target;
+    //     int targetId = rand() % countryArr.size();
 
-        Battle* b = new Battle(countryArr[i], target, theatre);
-        b->commence();
-      }
-      break;
-    }
+    //     Battle* b = new Battle(countryArr[i], target, theatre);
+    //     b->commence();
+    //   }
+    //   break;
+    // }
     
   }
 
@@ -137,7 +137,6 @@ void WarEngine::printSide(bool side)
     {
       cout << countryArr[i]->getName() << endl;
     }
-    cout << endl;
   }
 }
 

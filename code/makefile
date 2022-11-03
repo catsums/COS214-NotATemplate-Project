@@ -1,20 +1,14 @@
-TARGET ?= a.out
-SRC_DIRS ?= ./src
+Main: Country.o WarEngine.o main.cpp
+	g++ Country.o WarEngine.o main.cpp -o Main
 
-SRCS := $(shell find $(SRC_DIRS) -name *.cpp -or -name *.c -or -name *.s)
-OBJS := $(addsuffix .o,$(basename $(SRCS)))
-DEPS := $(OBJS:.o=.d)
+Country.o: ./Country/Country.cpp ./Country/Country.h
+	g++ -c ./Country/Country.cpp
 
-INC_DIRS := $(shell find $(SRC_DIRS) -type d)
-INC_FLAGS := $(addprefix -I,$(INC_DIRS))
+WarEngine.o: ./WarEngine/WarEngine.cpp ./WarEngine/WarEngine.h
+	g++ -c ./WarEngine/WarEngine.cpp
 
-CPPFLAGS ?= $(INC_FLAGS)
+run:
+	./main
 
-$(TARGET): $(OBJS)
-	$(CC) $(OBJS) -o $@ $(LOADLIBES) $(LDLIBS)
-
-.PHONY: clean
 clean:
-	$(RM) $(TARGET) $(OBJS) $(DEPS)
-
--include $(DEPS)
+	rm *.o main
