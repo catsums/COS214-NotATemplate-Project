@@ -7,6 +7,8 @@
 #include <map>
 #include <vector>
 #include <sstream>
+#include <utility>
+#include <initializer_list>
 
 #include "BaseAdapter.h"
 #include "AdapterManager.h"
@@ -24,7 +26,13 @@ public:
 	virtual void onFulFilled(SignalEvent* e);
 
 	virtual void setManager(AdapterManager* mng){
+		if(manager){
+			manager->removeAdapter(this);
+		}
 		manager = mng;
+		if(manager){
+			manager->addAdapter(this);
+		}
 	}
 
 protected:
