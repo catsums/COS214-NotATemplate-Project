@@ -13,6 +13,7 @@ using namespace std;
 		setCountry("SA");
 		setXpos(0);
 		setYpos(0);
+		
 
 	} 
 

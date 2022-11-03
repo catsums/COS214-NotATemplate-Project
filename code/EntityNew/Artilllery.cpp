@@ -44,6 +44,6 @@ using namespace std;
 	
 	void Artillery::setFeul(int f) 
 	{
-		feul = f;;
+		feul = f;
 	}
 

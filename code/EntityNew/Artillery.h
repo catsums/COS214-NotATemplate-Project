@@ -19,6 +19,15 @@ public:
 	
 	virtual ~Artillery(); //destructor
 
+	//getters
+
+	int getFeul();
+
+
+	//setter 
+
+	void setFeul(int);
+
 
 	/*
 	This function will decrease the feul of a vehicle
@@ -30,14 +39,7 @@ public:
 
 	
 	
-	//getters
-
-	int getFeul();
-
-
-	//setter 
-
-	void setFeul(int);
+	
 };
 
 #endif

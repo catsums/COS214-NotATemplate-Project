@@ -10,9 +10,6 @@ using namespace std;
 class Tank: public Artillery
 {
 
-	
-	
-
 
 
 public: 
@@ -21,7 +18,7 @@ public:
 
 	virtual ~Tank(); //destructor
 	
-	virtual void decreaseFeul(Artillery*,int);
+	virtual void decreaseFeul(Artillery* a,int);
 	
 	
 };

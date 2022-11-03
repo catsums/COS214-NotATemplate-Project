@@ -9,6 +9,7 @@
 
 #include "Vehicle.cpp"
 #include "Artillery.cpp"
+#include "Tank.cpp"
 #include "Transport.cpp"
 
 
@@ -19,7 +20,8 @@ using namespace std;
 int main()
 {
 
-	//Vehicle *test = new Transport();
+	Artillery *test = new Tank();
+	test->decreaseFeul(test,5);
 
 	//test->infoSummary();
 
@@ -40,7 +42,7 @@ int main()
 	// test->infoSummary();
 
 
-	//delete test;
+	delete test;
 	// delete test2;
 
 }
