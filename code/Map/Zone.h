@@ -6,6 +6,7 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <sstream>
 
 #include "../Structs.h"
 #include "../NewEntity/Entity.h"
@@ -17,6 +18,7 @@ class Zone
 {
 	public:
 		Zone(int x, int y, int pv, bool l); //Parameterised constructor
+		Zone(int x, int y, int pv, bool l, string c); //Parameterised constructor
 		~Zone();
 		//accessor methods
 		int getX();
@@ -27,11 +29,21 @@ class Zone
 	protected:
 		Position pos;
 
+		string country;
+
 		int productionValue; //Determines how much money zone produces for occupant
 
 		bool land; //true if land zone, false if sea zone
 	public:
 ///added by cassim
+
+		void setCountry(string c){
+			country = c;
+		}
+		string getCountry(){
+			return country;
+		}
+
 		int getProductionValue(){
 			return productionValue;
 		}
@@ -49,6 +61,46 @@ class Zone
 		Facility* removeFacility(Facility* fac);
 		bool hasFacility(Facility* fac);
 
+		virtual string printInfo(){
+			stringstream ss;
+
+			ss << "ZONE - "<<pos.x<<","<<pos.y;
+			ss << "\n";
+			ss << " Country: " << getCountry() << " | ";
+			if(isLand()){
+				ss<<" IsLand";
+			}else{
+				ss<<" IsSea";
+			}
+			ss << " | ";
+
+			ss << "\n[";
+			ss << getInfo();
+			ss << "\n]";
+
+			return ss.str();
+		}
+
+		virtual string getInfo(){
+			stringstream ss;
+			
+			ss<<"\n\t Entities:"<<"\n";
+			for(auto const&[id,ent]:entities){
+				if(ent){
+					ss << ent->printInfo() << endl;
+				}
+			}
+
+			ss<<"\n\t Facilities:"<<"\n";
+			for(auto const&[id,fac]:facilities){
+				if(fac){
+					ss << fac->printInfo() << endl;
+				}
+			}
+			
+
+			return ss.str();
+		}
 
 	protected:
 ///by Cassim

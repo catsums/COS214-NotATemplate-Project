@@ -17,7 +17,16 @@ Zone::Zone(int x, int y, int pv, bool l)
 	pos.x = x; pos.y = y;
 	this->productionValue = pv;
 	this->land = l;
+	country = "";
 }
+Zone::Zone(int x, int y, int pv, bool l, string c)
+{
+	pos.x = x; pos.y = y;
+	this->productionValue = pv;
+	this->land = l;
+	country = c;
+}
+
 
 Zone::~Zone(){
 
