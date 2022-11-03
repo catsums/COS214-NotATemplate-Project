@@ -5,22 +5,30 @@
 
 using namespace std;
 
+BattleVehicle::BattleVehicle(int hp, int f):Vehicle(hp,f){
+	Entity::types.push_back("BattleVehicle");
+	Resource::types.push_back("BattleVehicle");
+	ammo = 100;
+}
 BattleVehicle::BattleVehicle(int hp, string c, int f):Vehicle(hp,c,f){
-	types.push_back("BattleVehicle");
+	Entity::types.push_back("BattleVehicle");
+	Resource::types.push_back("BattleVehicle");
 	ammo = 100;
 }
 BattleVehicle::BattleVehicle(int hp, string c, int f, int dmg):Vehicle(hp,c,f){
-	types.push_back("BattleVehicle");
+	Entity::types.push_back("BattleVehicle");
+	Resource::types.push_back("BattleVehicle");
 	strength = dmg;
 	ammo = 100;
 }
 BattleVehicle::BattleVehicle(BattleVehicle& ent):Vehicle(ent){
-	types.push_back("BattleVehicle");
+	Entity::types.push_back("BattleVehicle");
+	Resource::types.push_back("BattleVehicle");
 	strength = ent.strength;
 	ammo = ent.ammo;
 }
 BattleVehicle::~BattleVehicle(){
-	
+
 }
 
 void BattleVehicle::attack(Entity* target){

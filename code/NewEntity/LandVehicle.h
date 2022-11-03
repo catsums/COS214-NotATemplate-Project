@@ -12,12 +12,19 @@ using namespace std;
 
 class LandVehicle: public virtual Vehicle{
 public:
+	LandVehicle(int hp, int f):Vehicle(hp,f){
+		Entity::types.push_back("LandVehicle");
+		Resource::types.push_back("LandVehicle");
+		land = true;
+	}
 	LandVehicle(int hp, string c, int f):Vehicle(hp,c,f){
-		types.push_back("LandVehicle");
+		Entity::types.push_back("LandVehicle");
+		Resource::types.push_back("LandVehicle");
 		land = true;
 	}
 	LandVehicle(LandVehicle& ent):Vehicle(ent){
-		types.push_back("LandVehicle");
+		Entity::types.push_back("LandVehicle");
+		Resource::types.push_back("LandVehicle");
 		land = true;
 	}
 	~LandVehicle(){

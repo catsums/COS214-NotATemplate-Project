@@ -12,13 +12,18 @@ using namespace std;
 
 class AirVehicle: public virtual Vehicle{
 public:
+	AirVehicle(int hp, int f):Vehicle(hp,f){
+		Entity::types.push_back("AirVehicle");
+		land = true;
+		sea = true;
+	}
 	AirVehicle(int hp, string c, int f):Vehicle(hp,c,f){
-		types.push_back("AirVehicle");
+		Entity::types.push_back("AirVehicle");
 		land = true;
 		sea = true;
 	}
 	AirVehicle(AirVehicle& ent):Vehicle(ent){
-		types.push_back("AirVehicle");
+		Entity::types.push_back("AirVehicle");
 		land = true;
 		sea = true;
 	}

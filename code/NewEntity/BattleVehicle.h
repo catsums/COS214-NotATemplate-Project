@@ -12,6 +12,7 @@ using namespace std;
 
 class BattleVehicle: public virtual Vehicle{
 public:
+	BattleVehicle(int hp, int f);
 	BattleVehicle(int hp, string c, int f);
 	BattleVehicle(int hp, string c, int f, int dmg);
 	BattleVehicle(BattleVehicle& ent);
@@ -32,8 +33,28 @@ public:
 		return ammo;
 	}
 
+	void setDamage(int str){
+		strength = str;
+	}
+	int getDamage(){
+		return strength;
+	}
+
 	virtual int getOverallStrength(){
         return HP + strength;
+    }
+
+    virtual string getInfo(){
+        stringstream ss;
+
+        string initInfo = Vehicle::getInfo();
+
+        ss << initInfo;
+        ss << " Ammo: " << getAmmo() << "|";
+        ss << " Damage: " << getDamage() << "|";
+
+
+        return ss.str();
     }
 
 protected:

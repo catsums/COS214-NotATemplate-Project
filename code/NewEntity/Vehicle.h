@@ -12,6 +12,7 @@ using namespace std;
 
 class Vehicle: public Entity, public Resource{
 public:
+	Vehicle(int hp, int f);
 	Vehicle(int hp, string c, int f);
 	Vehicle(Vehicle& ent);
 	~Vehicle();
@@ -28,6 +29,18 @@ public:
 	int getFuel(){
 		return fuel;
 	}
+
+	virtual string getInfo(){
+        stringstream ss;
+
+        string initInfo = Entity::getInfo();
+
+        ss << initInfo;
+        ss << " Fuel: " << fuel << "|";
+
+
+        return ss.str();
+    }
 protected:
 	int fuel;
 

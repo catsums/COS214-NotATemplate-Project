@@ -12,12 +12,16 @@ using namespace std;
 
 class SeaVehicle: public virtual Vehicle{
 public:
+	SeaVehicle(int hp, int f):Vehicle(hp,f){
+		Entity::types.push_back("SeaVehicle");
+		sea = true;
+	}
 	SeaVehicle(int hp, string c, int f):Vehicle(hp,c,f){
-		types.push_back("SeaVehicle");
+		Entity::types.push_back("SeaVehicle");
 		sea = true;
 	}
 	SeaVehicle(SeaVehicle& ent):Vehicle(ent){
-		types.push_back("SeaVehicle");
+		Entity::types.push_back("SeaVehicle");
 		sea = true;
 	}
 	~SeaVehicle(){

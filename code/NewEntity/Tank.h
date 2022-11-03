@@ -13,17 +13,26 @@ using namespace std;
 
 class Tank: public LandVehicle, public BattleVehicle{
 public:
+	Tank(int hp, int f):Vehicle(hp,f),LandVehicle(hp,f),BattleVehicle(hp,f){
+		Entity::types.push_back("Tank");
+		Resource::types.push_back("Tank");
+		strength = 20;
+		ammo = 50;
+	}
 	Tank(int hp, string c, int f):Vehicle(hp,c,f),LandVehicle(hp,c,f),BattleVehicle(hp,c,f){
-		types.push_back("Tank");
+		Entity::types.push_back("Tank");
+		Resource::types.push_back("Tank");
 		strength = 20;
 		ammo = 50;
 	}
 	Tank(int hp, string c, int f, int dmg):Vehicle(hp,c,f),LandVehicle(hp,c,f),BattleVehicle(hp,c,f,dmg){
-		types.push_back("Tank");
+		Entity::types.push_back("Tank");
+		Resource::types.push_back("Tank");
 		ammo = 50;
 	}
 	Tank(Tank& ent):Vehicle(ent),LandVehicle(ent),BattleVehicle(ent){
-		types.push_back("Tank");
+		Entity::types.push_back("Tank");
+		Resource::types.push_back("Tank");
 	}
 	~Tank(){
 
@@ -39,6 +48,19 @@ public:
 	virtual Resource* clone(){
 		return new Tank(*this);
 	}
+
+	virtual string getInfo(){
+        stringstream ss;
+
+        string initInfo = BattleVehicle::getInfo();
+
+        ss << initInfo;
+        // ss << " Ammo: " << getAmmo();
+        // ss << " Damage: " << getDamage();
+
+
+        return ss.str();
+    }
 
 	///set/get
 

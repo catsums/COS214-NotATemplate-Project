@@ -16,13 +16,18 @@ class Truck:public LandVehicle, public TransportVehicle{
 	static const int SEATCAPACITY = 6;
 	static const int CARGOCAPACITY = 2;
 public:
+	Truck(int hp, int f):Vehicle(hp,f),LandVehicle(hp,f),TransportVehicle(hp,f){
+		Entity::types.push_back("Truck");
+		entityCapacity = SEATCAPACITY;
+		resourceCapacity = CARGOCAPACITY;
+	}
 	Truck(int hp, string c, int f):Vehicle(hp,c,f),LandVehicle(hp,c,f),TransportVehicle(hp,c,f){
-		types.push_back("Truck");
+		Entity::types.push_back("Truck");
 		entityCapacity = SEATCAPACITY;
 		resourceCapacity = CARGOCAPACITY;
 	}
 	Truck(Truck& ent):Vehicle(ent),LandVehicle(ent),TransportVehicle(ent){
-		types.push_back("Truck");
+		Entity::types.push_back("Truck");
 		entityCapacity = SEATCAPACITY;
 		resourceCapacity = CARGOCAPACITY;
 	}
@@ -62,6 +67,19 @@ public:
 	virtual Resource* clone(){
 		return new Truck(*this);
 	}
+
+	virtual string getInfo(){
+        stringstream ss;
+
+        string initInfo = TransportVehicle::getInfo();
+
+        ss << initInfo;
+        // ss << " Ammo: " << getAmmo();
+        // ss << " Damage: " << getDamage();
+
+
+        return ss.str();
+    }
 
 	///set/get
 

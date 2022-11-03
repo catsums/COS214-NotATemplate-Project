@@ -16,13 +16,21 @@ class Aeroplane:public AirVehicle, public TransportVehicle{
 	static const int SEATCAPACITY = 20;
 	static const int CARGOCAPACITY = 10;
 public:
+	Aeroplane(int hp, int f):Vehicle(hp,f),AirVehicle(hp,f),TransportVehicle(hp,f){
+		Entity::types.push_back("Aeroplane");
+		Resource::types.push_back("Aeroplane");
+		entityCapacity = SEATCAPACITY;
+		resourceCapacity = CARGOCAPACITY;
+	}
 	Aeroplane(int hp, string c, int f):Vehicle(hp,c,f),AirVehicle(hp,c,f),TransportVehicle(hp,c,f){
-		types.push_back("Aeroplane");
+		Entity::types.push_back("Aeroplane");
+		Resource::types.push_back("Aeroplane");
 		entityCapacity = SEATCAPACITY;
 		resourceCapacity = CARGOCAPACITY;
 	}
 	Aeroplane(Truck& ent):Vehicle(ent),AirVehicle(ent),TransportVehicle(ent){
-		types.push_back("Aeroplane");
+		Entity::types.push_back("Aeroplane");
+		Resource::types.push_back("Aeroplane");
 		entityCapacity = SEATCAPACITY;
 		resourceCapacity = CARGOCAPACITY;
 	}
@@ -62,6 +70,19 @@ public:
 	virtual Resource* clone(){
 		return new Truck(*this);
 	}
+
+	virtual string getInfo(){
+        stringstream ss;
+
+        string initInfo = TransportVehicle::getInfo();
+
+        ss << initInfo;
+        // ss << " Ammo: " << getAmmo();
+        // ss << " Damage: " << getDamage();
+
+
+        return ss.str();
+    }
 
 	///set/get
 

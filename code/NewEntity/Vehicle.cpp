@@ -8,13 +8,20 @@
 
 using namespace std;
 
+Vehicle::Vehicle(int hp, int f):Entity(hp),Resource(){
+	fuel = f;
+	Entity::types.push_back("Vehicle");
+	Resource::types.push_back("Vehicle");
+}
 Vehicle::Vehicle(int hp, string c, int f):Entity(hp,c),Resource(){
 	fuel = f;
-	types.push_back("Vehicle");
+	Entity::types.push_back("Vehicle");
+	Resource::types.push_back("Vehicle");
 }
 Vehicle::Vehicle(Vehicle& ent):Entity(ent){
 	fuel = ent.fuel;
-	types.push_back("Vehicle");
+	Entity::types.push_back("Vehicle");
+	Resource::types.push_back("Vehicle");
 }
 Vehicle::~Vehicle(){
 
