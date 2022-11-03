@@ -19,14 +19,9 @@ public:
 	
 	virtual ~Artillery(); //destructor
 
-	//getters
+	void setFeul(int);
 
 	int getFeul();
-
-
-	//setter 
-
-	void setFeul(int);
 
 
 	/*

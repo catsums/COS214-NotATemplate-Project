@@ -1,9 +1,9 @@
-#ifndef TANK_H
-#define TANK_H
+#ifndef Tank_H
+#define Tank_H
 
 #include <string>
+#include "Vehicle.h"
 #include "Artillery.h"
-
 
 using namespace std; 
 
@@ -11,14 +11,17 @@ class Tank: public Artillery
 {
 
 
-
 public: 
 
-	Tank();// default constuctor
-
-	virtual ~Tank(); //destructor
+	Tank();// default constuctor 
+	Tank(int,string,int,int,int);// param constuctor 
 	
-	virtual void decreaseFeul(Artillery* a,int);
+	virtual ~Tank(); //destructor
+
+	virtual void decreaseFeul(Artillery*,int);
+	
+
+	
 	
 	
 };

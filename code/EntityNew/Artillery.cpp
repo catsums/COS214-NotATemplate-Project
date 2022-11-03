@@ -8,8 +8,9 @@ using namespace std;
 	{
 		
 		//cout<<"Artillery’s Constructor was Called"<<endl;
-		setHp(22);
-		setDamage(5);
+		setFeul(100);
+		setHp(80);
+		setDamage(8);
 		setCountry("SA");
 		setXpos(0);
 		setYpos(0);
@@ -19,6 +20,7 @@ using namespace std;
 
 	Artillery::Artillery(int h,string c, int d, int x , int y ):Vehicle(h,c,d,x,y)// param constuctor 
 	{
+		setFeul(100);
 		setHp(h);
 		setDamage(d);
 		setCountry(c);
@@ -34,8 +36,13 @@ using namespace std;
 
 
 	
+	void Artillery::setFeul(int f)
+	{
+		feul=f;
+	}
 
-	
-	
-	
+	int Artillery::getFeul()
+	{
+		return feul;
+	}
 

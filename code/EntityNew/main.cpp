@@ -21,10 +21,16 @@ int main()
 {
 
 	Artillery *test = new Tank();
+
+	test->infoSummary();
+
+	cout<<endl;
 	test->decreaseFeul(test,5);
 
-	//test->infoSummary();
 
+
+	test->infoSummary();
+	cout<<endl;
 	
 
 
