@@ -5,12 +5,16 @@
 
 using namespace std;
 
-Adapter::Adapter(AdapterManager* mng):BaseAdapter(){
-	manager = mng;
+Adapter::Adapter():BaseAdapter(){
+
 }
 Adapter::~Adapter(){
 	manager = NULL;
 }
+
+// void Adapter::action(map<string,string> data){
+	
+// }
 
 void Adapter::onHandle(SignalEvent* e){
 	try{
