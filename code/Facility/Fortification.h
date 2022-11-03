@@ -9,6 +9,7 @@ class Fortification : public Facility
 {
     public:
         Fortification(int l);
+        Fortification(int l, string c);
         void displayFacility();
 
     private:

@@ -3,7 +3,16 @@
 
 using namespace std;
 
-Airfield::Airfield(int r, int h) : runways(r), hangers(h){}
+Airfield::Airfield(int r, int h) : Facility(){
+    runways = r;
+    hangers = h;
+    types.push_back("Airfield");
+}
+Airfield::Airfield(int r, int h, string c) : Facility(c){
+    runways = r;
+    hangers = h;
+    types.push_back("Airfield");
+}
 
 void Airfield::displayFacility()
 {

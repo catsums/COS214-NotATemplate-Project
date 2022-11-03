@@ -71,6 +71,21 @@ public:
 
     virtual void displayFacility() = 0;
 
+    virtual string printInfo(){
+        stringstream ss;
+
+        ss << "FACILITY-" << getID() << "{" << getInfo() << "}";
+
+        return ss.str();
+    }
+    virtual string getInfo(){
+        stringstream ss;
+
+        ss << " Type: " << getType() << "|";
+
+        return ss.str();
+    }
+
 private:
     string id;
     string country;

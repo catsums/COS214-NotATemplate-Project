@@ -3,7 +3,12 @@
 
 using namespace std;
 
-Fortification::Fortification(int l) : defenseLevel(l){}
+Fortification::Fortification(int l):Facility(){
+    types.push_back("Fortification");
+}
+Fortification::Fortification(int l, string c):Facility(c){
+    types.push_back("Fortification");
+}
 
 void Fortification::displayFacility()
 {
