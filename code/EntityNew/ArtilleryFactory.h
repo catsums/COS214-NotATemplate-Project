@@ -23,7 +23,7 @@ protected:
 
 public: 
 
-	/** Default constructor for citizen
+	/** Default constructor for artillery
     */
 	ArtilleryFactory(); 
 	 
@@ -32,7 +32,7 @@ public:
 	virtual ~ArtilleryFactory(); 
 
 	/** This function instantiates new vehicle entities 
-	*	based on the string paramter value passed in,
+	*	based on the string parameter value passed in,
 	* 	it will know whether to be a land,sea or air vehicle
 	* 	and returns a refernce to it
 	*/
