@@ -39,7 +39,9 @@ public:
 	* 	it will know whether to be a land,sea or air vehicle
 	* 	and returns a refernce to it
 	*/
-	virtual Vehicle* createVehicle(string);
+	virtual Vehicle* createLandVehicle();
+	virtual Vehicle* createAirVehicle();
+	virtual Vehicle* createSeaVehicle();
 
 	
 	

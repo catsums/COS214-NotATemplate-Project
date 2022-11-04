@@ -137,7 +137,10 @@ int main()
 
 
 	/*
+
 	Testing the Vehicle Factories here
+
+
 	*/
 
 	
@@ -152,7 +155,7 @@ int main()
 	cout<<"Creating a ArtilleryFactory and TankFactory"<<endl;
 	cout<<endl;
 
-	Entity* myTank = myFactory5->createVehicle("land");
+	Entity* myTank = myFactory5->createLandVehicle();
 
 	
 
@@ -175,7 +178,7 @@ int main()
 	cout<<"Creating an ArtilleryFactory and FighterJetFactory"<<endl;
 	cout<<endl;
 
-	Entity* myJet = myFactory6->createVehicle("air");
+	Entity* myJet = myFactory6->createAirVehicle();
 
 	
 
@@ -199,7 +202,7 @@ int main()
 	cout<<"Creating a ArtilleryFactory and SubmarineFactory"<<endl;
 	cout<<endl;
 
-	Entity* mySubmarine = myFactory7->createVehicle("sea");
+	Entity* mySubmarine = myFactory7->createSeaVehicle();
 
 	
 
@@ -222,7 +225,7 @@ int main()
 	cout<<"Creating a TransportFactory and TruckFactory"<<endl;
 	cout<<endl;
 
-	Entity* myTruck = myFactory8->createVehicle("land");
+	Entity* myTruck = myFactory8->createLandVehicle();
 
 	
 
@@ -232,4 +235,50 @@ int main()
 	
 	delete myTruck;
 	delete myFactory8;
+
+
+	cout<<"Creating an EntityFactory"<<endl;
+	cout<<endl;
+
+	EntityFactory * myFactory9 = new TransportFactory();
+
+	cout<<"EntityFactory created"<<endl;
+	cout<<endl;
+
+	cout<<"Creating a TransportFactory and TruckFactory"<<endl;
+	cout<<endl;
+
+	Entity* myPlane = myFactory9->createAirVehicle();
+
+	
+
+	myPlane->infoSummary();
+	cout<<endl;
+
+	
+	delete myPlane;
+	delete myFactory9;
+
+
+	cout<<"Creating an EntityFactory"<<endl;
+	cout<<endl;
+
+	EntityFactory * myFactory10 = new TransportFactory();
+
+	cout<<"EntityFactory created"<<endl;
+	cout<<endl;
+
+	cout<<"Creating a TransportFactory and TruckFactory"<<endl;
+	cout<<endl;
+
+	Entity* myShip = myFactory10->createSeaVehicle();
+
+	
+
+	myShip->infoSummary();
+	cout<<endl;
+
+	
+	delete myShip;
+	delete myFactory10;
 }

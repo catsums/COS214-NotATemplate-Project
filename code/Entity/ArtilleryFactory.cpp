@@ -20,44 +20,48 @@ using namespace std;
 		//cout<<"ArtilleryFactory’s Destructor was Called"<<endl;
 	}
 
-
-	
-	Vehicle* ArtilleryFactory::createVehicle(string t)
+	Vehicle* ArtilleryFactory::createLandVehicle()
 	{
-		cout<<"Artillery created"<<endl;
+		cout<<"Land Artillery created"<<endl;
 		cout<<endl;
 
-
-		if(t=="land")
-		{
-			Artillery* myArtillery;
-			myArtillery = new Tank();
-			myVehicle = myArtillery;
-			cout<<"Tank created"<<endl;
-			cout<<endl;
-			return myVehicle;
-		}
-		else if (t=="air")
-		{
-			Artillery* myArtillery;
-			myArtillery = new FighterJet();
-			myVehicle = myArtillery;
-			cout<<"FighterJet created"<<endl;
-			cout<<endl;
-			return myVehicle;
-		}
-		else if (t=="sea")
-		{
-			Artillery* myArtillery;
-			myArtillery = new Submarine();
-			myVehicle = myArtillery;
-			cout<<"Submarine created"<<endl;
-			cout<<endl;
-			return myVehicle;
-		}
-		
+		Artillery* myArtillery;
+		myArtillery = new Tank();
+		myVehicle = myArtillery;
+		cout<<"Tank created"<<endl;
+		cout<<endl;
 		return myVehicle;
 	}
+
+
+	Vehicle* ArtilleryFactory::createAirVehicle()
+	{
+		cout<<"Air Artillery created"<<endl;
+		cout<<endl;
+
+		Artillery* myArtillery;
+		myArtillery = new FighterJet();
+		myVehicle = myArtillery;
+		cout<<"FighterJet created"<<endl;
+		cout<<endl;
+		return myVehicle;
+	}
+
+	Vehicle* ArtilleryFactory::createSeaVehicle()
+	{
+		cout<<"Sea Artillery created"<<endl;
+		cout<<endl;
+
+		Artillery* myArtillery;
+		myArtillery = new Submarine();
+		myVehicle = myArtillery;
+		cout<<"Submarine created"<<endl;
+		cout<<endl;
+		return myVehicle;
+	}
+
+
+	
 	
 	
 	

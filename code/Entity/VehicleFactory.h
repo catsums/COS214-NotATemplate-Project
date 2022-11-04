@@ -28,12 +28,13 @@ public:
 	virtual ~VehicleFactory(); 
 
 
-	/** This function instantiates new vehicle entities 
-	*	based on the string paramter value passed in,
-	* 	it will know whether to be a land,sea or air vehicle
+	/** 
+	* These functions instantiate new vehicle entities 	
 	* 	and returns a refernce to it
 	*/
-	virtual Vehicle* createVehicle(string)=0;
+	virtual Vehicle* createLandVehicle()=0;
+	virtual Vehicle* createAirVehicle()=0;
+	virtual Vehicle* createSeaVehicle()=0;
 	
 
 	

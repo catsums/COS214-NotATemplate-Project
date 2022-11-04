@@ -32,9 +32,18 @@ using namespace std;
 	This function instantiates new vehicle entities 
 	and returns a refernce to it
 	*/
-	Vehicle* EntityFactory::createVehicle(string)
+	Vehicle* EntityFactory::createLandVehicle()
 	{
 		return new Vehicle;
 	}
 	
+	Vehicle* EntityFactory::createAirVehicle()
+	{
+		return new Vehicle;
+	}
+
+	Vehicle* EntityFactory::createSeaVehicle()
+	{
+		return new Vehicle;
+	}
 
