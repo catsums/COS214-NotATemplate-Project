@@ -57,9 +57,28 @@ class Zone
 		Entity* removeEntity(Entity* ent);
 		bool hasEntity(Entity* ent);
 
+		vector<Entity*> getEntities(){
+			vector<Entity*> list;
+			for(auto ent:entities){
+				list.push_back(ent.second);
+			}
+			// for_each(entities.begin(), entities.end(), [this](pair<string,Entity*> ent){
+			// 	list.push_back(ent.second);
+			// });
+			return list;
+		}
+
 		bool addFacility(Facility* fac);
 		Facility* removeFacility(Facility* fac);
 		bool hasFacility(Facility* fac);
+
+		vector<Facility*> getFacilities(){
+			vector<Facility*> list;
+			for(auto fac:facilities){
+				list.push_back(fac.second);
+			}
+			return list;
+		}
 
 		virtual string printInfo(){
 			stringstream ss;

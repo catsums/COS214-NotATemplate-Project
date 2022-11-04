@@ -16,6 +16,9 @@ Map::Map(int w, int h) //default constructor
 
     initialiseRows();
 }
+Map::~Map(){
+    
+}
 
 void Map::setSize(int w, int h){
     mapSize.x = abs(w);
@@ -51,21 +54,21 @@ vector<Zone*> Map::getAdjacent(Zone* zone) //********UNFINISHED********
             //check topleft zone
             adj.push_back(getZone(x-1,y-1));
         }
-        if(y < mapSize.y){
+        if(y < mapSize.y-1){
             //check bottomleft zone
             adj.push_back(getZone(x-1,y+1));
         }
     }
 
-    if(x < mapSize.x) //check for right zone
+    if(x < mapSize.x-1) //check for right zone
     {
         adj.push_back(getZone(x+1,y));
 
-        if(y > 0){
+        if(y >= 0){
             //check topright zone
             adj.push_back(getZone(x+1,y-1));
         }
-        if(y < mapSize.y){
+        if(y < mapSize.y-1){
             //check topright zone
             adj.push_back(getZone(x+1,y+1));
         }
@@ -76,7 +79,7 @@ vector<Zone*> Map::getAdjacent(Zone* zone) //********UNFINISHED********
         adj.push_back(getZone(x,y-1));
     }
 
-    if(y < mapSize.y) //check for bottom zone
+    if(y < mapSize.y-1) //check for bottom zone
     {
         adj.push_back(getZone(x,y+1));
     }
