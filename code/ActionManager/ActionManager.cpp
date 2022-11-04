@@ -87,7 +87,7 @@ bool ActionManager::handleCurrRequest(){
 		ARS status = req->getStatus();
 
 		if(status == ARS::FULFILLED){
-			emit(req->getID());
+			sendEvent(req->getID(), newRes);
 			req->handle(newRes);
 		}
 		if(req->isWaiting()){
