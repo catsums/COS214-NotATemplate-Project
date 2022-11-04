@@ -1,40 +1,49 @@
+/** @file Soldier.h
+ *  @brief This is the header file to create the soldier class.
+ *
+ *  Creating an entity class allows us to create our various elements that are invloved in the war
+ *  an example of an entity is a Citizen after creating a citizen we must establish the different 
+ *	types of citizens and their role in the war. This is one of them. 
+ */
+
+
+
 #ifndef SOLDIER_H
 #define SOLDIER_H
-
-
 
 #include <string>
 #include "Citizen.h"
 
 using namespace std; 
 
-class Soldier : public Citizen
+class Soldier: public Citizen
 {
-
-protected:
-
-
-	string status = "NA";
-	//string theatre = "NA";
-
 
 
 public: 
 
-	Soldier();// default constuctor 
-	Soldier(int,string,string);// param constuctor 
+	/** Default constructor for informant
+    */
+	Soldier();
+
+	/** A parameter constructer taht initializes 5 parameters inherits the variables from the citizen class  
+	*
+	*	@param int variable that represents the health
+	*	@param string variable that represents the country
+	*	@param int variable that represents the damage
+	*	@param int variable that represents the x-coordinates
+	*	@param int variable that represents the y-coordinates 
+    */
+	Soldier(int,string,int,int,int);
 	
-	virtual ~Soldier(); //destructor
 
+	/** Destructor
+    */
+	virtual ~Soldier(); 
 
 	
 
-
 	
-	
-
-
-		
 	
 	
 };
