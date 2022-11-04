@@ -19,11 +19,11 @@ class TransportFactory:public VehicleFactory
 {
 protected:
 
-	Vehicle * myVehicle;
+	Vehicle * myVehicle; /**<pointer vehicle*/
 
 public: 
 
-	/** Default constructor for citizen
+	/** Default constructor for transport factory
     */
 	TransportFactory(); 
 	 
