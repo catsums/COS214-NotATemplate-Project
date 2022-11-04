@@ -28,6 +28,18 @@ public:
 	void removeAdapter(BaseAdapter* adp);
 	//get a specific adapter based on its type and id
 	BaseAdapter* getAdapter(string type, string id);
+
+	vector<BaseAdapter*> getAdapters(string type){
+		vector<BaseAdapter*> adps;
+		if(lists.count(type)>0){
+			map<string,BaseAdapter*>* list = lists[type];
+			for(auto adp:(*list)){
+				adps.push_back(adp.second);
+			}
+			
+		}
+		return adps;
+	}
 protected:
 	//has many lists all split by type and each list has a list of adapters sorted by id
 	map<string, map<string, BaseAdapter*>*> lists;

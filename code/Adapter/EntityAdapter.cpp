@@ -18,21 +18,24 @@ ActionRequest* EntityAdapter::requestAttack(string target){
 		{"action","attack"},
 		{"target",target}
 	};
-	return createRequest(data, 1);
+	cout<<entity->getType()<<"-"<<entity->getID()<<" requested to attack."<<endl;
+	return createRequest(data, 0);
 }
 ActionRequest* EntityAdapter::requestHeal(int amt){
 	map<string, string> data = {
 		{"action","heal"},
 		{"amount",to_string(amt)}
 	};
-	return createRequest(data, 1);
+	cout<<entity->getType()<<"-"<<entity->getID()<<" requested to heal."<<endl;
+	return createRequest(data, 0);
 }
 ActionRequest* EntityAdapter::requestTakeDamage(int amt){
 	map<string, string> data = {
 		{"action","takeDamage"},
 		{"amount",to_string(amt)}
 	};
-	return createRequest(data, 1);
+	cout<<entity->getType()<<"-"<<entity->getID()<<" requested to takeDamage."<<endl;
+	return createRequest(data, 0);
 }
 ActionRequest* EntityAdapter::requestTravel(Zone* zone){
 	if(!zone) return NULL;
@@ -42,13 +45,15 @@ ActionRequest* EntityAdapter::requestTravel(Zone* zone){
 		{"x",to_string(pos.x)},
 		{"y",to_string(pos.y)}
 	};
-	return createRequest(data, 1);
+	cout<<entity->getType()<<"-"<<entity->getID()<<" requested to travel."<<endl;
+	return createRequest(data, 0);
 }
 ActionRequest* EntityAdapter::requestDeath(){
 	map<string, string> data = {
 		{"action","die"}
 	};
-	return createRequest(data, 1);
+	cout<<entity->getType()<<"-"<<entity->getID()<<" requested to go to heaven."<<endl;
+	return createRequest(data, 0);
 }
 
 void EntityAdapter::action(map<string,string> data){
@@ -138,25 +143,32 @@ bool EntityAdapter::heal(int amt){
 }
 bool EntityAdapter::travel(int x,int y){
 	if(entity){
+		cout<<entity->getType()<<"-"<<entity->getID()<<" is travelling to Pos "<<x<<","<<y<<endl;
 		entity->travel(x,y);
 		return true;
 	}
+	cout<<"Failed to travel to pos at "<<x<<","<<y<<endl;
 	return false;
 }
 bool EntityAdapter::travelToZone(Zone* z){
 	if(entity && z){
 		if( z->isLand() && entity->canTravelLand() || !z->isLand() && entity->canTravelSea() ){
+			cout<<entity->getType()<<"-"<<entity->getID()<<" is travelling to Zone "<<z->getX()<<","<<z->getY()<<endl;
 			z->moveEntity(entity);
 			return true;
 		}
 	}
+	cout<<"Failed to travel to zone"<<endl;
 	return false;
 }
 bool EntityAdapter::attack(EntityAdapter* adp){
 	if(entity && adp->getEntity()){
-		entity->attack(adp->getEntity());
+		Entity* targ = adp->getEntity();
+		cout<<entity->getType()<<"-"<<entity->getID()<<" is attacking "<<targ->getType()<<"-"<<targ->getID()<<endl;
+		entity->attack(targ);
 		return true;
 	}
+	cout<<"Failed to attack target at "<<id<<endl;
 	return false;
 }
 bool EntityAdapter::attack(string id){
@@ -165,14 +177,17 @@ bool EntityAdapter::attack(string id){
 		try{
 			EntityAdapter* _adp = static_cast<EntityAdapter*>(adp);
 			if(entity && _adp->getEntity()){
-				entity->attack(_adp->getEntity());
+				Entity* targ = _adp->getEntity();
+				cout<<entity->getType()<<"-"<<entity->getID()<<" is attacking "<<targ->getType()<<"-"<<targ->getID()<<endl;
+				entity->attack(targ);
 				return true;
 			}
 		}catch(const exception& err){
-			return false;
+			cout<<"Failed to cast the adp"<<endl;
 		}
 		
 	}
+	cout<<"Failed to attack target at "<<id<<endl;
 	return false;
 }
 
@@ -211,6 +226,7 @@ void EntityAdapter::onHandle(SignalEvent* e){
 			}
 		}else{
 			//do stuff while it processes
+			cout<<res->getRequestID()<<" - Still processing request..."<<endl;
 		}
 	}catch(const bad_cast& err){
 		cout<<"Error trying to cast SignalEvent to ActionEvent"<<endl;
@@ -222,11 +238,13 @@ void EntityAdapter::onFulFilled(SignalEvent* e){
 		ActionResult* res = dynamic_cast<ActionResult*>(e);
 
 		if(res->isSuccess()){
+			cout<<res->getRequestID()<<" - SUCCESS."<<endl;
 			//do stuff on success
 			map<string,string> _data = res->getDataMap();
 			action(_data);
 		}else{
 			//do stuff on fail
+			cout<<res->getRequestID()<<" - FAILED."<<endl;
 		}
 	}catch(const bad_cast& err){
 		cout<<"Error trying to cast SignalEvent to ActionEvent"<<endl;

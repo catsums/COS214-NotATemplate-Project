@@ -56,7 +56,7 @@ BaseAdapter* AdapterManager::getAdapter(string type, string id){
 	if(lists.count(type)>0){
 		map<string, BaseAdapter*>* _list = lists[type];
 		if(_list->count(id)>0){
-			BaseAdapter* adp = (*_list)[id];
+			BaseAdapter* adp = _list->at(id);
 			return adp;
 		}
 	}

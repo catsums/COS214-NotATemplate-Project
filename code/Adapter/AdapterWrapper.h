@@ -21,14 +21,15 @@
 */
 
 class AdapterWrapper{
+public:
 	AdapterWrapper(){}
 	~AdapterWrapper(){}
 	/*creates an adapter from an Entity object*/
-	EntityAdapter* getAdapter(Entity* ent){
+	static EntityAdapter* getAdapter(Entity* ent){
 		return new EntityAdapter(ent);
 	}
 	/*creates an adapter from a Citizen object*/
-	CitizenAdapter* getAdapter(Citizen* ent){
+	static CitizenAdapter* getAdapter(Citizen* ent){
 		return new CitizenAdapter(ent);
 	}
 

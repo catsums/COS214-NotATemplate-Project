@@ -25,6 +25,17 @@ using namespace std;
 class BaseAdapter{
 public:
 	/*Constructs a new BaseAdapter with unique id and two handlers*/
+	BaseAdapter(string _id){
+		id = _id;
+		types.push_back("OBJECT");
+
+		handlers["requestHandle"] = new FunctionHandler([this](SignalEvent* e){
+			onHandle(e);
+		});
+		handlers["requestFulFill"] = new FunctionHandler([this](SignalEvent* e){
+			onFulFilled(e);
+		});
+	}
 	BaseAdapter(){
 		id = myHelper::randomString(8);
 		types.push_back("OBJECT");
