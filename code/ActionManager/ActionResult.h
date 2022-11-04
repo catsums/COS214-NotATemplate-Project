@@ -1,3 +1,9 @@
+/** @file ActionResult.h
+ *  @brief Processing the action requests made and keeping them in the action result file. 
+ *
+ *  
+ */
+
 #ifndef ACTIONRESULT_H
 #define ACTIONRESULT_H
 
@@ -17,13 +23,20 @@
 
 using namespace std;
 
-/*	
-	Result of Request while or after it has been processed with all the data meant to be returned after a certain time
+/**
+*	Result of Request while or after it has been processed with all the data meant to be returned after a certain time
 */
 
 class ActionResult: public SignalEvent{
-friend class ActionRequest;
-friend class ActionManager;
+	/** This is a class called ActionRequest in this class where
+	*	all the requests are made.
+	*/
+	friend class ActionRequest;
+
+	/** This is a class called ActionManager in this class where
+	*	all the requests are processed.	
+	*/
+	friend class ActionManager;
 public:
 	//creates the result based on the request id, success and result data
 	ActionResult(string id);
