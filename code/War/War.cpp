@@ -6,46 +6,40 @@
 
 #include "War.h"
 
-War::War(){
-	warState = new PhaseNeutral();
+using namespace std;
 
-    warHandler = new FunctionHandler([this](SignalEvent* e){
-        onWarEvent(e);
-    });
-
-    signalBus = new ObjectSignalBus<string>();
-
-    signalBus->subscribe("warState", warHandler);
-
-    actionManager = new ActionManager();
-
-    warMap = new Map();
-}
 War::War(WarPhase* startState){
 	warState = startState;
 
-	warHandler = new FunctionHandler([this](SignalEvent* e){
-        onWarEvent(e);
+	handlers["warState"] = new FunctionHandler([this](SignalEvent* e){
+        onWarPhaseChange(e);
     });
 
-    signalBus = new ObjectSignalBus<string>();
+    signalBus = new SignalBus();
 
-    signalBus->subscribe("warState", warHandler);
+   	signalBus->subscribe("warState", handlers["warState"]);
 
     actionManager = new ActionManager();
+    adapterManager = new AdapterManager();
+
+    warMap = new Map();
+
+    warMap->genStandardMap();
 }
 War::~War(){
 	delete warState;
 	warState = NULL;
 
-	delete warHandler;
-	warHandler = NULL;
+	delete warMap;
+	warMap = NULL;
 
 	delete signalBus;
 	signalBus = NULL;
 
 	delete actionManager;
 	actionManager = NULL;
+	delete adapterManager;
+	adapterManager = NULL;
 }
 
 void War::changePhase(WarPhase* newState){
@@ -66,7 +60,7 @@ void War::handlePhase(){
 	
 }
 
-void War::onWarEvent(SignalEvent* _e){
+void War::onWarPhaseChange(SignalEvent* _e){
 	
 	ObjectSignalEvent<string>* e = static_cast<ObjectSignalEvent<string>*>(_e);
 
@@ -90,6 +84,18 @@ void War::addCountry(Country* c, int side){
 	}
 	sides[side]->push_back(c);
 }
+Country* War::getCountryByName(string n){
+	for(int i=0; i< (int) sides.size(); i++){
+		vector<Country*>* sideA = sides[i];
+		for(int j=0; j< (int) sideA->size(); j++){
+			Country* country = (*sideA)[j];
+			if(country && country->getName() == n){
+				return country;
+			}
+		}
+	}
+	return NULL;
+}
 void War::removeCountry(Country* c, int side){
 	if(sides[side]){
 		vector<Country*>* _side = sides[side];
@@ -100,6 +106,12 @@ void War::removeCountry(Country* c, int side){
 			}
 		}
 	}
+}
+vector<Country*>* War::getCountriesOnSide(int side){
+	if(side>=0 && side<sides.size()){
+		return sides[side];
+	}
+	return NULL;
 }
 int War::getSide(Country* c){
 	

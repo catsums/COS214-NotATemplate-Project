@@ -17,16 +17,21 @@ AdapterManager::~AdapterManager(){
 }
 
 bool AdapterManager::addAdapter(BaseAdapter* adp){
-	string type = adp->getType();
+	// string type = adp->getType();
+	vector<string> types = adp->getTypes();
 	string id = adp->getID();
-	if(!lists.count(type)){
-		lists[type] = new map<string,BaseAdapter*>();
+	for(int i=0; i<(int)types.size();i++){
+		string type = types[i];
+		if(!lists.count(type)){
+			lists[type] = new map<string,BaseAdapter*>();
+		}
+		map<string, BaseAdapter*>* _list = lists[type];
+		if(_list->count(id)>0){
+			continue;
+		}
+		(*_list)[id] = adp;
 	}
-	map<string, BaseAdapter*>* _list = lists[type];
-	if(_list->count(id)>0){
-		return false;
-	}
-	(*_list)[id] = adp;
+	
 	return true;
 }
 BaseAdapter* AdapterManager::removeAdapter(string type, string id){
@@ -39,6 +44,13 @@ BaseAdapter* AdapterManager::removeAdapter(string type, string id){
 		}
 	}
 	return adp;
+}
+void AdapterManager::removeAdapter(BaseAdapter* adp){
+	vector<string> types = adp->getTypes();
+	string id = adp->getID();
+	for(int i=0; i<(int)types.size();i++){
+		removeAdapter(types[i], id);
+	}
 }
 BaseAdapter* AdapterManager::getAdapter(string type, string id){
 	if(lists.count(type)>0){

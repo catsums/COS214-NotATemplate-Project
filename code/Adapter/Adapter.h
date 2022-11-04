@@ -6,25 +6,37 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <sstream>
+#include <utility>
+#include <initializer_list>
 
 #include "BaseAdapter.h"
 #include "AdapterManager.h"
-#include "../myHelper.cpp"
 
 using namespace std;
 
 class Adapter: public BaseAdapter{
 public:
-	Adapter(AdapterManager* mng);
+	Adapter();
 	~Adapter();
 
-	virtual void action(string actionName) = 0;
+	virtual void action(map<string,string> data) = 0;
 
 	virtual void onHandle(SignalEvent* e);
 	virtual void onFulFilled(SignalEvent* e);
 
+	virtual void setManager(AdapterManager* mng){
+		if(manager){
+			manager->removeAdapter(this);
+		}
+		manager = mng;
+		if(manager){
+			manager->addAdapter(this);
+		}
+	}
+
 protected:
-	void* adaptee; //just a wacky silly pointer to store anything
+	// void* adaptee; //just a wacky silly pointer to store anything
 	AdapterManager* manager;
 };
 
