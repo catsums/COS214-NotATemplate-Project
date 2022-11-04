@@ -75,17 +75,33 @@ class Country
         Citizen* removeCitizen(Citizen* ctn);
         bool hasCitizen(Citizen* ctn);
 
+        vector<Citizen*> getCitizens(){
+            return citizens;
+        }
+
         void addFacility(Facility* fac);
         Facility* removeFacility(Facility* fac);
         bool hasFacility(Facility* fac);
+
+        vector<Facility*> getFacilities(){
+            return facilities;
+        }
 
         void addResource(Resource* reso);
         Resource* removeResource(Resource* reso);
         bool hasResource(Resource* reso);
 
+        vector<Resource*> getResources(){
+            return resources;
+        }
+
         void addZone(Zone* zone);
         Zone* removeZone(Zone* zone);
         bool hasZone(Zone* zone);
+
+        vector<Zone*> getZones(){
+            return zones;
+        }
 
         virtual string printInfo(){
             stringstream ss;
