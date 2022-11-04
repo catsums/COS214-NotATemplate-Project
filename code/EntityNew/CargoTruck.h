@@ -21,7 +21,7 @@ class CargoTruck: public Transport
 
 public: 
 
-	/** Default constructor for artillery
+	/** Default constructor for cargo truck
     */
 	CargoTruck();
 
