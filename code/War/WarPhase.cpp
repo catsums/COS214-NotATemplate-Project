@@ -2,13 +2,13 @@
 #define WARPHASE_CPP
 
 #include <vector>
-#include "War.h"
+#include "WarPhase.h"
 
 using namespace std;
 
-WarPhase::WarPhase(War* _war, string s):BaseWarPhase(s){
-		war = _war;
-	}
+WarPhase::WarPhase(string s):BaseWarPhase(s){
+
+}
 WarPhase::~WarPhase(){
 	war = NULL;
 }
@@ -38,3 +38,5 @@ void WarPhase::handle(vector<Country*>* a, vector<Country*>* b){
 		}
 	}
 }
+
+#endif

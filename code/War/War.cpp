@@ -8,7 +8,7 @@
 
 using namespace std;
 
-War::War(WarPhase* startState){
+War::War(BaseWarPhase* startState){
 	warState = startState;
 
 	handlers["warState"] = new FunctionHandler([this](SignalEvent* e){
@@ -42,8 +42,10 @@ War::~War(){
 	adapterManager = NULL;
 }
 
-void War::changePhase(WarPhase* newState){
+void War::changePhase(BaseWarPhase* newState){
 	warState = newState;
+	incrementPhase();
+	signalBus->emit("warState");
 }
 void War::handlePhase(){
 	
@@ -56,26 +58,25 @@ void War::handlePhase(){
 			}
 		}
 	}
-
-	
 }
 
 void War::onWarPhaseChange(SignalEvent* _e){
 	
-	ObjectSignalEvent<string>* e = static_cast<ObjectSignalEvent<string>*>(_e);
+	// ObjectSignalEvent<string>* e = static_cast<ObjectSignalEvent<string>*>(_e);
 
-	string data = *(e->data);
+	// string data = *(e->data);
 
-	if(data != warState->getState()){
-		WarPhase* newState;
-		if(data == "neutral") newState = new PhaseNeutral();
-		if(data == "peace") newState = new PhasePeace();
-		if(data == "war") newState = new PhaseWar();
-		if(data == "crisis") newState = new PhaseCrisis();
-		if(data == "negotiations") newState = new PhaseNegotiations();
+	// if(data != warState->getState()){
+	// 	WarPhase* newState = NULL;
+	// 	if(data == "neutral") newState = new PhaseNeutral();
+	// 	if(data == "peace") newState = new PhasePeace();
+	// 	if(data == "war") newState = new PhaseWar();
+	// 	if(data == "crisis") newState = new PhaseCrisis();
+	// 	if(data == "negotiations") newState = new PhaseNegotiations();
 		
-		changePhase(newState);
-	}
+	// 	changePhase(newState);
+	// 	incrementPhase();
+	// }
 }
 
 void War::addCountry(Country* c, int side){

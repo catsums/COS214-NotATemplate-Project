@@ -17,7 +17,7 @@ using namespace std;
 class WarPhase: public BaseWarPhase{
 public:
 	//creates warphase object with war obj and state name
-	WarPhase(War* _war, string s);
+	WarPhase(string s);
 	~WarPhase();
 	//function handles two sides of objects in the war
 	virtual void handle(vector<Country*>* a, vector<Country*>* b);

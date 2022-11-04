@@ -16,7 +16,7 @@ using namespace std;
 
 class PhaseNeutral: public WarPhase{
 public:
-	PhaseNeutral(War* war):WarPhase("neutral", war){
+	PhaseNeutral():WarPhase("neutral"){
 
 	}
 	~PhaseNeutral(){
@@ -33,7 +33,7 @@ public:
 
 class PhasePeace: public WarPhase{
 public:
-	PhasePeace(War* w):WarPhase(w,"peace"){
+	PhasePeace():WarPhase("peace"){
 
 	}
 	~PhasePeace(){
@@ -51,7 +51,7 @@ public:
 
 class PhaseOpenConflict: public WarPhase{
 public:
-	PhaseOpenConflict(War* w):WarPhase(w,"openConflict"){
+	PhaseOpenConflict():WarPhase("openConflict"){
 
 	}
 	~PhaseOpenConflict(){
@@ -68,7 +68,7 @@ public:
 
 class PhaseCrisis: public WarPhase{
 public:
-	PhaseCrisis(War* w):WarPhase(w,"crisis"){
+	PhaseCrisis():WarPhase("crisis"){
 
 	}
 	~PhaseCrisis(){
@@ -85,7 +85,7 @@ public:
 
 class PhaseWar: public WarPhase{
 public:
-	PhaseWar(War* w):WarPhase(w,"war"){
+	PhaseWar():WarPhase("war"){
 
 	}
 	~PhaseWar(){
@@ -102,7 +102,9 @@ public:
 
 class PhaseNegotiations: public WarPhase{
 public:
-	PhaseNegotiations(War* w):WarPhase(w,"negotiations");
+	PhaseNegotiations():WarPhase("negotiations"){
+		
+	}
 	~PhaseNegotiations(){
 
 	}

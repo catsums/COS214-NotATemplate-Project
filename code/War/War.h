@@ -91,16 +91,30 @@ public:
 	AdapterManager* adapterManager;
 	//Map of the war to be referenced and zones to be handled
 	Map* warMap;
+	//get the step count
+	int getStepCount(){
+		return step;
+	}
+	//get phase count
+	int getPhaseCount(){
+		return phaseCount;
+	}
+	//if theres no warstate, the war has ended
+	bool hasEnded(){
+		return (!warState || step<maxStep);
+	}
 
-protected:
+	//increment phase
 	void incrementPhase(){
 		phaseCount++;
 	}
+	//increment step
 	void incrementStep(){
 		if(step<maxStep){
 			step++;
 		}
 	}
+protected:
 	//counts the number of phases accumulated based on change
 	int phaseCount = 0;
 	//counts number of steps accumulated
