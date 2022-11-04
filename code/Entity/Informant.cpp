@@ -1,35 +1,31 @@
 #include <string>
 #include <iostream>
 #include "Informant.h"
-#include "Citizen.h"
 
 using namespace std;
 
-	Informant::Informant() : Citizen()// default constuctor 
+	Informant::Informant()// default constuctor 
 	{
 		
-		setType("Informant");
-		printInfo();
-		cout<<endl;
-
-		
+		//cout<<"Informant’s Constructor was Called"<<endl;
+		setHp(15);
+		setDamage(3);
+		setCountry("SA");
+		setXpos(0);
+		setYpos(0);
 
 	} 
 
-	Informant::Informant(int h , string c, string stat): Citizen( h ,  c)// param constuctor 
+
+	Informant::Informant(int h,string c, int d, int x , int y ):Citizen(h,c,d,x,y)// param constuctor 
 	{
-		
-		setType("Informant");
-		setStatus(stat);
-
-		printInfo();
-		cout<<endl;
-
-		
-		
-
+		setHp(h);
+		setDamage(d);
+		setCountry(c);
+		setXpos(x);
+		setYpos(y);
 	}
-
+	
 	
 	Informant::~Informant() //destructor
 	{
@@ -37,5 +33,9 @@ using namespace std;
 	}
 
 
+	
+
+	
+	
 	
 

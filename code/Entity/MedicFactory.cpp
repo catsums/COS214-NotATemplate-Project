@@ -1,40 +1,35 @@
 #include <string>
 #include <iostream>
-#include "Entity.h"
-#include "MedicFactory.h"
-#include "Citizen.h"
 #include "Medic.h"
-
+#include "MedicFactory.h"
 
 using namespace std;
 
 	MedicFactory::MedicFactory()// default constuctor 
 	{
+		
+		//cout<<"MedicFactory’s Constructor was Called"<<endl;
+		
 
 	} 
+
 
 	
 	MedicFactory::~MedicFactory() //destructor
 	{
-		cout<<"MedicFactory’s Destructor was Called"<<endl;
+		//cout<<"MedicFactory’s Destructor was Called"<<endl;
 	}
 
+
 	
-	Citizen* MedicFactory::createEntity(int health,string country)
-	{	
-		Medic *myS= new Medic();
-		Citizen *myCitizen= myS;
-		myCitizen->setHP(health);
-		myCitizen->setCountry(country);
-		myCitizen->printInfo();
-		//myS->printMedicInfo();
-
-
-
+	Citizen* MedicFactory::createCitizen()
+	{
+		myCitizen = new Medic();
+		cout<<"Medic created"<<endl;
+		cout<<endl;
 		return myCitizen;
 	}
-
 	
-
+	
 	
 

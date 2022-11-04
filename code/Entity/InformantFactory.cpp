@@ -1,40 +1,35 @@
 #include <string>
 #include <iostream>
-#include "Entity.h"
-#include "InformantFactory.h"
-#include "Citizen.h"
 #include "Informant.h"
-
+#include "InformantFactory.h"
 
 using namespace std;
 
 	InformantFactory::InformantFactory()// default constuctor 
 	{
+		
+		//cout<<"InformantFactory’s Constructor was Called"<<endl;
+		
 
 	} 
+
 
 	
 	InformantFactory::~InformantFactory() //destructor
 	{
-		cout<<"InformantFactory’s Destructor was Called"<<endl;
+		//cout<<"InformantFactory’s Destructor was Called"<<endl;
 	}
 
+
 	
-	Citizen* InformantFactory::createEntity(int health,string country)
-	{	
-		Informant *myS= new Informant();
-		Citizen *myCitizen= myS;
-		myCitizen->setHP(health);
-		myCitizen->setCountry(country);
-		myCitizen->printInfo();
-		//myS->printInformantInfo();
-
-
-
+	Citizen* InformantFactory::createCitizen()
+	{
+		myCitizen = new Informant();
+		cout<<"Informant created"<<endl;
+		cout<<endl;
 		return myCitizen;
 	}
-
 	
-
+	
 	
 
