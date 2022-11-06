@@ -34,7 +34,7 @@ public:
 		return new WeaponItem(*this);
 	}
 
-	virtual void useOn(Entity* ent){
+	virtual Entity* useOn(Entity* ent){
 		if(amount>0 && !used){
 			ent->takeDamage(damage);
 			amount--;

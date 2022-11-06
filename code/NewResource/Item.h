@@ -28,7 +28,7 @@ public:
 
 	virtual Resource* clone() = 0;
 
-	virtual void useOn(Entity* ent) = 0;
+	virtual Entity* useOn(Entity* ent) = 0;
 
 	int getAmount(){
 		return amount;

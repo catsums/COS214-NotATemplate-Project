@@ -34,7 +34,7 @@ public:
 		return new HealingItem(*this);
 	}
 
-	virtual void useOn(Entity* ent){
+	virtual Entity* useOn(Entity* ent){
 		if(amount>0 && !used){
 			ent->heal(healingAmt);
 			amount--;
@@ -42,6 +42,7 @@ public:
 				used = true;
 			}
 		}
+		return ent;
 	}
 
 	int getHealingAmt(){
