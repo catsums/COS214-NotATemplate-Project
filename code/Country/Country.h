@@ -8,11 +8,9 @@ using namespace std;
 class Country
 {
     public:
-        Country(string n, bool s);
+        Country(string n, bool s, bool c);
         ~Country();
-
         int generateResources();
-
         bool getSide();
         void setSide(bool s);
         string getName();
@@ -24,6 +22,7 @@ class Country
         int getTerritory();
     private:
         bool side;
+        bool coastal;
         string name;
         int resources;
         int territory;

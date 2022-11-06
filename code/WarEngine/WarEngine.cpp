@@ -6,7 +6,7 @@
 
 using namespace std;
 
-WarEngine::WarEngine(){
+WarEngine::WarEngine() {
 
 }
 
@@ -16,6 +16,7 @@ void WarEngine::initialiseWar(int numCountries, int sSize, int maxTurn){
 
   string l;
   vector<string> names;
+  vector<bool> coastal;
 
   srand(time(0));
   ifstream nameFile("countryNames.txt");
@@ -23,6 +24,8 @@ void WarEngine::initialiseWar(int numCountries, int sSize, int maxTurn){
   while(getline(nameFile, l))
   {
     names.push_back(l);
+    getline(nameFile, l);
+    coastal.push_back(stoi(l));
   }
 
   for(int i = 0; i < numCountries; i++)
@@ -30,13 +33,14 @@ void WarEngine::initialiseWar(int numCountries, int sSize, int maxTurn){
     int nId = rand() % names.size();
     if(i < sSize)
     {
-      countryArr.push_back(new Country(names[nId], 0));
+      countryArr.push_back(new Country(names[nId], 0, coastal[nId]));
     }
     else
     {
-      countryArr.push_back(new Country(names[nId], 1));
+      countryArr.push_back(new Country(names[nId], 1, coastal[nId]));
     }
     names.erase(names.begin() + nId);
+    coastal.erase(coastal.begin() + nId);
   }
 
   nameFile.close();
@@ -271,7 +275,7 @@ void WarEngine::printSide(bool side)
   }
 }
 
-WarEngine::~WarEngine(){}
+WarEngine::~WarEngine() {}
 
 WarEngine& WarEngine::instance(){
   static WarEngine onlyInstance_;

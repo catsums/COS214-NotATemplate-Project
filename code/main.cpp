@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int main(){
+int main() {
   WarEngine::instance().initialiseWar(5, 3, 10);
   cout << "The war has started" << endl;
   cout << "The WarEngine has been initialised (Singleton, Facade)" << endl;
