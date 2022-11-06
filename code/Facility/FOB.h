@@ -12,6 +12,7 @@ class FOB : public Facility
         FOB();
         void displayFacility();
         void addFacility(Facility* f);
+        void removeFacility();
 
     private:
         vector<Facility*> facilities;

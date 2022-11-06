@@ -10,9 +10,7 @@ class Country
     public:
         Country(string n, bool s);
         ~Country();
-
         int generateResources();
-
         bool getSide();
         string getName();
         int getTerritory();
