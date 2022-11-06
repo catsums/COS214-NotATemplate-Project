@@ -1,3 +1,12 @@
+/** @file WarPhases.h
+*   @brief War phases are dealt with in these classes 
+*
+*	WarPhase that handles countries when they are in a neutral state. This means anything goes and is the default state
+*/
+
+
+
+
 #ifndef WARPHASES_H
 #define WARPHASES_H
 
@@ -9,10 +18,6 @@
 #include "War.h"
 
 using namespace std;
-
-/*	
-	WarPhase that handles countries when they are in a neutral state. This means anything goes and is the default state
-*/
 
 class PhaseNeutral: public WarPhase{
 public:
