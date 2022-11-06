@@ -1,6 +1,6 @@
 #include "Country.h"
 
-Country::Country(string n, bool s) : name(n), side(s)
+Country::Country(string n, bool s, bool c) : name(n), side(s), coastal(c)
 {
     //generate random territory
     //srand(time(0));
@@ -24,6 +24,10 @@ bool Country::getSide(){
 
 void Country::setSide(bool s){
     side = s;
+}
+
+bool Country::getCoastal(){
+    return coastal;
 }
 
 string Country::getName(){
