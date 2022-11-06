@@ -9,7 +9,6 @@ using namespace std;
 
 Army::Army(){
     m_attack = NULL;
-    // cout <<"Army created"<<endl;
 }
 Army::~Army(){
     m_attack = NULL;

@@ -8,9 +8,15 @@ class AirForce:public ArmyForce
 private:
     /* data */
 public:
-    AirForce(/* args */);
-    ~AirForce();
-    virtual bool attack();
+    AirForce():ArmyForce(){
+
+    }
+    AirForce(vector<Entity*> army):ArmyForce(army){
+
+    }
+    ~AirForce(){
+
+    }
 };
 
 #endif

@@ -9,8 +9,15 @@ private:
     /* data */
 
 public:
-    ~GroundForce();
-    virtual bool attack();
+    GroundForce():ArmyForce(){
+
+    }
+    GroundForce(vector<Entity*> army):ArmyForce(army){
+
+    }
+    ~GroundForce(){
+
+    }
 };
 
 #endif

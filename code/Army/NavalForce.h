@@ -8,9 +8,15 @@ class NavalForce : public ArmyForce
 private:
     /* data */
 public:
-    NavalForce(/*rgs */);
-    ~NavalForce();
-    virtual bool attack();
+    NavalForce():ArmyForce(){
+
+    }
+    NavalForce(vector<Entity*> army):ArmyForce(army){
+
+    }
+    ~NavalForce(){
+
+    }
 };
 
 #endif
