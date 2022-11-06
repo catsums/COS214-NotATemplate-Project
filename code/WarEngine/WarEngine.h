@@ -16,7 +16,9 @@ class WarEngine
 
 	void initialiseWar(int c, int ss, int maxTurn);
 	bool runTurn();
+
 	bool determineCurrentVictor();
+	int determineSideStrength(bool s);
 
   protected:
 	WarEngine();
