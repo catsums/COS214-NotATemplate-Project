@@ -5,7 +5,7 @@ using namespace std;
 
 Port::Port(int d) : docks(d){}
 
-void Depot::Depot()
+void Port::displayFacility()
 {
     cout << "Port with " << docks << " docks" << endl;
 }

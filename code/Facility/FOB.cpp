@@ -28,6 +28,6 @@ void FOB::removeFacility()
    {
         srand (time(NULL));
         int position = rand() % facilities.size() + 0;
-        facilities.erase(position);
+        facilities.erase(facilities.begin()+position);
    }
 }
