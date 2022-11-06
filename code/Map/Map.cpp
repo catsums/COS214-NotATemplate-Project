@@ -7,14 +7,14 @@ Map::Map() //default constructor
     mapSize.x = 3;
     mapSize.y = 3;
 
-    initialiseRows();
+    genStandardMap();
 }
 Map::Map(int w, int h) //default constructor
 {
     mapSize.x = abs(w);
     mapSize.y = abs(h);
 
-    initialiseRows();
+    genStandardMap();
 }
 Map::~Map(){
     
@@ -24,21 +24,21 @@ void Map::setSize(int w, int h){
     mapSize.x = abs(w);
     mapSize.y = abs(h);
 
-    initialiseRows();
+    genStandardMap();
 }
 
-void Map::initialiseRows(){
-    vector<vector<Zone*>*> initZones;
-    for(int r=0; r<mapSize.x; r++){
-        vector<Zone*>* row = new vector<Zone*>();
-        for(int c=0; c<mapSize.y; c++){
-            row->push_back(NULL);
-        }
-        initZones.push_back(row);
-    }
+// void Map::initialiseRows(){
+//     vector<vector<Zone*>*> initZones;
+//     for(int r=0; r<mapSize.x; r++){
+//         vector<Zone*>* row = new vector<Zone*>();
+//         for(int c=0; c<mapSize.y; c++){
+//             row->push_back(NULL);
+//         }
+//         initZones.push_back(row);
+//     }
 
-    zones = initZones;
-}
+//     zones = initZones;
+// }
 
 vector<Zone*> Map::getAdjacent(Zone* zone) //********UNFINISHED********
 {

@@ -11,10 +11,10 @@
 
 class LandZone: public Zone{
 public:
-	LandZone(int x,int y, int pv):Zone(x,y,pv,true){
+	LandZone(int x,int y, int pv):Zone(x,y,true){
 
 	}
-	LandZone(int x,int y, int pv, string c):Zone(x,y,pv,true, c){
+	LandZone(int x,int y, int pv, string c):Zone(x,y,true, c){
 
 	}
 	~LandZone(){}

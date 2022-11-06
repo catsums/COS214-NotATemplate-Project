@@ -17,13 +17,12 @@ using namespace std;
 class Zone
 {
 	public:
-		Zone(int x, int y, int pv, bool l); //Parameterised constructor
-		Zone(int x, int y, int pv, bool l, string c); //Parameterised constructor
+		Zone(int x, int y, bool l); //Parameterised constructor
+		Zone(int x, int y, bool l, string c); //Parameterised constructor
 		~Zone();
 		//accessor methods
 		int getX();
 		int getY();
-		int getPv();
 		bool isLand();
 
 	protected:
@@ -31,7 +30,7 @@ class Zone
 
 		string country;
 
-		int productionValue; //Determines how much money zone produces for occupant
+		// int productionValue; //Determines how much money zone produces for occupant
 
 		bool land; //true if land zone, false if sea zone
 	public:
@@ -44,28 +43,8 @@ class Zone
 			return country;
 		}
 
-		int getProductionValue(){
-			return productionValue;
-		}
 		Position getPosition(){
 			return pos;
-		}
-
-		bool moveEntity(Entity* ent);
-		
-		bool addEntity(Entity* ent);
-		Entity* removeEntity(Entity* ent);
-		bool hasEntity(Entity* ent);
-
-		vector<Entity*> getEntities(){
-			vector<Entity*> list;
-			for(auto ent:entities){
-				list.push_back(ent.second);
-			}
-			// for_each(entities.begin(), entities.end(), [this](pair<string,Entity*> ent){
-			// 	list.push_back(ent.second);
-			// });
-			return list;
 		}
 
 		bool addFacility(Facility* fac);
@@ -102,13 +81,6 @@ class Zone
 
 		virtual string getInfo(){
 			stringstream ss;
-			
-			ss<<"\n\t Entities:"<<"\n";
-			for(auto const&[id,ent]:entities){
-				if(ent){
-					ss << ent->printInfo() << endl;
-				}
-			}
 
 			ss<<"\n\t Facilities:"<<"\n";
 			for(auto const&[id,fac]:facilities){
@@ -124,7 +96,6 @@ class Zone
 	protected:
 ///by Cassim
 
-		map<string, Entity*> entities;
 		map<string, Facility*> facilities;
 };
 

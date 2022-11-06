@@ -12,18 +12,16 @@
 using namespace std;
 
 //Parameterised constructor
-Zone::Zone(int x, int y, int pv, bool l)
+Zone::Zone(int x, int y, bool l)
 {
 	pos.x = x; pos.y = y;
-	this->productionValue = pv;
-	this->land = l;
+	land = l;
 	country = "";
 }
-Zone::Zone(int x, int y, int pv, bool l, string c)
+Zone::Zone(int x, int y, bool l, string c)
 {
 	pos.x = x; pos.y = y;
-	this->productionValue = pv;
-	this->land = l;
+	land = l;
 	country = c;
 }
 
@@ -35,40 +33,12 @@ Zone::~Zone(){
 //accessor methods
 int Zone::getX(){ return pos.x; }
 int Zone::getY(){ return pos.y; }
-int Zone::getPv(){ return productionValue; }
 bool Zone::isLand(){ return land; }
 
 bool Zone::moveEntity(Entity* ent){
 	if(addEntity(ent)){
 		ent->travel(getPosition());
 		return true;
-	}
-	return false;
-}
-
-bool Zone::addEntity(Entity* ent){
-	if(!hasEntity(ent)){
-		if((ent->canTravelLand() && isLand()) || (ent->canTravelSea() && !isLand())){
-			entities[ent->getID()] = ent;
-			return true;
-		}
-	}
-	return false; //entity already in the zone
-	
-}
-Entity* Zone::removeEntity(Entity* ent){
-	Entity* _ent = NULL;
-	if(hasEntity(ent)){
-		_ent = entities[ent->getID()];
-		entities.erase(ent->getID());
-	}
-	return _ent;
-}
-
-bool Zone::hasEntity(Entity* ent){
-	if(!ent) return false;
-	if(entities.count(ent->getID())>0){
-		return (entities[ent->getID()]==ent);
 	}
 	return false;
 }

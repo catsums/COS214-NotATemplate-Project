@@ -7,8 +7,7 @@
 #include <cstdlib>
 #include <vector>
 
-#include "SeaZone.h"
-#include "LandZone.h"
+#include "Zone.h"
 
 using namespace std;
 
@@ -77,24 +76,22 @@ class Map
             return NULL;
         }
 
-        bool moveEntity(Zone* zone, Entity* ent){
-            if(zone && ent){
-                Zone* newZone = getZone(zone->getPosition());
-                Zone* oldZone = getZone(ent->getPosition());
-
-                Entity* _ent = oldZone->removeEntity(ent);
-
-                if( (!_ent) || (_ent == ent) || _ent->getID() == ent->getID() ){
-                    return newZone->moveEntity(ent);
+        vector<Zone*> getAllZones(){
+            vector<Zone*> allZones;
+            for(int r=0; r<mapSize.x; r++){
+                for(int c=0; c<mapSize.y; c++){
+                    Zone* z = zones[r]->at(c);
+                    if(z){
+                        allZones.push_back(z);
+                    }
                 }
             }
-            return false;
         }
 
         void setSize(int w, int h);
 
     protected:
-        void initialiseRows();
+        // void initialiseRows();
 
         vector<vector<Zone*>*> zones;
         Position mapSize;
