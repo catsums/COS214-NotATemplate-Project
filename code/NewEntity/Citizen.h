@@ -56,6 +56,7 @@ public:
         this->HP -= dmg;
         if(HP<=0){
             HP = 0;
+            die();
             return true;
         }
         return false;
