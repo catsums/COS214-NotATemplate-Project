@@ -1,3 +1,6 @@
+/** @file AdapterWrapper.h
+*	@brief An example of how we incorporated the adapter pattern into our war simulator 
+*/
 #ifndef ADAPTERWRAPPER_H
 #define ADAPTERWRAPPER_H
 
@@ -15,19 +18,25 @@
 #include "CitizenAdapter.h"
 // #include "AdapterManager.h"
 
-/*	
-	Singleton that allows for any object to create an adapter based on the type of object it is
-	without clashing with the dependancies
+/**	
+*	Singleton that allows for any object to create an adapter based on the type of object it is
+*	without clashing with the dependancies
 */
 
 class AdapterWrapper{
+	///Constructor
 	AdapterWrapper(){}
+	///Destructor
 	~AdapterWrapper(){}
-	/*creates an adapter from an Entity object*/
+	/** creates an adapter from an Entity object
+	*	@param Entity pointer 	
+	*/
 	EntityAdapter* getAdapter(Entity* ent){
 		return new EntityAdapter(ent);
 	}
-	/*creates an adapter from a Citizen object*/
+	/** creates an adapter from a Citizen object
+	*	@param Citizen pointer	
+	*/
 	CitizenAdapter* getAdapter(Citizen* ent){
 		return new CitizenAdapter(ent);
 	}
