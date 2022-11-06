@@ -5,7 +5,7 @@ using namespace std;
 
 Depot::Depot(int g) : garages(g){}
 
-void Depot::Depot()
+void Depot::displayFacility()
 {
     cout << "Army depot with " << garages << " garages" << endl;
 }

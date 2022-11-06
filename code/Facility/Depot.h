@@ -1,7 +1,7 @@
 #ifndef DEPOT_H
 #define DEPOT_H
 
-#include "Depot.h"
+#include "Facility.h"
 
 using namespace std;
 
