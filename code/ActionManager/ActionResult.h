@@ -38,41 +38,70 @@ class ActionResult: public SignalEvent{
 	*/
 	friend class ActionManager;
 public:
-	//creates the result based on the request id, success and result data
+	///creates the result based on the request id, success and result data
+	/**
+	* @param string variable that takes in the ID of the action result 
+	*/
 	ActionResult(string id);
+	/**
+	*	@param string variable that takes in the ID of the action result 
+	*	@param bool determining the failure/success of the passing through of a result  
+	*/
 	ActionResult(string id, bool success);
+
+	/**
+	*	@param string variable that takes in the ID of the action result 
+	*	@param bool determining the failure/success of the passing through of a result
+	*	@param data relating to the  map  
+	*/
 	ActionResult(string id, bool success, map<string,string> _data);
 	ActionResult(ActionResult& other);
+
+	///Destructor
 	~ActionResult();
 
-	//creates a clone of the result since it is a signal event
+	///creates a clone of the result since it is a signal event
 	SignalEvent* clone();
 	
-	//get data based on a key or returns null if nonexistent
+	
+	/**get data based on a key or returns null if nonexistent
+	*	@param string variable of the key passed through 
+	*/
 	string* getData(string key);
-	//set data based on a key and value
+
+	
+	/**set data based on a key and value
+	*	@param string variable of the key passed through 
+	*	@param the key passed in has a corresponding string value	
+	*/
 	string* setData(string key, string val);
-	//set data using a hashmap of strings
+	
+	/**
+	*	@param set data using a hashmap of strings 
+	*/
 	map<string,string> setDataMap(map<string,string> newData);
-	//get all data as a hashmap
+	///get all data as a hashmap
 	map<string,string> getDataMap();
-	//returns the id of the result, which is the id of the original request
+	///returns the id of the result, which is the id of the original request
 	string getRequestID(){
 		return id;
 	}
 	
-	//check if request was finished
+	///check if request was finished
 	bool isFinished();
-	//check if request was a success
+	///check if request was a success
 	bool isSuccess();
 protected:
-	//resolves the result by finishing the request and setting its succession
+	
+	/**
+	*	@param resolves the result by finishing the request and setting its succession		
+	*/
 	void resolve(bool s);
 
-	bool success;	//request succession
-	bool finished;	//request completion
-	map<string,string> resultData; //data of the result
-	string id;	//id of the original request
+	bool success;	/**<request succession*/
+	bool finished;	/**<request completion*/
+	map<string,string> resultData; /**data of the result*/
+	string id;	/**<id of the original request*/
 
 };
 
