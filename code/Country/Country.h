@@ -18,6 +18,7 @@ class Country
         void updateResources(int u);
         void updateTerritory(int u);
         
+        bool getCoastal();
         int getResources();
         int getTerritory();
     private:

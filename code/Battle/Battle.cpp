@@ -12,7 +12,10 @@ void Battle::commence() {
 //temporary implimentation
 void Battle::determineOutcome()
 {
-    if((rand() % 10 + 1) <= 6)
+    int victoryChance = ((double) c1->getTerritory() / (c1->getTerritory() + c2->getTerritory())) * 100;
+    cout << "vic chance: " << victoryChance << endl;
+    
+    if((rand() % 100 + 1) <= victoryChance)
     {
         int t = (rand() % 10 + 1);
         cout << c1->getName() << " has defeated " << c2->getName() << " in battle | " << c2->getName() << " lost " << t << " territory" << endl;

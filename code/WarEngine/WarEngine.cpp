@@ -12,7 +12,7 @@ WarEngine::WarEngine() {
 
 void WarEngine::initialiseWar(int numCountries, int sSize, int maxTurn){
   this->maxTurn = maxTurn;
-  currTurn = 0;
+  currTurn = 1;
 
   string l;
   vector<string> names;
@@ -47,7 +47,6 @@ void WarEngine::initialiseWar(int numCountries, int sSize, int maxTurn){
 }
 
 bool WarEngine::runTurn(){
-  currTurn++;
   srand(time(0));
   
   //each country gets to act
@@ -204,7 +203,7 @@ bool WarEngine::runTurn(){
   {
     return false;
   }
-  if(currTurn == maxTurn)
+  if(currTurn++ == maxTurn)
   {
     return false;
   }
@@ -258,7 +257,7 @@ void WarEngine::printWarEngineData()
   {
     cout << "Side B is currently winning the war" << endl;
   }
-  cout << "-----------------------------------" << endl << endl;
+  cout << "-----------------------------------" << endl;
 }
 
 void WarEngine::printSide(bool side)
