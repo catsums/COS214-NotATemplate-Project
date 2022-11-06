@@ -78,7 +78,8 @@ bool WarEngine::runTurn(){
       potentialActions.push_back(7);
     }
 
-    int action = rand() % (potentialActions.size() + 1);
+    int action = potentialActions[rand() % (potentialActions.size())];
+
     switch (action)
     {
       case 1: //land attack
@@ -248,7 +249,10 @@ void WarEngine::printSide(bool side)
   {
     if(countryArr[i]->getSide() == side)
     {
-      cout << countryArr[i]->getName() << endl;
+      cout << countryArr[i]->getName();
+      cout << " | t: " << countryArr[i]->getTerritory();
+      cout << " | r: " << countryArr[i]->getResources();
+      cout << endl;
     }
   }
 }
