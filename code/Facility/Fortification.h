@@ -10,6 +10,7 @@ class Fortification : public Facility
     public:
         Fortification(int l);
         void displayFacility();
+        int getDefenseLevel();
 
     private:
         int defenseLevel;

@@ -3,9 +3,14 @@
 
 using namespace std;
 
-Hospital::Hospital(int c, int l) : capacity(c), techLevel(l){}
+Hospital::Hospital(int c) : capacity(c){}
 
 void Hospital::displayFacility()
 {
-    cout << "Hospital with capacity of " << capacity << " and tech level " << techLevel << endl;
+    cout << "Hospital with capacity of " << capacity << endl;
+}
+
+int Hospital::getCapacity()
+{
+    return capacity;
 }

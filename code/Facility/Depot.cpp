@@ -9,3 +9,8 @@ void Depot::displayFacility()
 {
     cout << "Army depot with " << garages << " garages" << endl;
 }
+
+int Depot::getGarages()
+{
+    return garages;
+}

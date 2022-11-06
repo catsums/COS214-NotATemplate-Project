@@ -9,3 +9,8 @@ void Fortification::displayFacility()
 {
     cout << "Fortification with defense level " << defenseLevel << endl;
 }
+
+int Fortification::getDefenseLevel()
+{
+    return defenseLevel;
+}

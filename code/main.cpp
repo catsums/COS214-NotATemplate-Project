@@ -6,16 +6,20 @@
 using namespace std;
 
 int main() {
-  WarEngine::instance().initialiseWar(5, 3, 5);
+  srand(time(0));
+
+  WarEngine::instance().initialiseWar(5, 3, 10);
   cout << "The war has started" << endl;
   cout << "The WarEngine has been initialised (Singleton, Facade)" << endl;
 
-  WarEngine::instance().printWarEngineData();
+  //WarEngine::instance().printWarEngineData();
 
   do
   {
+    WarEngine::instance().printWarEngineData();
     cout << "-----------------------------------" << endl;
     cout << "Turn: " << WarEngine::instance().getCurrTurn() << endl;
+    cout << endl;
   }
   while (WarEngine::instance().runTurn());
 
@@ -29,6 +33,7 @@ int main() {
   {
     cout << "Side B is the victor" << endl;
   }
+  cout << endl;
 }
 
 void test()

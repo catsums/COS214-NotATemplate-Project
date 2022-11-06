@@ -3,9 +3,14 @@
 
 using namespace std;
 
-Airfield::Airfield(int r, int h) : runways(r), hangers(h){}
+Airfield::Airfield(int h) : hangers(h){}
 
 void Airfield::displayFacility()
 {
-    cout << "Airfield with " << hangers << " Hangers and " << runways << " Runways" << endl;
+    cout << "Airfield with " << hangers << " Hangers" << endl;
+}
+
+int Airfield::getHangers()
+{
+    return hangers;
 }

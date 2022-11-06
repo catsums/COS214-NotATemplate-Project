@@ -8,11 +8,11 @@ using namespace std;
 class Airfield : public Facility
 {
     public:
-        Airfield(int r, int h);
+        Airfield(int h);
         void displayFacility();
+        int getHangers();
 
     private:
-        int runways;
         int hangers;
 };
 

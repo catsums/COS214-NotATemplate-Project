@@ -9,3 +9,8 @@ void Port::displayFacility()
 {
     cout << "Port with " << docks << " docks" << endl;
 }
+
+int Port::getDocks()
+{
+    return docks;
+}

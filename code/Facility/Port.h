@@ -10,6 +10,7 @@ class Port : public Facility
     public:
         Port(int d);
         void displayFacility();
+        int getDocks();
 
     private:
         int docks;

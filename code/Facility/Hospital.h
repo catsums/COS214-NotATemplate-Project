@@ -8,12 +8,12 @@ using namespace std;
 class Hospital : public Facility
 {
     public:
-        Hospital(int c, int l);
+        Hospital(int c);
         void displayFacility();
+        int getCapacity();
 
     private:
         int capacity;
-        int techLevel;
 };
 
 #endif

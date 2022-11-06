@@ -18,7 +18,7 @@ void WarEngine::initialiseWar(int numCountries, int sSize, int maxTurn){
   vector<string> names;
   vector<bool> coastal;
 
-  srand(time(0));
+  //srand(time(0));
   ifstream nameFile("countryNames.txt");
 
   while(getline(nameFile, l))
@@ -47,18 +47,16 @@ void WarEngine::initialiseWar(int numCountries, int sSize, int maxTurn){
 }
 
 bool WarEngine::runTurn(){
-  srand(time(0));
+  //srand(time(0));
   
   //each country gets to act
   for(int i = 0; i < countryArr.size(); i++)
   {
-    cout << endl;
-    
     countryArr[i]->generateResources();
 
     //decision making
     //Corresponding decisions:
-    // 0: Idle
+    // 0: Withdraw
     // 1: Land attack
     // 2: Sea attack
     // 3: Air attack
@@ -71,26 +69,53 @@ bool WarEngine::runTurn(){
     vector<int> potentialActions;
     bool currSide = countryArr[i]->getSide();
     
-    potentialActions.push_back(1);
-    potentialActions.push_back(2);
-    potentialActions.push_back(3);
-    potentialActions.push_back(4);
-    potentialActions.push_back(5);
-
-    if((double) determineSideStrength(currSide) / determineSideStrength(!currSide) <= 0.4)
+    if(countryArr[i]->getTerritory() > 0)
     {
-      potentialActions.push_back(6);
-    }
+      potentialActions.push_back(1);
+      potentialActions.push_back(2);
+      potentialActions.push_back(3);
+      potentialActions.push_back(4);
+      potentialActions.push_back(5);
 
-    if((double) determineSideStrength(currSide) / determineSideStrength(!currSide) <= 0.2)
-    {
-      potentialActions.push_back(7);
+      if((double) determineSideStrength(currSide) / determineSideStrength(!currSide) <= 0.4) //diplomacy
+      {
+        potentialActions.push_back(6);
+      }
+
+      if((double) determineSideStrength(currSide) / determineSideStrength(!currSide) <= 0.2) //defection
+      {
+        int cnt = 0;
+        for(int i = 0; i < countryArr.size(); i++)
+        {
+          if(countryArr[i]->getSide() == currSide)
+          {
+            cnt++;
+          }
+        }
+
+        if(cnt >= 2)
+        {
+          potentialActions.push_back(7);
+        }
+        
+      }
     }
+    else //withdrawal
+    {
+      potentialActions.push_back(0); 
+    }
+    
 
     int action = potentialActions[rand() % (potentialActions.size())];
 
     switch (action)
     {
+      case 0: //Withdraw
+      {
+        countryArr.erase(countryArr.begin() + i);
+        cout << countryArr[i]->getName() << " has withdrawn from the war!" << endl;
+      } 
+      break;
       case 1: //land attack
       {
         int theatre = 1;
@@ -182,6 +207,7 @@ bool WarEngine::runTurn(){
       break;
     }
     
+    cout << endl;
   }
 
   //end condition
@@ -238,7 +264,7 @@ int WarEngine::determineSideStrength(bool s)
 
 void WarEngine::printWarEngineData()
 {
-  cout << "Countries participating in the war:" << endl;
+  cout << "War summary:" << endl;
   cout << "-----------------------------------" << endl;
   cout << "Side A:" << endl;
   printSide(0);
@@ -257,7 +283,6 @@ void WarEngine::printWarEngineData()
   {
     cout << "Side B is currently winning the war" << endl;
   }
-  cout << "-----------------------------------" << endl;
 }
 
 void WarEngine::printSide(bool side)
