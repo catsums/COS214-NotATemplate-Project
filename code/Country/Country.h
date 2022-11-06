@@ -14,6 +14,7 @@ class Country
         int generateResources();
 
         bool getSide();
+        void setSide(bool s);
         string getName();
         int getTerritory();
     private:

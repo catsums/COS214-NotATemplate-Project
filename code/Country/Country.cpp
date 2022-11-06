@@ -3,6 +3,7 @@
 Country::Country(string n, bool s) : name(n), side(s)
 {
     //generate random territory
+    srand(time(0));
     territory = rand() % 40 + 10;
 
     //assign recources
@@ -19,6 +20,10 @@ int Country::generateResources()
 
 bool Country::getSide(){
     return side;
+}
+
+void Country::setSide(bool s){
+    side = s;
 }
 
 string Country::getName(){
