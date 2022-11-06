@@ -47,6 +47,8 @@ ActionRequest::ActionRequest(int _wait, map<string,string> _data, function<void(
 		_process(e);
 	});
 
+	status = ARS::PENDING;
+
 	// result = new ActionResult(getID(), this);
 }
 ActionRequest::ActionRequest(int _wait, map<string,string> _data, function<void(SignalEvent*)> func, function<void(SignalEvent*)> func2){
@@ -57,6 +59,8 @@ ActionRequest::ActionRequest(int _wait, map<string,string> _data, function<void(
 	requestData = _data;
 	actionHandler = new FunctionHandler(func);
 	processHandler = new FunctionHandler(func2);
+
+	status = ARS::PENDING;
 
 	// result = new ActionResult(getID(), this);
 }
@@ -69,6 +73,8 @@ ActionRequest::ActionRequest(int _wait, function<void(SignalEvent*)> func){
 	processHandler = new FunctionHandler([this](SignalEvent* e){
 		_process(e);
 	});
+
+	status = ARS::PENDING;
 	// result = new ActionResult(getID(), this);
 }
 ActionRequest::ActionRequest(int _wait, function<void(SignalEvent*)> func, function<void(SignalEvent*)> func2){
@@ -78,6 +84,8 @@ ActionRequest::ActionRequest(int _wait, function<void(SignalEvent*)> func, funct
 	startCount = _wait;
 	actionHandler = new FunctionHandler(func);
 	processHandler = new FunctionHandler(func2);
+
+	status = ARS::PENDING;
 
 	// result = new ActionResult(getID(), this);
 }
@@ -90,6 +98,7 @@ ActionRequest::ActionRequest(ActionRequest& other){
 	requestData = other.requestData;
 	actionHandler = new FunctionHandler(*(other.actionHandler));
 	processHandler = new FunctionHandler(*(other.processHandler));
+	status = other.status;
 	// result = new ActionResult(getID(), this);
 }
 ActionRequest::~ActionRequest(){
@@ -147,24 +156,32 @@ ActionResult* ActionRequest::process(ActionResult* oldRes){
 		changeStatus(ARS::PROCESSING);
 	}
 	if(status == ARS::PROCESSING){
+		_process(newRes);
+		SignalHandler* _handler = getProcessHandler();
+		_handler->handle(newRes);
+
 		if(waitCount==0){
-			changeStatus(ARS::FULFILLED);
 			newRes->resolve(true);
 		}else if(waitCount<0){
 			newRes->resolve(false);
 		}
-
-		_process(newRes);
-		SignalHandler* _handler = getProcessHandler();
-		_handler->handle(newRes);
 	}
+
+	if(newRes->isFinished()){
+		changeStatus(ARS::FULFILLED);
+	}
+
 	return newRes;
 }
 void ActionRequest::_process(SignalEvent* e){
 	
 	ActionResult* res  = static_cast<ActionResult*>(e);
 
-	res->setDataMap(requestData);
+	for(auto kv: requestData){
+		if(!res->getData(kv.first)){
+			res->setData(kv.first, kv.second);
+		}
+	}
 
 }
 

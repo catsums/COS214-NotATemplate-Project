@@ -52,9 +52,10 @@ public:
 	bool isFinished();
 	//check if request was a success
 	bool isSuccess();
-protected:
+
 	//resolves the result by finishing the request and setting its succession
 	void resolve(bool s);
+protected:
 
 	bool success;	//request succession
 	bool finished;	//request completion

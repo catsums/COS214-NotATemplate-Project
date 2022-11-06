@@ -146,6 +146,8 @@ void ActionManager::pushRequest(ActionRequest* req){
 		requests[req->getID()] = req;
 		results[req->getID()] = new ActionResult(req->getID());
 
+		// req->changeStatus(ARS::PENDING);
+
 		subscribe(req->getID(), req->getActionHandler());
 
 		pushToQueue(req);
