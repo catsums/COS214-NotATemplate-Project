@@ -4,6 +4,7 @@
 #include <random>
 #include <cmath>
 #include <math.h>
+#include <sstream>
 
 #include <functional>
 
@@ -336,221 +337,327 @@ string getRandomString(int size){
 // 	}
 // };
 
-void attackNearest(War* war, EntityAdapter* adp){
-	Zone* currZone = war->warMap->getZone(adp->getPosition());
-	Entity* currEnt = adp->getEntity();
+// void attackNearest(War* war, EntityAdapter* adp){
+// 	Zone* currZone = war->warMap->getZone(adp->getPosition());
+// 	Entity* currEnt = adp->getEntity();
 
-	if(!currZone || !currEnt){
-		cout<<"No entity in adapter..."<<endl;
-		return;
-	}else{
-		cout<<"Running on ent-"<<currEnt->getID()<<endl;
-		// cout<<"LETS GOOOOOO"<<endl;
-	}
+// 	if(!currZone || !currEnt){
+// 		cout<<"No entity in adapter..."<<endl;
+// 		return;
+// 	}else{
+// 		cout<<"Running on ent-"<<currEnt->getID()<<endl;
+// 		// cout<<"LETS GOOOOOO"<<endl;
+// 	}
 
-	Entity* enemyEnt = NULL;
+// 	Entity* enemyEnt = NULL;
 
-	//check if zone contains any enemy
-	vector<Entity*> entsInZone = currZone->getEntities();
-	for(int i=0;i<(int)entsInZone.size();i++){
-		Entity* ent = entsInZone[i];
-		if(ent->getCountry() != currEnt->getCountry()){
-			enemyEnt = ent;
-			break;
-		}
-	}
+// 	//check if zone contains any enemy
+// 	vector<Entity*> entsInZone = currZone->getEntities();
+// 	for(int i=0;i<(int)entsInZone.size();i++){
+// 		Entity* ent = entsInZone[i];
+// 		if(ent->getCountry() != currEnt->getCountry()){
+// 			enemyEnt = ent;
+// 			break;
+// 		}
+// 	}
 
-	if(enemyEnt){
-		cout<<"FOUND ENEMY TO ATTACK"<<endl;
-		EntityAdapter* target = AdapterWrapper::getAdapter(enemyEnt);
-		war->adapterManager->addAdapter(target);
-		target->setManager(war->adapterManager);
+// 	if(enemyEnt){
+// 		cout<<"FOUND ENEMY TO ATTACK"<<endl;
+// 		EntityAdapter* target = AdapterWrapper::getAdapter(enemyEnt);
+// 		war->adapterManager->addAdapter(target);
+// 		target->setManager(war->adapterManager);
 
-		ActionRequest* req = adp->requestAttack(target->getID());
-		war->actionManager->pushRequest(req);
-	}else{
-		//if theres no enemy, try to find enemy in each adjacent zone
-		vector<Zone*> adjZones = war->warMap->getAdjacent(currZone);
-		Zone* targetZone = NULL;
+// 		ActionRequest* req = adp->requestAttack(target->getID());
+// 		war->actionManager->pushRequest(req);
+// 	}else{
+// 		//if theres no enemy, try to find enemy in each adjacent zone
+// 		vector<Zone*> adjZones = war->warMap->getAdjacent(currZone);
+// 		Zone* targetZone = NULL;
 
-		enemyEnt = NULL;
+// 		enemyEnt = NULL;
 
-		for(int i=0;i<(int)adjZones.size();i++){
-			Zone* adjZone = adjZones[i];
-			if(adjZone){
-				cout<<"checking zone-("<<adjZone->getX()<<","<<adjZone->getY()<<")"<<endl;
-			}else{
-				cout<<"Zone is NULL"<<endl;
-			}
+// 		for(int i=0;i<(int)adjZones.size();i++){
+// 			Zone* adjZone = adjZones[i];
+// 			if(adjZone){
+// 				cout<<"checking zone-("<<adjZone->getX()<<","<<adjZone->getY()<<")"<<endl;
+// 			}else{
+// 				cout<<"Zone is NULL"<<endl;
+// 			}
 
-			vector<Entity*> entsHere = adjZone->getEntities();
-			for(int i=0;i<(int)entsHere.size();i++){
-				Entity* ent = entsHere[i];
-				if(ent){
-					cout<<"checking if ent "<<ent->getID()<<" is same country"<<endl;
-				}else{
-					cout<<"ent is NULL"<<endl;
-				}
-				if(ent->getCountry() != currEnt->getCountry()){
-					enemyEnt = ent;
-					targetZone = adjZone;
-					break;
-				}
-			}
-			if(enemyEnt||targetZone){
-				// targetZone = adjZone;
-				break;
-			}
-		}
-		if(targetZone){
-			cout<<"FOUND ZONE TO TRAVEL TO"<<endl;
-			ActionRequest* req = adp->requestTravel(targetZone);
-			war->actionManager->pushRequest(req);
-		}else{
-			cout<<"No zone to travel to"<<endl;
-		}
+// 			vector<Entity*> entsHere = adjZone->getEntities();
+// 			for(int i=0;i<(int)entsHere.size();i++){
+// 				Entity* ent = entsHere[i];
+// 				if(ent){
+// 					cout<<"checking if ent "<<ent->getID()<<" is same country"<<endl;
+// 				}else{
+// 					cout<<"ent is NULL"<<endl;
+// 				}
+// 				if(ent->getCountry() != currEnt->getCountry()){
+// 					enemyEnt = ent;
+// 					targetZone = adjZone;
+// 					break;
+// 				}
+// 			}
+// 			if(enemyEnt||targetZone){
+// 				// targetZone = adjZone;
+// 				break;
+// 			}
+// 		}
+// 		if(targetZone){
+// 			cout<<"FOUND ZONE TO TRAVEL TO"<<endl;
+// 			ActionRequest* req = adp->requestTravel(targetZone);
+// 			war->actionManager->pushRequest(req);
+// 		}else{
+// 			cout<<"No zone to travel to"<<endl;
+// 		}
 		
-	}
+// 	}
+// }
+
+// void managerTest()
+// {
+
+// 	War* war = new War(new PhaseNeutral());
+
+// 	Country* countryA = new Country("Ares");
+// 	Country* countryB = new Country("Bethlen");
+// 	Country* countryC = new Country("Catia");
+
+
+// 	war->addCountry(countryA, 0);
+// 	war->addCountry(countryB, 1);
+// 	// war->addCountry(countryC, 1);
+
+// 	war->warMap->setSize(1,2);
+// 	war->warMap->genStandardMap();
+
+// 	countryA->addZone(war->warMap->getZone(0,0));
+// 	// countryA->addZone(war->warMap->getZone(0,1));
+// 	countryB->addZone(war->warMap->getZone(1,0));
+// 	// countryC->addZone(war->warMap->getZone(2,2));
+
+// 	int citNum = 4;
+// 	int vehNum = 2;
+
+// 	Position mapSize = war->warMap->getMapSize();
+
+// 	vector<Entity*> allEnts;
+
+// 	Citizen* solA = new Soldier(20);
+// 	countryA->addCitizen(solA);
+// 	allEnts.push_back(solA);
+// 	war->warMap->moveEntity(war->warMap->getZone(0,0), solA);
+
+// 	Citizen* solB = new Soldier(20);
+// 	countryA->addCitizen(solB);
+// 	allEnts.push_back(solB);
+// 	war->warMap->moveEntity(war->warMap->getZone(1,1), solB);
+
+// 	Citizen* solC = new Soldier(20);
+// 	countryA->addCitizen(solC);
+// 	allEnts.push_back(solC);
+// 	war->warMap->moveEntity(war->warMap->getZone(1,1), solC);
+	
+// 	Citizen* solD = new Soldier(20);
+// 	countryA->addCitizen(solD);
+// 	allEnts.push_back(solD);
+// 	war->warMap->moveEntity(war->warMap->getZone(0,0), solD);
+
+// 	Citizen* solE = new Soldier(20);
+// 	countryB->addCitizen(solE);
+// 	allEnts.push_back(solE);
+// 	war->warMap->moveEntity(war->warMap->getZone(0,1), solE);
+	
+// 	Citizen* solF = new Soldier(20);
+// 	countryB->addCitizen(solF);
+// 	allEnts.push_back(solF);
+// 	war->warMap->moveEntity(war->warMap->getZone(1,0), solF);
+
+// 	Citizen* solG = new Soldier(20);
+// 	countryB->addCitizen(solG);
+// 	allEnts.push_back(solG);
+// 	war->warMap->moveEntity(war->warMap->getZone(0,0), solG);
+
+// 	Citizen* solH = new Soldier(20);
+// 	countryB->addCitizen(solH);
+// 	allEnts.push_back(solH);
+// 	war->warMap->moveEntity(war->warMap->getZone(1,0), solH);
+
+// 	// for(int i=0;i<2;i++){
+// 	// 	vector<Country*>* side = war->getCountriesOnSide(i);
+// 	// 	if(side){
+// 	// 		// cout<<"-----SIDE "<<i<<"------"<<endl;
+// 	// 		for(int j=0;j<side->size();j++){
+// 	// 			Country* country = side->at(j);
+// 	// 			if(country){
+// 	// 				for(int i=0;i<citNum;i++){
+// 	// 					Citizen* ctn = new Soldier(20);
+// 	// 					country->addCitizen(ctn);
+// 	// 					allEnts.push_back(ctn);
+
+// 	// 					Zone* zone = war->warMap->getZone(
+// 	// 						myHelper::randomInt(0,mapSize.x),
+// 	// 						myHelper::randomInt(0,mapSize.y)
+// 	// 					);
+// 	// 					war->warMap->moveEntity(zone, ctn);
+// 	// 				}
+// 	// 			}
+
+// 	// 			// cout<<country->printInfo()<<endl;
+// 	// 		}
+// 	// 	}
+// 	// }
+// 	for(int i=0;i<2;i++){
+// 		vector<Country*>* side = war->getCountriesOnSide(i);
+// 		if(side){
+// 			// cout<<"-----SIDE "<<i<<"------"<<endl;
+// 			for(int j=0;j<side->size();j++){
+// 				Country* country = side->at(j);
+// 				if(country){
+// 					vector<Citizen*> citizens = country->getCitizens();
+// 					for(int i=0;i<(int)citizens.size();i++){
+// 						Citizen* ctn = citizens[i];
+// 						EntityAdapter* adp = AdapterWrapper::getAdapter(ctn);
+// 						war->adapterManager->addAdapter(adp);
+// 						adp->setManager(war->adapterManager);
+
+// 						attackNearest(war, adp);
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+
+// 	for(int i=0;i<(int)allEnts.size();i++){
+// 		cout<<allEnts[i]->printInfo()<<endl;
+// 	}
+	
+
+// 	ActionManager* actionManager = war->actionManager;
+// 	cout<<">> RUNNING REQUESTS..."<<endl;
+// 	while(!actionManager->isEmptyQueue()){
+// 		cout<<"next request..."<<endl;
+// 		actionManager->handleCurrRequest();
+// 	}
+// 	//get queue for next step
+// 	actionManager->placeNextQueue();
+// 	///increment step count
+// 	war->incrementStep();
+
+// 	for(int i=0;i<(int)allEnts.size();i++){
+// 		cout<<allEnts[i]->printInfo()<<endl;
+// 	}
+
+// }
+
+ActionRequest* requestAttack(Entity* ent, Entity* target){
+	
+	ActionRequest* req = new ActionRequest(0, [=](SignalEvent* e){
+		//on fulfilled
+		try{
+			ActionResult* res = static_cast<ActionResult*>(e);
+			if(res){
+				if(res->isFinished()){
+					if(res->isSuccess()){
+						cout<<res->getRequestID()<<" - SUCCESS"<<endl;
+						cout<<ent->getType()<<"-"<<ent->getID()<<" is attacking "<<target->getType()<<"-"<<target->getID()<<"!"<<endl;
+						ent->attack(target);
+					}else{
+						cout<<res->getRequestID()<<" - FAIL"<<endl;
+						string* reason = res->getData("reason");
+						if(reason){
+							cout<<"Request failed: "<<*(reason)<<endl;
+						}
+					}
+				}else{
+					cout<<"UNFINISHED"<<endl;
+					cout<<"Request failed to complete"<<endl;
+				}
+			}
+		}catch(const bad_cast& err){
+			cout<<"Couldn't cast SignalEvent to ActionResult..."<<endl;
+		}
+	},[=](SignalEvent* e){
+		//on process
+		stringstream ss;
+		try{
+			ActionResult* res = static_cast<ActionResult*>(e);
+			if(!ent){
+				res->resolve(false);
+				ss<<"Can't attack because Entity is NULL";
+			}else if(!ent->isAlive()){
+				res->resolve(false);
+				ss<<ent->getType()<<"-"<<ent->getID()<<" can't attack because they are dead";
+			}else if(!target){
+				res->resolve(false);
+				ss<<ent->getType()<<"-"<<ent->getID()<<" can't attack because target is NULL";
+			}else if(!target->isAlive()){
+				res->resolve(false);
+				ss<<ent->getType()<<"-"<<ent->getID()<<" can't attack because "<<target->getType()<<"-"<<target->getID()<<" is dead";
+			}
+
+			cout<<res->getRequestID()<<" Processing..."<<endl;
+			if(res->isFinished() && !res->isSuccess()){
+				res->setData("reason", ss.str());
+			}
+		}catch(const bad_cast& err){
+			cout<<"Couldn't cast SignalEvent to ActionResult..."<<endl;
+		}
+	});
+
+	cout<<ent->getType()<<"-"<<ent->getID()<<" created a request ("<<req->getID()<<")"<<endl;
+
+	return req;
 }
 
-void managerTest()
-{
+void requestTest(){
+	ActionManager* actionManager = new ActionManager();
 
-	War* war = new War(new PhaseNeutral());
+	Citizen* solA = new Soldier(100,"Atlantis",15);
+	Citizen* solB = new Soldier(100,"Bethleham",15);
 
-	Country* countryA = new Country("Ares");
-	Country* countryB = new Country("Bethlen");
-	Country* countryC = new Country("Catia");
+	cout<<solA->printInfo()<<endl;
+	cout<<solB->printInfo()<<endl;
 
+	// actionManager->pushRequest( requestAttack(solA, solB) );
+	// actionManager->pushRequest( requestAttack(solB, solA) );
+	int step = 0;
+	int maxStep = 20;
 
-	war->addCountry(countryA, 0);
-	war->addCountry(countryB, 1);
-	// war->addCountry(countryC, 1);
-
-	war->warMap->setSize(1,2);
-	war->warMap->genStandardMap();
-
-	countryA->addZone(war->warMap->getZone(0,0));
-	// countryA->addZone(war->warMap->getZone(0,1));
-	countryB->addZone(war->warMap->getZone(1,0));
-	// countryC->addZone(war->warMap->getZone(2,2));
-
-	int citNum = 4;
-	int vehNum = 2;
-
-	Position mapSize = war->warMap->getMapSize();
-
-	vector<Entity*> allEnts;
-
-	Citizen* solA = new Soldier(20);
-	countryA->addCitizen(solA);
-	allEnts.push_back(solA);
-	war->warMap->moveEntity(war->warMap->getZone(0,0), solA);
-
-	Citizen* solB = new Soldier(20);
-	countryA->addCitizen(solB);
-	allEnts.push_back(solB);
-	war->warMap->moveEntity(war->warMap->getZone(1,1), solB);
-
-	Citizen* solC = new Soldier(20);
-	countryA->addCitizen(solC);
-	allEnts.push_back(solC);
-	war->warMap->moveEntity(war->warMap->getZone(1,1), solC);
-	
-	Citizen* solD = new Soldier(20);
-	countryA->addCitizen(solD);
-	allEnts.push_back(solD);
-	war->warMap->moveEntity(war->warMap->getZone(0,0), solD);
-
-	Citizen* solE = new Soldier(20);
-	countryB->addCitizen(solE);
-	allEnts.push_back(solE);
-	war->warMap->moveEntity(war->warMap->getZone(0,1), solE);
-	
-	Citizen* solF = new Soldier(20);
-	countryB->addCitizen(solF);
-	allEnts.push_back(solF);
-	war->warMap->moveEntity(war->warMap->getZone(1,0), solF);
-
-	Citizen* solG = new Soldier(20);
-	countryB->addCitizen(solG);
-	allEnts.push_back(solG);
-	war->warMap->moveEntity(war->warMap->getZone(0,0), solG);
-
-	Citizen* solH = new Soldier(20);
-	countryB->addCitizen(solH);
-	allEnts.push_back(solH);
-	war->warMap->moveEntity(war->warMap->getZone(1,0), solH);
-
-	// for(int i=0;i<2;i++){
-	// 	vector<Country*>* side = war->getCountriesOnSide(i);
-	// 	if(side){
-	// 		// cout<<"-----SIDE "<<i<<"------"<<endl;
-	// 		for(int j=0;j<side->size();j++){
-	// 			Country* country = side->at(j);
-	// 			if(country){
-	// 				for(int i=0;i<citNum;i++){
-	// 					Citizen* ctn = new Soldier(20);
-	// 					country->addCitizen(ctn);
-	// 					allEnts.push_back(ctn);
-
-	// 					Zone* zone = war->warMap->getZone(
-	// 						myHelper::randomInt(0,mapSize.x),
-	// 						myHelper::randomInt(0,mapSize.y)
-	// 					);
-	// 					war->warMap->moveEntity(zone, ctn);
-	// 				}
-	// 			}
-
-	// 			// cout<<country->printInfo()<<endl;
-	// 		}
-	// 	}
-	// }
-	for(int i=0;i<2;i++){
-		vector<Country*>* side = war->getCountriesOnSide(i);
-		if(side){
-			// cout<<"-----SIDE "<<i<<"------"<<endl;
-			for(int j=0;j<side->size();j++){
-				Country* country = side->at(j);
-				if(country){
-					vector<Citizen*> citizens = country->getCitizens();
-					for(int i=0;i<(int)citizens.size();i++){
-						Citizen* ctn = citizens[i];
-						EntityAdapter* adp = AdapterWrapper::getAdapter(ctn);
-						war->adapterManager->addAdapter(adp);
-						adp->setManager(war->adapterManager);
-
-						attackNearest(war, adp);
-					}
-				}
-			}
+	while(solA->isAlive() && solB->isAlive() && step<maxStep){
+		cout<<"-----Step "<<step<<"------------"<<endl;
+		///make requests
+		actionManager->pushRequest( requestAttack(solA, solB) );
+		actionManager->pushRequest( requestAttack(solB, solA) );
+		///run requests
+		cout<<">> RUNNING REQUESTS..."<<endl;
+		while(!actionManager->isEmptyQueue()){
+			cout<<"next request..."<<endl;
+			actionManager->handleCurrRequest();
 		}
+		//get queue for next step
+		actionManager->placeNextQueue();
+
+		
+		///increment step count
+		// war->incrementStep();
+		step++;
+
+		///view initial results
+		cout<<solA->printInfo()<<endl;
+		cout<<solB->printInfo()<<endl;
 	}
 
-	for(int i=0;i<(int)allEnts.size();i++){
-		cout<<allEnts[i]->printInfo()<<endl;
-	}
 	
-
-	ActionManager* actionManager = war->actionManager;
-	cout<<">> RUNNING REQUESTS..."<<endl;
-	while(!actionManager->isEmptyQueue()){
-		cout<<"next request..."<<endl;
-		actionManager->handleCurrRequest();
-	}
-	//get queue for next step
-	actionManager->placeNextQueue();
-	///increment step count
-	war->incrementStep();
-
-	for(int i=0;i<(int)allEnts.size();i++){
-		cout<<allEnts[i]->printInfo()<<endl;
-	}
+	
+	
+	
 
 }
 
 int main(){
-	managerTest();
+	requestTest();
+	// managerTest();
 	// cout<<"Coin "<<myHelper::coinFlip()<<endl;
 
 	return 0;

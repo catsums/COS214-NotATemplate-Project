@@ -1,6 +1,6 @@
 CXX      := g++
 CXXFLAGS := -std=c++17 -pedantic-errors -Wall -Wextra -Werror -no-pie
-EASYFLAGS := -std=c++17
+EASYFLAGS := -std=c++17 -g
 LDFLAGS  := -L/usr/lib -lstdc++ -lm
 BUILD    := ./build
 OBJ_DIR  := $(BUILD)/objects
