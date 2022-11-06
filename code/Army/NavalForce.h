@@ -8,8 +8,8 @@ class NavalForce : public ArmyForce
 private:
     /* data */
 public:
-    NavalForce(/*rgs */);
-    ~NavalForce();
+    NavalForce(/*rgs */){};
+    ~NavalForce(){};
     virtual bool attack();
 };
 

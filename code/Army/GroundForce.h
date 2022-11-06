@@ -9,7 +9,7 @@ private:
     /* data */
 
 public:
-    ~GroundForce();
+    ~GroundForce(){};
     virtual bool attack();
 };
 

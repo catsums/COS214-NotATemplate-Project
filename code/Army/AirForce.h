@@ -8,8 +8,8 @@ class AirForce
 private:
     /* data */
 public:
-    AirForce(/* args */);
-    ~AirForce();
+    AirForce(/* args */){};
+    ~AirForce(){};
     virtual bool attack();
 };
 
