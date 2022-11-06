@@ -5,6 +5,9 @@
 using namespace std;
 
 FOB::FOB():Facility(){
+    types.push_back("FOB");
+}
+FOB::~FOB(){
 
 }
 
