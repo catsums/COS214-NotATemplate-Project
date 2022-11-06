@@ -49,6 +49,8 @@ bool WarEngine::runTurn(){
   //each country gets to act
   for(int i = 0; i < countryArr.size(); i++)
   {
+    cout << endl;
+    
     countryArr[i]->generateResources();
 
     //decision making
@@ -61,6 +63,7 @@ bool WarEngine::runTurn(){
     // 5: Build base
     // 6: Initiate diplomacy
     // 7: Change sides
+    // 8: Peace talks
     
     vector<int> potentialActions;
     bool currSide = countryArr[i]->getSide();
@@ -70,8 +73,11 @@ bool WarEngine::runTurn(){
     potentialActions.push_back(3);
     potentialActions.push_back(4);
     potentialActions.push_back(5);
-    potentialActions.push_back(6);
-    potentialActions.push_back(7);
+
+    if((double) determineSideStrength(currSide) / determineSideStrength(!currSide) <= 0.4)
+    {
+      potentialActions.push_back(6);
+    }
 
     if((double) determineSideStrength(currSide) / determineSideStrength(!currSide) <= 0.2)
     {
@@ -146,6 +152,14 @@ bool WarEngine::runTurn(){
       case 6: //Initiate diplomacy
       {
         cout << countryArr[i]->getName() << " is attempting to initiate diplomacy" << endl;
+        if(rand() % 10 + 1 == 1)
+        {
+          cout << countryArr[i]->getName() << " has successfuly initaited diplomacy, peace talks are underway." << endl;
+        }
+        else
+        {
+          cout << countryArr[i]->getName() << " was unable to initiate diplomacy" << endl;
+        }
       }
       break;
       case 7: //Change sides
@@ -262,4 +276,9 @@ WarEngine::~WarEngine(){}
 WarEngine& WarEngine::instance(){
   static WarEngine onlyInstance_;
   return onlyInstance_;
+}
+
+int WarEngine::getCurrTurn()
+{
+  return currTurn;
 }

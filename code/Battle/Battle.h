@@ -13,6 +13,8 @@ class Battle
         ~Battle();
 
         void commence();
+
+        void determineOutcome();
     private:
         Country* c1;
         Country* c2;

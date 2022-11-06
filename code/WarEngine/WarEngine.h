@@ -20,6 +20,8 @@ class WarEngine
 	bool determineCurrentVictor();
 	int determineSideStrength(bool s);
 
+	int getCurrTurn();
+
   protected:
 	WarEngine();
 	WarEngine(const WarEngine&);

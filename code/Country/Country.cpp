@@ -30,6 +30,16 @@ string Country::getName(){
     return name;
 }
 
+void Country::updateResources(int u)
+{
+    resources += u;
+}
+
+void Country::updateTerritory(int u)
+{
+    territory += u;
+}
+
 int Country::getResources(){
     return resources;
 }
