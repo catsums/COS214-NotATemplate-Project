@@ -8,17 +8,17 @@
 using namespace std;
 
 Army::Army(){
-    m_attack = NULL;
+    force = NULL;
 }
 Army::~Army(){
-    m_attack = NULL;
+    force = NULL;
 }
-bool Army::attack(){
-    m_attack->attack();
+bool Army::attack(Army* enemyArmy){
+    force->attack(enemyArmy->force);
     return false;
 }
 void Army::set_attack(ArmyForce* a){
-    m_attack = a;
+    force = a;
 }
 
 

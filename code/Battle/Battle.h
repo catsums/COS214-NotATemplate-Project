@@ -6,6 +6,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <vector>
+#include <functional>
 #include <map>
 
 #include "../Country/Country.h"
@@ -20,6 +21,16 @@ public:
 	~Battle();
 
 	bool commenceBattle();
+	void preparationPhase();
+	int executionPhase();
+	void evaluationPhase();
+
+	Country* getWinner(){
+		return winner;
+	}
+	bool isFinished(){
+		return finished;
+	}
 
 protected:
 	ActionManager* actionManager;
@@ -27,4 +38,9 @@ protected:
 
 	Country* a;
 	Country* b;
+
+	Country* winner;
+	bool finished;
+
+	int balance = 0;
 };

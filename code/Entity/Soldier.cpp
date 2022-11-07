@@ -1,49 +1,42 @@
 #include <string>
 #include <iostream>
 #include "Soldier.h"
-#include "Citizen.h"
 
 using namespace std;
 
-	Soldier::Soldier() : Citizen()// default constuctor 
+	Soldier::Soldier()// default constuctor 
 	{
-			
-
-		setType("Soldier");
-
-		//printInfo();
-
-		printInfo();
-		cout<<endl;
-
+		
+		//cout<<"Soldier’s Constructor was Called"<<endl;
+		setHp(22);
+		setDamage(5);
+		setCountry("SA");
+		setXpos(0);
+		setYpos(0);
 		
 
 	} 
 
-	Soldier::Soldier(int h , string c, string stat): Citizen( h ,  c)// param constuctor 
+
+	Soldier::Soldier(int h,string c, int d, int x , int y ):Citizen(h,c,d,x,y)// param constuctor 
 	{
-		
-	
-		setType("Soldier");
-		setStatus(stat);
-		printInfo();
-		cout<<endl;
-
-		
-		
-		
-
+		setHp(h);
+		setDamage(d);
+		setCountry(c);
+		setXpos(x);
+		setYpos(y);
 	}
-
+	
 	
 	Soldier::~Soldier() //destructor
 	{
-		// /cout<<"Soldier’s Destructor was Called"<<endl;
+		//cout<<"Soldier’s Destructor was Called"<<endl;
 	}
 
 
 	
-	
-	
 
+	
+	
+	
 

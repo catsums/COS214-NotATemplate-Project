@@ -36,10 +36,12 @@ public:
 
 	virtual Entity* useOn(Entity* ent){
 		if(amount>0 && !used){
-			ent->heal(healingAmt);
-			amount--;
-			if(amount<=0){
-				used = true;
+			if(ent->isType("Citizen")){
+				ent->heal(healingAmt);
+				amount--;
+				if(amount<=0){
+					used = true;
+				}
 			}
 		}
 		return ent;

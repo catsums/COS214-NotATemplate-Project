@@ -42,6 +42,7 @@ public:
 				used = true;
 			}
 		}
+		return ent;
 	}
 
 	int getDamage(){

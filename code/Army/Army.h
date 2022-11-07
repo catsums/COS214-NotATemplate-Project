@@ -10,13 +10,13 @@
 using namespace std;
 
 class Army{
-private:
-    ArmyForce* m_attack;
+protected:
+    ArmyForce* force;
 public:
     Army();
     ~Army();
     void set_attack(ArmyForce* a);
-    bool attack();
+    bool attack(Army* enemyArmy);
 };
 
 #endif
