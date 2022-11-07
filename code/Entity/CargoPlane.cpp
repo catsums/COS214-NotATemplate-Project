@@ -19,6 +19,12 @@ using namespace std;
 		land = true; sea = true;
 	} 
 
+	CargoPlane::CargoPlane(Transport& v):Transport(v)// copy constuctor 
+	{
+		
+		types.push_back("CargoPlane");
+		land = true; sea = true;
+	} 
 
 	CargoPlane::CargoPlane(int h,string c, int d, int x , int y ):Transport(h,c,d,x,y)// param constuctor 
 	{
@@ -38,17 +44,19 @@ using namespace std;
 		//cout<<"CargoPlane’s Destructor was Called"<<endl;
 	}
 
-	void CargoPlane::decreaseFeul(Transport* a,int f)
+	void CargoPlane::decreaseFeul(int f)
 	{
-		int temp = a->getFeul();
+		int temp = getFeul();
 
 		temp = temp - f;
 
-		a->setFeul(temp);
+		setFeul(temp);
 	}
 
 
-	
+	Vehicle* CargoPlane::clone(){
+		return new CargoPlane(*this);
+	}
 
 	
 	

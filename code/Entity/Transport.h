@@ -24,6 +24,9 @@ public:
 	/** Default constructor for transport
     */
 	Transport();
+	/** Copy constructor for transport
+    */
+	Transport(Vehicle& v);
 
 
 	/** A parameter constructer taht initializes 5 parameters inherits the variables from vehicle class  
@@ -40,31 +43,16 @@ public:
     */
 	virtual ~Transport(); 
 
-	/** Function that sets the amount of fuel this transport
-	*	vehicle is supposed ot have.
-	*	@param takes in int value which represnts the amount of fuel in 
-	*	transport vehicle
-	*/
-	void setFeul(int);
-
-	/**Fucntion to retrieve the amount of fuel any given
-	*	transport may have in that time.
-	*/
-	int getFeul();
-
 
 	/**This function couts all the entity variables
 	*/
 	virtual void infoSummary();
 	
-	/**This function will decrease the feul of a vehicle
-	*	it takes in a pointer to an Transport and an int amount to decrease the feul
-	*	This is a pure virtual function. This means this function will 
-	*	be used 
-	*/
-	virtual void decreaseFeul(Transport*,int)=0;
-
 	
+
+	/** This function will allow you to clone a vehicle using itself as a prototype 
+	*/
+	virtual Vehicle* clone()=0;
 	
 	
 };

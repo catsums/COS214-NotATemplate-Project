@@ -18,6 +18,13 @@ using namespace std;
 
 	} 
 
+	Vehicle::Vehicle(Vehicle& other):Entity(other)// default constuctor 
+	{
+		setFeul(other.feul);
+		types.push_back("Vehicle");
+	}
+
+
 
 	Vehicle::Vehicle(int h,string c, int d, int x , int y ):Entity()// param constuctor 
 	{
@@ -69,6 +76,16 @@ using namespace std;
 	void Vehicle::recieveHp(int h)
 	{
 		hp= hp + h;
+	}
+
+	void Vehicle::setFeul(int f)
+	{
+		feul=f;
+	}
+
+	int Vehicle::getFeul()
+	{
+		return feul;
 	}
 
 	

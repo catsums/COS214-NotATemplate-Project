@@ -18,6 +18,11 @@ using namespace std;
 		types.push_back("CargoShip");
 		land = false; sea = true;
 	} 
+	CargoShip::CargoShip(Transport& v):Transport(v)// default constuctor 
+	{
+		types.push_back("CargoShip");
+		land = false; sea = true;
+	} 
 
 
 	CargoShip::CargoShip(int h,string c, int d, int x , int y ):Transport(h,c,d,x,y)// param constuctor 
@@ -38,17 +43,19 @@ using namespace std;
 		//cout<<"CargoShip’s Destructor was Called"<<endl;
 	}
 
-	void CargoShip::decreaseFeul(Transport* a,int f)
+	void CargoShip::decreaseFeul(int f)
 	{
-		int temp = a->getFeul();
+		int temp = getFeul();
 
 		temp = temp - f;
 
-		a->setFeul(temp);
+		setFeul(temp);
 	}
 
 
-	
+	Vehicle* CargoShip::clone(){
+		return new CargoShip(*this);
+	}
 
 	
 	

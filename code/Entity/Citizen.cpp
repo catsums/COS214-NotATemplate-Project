@@ -19,6 +19,21 @@ using namespace std;
 		land = true; sea = false;
 	} 
 
+	Citizen::Citizen(Citizen& other):Entity(other)// default constuctor 
+	{
+		
+		//cout<<"Citizen’s Constructor was Called"<<endl;
+		setHp(other.hp);
+		setDamage(other.damage);
+		setCountry(other.country);
+		setXpos(other.xpos);
+		setYpos(other.ypos);
+
+		types.push_back("Citizen");
+
+		land = true; sea = false;
+	} 
+
 
 	Citizen::Citizen(int h,string c, int d, int x , int y ):Entity()// param constuctor 
 	{

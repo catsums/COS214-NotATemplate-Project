@@ -24,6 +24,9 @@ public:
 	/** Default constructor for artillery
     */
 	CargoShip();
+/** Copy constructor for artillery
+    */
+	CargoShip(Transport& v);
 
 	/** A parameter constructer taht initializes 5 parameters inherits the variables from transport class  
 	*
@@ -40,16 +43,14 @@ public:
     */
 	virtual ~CargoShip(); 
 
-	/** Function that decreases the fuel for the cargo ship
-	*	this function takes in two parametres.
-	*	@param first parameter takes in a transport type 
-	*	@param second parameter take in an int variable represents
+	/** Function that decreases the fuel for the cargo ship 
+	*	@param int parameter take in an int variable represents
 	*	the amount of fuel that should be decreased from the current amount of fuel 
 	*/
-	virtual void decreaseFeul(Transport*,int);
+	virtual void decreaseFeul(int);
 	
 
-	
+	virtual Vehicle* clone();
 	
 	
 };

@@ -18,6 +18,12 @@ using namespace std;
 		types.push_back("FighterJet");
 		land = true; sea = true;
 
+	}
+	FighterJet::FighterJet(Artillery& v):Artillery(v)// default constuctor 
+	{
+		types.push_back("FighterJet");
+		land = true; sea = true;
+
 	} 
 
 
@@ -39,17 +45,19 @@ using namespace std;
 		//cout<<"FighterJet’s Destructor was Called"<<endl;
 	}
 
-	void FighterJet::decreaseFeul(Artillery* a,int f)
+	void FighterJet::decreaseFeul(int f)
 	{
-		int temp = a->getFeul();
+		int temp = getFeul();
 
 		temp = temp - f;
 
-		a->setFeul(temp);
+		setFeul(temp);
 	}
 
 
-	
+	Vehicle* FighterJet::clone(){
+		return new FighterJet(*this);
+	}
 
 	
 	

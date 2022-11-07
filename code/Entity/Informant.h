@@ -26,6 +26,10 @@ public:
     */
 	Informant();
 
+	/** Copy constructor for informant
+    */
+	Informant(Citizen& ent);
+
 	/** A parameter constructer taht initializes 5 parameters inherits the variables from the citizen class  
 	*
 	*	@param int variable that represents the health

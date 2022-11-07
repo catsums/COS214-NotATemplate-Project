@@ -17,6 +17,14 @@ using namespace std;
 
 		types.push_back("Transport");
 	} 
+	Transport::Transport(Vehicle& v):Vehicle(v)// default constuctor 
+	{
+		
+		//cout<<"Transport’s Constructor was Called"<<endl;
+		setFeul(150);
+
+		types.push_back("Transport");
+	} 
 
 
 	Transport::Transport(int h,string c, int d, int x , int y ):Vehicle(h,c,d,x,y)// param constuctor 
@@ -38,18 +46,6 @@ using namespace std;
 	}
 
 
-	
-	void Transport::setFeul(int f)
-	{
-		feul=f;
-	}
-
-	int Transport::getFeul()
-	{
-		return feul;
-	}
-
-
 	void Transport::infoSummary()
 	{
 		cout<<"*Entity Details*:"<<endl;
@@ -59,4 +55,3 @@ using namespace std;
 		cout<<"Position: (" <<xpos<<","<<ypos<<")"<<endl;
 		cout<<"Feul: "<<getFeul()<<endl;
 	}
-

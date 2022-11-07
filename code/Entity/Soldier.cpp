@@ -17,6 +17,12 @@ using namespace std;
 		types.push_back("Soldier");
 	} 
 
+	Soldier::Soldier(Citizen& other):Citizen(other)// default constuctor 
+	{
+		
+		types.push_back("Soldier");
+	} 
+
 
 	Soldier::Soldier(int h,string c, int d, int x , int y ):Citizen(h,c,d,x,y)// param constuctor 
 	{

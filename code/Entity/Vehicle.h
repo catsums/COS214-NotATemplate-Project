@@ -15,13 +15,18 @@ using namespace std;
 
 class Vehicle: public Entity
 {
+private:
 
+	int feul;
 
 public: 
 
 	/** Default constructor for vehicle
     */
 	Vehicle();
+	/** Copy constructor for vehicle
+    */
+	Vehicle(Vehicle& v);
 
 	/** A parameter constructer taht initializes 5 parameters inherits the variables from entity class  
 	*
@@ -70,9 +75,29 @@ public:
 	*/
 	virtual void recieveHp(int);
 
+	/** Function that sets the amount of fuel this vehivle
+	*	vehicle is supposed ot have.
+	*	@param takes in int value which represnts the amount of fuel in 
+	*	transport vehicle
+	*/
+	void setFeul(int);
+
+	/**Fucntion to retrieve the amount of fuel any given
+	*	transport may have in that time.
+	*/
+	int getFeul();
+
+	/**This function will decrease the feul of a vehicle
+	*	it takes in an int amount to decrease the feul
+	*	This is a pure virtual function. This means this function will 
+	*	be used to decrease fuel based on the type of vehicle it is
+	*/
+	virtual void decreaseFeul(int)=0;
 
 
-		
+	/** This function will allow you to clone a vehicle using itself as a prototype 
+	*/
+	virtual Vehicle* clone() = 0;
 	
 	
 };

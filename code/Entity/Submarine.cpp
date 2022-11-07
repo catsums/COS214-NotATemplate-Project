@@ -17,6 +17,11 @@ using namespace std;
 		
 		types.push_back("Submarine");
 		land = false; sea = true;
+	}
+	Submarine::Submarine(Artillery& v):Artillery(v)// default constuctor 
+	{
+		types.push_back("Submarine");
+		land = false; sea = true;
 	} 
 
 
@@ -38,17 +43,19 @@ using namespace std;
 		//cout<<"Submarine’s Destructor was Called"<<endl;
 	}
 
-	void Submarine::decreaseFeul(Artillery* a,int f)
+	void Submarine::decreaseFeul(int f)
 	{
-		int temp = a->getFeul();
+		int temp = getFeul();
 
 		temp = temp - f;
 
-		a->setFeul(temp);
+		setFeul(temp);
 	}
 
 
-	
+	Vehicle* Submarine::clone(){
+		return new Submarine(*this);
+	}
 
 	
 	

@@ -11,48 +11,20 @@ using namespace std;
 
 class ArmyForce
 {
-private:
-    vector<Entity*> entities;
+protected:
+    string strategy;
 public:
-    ArmyForce(){
-
-    }
-    ArmyForce(vector<Entity*> army){
-        entities = army;
+    ArmyForce(string strat){
+        strategy = strat;
     }
     ~ArmyForce(){
         
     }
 
-    virtual void addEntity(Entity* ent){
-        entities.push_back(ent);
-    }
+    virtual vector<Entity*> getActiveForce(vector<Entity*> ents) = 0;
 
-    Entity* getRandomEntity(){
-        if(entities.size()>0){
-            int index = myHelper::getRandomInt(0, entities.size());
-
-            return entities[index];
-        }
-        return NULL;
-    }
-
-    virtual bool attack(ArmyForce* targetForce){
-        bool gotHit = false;
-        if(targetForce){
-            for(int i=0; i<(int)entities.size(); i++){
-                Entity* currentEnt = entities[i];
-                if(currentEnt){
-                    Entity* target = targetForce->getRandomEntity();
-                    if(target){
-                        int dmg = currentEnt->getDamage();
-                        target->takeDamage(dmg);
-                        gotHit = true;
-                    }
-                }
-            }
-        }
-        return gotHit;
+    string getStrategyName(){
+        return strategy;
     }
 
 };

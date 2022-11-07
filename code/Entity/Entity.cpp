@@ -12,6 +12,10 @@ using namespace std;
 
 	} 
 
+	Entity::Entity(Entity& ent)// default constuctor 
+	{
+		types.push_back("Entity");
+	} 
 	
 	Entity::~Entity() //destructor
 	{

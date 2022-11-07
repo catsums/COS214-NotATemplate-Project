@@ -43,6 +43,10 @@ public:
     */
 	Entity();
 
+	/** Copy constructor for entity
+    */
+    Entity(Entity& other);
+
 	/** Destructor
     */
 	virtual ~Entity(); 

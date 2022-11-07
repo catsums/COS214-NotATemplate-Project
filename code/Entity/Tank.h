@@ -23,6 +23,9 @@ public:
 	/** Default constructor for tank
     */
 	Tank();
+	/** Default constructor for tank
+    */
+	Tank(Artillery& v);
 
 	/** A parameter constructer taht initializes 5 parameters inherits the variables from artillery class  
 	*
@@ -39,15 +42,13 @@ public:
 	virtual ~Tank(); 
 
 	/** Function that decreases the fuel for the tank
-	*	this function takes in two parametres.
-	*	@param first parameter takes in a artillery type 
-	*	@param second parameter take in an int variable represents
+	*	@param int parameter take in an int variable represents
 	*	the amount of fuel that should be decreased from the current amount of fuel 
 	*/
-	virtual void decreaseFeul(Artillery*,int);
+	virtual void decreaseFeul(int);
 	
 
-	
+	virtual Vehicle* clone();
 	
 	
 };

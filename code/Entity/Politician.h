@@ -25,6 +25,9 @@ public:
 	/** Default constructor for informant
     */
 	Politician();
+	/** Copy constructor for informant
+    */
+	Politician(Citizen& ent);
 
 
 	/** A parameter constructer taht initializes 5 parameters inherits the variables from the citizen class  

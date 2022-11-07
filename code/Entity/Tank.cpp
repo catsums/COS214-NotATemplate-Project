@@ -4,7 +4,7 @@
 
 using namespace std;
 
-	Tank::Tank()// default constuctor 
+	Tank::Tank():Artillery()// default constuctor 
 	{
 		
 		//cout<<"Tank’s Constructor was Called"<<endl;
@@ -15,6 +15,11 @@ using namespace std;
 		setXpos(0);
 		setYpos(0);
 		
+		land = true; sea = false;
+		types.push_back("Tank");
+	}
+	Tank::Tank(Artillery& v):Artillery(v)// copy constuctor 
+	{
 		land = true; sea = false;
 		types.push_back("Tank");
 	} 
@@ -38,17 +43,19 @@ using namespace std;
 		//cout<<"Tank’s Destructor was Called"<<endl;
 	}
 
-	void Tank::decreaseFeul(Artillery* a,int f)
+	void Tank::decreaseFeul(int f)
 	{
-		int temp = a->getFeul();
+		int temp = getFeul();
 
 		temp = temp - f;
 
-		a->setFeul(temp);
+		setFeul(temp);
 	}
 
 
-	
+	Vehicle* Tank::clone(){
+		return new Tank(*this);
+	}
 
 	
 	

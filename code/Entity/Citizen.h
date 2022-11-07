@@ -24,6 +24,10 @@ public:
     */
 	Citizen();
 
+	/** Copy constructor for citizen
+    */
+	Citizen(Citizen& other);
+
 	/** A parameter constructer that initializes 5 parameters 
 	*
 	*	@param int variable that represents the health

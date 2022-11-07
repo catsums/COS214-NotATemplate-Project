@@ -16,7 +16,12 @@ using namespace std;
 		setYpos(0);
 
 		types.push_back("Politician");
-	} 
+	}
+
+	Politician::Politician(Citizen& other):Citizen(other)// default constuctor 
+	{
+		types.push_back("Politician");
+	}
 
 
 	Politician::Politician(int h,string c, int d, int x , int y ):Citizen(h,c,d,x,y)// param constuctor 

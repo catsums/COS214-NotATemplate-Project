@@ -24,6 +24,9 @@ public:
 	/** Default constructor for cargo truck
     */
 	CargoTruck();
+	/** Copy constructor for cargo truck
+    */
+	CargoTruck(Transport& v);
 
 	/** A parameter constructer taht initializes 5 parameters inherits the variables from transport class  
 	*
@@ -40,15 +43,13 @@ public:
 	virtual ~CargoTruck(); 
 
 	/** Function that decreases the fuel for the cargo truck
-	*	this function takes in two parametres.
-	*	@param first parameter takes in a transport type 
-	*	@param second parameter take in an int variable represents
+	*	@param int parameter take in an int variable represents
 	*	the amount of fuel that should be decreased from the current amount of fuel 
 	*/
-	virtual void decreaseFeul(Transport*,int);
+	virtual void decreaseFeul(int);
 	
 
-	
+	virtual Vehicle* clone();
 	
 	
 };

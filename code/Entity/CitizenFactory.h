@@ -10,6 +10,10 @@
 
 #include <string>
 #include "Citizen.h"
+#include "Soldier.h"
+#include "Medic.h"
+#include "Politician.h"
+#include "Informant.h"
 #include "EntityFactory.h"
 
 using namespace std; 
@@ -29,12 +33,36 @@ public:
 	virtual ~CitizenFactory(); 
 
 	/** This function instantiates new citizen entities 
-	*	and returns a refernce to it. A pure virtual 
+	*	and returns a refernce to it. A virtual 
 	*	function inherets from Entity factory.
 	*/
-	virtual Citizen* createCitizen()=0;
+	virtual Citizen* createCitizen(){
+		return new Citizen();
+	}
 	
-
+	/** This function instantiates new soldier from a given citizen
+	*	and returns a refernce to it.
+	*/
+	virtual Citizen* createSoldier(Citizen* ent){
+		Soldier* soldier = new Soldier(*ent);
+		cout<<"Soldier created from "<<ent->getTitle()<<endl<<endl;
+		return soldier;
+	}
+	virtual Citizen* createMedic(Citizen* ent){
+		Medic* medic = new Medic(*ent);
+		cout<<"Medic created from "<<ent->getTitle()<<endl<<endl;
+		return medic;
+	}
+	virtual Citizen* createInformant(Citizen* ent){
+		Informant* inform = new Informant(*ent);
+		cout<<"Informant created from "<<ent->getTitle()<<endl<<endl;
+		return inform;
+	}
+	virtual Citizen* createPolitician(Citizen* ent){
+		Politician* polit = new Politician(*ent);
+		cout<<"Politician created from "<<ent->getTitle()<<endl<<endl;
+		return polit;
+	}
 	
 	
 	

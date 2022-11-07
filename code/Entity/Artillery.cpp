@@ -18,6 +18,12 @@ using namespace std;
 		types.push_back("Artillery");
 
 	} 
+	Artillery::Artillery(Vehicle& v):Vehicle(v)// copy constuctor 
+	{
+
+		types.push_back("Artillery");
+
+	} 
 
 
 	Artillery::Artillery(int h,string c, int d, int x , int y ):Vehicle(h,c,d,x,y)// param constuctor 
@@ -36,18 +42,6 @@ using namespace std;
 	Artillery::~Artillery() //destructor
 	{
 		//cout<<"Artillery’s Destructor was Called"<<endl;
-	}
-
-
-	
-	void Artillery::setFeul(int f)
-	{
-		feul=f;
-	}
-
-	int Artillery::getFeul()
-	{
-		return feul;
 	}
 
 

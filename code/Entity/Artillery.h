@@ -8,20 +8,14 @@ using namespace std;
 
 class Artillery: public Vehicle
 {
-private:
-
-	int feul;
 
 public: 
 
 	Artillery();// default constuctor 
+	Artillery(Vehicle& v);// copy constuctor 
 	Artillery(int,string,int,int,int);// param constuctor 
 	
 	virtual ~Artillery(); //destructor
-
-	void setFeul(int);
-
-	int getFeul();
 
 
 	/*
@@ -31,17 +25,14 @@ public:
 	*/
 
 	virtual void infoSummary();
-	
+
 	/*
-	This function will decrease the feul of a vehicle
-	it takes in a pointer to an artillery and an int amount to decrease the feul
+
+	This function lets you create a new Artillery based on this prototype
 
 	*/
-
-	virtual void decreaseFeul(Artillery*,int)=0;
-
 	
-	
+	virtual Vehicle* clone() = 0;
 	
 };
 

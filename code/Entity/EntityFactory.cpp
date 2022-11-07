@@ -31,16 +31,16 @@ using namespace std;
 	*/
 	Vehicle* EntityFactory::createLandVehicle()
 	{
-		return new Vehicle;
+		return NULL;
 	}
 	
 	Vehicle* EntityFactory::createAirVehicle()
 	{
-		return new Vehicle;
+		return NULL;
 	}
 
 	Vehicle* EntityFactory::createSeaVehicle()
 	{
-		return new Vehicle;
+		return NULL;
 	}
 

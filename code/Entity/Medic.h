@@ -25,9 +25,12 @@ private:
 public: 
 
 
- 	/** Default constructor for informant
+ 	/** Default constructor for Medic
     */
 	Medic(); 
+	/** Copy constructor for Medic
+    */
+	Medic(Citizen& ent); 
 
 	/** A parameter constructer taht initializes 5 parameters inherits the variables from the citizen class  
 	*
