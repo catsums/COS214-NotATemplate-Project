@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "../NewEntity/Entity.h"
+#include "../Entity/Entity.h"
 #include "../myHelper.cpp"
 
 using namespace std;
@@ -45,7 +45,8 @@ public:
                 if(currentEnt){
                     Entity* target = targetForce->getRandomEntity();
                     if(target){
-                        currentEnt->attack(target);
+                        int dmg = currentEnt->getDamage();
+                        target->takeDamage(dmg);
                         gotHit = true;
                     }
                 }

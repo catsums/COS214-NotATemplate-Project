@@ -1,10 +1,10 @@
 #include <iostream>
-#include "Citizen.cpp"
-#include "Soldier.cpp"
-#include "Medic.cpp"
-#include "Informant.cpp"
-#include "Politician.cpp"
-#include "Entity.cpp"
+// #include "Citizen.cpp"
+// #include "Soldier.cpp"
+// #include "Medic.cpp"
+// #include "Informant.cpp"
+// #include "Politician.cpp"
+// #include "Entity.cpp"
 //#include "SoldierFactory.cpp"
 
 

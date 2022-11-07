@@ -1,9 +1,6 @@
 #include <string>
 #include <iostream>
 #include "EntityFactory.h"
-#include "Citizen.h"
-#include "Vehicle.h"
-
 
 
 using namespace std;

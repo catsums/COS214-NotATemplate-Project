@@ -24,7 +24,7 @@ public:
 	Battle(Country* a, Country* b);
 	~Battle();
 
-	bool commenceBattle();
+	void commenceBattle();
 	void preparationPhase();
 	int executionPhase();
 	void evaluationPhase();

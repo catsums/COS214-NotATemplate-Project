@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <sstream>
 #include "../myHelper.cpp"
 
 using namespace std; 
@@ -165,6 +166,14 @@ public:
 	
 	bool isAlive(){
 		return (hp>=0);
+	}
+
+	string getTitle(){
+		stringstream ss;
+
+		ss<<this->getType()<<"("<<this->getID()<<")-"<<this->getCountry();
+		
+		return ss.str();
 	}
 	
 };

@@ -9,7 +9,7 @@
 #include <sstream>
 
 #include "../Structs.h"
-#include "../NewEntity/Entity.h"
+#include "../Entity/Entity.h"
 #include "../Facility/Facility.h"
 
 using namespace std;

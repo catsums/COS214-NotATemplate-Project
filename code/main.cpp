@@ -564,11 +564,11 @@ void battleTest(){
 
 	battle->commenceBattle();
 
-	if(battle->getWinner()){
-		cout<<"The winner is "<<battle->getWinner()->getName()<<endl;
-	}else{
-		cout<<"The battle is a draw"<<endl;
-	}
+	// if(battle->getWinner()){
+	// 	cout<<"The winner is "<<battle->getWinner()->getName()<<endl;
+	// }else{
+	// 	cout<<"The battle is a draw"<<endl;
+	// }
 
 }
 
