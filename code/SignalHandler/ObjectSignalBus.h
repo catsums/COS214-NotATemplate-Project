@@ -1,3 +1,7 @@
+/** @file ObjectSignalBus.h
+*	@brief SignalBus that handles all its events using ObjectSignalEvents, therefore can emit data in the event as well
+*	
+*/
 #ifndef OBJECTSIGNALBUS_H
 #define OBJECTSIGNALBUS_H
 
@@ -15,26 +19,37 @@
 
 using namespace std;
 
-/*	
-	SignalBus that handles all its events using ObjectSignalEvents, therefore can emit data in the event as well
-*/
-
 template<class T>
 class ObjectSignalBus: public SignalBus{
 public:
-	//creates a signal bus
-	ObjectSignalBus();
-	~ObjectSignalBus();
-	//emit the signal with NULL data
-	virtual void emit(string n);
-	//emits the signal with data passed into it
-	virtual void emit(string n, T* _data);
+	
+	ObjectSignalBus(); /**<creates a signal bus*/
+	~ObjectSignalBus(); /**<Destructor*/
+	
+	/**
+	*	@param string name
+	*/
+	virtual void emit(string n); /**<emit the signal with NULL data*/
+
+	
+	/**
+	*	@param string name
+	*	@param data
+	*/	
+	virtual void emit(string n, T* _data); /**emits the signal with data passed into it*/
 
 protected:
-	//creates a signalevent of type ObjectSignalEvent but has NULL data
-	virtual SignalEvent* createSignalEvent(string n);
-	//creates a signalevent of type ObjectSignalEvent with specific data
-	virtual SignalEvent* createSignalEvent(string n, T* _data);
+	
+	/**
+	*	@param string name
+	*/
+	virtual SignalEvent* createSignalEvent(string n); /**<creates a signalevent of type ObjectSignalEvent but has NULL data*/
+
+	/**
+	*	@param string name
+	*	@param data
+	*/	
+	virtual SignalEvent* createSignalEvent(string n, T* _data); /**<creates a signalevent of type ObjectSignalEvent with specific data*/
 };
 
 #endif
