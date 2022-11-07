@@ -87,20 +87,19 @@ void War::handle(PhaseManager* pm, vector<Country*> countryArr, int i)
     break;
     case 2: //sea attack
     {
-      if(countryArr[i]->getCoastal())
-      {
-
-      }
-      
       int theatre = 2;
       int targetId = 0;
-
       do
       {
         targetId = rand() % (countryArr.size());
       } 
       while (countryArr[targetId]->getSide() == countryArr[i]->getSide());
       
+      if(!countryArr[i]->getCoastal() || !countryArr[targetId]->getCoastal())
+      {
+        int theatre = 3;
+      }
+
       Country* target = countryArr[targetId];
 
       Battle* b = new Battle(countryArr[i], target, theatre);
