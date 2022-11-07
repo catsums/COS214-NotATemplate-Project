@@ -17,9 +17,6 @@
 - Description of how the code runs: 
 - The code: 
 
-## Task breakdown
-TBC because we still need to plan how we gonna handle this stuff
-
 # Project Information Spec
 Check below for the stuff about the spec
 
