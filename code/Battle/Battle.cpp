@@ -230,15 +230,12 @@ void Battle::commenceBattle(){
 
 void Battle::preparationPhase(){
 	
-	// ArmyForce* forceA = a->getArmyForce();
-	// ArmyForce* forceB = b->getArmyForce();
+	Army* armyA = a->getArmy();
+	Army* armyB = b->getArmy();
 
-	// vector<Entity*> entsA = forceA->getEntities();
-	// vector<Entity*> entsB = forceB->getEntities();
-	// cout<<"a"<<endl;
-	vector<Entity*> entsA = a->getEntities();
-	vector<Entity*> entsB = b->getEntities();
-	// cout<<"b"<<endl;
+	vector<Entity*> entsA = armyA->getActiveForce();
+	vector<Entity*> entsB = armyB->getActiveForce();
+
 	//teamA preparations
 	for(int i=0;i<(int)entsA.size();i++){
 		Entity* ent = entsA[i];

@@ -37,24 +37,25 @@ Country::Country()
 {
     id = randomString(8);
     name = "";
-    // reserves = 0;
+    army = new Army(name);
     
 }
 Country::Country(string n)
 {
     id = randomString(8);
     name = n;
-    // reserves = 0;
+    army = new Army(name);
 }
 Country::~Country()
 {
-    
+    army = NULL;
 }
 
 
 void Country::setName(string n)
 {
     this->name = n;
+    army->country = name;
 }
 // void Country::print()
 // {

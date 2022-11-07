@@ -42,9 +42,9 @@ void battleTest(){
 	Country* c2 = new Country("Bobas");
 
 	for(int i=0;i<2;i++){
-		c1->addEntity(new Soldier());
-		c1->addEntity(new Soldier());
-		c2->addEntity(new Soldier());
+		c1->getArmy()->recruitSoldier();
+		c2->getArmy()->recruitSoldier();
+		c1->getArmy()->createLandVehicle();
 	}
 
 	Battle* battle = new Battle(c1,c2);

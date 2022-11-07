@@ -26,7 +26,7 @@
 // #include "../Map/LandZone.h"
 // #include "../Map/SeaZone.h"
 #include "../SignalHandler/SignalBus.h"
-// #include "../Army/AirForce.h"
+#include "../Army/Army.h"
 // #include "../Army/NavalForce.h"
 // #include "../Army/GroundForce.h"
 
@@ -49,6 +49,10 @@ class Country
         }
 
         string getID() const;
+
+        Army* getArmy(){
+            return army;
+        }
 
         
         vector<Citizen*> getCitizens(){
@@ -256,7 +260,7 @@ class Country
         string id;
 
         string name;   
-        // Citizen* politician;
+        Army* army;
 
         vector<Entity*> entities;
 
