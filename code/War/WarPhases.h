@@ -21,29 +21,51 @@ using namespace std;
 
 class PhaseNeutral: public WarPhase{
 public:
+
+	/** Parameter contructor 
+	*	@param war pointer 
+	*	Inherits from war phase this represents a neutral war
+	*/
 	PhaseNeutral(War* war):WarPhase("neutral", war){
 
 	}
+
+	///Destructor
 	~PhaseNeutral(){
 
 	}
+
+	/** Handles the war phase
+	*	@param vector a 
+	*	@param vector b
+	*/
 	void handle(vector<Country*>* a, vector<Country*>* b){
 		WarPhase::handle(a,b);
 	}
 };
 
-/*	
-	WarPhase that handles countries when they are in peace
+/**	
+*	WarPhase that handles countries when they are in peace
 */
 
 class PhasePeace: public WarPhase{
 public:
+	/** Parameter contructor 
+	*	@param war pointer 
+	*	Inherits from war phase this represents a peaceful war
+	*/
 	PhasePeace(War* w):WarPhase(w,"peace"){
 
 	}
+	///Destructor
 	~PhasePeace(){
 
 	}
+
+	/** Handles the war phase
+	*	@param vector a 
+	*	@param vector b
+	*/
 	void handle(vector<Country*>* a, vector<Country*>* b){
 
 	}
@@ -56,61 +78,105 @@ public:
 
 class PhaseOpenConflict: public WarPhase{
 public:
+
+	/** Parameter contructor 
+	*	@param war pointer 
+	*	Inherits from war phase this represents a war in open conflict
+	*/
 	PhaseOpenConflict(War* w):WarPhase(w,"openConflict"){
 
 	}
+	///Destructor
 	~PhaseOpenConflict(){
 
 	}
+
+	/** Handles the war phase
+	*	@param vector a 
+	*	@param vector b
+	*/
 	void handle(vector<Country*>* a, vector<Country*>* b){
 
 	}
 };
 
-/*	
-	WarPhase that handles countries when they are in a crisis
+/**	
+*	WarPhase that handles countries when they are in a crisis
 */
 
 class PhaseCrisis: public WarPhase{
 public:
+
+	/** Parameter contructor 
+	*	@param war pointer 
+	*	Inherits from war phase this represents a war in crisis
+	*/
 	PhaseCrisis(War* w):WarPhase(w,"crisis"){
 
 	}
+	///Destructor
 	~PhaseCrisis(){
 
 	}
+
+	/** Handles the war phase
+	*	@param vector a 
+	*	@param vector b
+	*/
 	void handle(vector<Country*>* a, vector<Country*>* b){
 
 	}
 };
 
-/*	
-	WarPhase that handles countries when they are in a full on war
+/**	
+*	WarPhase that handles countries when they are in a full on war
 */
 
 class PhaseWar: public WarPhase{
 public:
+
+	/** Parameter contructor 
+	*	@param war pointer 
+	*	Inherits from war phase this represents a war currently happening 
+	*/
 	PhaseWar(War* w):WarPhase(w,"war"){
 
 	}
+
+	///Destructor
 	~PhaseWar(){
 
 	}
+
+	/** Handles the war phase
+	*	@param vector a 
+	*	@param vector b
+	*/
 	void handle(vector<Country*>* a, vector<Country*>* b){
 
 	}
 };
 
-/*	
-	WarPhase that handles countries when they are in a negotiations
+/**	
+*	WarPhase that handles countries when they are in a negotiations
 */
 
 class PhaseNegotiations: public WarPhase{
 public:
+	/** Parameter contructor 
+	*	@param war pointer 
+	*	Inherits from war phase this represents a negotiations in war
+	*/
 	PhaseNegotiations(War* w):WarPhase(w,"negotiations");
+	///Destructor
 	~PhaseNegotiations(){
 
 	}
+
+	/** Handles the war phase
+	*	@param vector a 
+	*	@param vector b
+	*/
 	void handle(vector<Country*>* a, vector<Country*>* b){
 
 	}
