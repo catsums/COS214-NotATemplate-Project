@@ -10,9 +10,13 @@
 - [Ayaaz Street - u20427248](https://github.com/AyaazStreet)
 - [Tanaka Humbani - u15057420](https://github.com/Tanaka9612)
 
-## Google Link drive to documentation:
+## GitHub requirements:
+- Documentation: https://docs.google.com/document/d/1CWKPtvwzalVicWGzoLPOSx-pxNT21ZMXWQfRGWV7Td4/edit?usp=sharing
+- Video: 
+- Final class diagram:
+- Description of how the code runs: 
+- The code: 
 
-- https://docs.google.com/document/d/1CWKPtvwzalVicWGzoLPOSx-pxNT21ZMXWQfRGWV7Td4/edit?usp=sharing
 ## Task breakdown
 TBC because we still need to plan how we gonna handle this stuff
 
