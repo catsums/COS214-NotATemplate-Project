@@ -36,14 +36,18 @@ public:
 		return finished;
 	}
 
+	vector<Entity*> getAllBattleEntities();
+
 protected:
 	void shiftBalance(string side);
 	void lowerBalance(string side);
 
 	ActionRequest* requestAttack(Entity* currEnt, Entity* targetEnt);
 	ActionRequest* requestHeal(Entity* currEnt, Entity* targetEnt);
+	// ActionRequest* requestObserve(Entity* currEnt, Entity* targetEnt);
 	ActionRequest* requestTakeover(Entity* currEnt);
 
+	void onIntel(string act, string id);
 
 	ActionManager* actionManager;
 	SignalBus* signalBus;

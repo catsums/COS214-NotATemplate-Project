@@ -13,6 +13,7 @@
 #include <vector>
 #include <iostream>
 #include <sstream>
+#include "../SignalHandler/SignalBus.h"
 #include "../myHelper.cpp"
 
 using namespace std; 
@@ -35,9 +36,9 @@ protected:
 	bool land = false; /**<bool variable checking to see if entity can be on land*/
 	bool sea = false; /**<bool variable checking to see if entity can be on sea*/
 
-
-
 public: 
+
+	SignalBus signalBus
 
 	/** Default constructor for entity
     */
@@ -179,6 +180,8 @@ public:
 		
 		return ss.str();
 	}
+
+
 	
 };
 

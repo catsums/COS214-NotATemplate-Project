@@ -251,18 +251,22 @@ void Battle::preparationPhase(){
 			if(ent->isType("Soldier")){
 				// cout<<"bb"<<endl;
 				Entity* target = myHelper::getRandomItemFrom<Entity*>(entsB);
-				// cout<<"cc"<<endl;
 				ActionRequest* req = requestAttack(ent,target);
-				// cout<<"dd"<<endl;
 				actionManager->pushRequest(req);
-				// cout<<"ee"<<endl;
 				cout<<ent->getTitle()<<" requested to attack "<<target->getTitle()<<endl;
+			
 			}else if(ent->isType("Medic")){
 				Entity* target = myHelper::getRandomItemFrom<Entity*>(entsA);
 				ActionRequest* req = requestHeal(ent,target);
 				actionManager->pushRequest(req);
 				cout<<ent->getTitle()<<" requested to heal "<<target->getTitle()<<endl;
 			}
+			// else if(ent->isType("Informant")){
+			// 	Entity* target = myHelper::getRandomItemFrom<Entity*>(entsB);
+			// 	ActionRequest* req = requestObserve(ent,target);
+			// 	actionManager->pushRequest(req);
+			// 	cout<<ent->getTitle()<<" requested to observe "<<target->getTitle()<<endl;
+			// }
 		}else if(ent->isType("Vehicle")){
 			if(ent->isType("Artillery")){
 				Entity* target = myHelper::getRandomItemFrom<Entity*>(entsB);
@@ -302,6 +306,12 @@ void Battle::preparationPhase(){
 				actionManager->pushRequest(req);
 				cout<<ent->getTitle()<<" requested to heal "<<target->getTitle()<<endl;
 			}
+			// else if(ent->isType("Informant")){
+			// 	Entity* target = myHelper::getRandomItemFrom<Entity*>(entsA);
+			// 	ActionRequest* req = requestObserve(ent,target);
+			// 	actionManager->pushRequest(req);
+			// 	cout<<ent->getTitle()<<" requested to observe "<<target->getTitle()<<endl;
+			// }
 		}else if(ent->isType("Vehicle")){
 			if(ent->isType("Artillery")){
 				Entity* target = myHelper::getRandomItemFrom<Entity*>(entsA);
@@ -338,6 +348,58 @@ void Battle::evaluationPhase(){
 		winner = b;
 	}else{
 		winner = NULL; //draw
+	}
+}
+
+vector<Entity*> Battle::getAllBattleEntities(){
+	Army* armyA = a->getArmy();
+	Army* armyB = b->getArmy();
+
+	vector<Entity*> entsA = armyA->getEntities();
+	vector<Entity*> entsB = armyB->getEntities();
+
+	vector<Entity*> allEnts;
+
+	allEnts.insert( allEnts.end(), entsA.begin(), entsA.end() );
+	allEnts.insert( allEnts.end(), entsB.begin(), entsB.end() );
+
+	return allEnts;
+
+}
+
+void Battle::onIntel(string action, string id){
+	Entity* target;
+
+	vector<Entity*> ents = getAllBattleEntities();
+
+	for(int i=0;i<(int)ents.size();i++){
+		Entity* ent = ents[i];
+		if(ent && ent->getID() == id){
+			target = ent;
+			break;
+		}
+	}
+
+	if(target){
+		Country* currC;
+		if(target->getCountry() == a->getName()){
+			currC = a;
+		}else if(target->getCountry() == b->getName()){
+			currC = b;
+		}
+		if(!currC) return;
+
+		vector<Entity*> activeForce = currC->getActiveForce();
+		if(activeForce.empty()) return;
+
+		if(action == "attack" || action == "heal"){
+			//take revenge
+			Entity* currEnt = myHelper::getRandomItemFrom<Entity*>(activeForce);
+			ActionRequest* req = requestAttack(currEnt,target);
+			actionManager->pushRequest(req);
+			cout<<currEnt->getTitle()<<" requested to attack "<<target->getTitle()<<endl;
+		}
+
 	}
 }
 

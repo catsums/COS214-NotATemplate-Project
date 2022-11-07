@@ -40,6 +40,11 @@ public:
     Entity* removeEntity(Entity* ent);
     bool hasEntity(Entity* ent);
     void setForce(ArmyForce* force);
+
+    vector<Entity*> getEntities(){
+        return entities;
+    }
+
     ArmyForce* getForce();
 
     int recruitSoldier();
