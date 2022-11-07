@@ -21,6 +21,7 @@ public:
             if(!ent) continue;
 
             if(ent->canTravelSea() && ent->canTravelLand()){
+                // cout<<"it air"<<endl;
                 activeForce.push_back(ent);
             }
         }

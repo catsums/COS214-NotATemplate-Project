@@ -13,10 +13,9 @@
 
 #include "ActionManager/ActionManager.h"
 
-// #include "NewEntity/SoldierFactory.h"
-// #include "NewEntity/MedicFactory.h"
-// #include "NewEntity/Tank.h"
-// #include "NewEntity/Truck.h"
+#include "Army/GroundForce.h"
+#include "Army/NavalForce.h"
+#include "Army/AirForce.h"
 #include "Entity/Soldier.h"
 
 // #include "War/War.h"
@@ -45,7 +44,18 @@ void battleTest(){
 		c1->getArmy()->recruitSoldier();
 		c2->getArmy()->recruitSoldier();
 		c1->getArmy()->createLandVehicle();
+		c2->getArmy()->createSeaVehicle();
+		c1->getArmy()->createAirVehicle();
 	}
+
+	c1->getArmy()->setForce(new GroundForce());
+	c2->getArmy()->setForce(new NavalForce());
+
+	cout<<c1->getName()<<" - "<<c1->getArmy()->getForce()->getStrategyName()<<endl;
+	cout<<c1->getArmy()->getActiveForce().size()<<endl;
+
+	cout<<c2->getName()<<" - "<<c2->getArmy()->getForce()->getStrategyName()<<endl;
+	cout<<c2->getArmy()->getActiveForce().size()<<endl;
 
 	Battle* battle = new Battle(c1,c2);
 

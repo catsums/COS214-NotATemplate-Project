@@ -40,7 +40,7 @@ public:
     Entity* removeEntity(Entity* ent);
     bool hasEntity(Entity* ent);
     void setForce(ArmyForce* force);
-    ArmyForce* getForce(ArmyForce* force);
+    ArmyForce* getForce();
 
     int recruitSoldier();
     int recruitMedic();

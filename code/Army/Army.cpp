@@ -16,6 +16,8 @@ Army::Army(string c){
 
     vehicleFactories.push_back(new TransportFactory());
     vehicleFactories.push_back(new ArtilleryFactory());
+
+    country = c;
 }
 Army::~Army(){
     armyType = NULL;
@@ -59,7 +61,7 @@ bool Army::hasEntity(Entity* ent){
 void Army::setForce(ArmyForce* force){
     armyType = force;
 }
-ArmyForce* Army::getForce(ArmyForce* force){
+ArmyForce* Army::getForce(){
 	return armyType;
 }
 
