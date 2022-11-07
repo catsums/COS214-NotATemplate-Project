@@ -6,7 +6,7 @@
 #include <vector>
 #include <map>
 
-#include "../NewResource/Resource.h"
+// #include "../NewResource/Resource.h"
 #include "../Structs.h"
 
 using namespace std;
@@ -72,7 +72,7 @@ public:
 
     virtual void displayFacility() = 0;
 
-    virtual vector<Resource*> generateResources() = 0;
+    // virtual vector<Resource*> generateResources() = 0;
 
     virtual string printInfo(){
         stringstream ss;

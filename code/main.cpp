@@ -13,15 +13,16 @@
 
 #include "ActionManager/ActionManager.h"
 
-#include "NewEntity/SoldierFactory.h"
-#include "NewEntity/MedicFactory.h"
-#include "NewEntity/Tank.h"
-#include "NewEntity/Truck.h"
+// #include "NewEntity/SoldierFactory.h"
+// #include "NewEntity/MedicFactory.h"
+// #include "NewEntity/Tank.h"
+// #include "NewEntity/Truck.h"
+#include "Entity/Soldier.h"
 
-#include "War/War.h"
-#include "War/WarPhases.h"
+// #include "War/War.h"
+// #include "War/WarPhases.h"
 
-#include "Adapter/AdapterWrapper.h"
+#include "Battle/Battle.h"
 
 #include "myHelper.cpp"
 
@@ -550,113 +551,29 @@ string getRandomString(int size){
 
 // }
 
-ActionRequest* requestAttack(Entity* ent, Entity* target){
-	
-	ActionRequest* req = new ActionRequest(0, [=](SignalEvent* e){
-		//on fulfilled
-		try{
-			ActionResult* res = static_cast<ActionResult*>(e);
-			if(res){
-				if(res->isFinished()){
-					if(res->isSuccess()){
-						cout<<res->getRequestID()<<" - SUCCESS"<<endl;
-						cout<<ent->getType()<<"-"<<ent->getID()<<" is attacking "<<target->getType()<<"-"<<target->getID()<<"!"<<endl;
-						ent->attack(target);
-					}else{
-						cout<<res->getRequestID()<<" - FAIL"<<endl;
-						string* reason = res->getData("reason");
-						if(reason){
-							cout<<"Request failed: "<<*(reason)<<endl;
-						}
-					}
-				}else{
-					cout<<"UNFINISHED"<<endl;
-					cout<<"Request failed to complete"<<endl;
-				}
-			}
-		}catch(const bad_cast& err){
-			cout<<"Couldn't cast SignalEvent to ActionResult..."<<endl;
-		}
-	},[=](SignalEvent* e){
-		//on process
-		stringstream ss;
-		try{
-			ActionResult* res = static_cast<ActionResult*>(e);
-			if(!ent){
-				res->resolve(false);
-				ss<<"Can't attack because Entity is NULL";
-			}else if(!ent->isAlive()){
-				res->resolve(false);
-				ss<<ent->getType()<<"-"<<ent->getID()<<" can't attack because they are dead";
-			}else if(!target){
-				res->resolve(false);
-				ss<<ent->getType()<<"-"<<ent->getID()<<" can't attack because target is NULL";
-			}else if(!target->isAlive()){
-				res->resolve(false);
-				ss<<ent->getType()<<"-"<<ent->getID()<<" can't attack because "<<target->getType()<<"-"<<target->getID()<<" is dead";
-			}
+void battleTest(){
+	Country* c1 = new Country("Athens");
+	Country* c2 = new Country("Bobas");
 
-			cout<<res->getRequestID()<<" Processing..."<<endl;
-			if(res->isFinished() && !res->isSuccess()){
-				res->setData("reason", ss.str());
-			}
-		}catch(const bad_cast& err){
-			cout<<"Couldn't cast SignalEvent to ActionResult..."<<endl;
-		}
-	});
-
-	cout<<ent->getType()<<"-"<<ent->getID()<<" created a request ("<<req->getID()<<")"<<endl;
-
-	return req;
-}
-
-void requestTest(){
-	ActionManager* actionManager = new ActionManager();
-
-	Citizen* solA = new Soldier(100,"Atlantis",15);
-	Citizen* solB = new Soldier(100,"Bethleham",15);
-
-	cout<<solA->printInfo()<<endl;
-	cout<<solB->printInfo()<<endl;
-
-	// actionManager->pushRequest( requestAttack(solA, solB) );
-	// actionManager->pushRequest( requestAttack(solB, solA) );
-	int step = 0;
-	int maxStep = 20;
-
-	while(solA->isAlive() && solB->isAlive() && step<maxStep){
-		cout<<"-----Step "<<step<<"------------"<<endl;
-		///make requests
-		actionManager->pushRequest( requestAttack(solA, solB) );
-		actionManager->pushRequest( requestAttack(solB, solA) );
-		///run requests
-		cout<<">> RUNNING REQUESTS..."<<endl;
-		while(!actionManager->isEmptyQueue()){
-			cout<<"next request..."<<endl;
-			actionManager->handleCurrRequest();
-		}
-		//get queue for next step
-		actionManager->placeNextQueue();
-
-		
-		///increment step count
-		// war->incrementStep();
-		step++;
-
-		///view initial results
-		cout<<solA->printInfo()<<endl;
-		cout<<solB->printInfo()<<endl;
+	for(int i=0;i<9;i++){
+		c1->addEntity(new Soldier());
+		c2->addEntity(new Soldier());
 	}
 
-	
-	
-	
-	
+	Battle* battle = new Battle(c1,c2);
+
+	battle->commenceBattle();
+
+	if(battle->getWinner()){
+		cout<<"The winner is "<<battle->getWinner()->getName()<<endl;
+	}else{
+		cout<<"The battle is a draw"<<endl;
+	}
 
 }
 
 int main(){
-	requestTest();
+	battleTest();
 	// managerTest();
 	// cout<<"Coin "<<myHelper::coinFlip()<<endl;
 

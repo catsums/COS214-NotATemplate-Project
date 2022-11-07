@@ -9,7 +9,7 @@
 #define POLITICIANFACTORY_H
 
 #include <string>
-#include "Citizen.h"
+#include "CitizenFactory.h"
 
 using namespace std; 
 

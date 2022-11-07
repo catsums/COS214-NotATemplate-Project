@@ -1,6 +1,8 @@
 #include <string>
 #include <iostream>
-#include "Artillery.h"
+#include "Submarine.h"
+#include "FighterJet.h"
+#include "Tank.h"
 #include "ArtilleryFactory.h"
 
 using namespace std;

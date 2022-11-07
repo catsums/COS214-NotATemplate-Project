@@ -4,7 +4,7 @@
 
 using namespace std;
 
-	FighterJet::FighterJet()// default constuctor 
+	FighterJet::FighterJet():Artillery()// default constuctor 
 	{
 		
 		//cout<<"FighterJet’s Constructor was Called"<<endl;
@@ -15,6 +15,8 @@ using namespace std;
 		setXpos(0);
 		setYpos(0);
 		
+		types.push_back("FighterJet");
+		land = true; sea = true;
 
 	} 
 
@@ -26,6 +28,9 @@ using namespace std;
 		setCountry(c);
 		setXpos(x);
 		setYpos(y);
+
+		types.push_back("FighterJet");
+		land = true; sea = true;
 	}
 	
 	

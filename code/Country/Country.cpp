@@ -56,36 +56,36 @@ void Country::setName(string n)
 {
     this->name = n;
 }
-void Country::print()
-{
-    cout <<this->name<<" has the following attributes "<<endl;
-    // cout <<"Strength = "<<this->strength<<endl;
-    // cout <<"Total army = "<<this->totalArmy<<endl;
-    cout <<"Total reserves = "<<this->reserves<<endl;
-    // other stuff to be implemented later..
-    if(allies.empty())
-    {
-        cout <<"This country has no allies"<<endl;
-    }
-    else{
-        cout << this->getName() <<" has the following allies"<<endl;
-        for(int i = 0 ; i < allies.size() ; i++)
-        {
-            cout <<allies[i]->getName()<<endl;
-        }
-    }
-    if(enemies.empty())
-    {
-        cout <<this->getName() << " has no enemies"<<endl;
-    }
-    else{
-        cout << this->getName() <<" has the following enemies"<<endl;
-        for(int i = 0 ; i < enemies.size() ; i++)
-        {
-            cout <<enemies[i]->getName()<<endl;
-        }
-    }
-}
+// void Country::print()
+// {
+//     cout <<this->name<<" has the following attributes "<<endl;
+//     // cout <<"Strength = "<<this->strength<<endl;
+//     // cout <<"Total army = "<<this->totalArmy<<endl;
+//     cout <<"Total reserves = "<<this->reserves<<endl;
+//     // other stuff to be implemented later..
+//     if(allies.empty())
+//     {
+//         cout <<"This country has no allies"<<endl;
+//     }
+//     else{
+//         cout << this->getName() <<" has the following allies"<<endl;
+//         for(int i = 0 ; i < allies.size() ; i++)
+//         {
+//             cout <<allies[i]->getName()<<endl;
+//         }
+//     }
+//     if(enemies.empty())
+//     {
+//         cout <<this->getName() << " has no enemies"<<endl;
+//     }
+//     else{
+//         cout << this->getName() <<" has the following enemies"<<endl;
+//         for(int i = 0 ; i < enemies.size() ; i++)
+//         {
+//             cout <<enemies[i]->getName()<<endl;
+//         }
+//     }
+// }
 
 
 

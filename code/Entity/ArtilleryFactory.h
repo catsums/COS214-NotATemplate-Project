@@ -10,7 +10,7 @@
 #define ArtilleryFACTORY_H
 
 #include <string>
-#include "Vehicle.h"
+#include "VehicleFactory.h"
 
 
 using namespace std; 

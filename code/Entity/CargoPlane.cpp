@@ -4,7 +4,7 @@
 
 using namespace std;
 
-	CargoPlane::CargoPlane()// default constuctor 
+	CargoPlane::CargoPlane():Transport()// default constuctor 
 	{
 		
 		//cout<<"CargoPlane’s Constructor was Called"<<endl;
@@ -15,7 +15,8 @@ using namespace std;
 		setXpos(0);
 		setYpos(0);
 		
-
+		types.push_back("CargoPlane");
+		land = true; sea = true;
 	} 
 
 
@@ -26,6 +27,9 @@ using namespace std;
 		setCountry(c);
 		setXpos(x);
 		setYpos(y);
+
+		types.push_back("CargoPlane");
+		land = true; sea = true;
 	}
 	
 	

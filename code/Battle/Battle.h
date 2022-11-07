@@ -7,9 +7,13 @@
 #include <cstdlib>
 #include <vector>
 #include <functional>
+#include <sstream>
 #include <map>
 
 #include "../Country/Country.h"
+#include "../Entity/Entity.h"
+#include "../Entity/Medic.h"
+#include "../Entity/Soldier.h"
 #include "../SignalHandler/SignalBus.h"
 #include "../ActionManager/ActionManager.h"
 
@@ -33,6 +37,14 @@ public:
 	}
 
 protected:
+	void shiftBalance(string side);
+	void lowerBalance(string side);
+
+	ActionRequest* requestAttack(Entity* currEnt, Entity* targetEnt);
+	ActionRequest* requestHeal(Entity* currEnt, Entity* targetEnt);
+	ActionRequest* requestTakeover(Entity* currEnt);
+
+
 	ActionManager* actionManager;
 	SignalBus* signalBus;
 
@@ -44,3 +56,5 @@ protected:
 
 	int balance = 0;
 };
+
+#endif

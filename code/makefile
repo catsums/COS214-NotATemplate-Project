@@ -10,14 +10,12 @@ TARGET   := main
 TARGETS   := all build clean
 INCLUDE  := -Iinclude/
 SRC      := 	\
-	$(filter-out NewEntity/main.cpp, $(wildcard NewEntity/*.cpp)) \
-	$(filter-out NewResource/main.cpp, $(wildcard NewResource/*.cpp)) \
+	$(filter-out Entity/main.cpp, $(wildcard Entity/*.cpp)) \
 	$(filter-out Country/main.cpp, $(wildcard Country/*.cpp)) \
 	$(filter-out SignalHandler/main.cpp, $(wildcard SignalHandler/*.cpp)) \
 	$(filter-out Army/main.cpp, $(wildcard Army/*.cpp)) \
 	$(filter-out ActionManager/main.cpp, $(wildcard ActionManager/*.cpp)) \
 	$(filter-out Battle/main.cpp, $(wildcard Battle/*.cpp)) \
-	$(filter-out War/main.cpp, $(wildcard War/*.cpp)) \
 	$(filter-out WarEngine/main.cpp, $(wildcard WarEngine/*.cpp)) \
 	$(wildcard *.cpp) \
 

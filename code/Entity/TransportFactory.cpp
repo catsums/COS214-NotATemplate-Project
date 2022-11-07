@@ -1,6 +1,8 @@
 #include <string>
 #include <iostream>
-#include "Transport.h"
+#include "CargoTruck.h"
+#include "CargoPlane.h"
+#include "CargoShip.h"
 #include "TransportFactory.h"
 
 using namespace std;

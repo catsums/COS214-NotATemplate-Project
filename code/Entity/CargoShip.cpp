@@ -4,7 +4,7 @@
 
 using namespace std;
 
-	CargoShip::CargoShip()// default constuctor 
+	CargoShip::CargoShip():Transport()// default constuctor 
 	{
 		
 		//cout<<"CargoShip’s Constructor was Called"<<endl;
@@ -15,7 +15,8 @@ using namespace std;
 		setXpos(0);
 		setYpos(0);
 		
-
+		types.push_back("CargoShip");
+		land = false; sea = true;
 	} 
 
 
@@ -26,6 +27,9 @@ using namespace std;
 		setCountry(c);
 		setXpos(x);
 		setYpos(y);
+
+		types.push_back("CargoShip");
+		land = false; sea = true;
 	}
 	
 	

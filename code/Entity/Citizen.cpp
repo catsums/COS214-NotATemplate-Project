@@ -15,6 +15,8 @@ using namespace std;
 		setYpos(2);
 
 		types.push_back("Citizen");
+
+		land = true; sea = false;
 	} 
 
 
@@ -27,6 +29,8 @@ using namespace std;
 		setYpos(y);
 
 		types.push_back("Citizen");
+
+		land = true; sea = false;
 	}
 	
 	

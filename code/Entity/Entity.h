@@ -12,7 +12,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
-
+#include "../myHelper.cpp"
 
 using namespace std; 
 
@@ -163,6 +163,9 @@ public:
 		return temp;
 	}
 	
+	bool isAlive(){
+		return (hp>=0);
+	}
 	
 };
 

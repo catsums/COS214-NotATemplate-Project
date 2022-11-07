@@ -15,7 +15,8 @@ using namespace std;
 		setXpos(0);
 		setYpos(0);
 		
-
+		land = true; sea = false;
+		types.push_back("Tank");
 	} 
 
 
@@ -26,6 +27,9 @@ using namespace std;
 		setCountry(c);
 		setXpos(x);
 		setYpos(y);
+
+		land = true; sea = false;
+		types.push_back("Tank");
 	}
 	
 	

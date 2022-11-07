@@ -10,6 +10,7 @@
 
 #include <string>
 #include "Vehicle.h"
+#include "EntityFactory.h"
 
 using namespace std; 
 

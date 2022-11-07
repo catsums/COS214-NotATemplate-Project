@@ -18,6 +18,7 @@
 
 // includes
 #include "../Entity/Entity.h"
+#include "../Entity/Citizen.h"
 // #include "../NewEntity/Politician.h"
 // #include "../NewResource/Resource.h"
 // #include "../Facility/Facility.h"
@@ -50,10 +51,15 @@ class Country
         vector<Citizen*> getCitizens(){
             vector<Citizen*> citizens;
 
-            for(int i=0;i<(int)entities;i++){
+            for(int i=0;i<(int)entities.size();i++){
                 Entity* ent = entities[i];
                 if(ent->isType("Citizen")){
-                    citizens.push_back(ent);
+                    try{
+                        Citizen* cit = static_cast<Citizen*>(ent);
+                        citizens.push_back(cit);
+                    }catch(const bad_cast& err){
+                        cout<<"Couldn't cast Entity to Citizen"<<endl;
+                    }
                 }
             }
 
@@ -61,17 +67,18 @@ class Country
         }
         vector<Citizen*> getTroops(){
             vector<Citizen*> troops;
+            vector<Citizen*> cits = getCitizens();
 
-            for(int i=0;i<(int)entities;i++){
-                Entity* ent = entities[i];
+            for(int i=0;i<(int)cits.size();i++){
+                Citizen* ent = cits[i];
                 if(ent->isType("Soldier")){
-                    citizens.push_back(ent);
+                    troops.push_back(ent);
                 }else if(ent->isType("Medic")){
-                    citizens.push_back(ent);
+                    troops.push_back(ent);
                 }
             }
 
-            return citizens;
+            return troops;
         }
 
         void addEntity(Entity* ctn);
@@ -211,10 +218,11 @@ class Country
         virtual string getInfo(){
             stringstream ss;
             
-            ss<<"\n\t Citizens:"<<"\n";
-            for(auto const&ent :citizens){
+            ss<<"\n\t Entities:"<<"\n";
+            for(auto const&ent :entities){
                 if(ent){
-                    ss << ent->printInfo() << endl;
+                    // ss << ent->printInfo() << endl;
+                    ent->infoSummary();
                 }
             }
 

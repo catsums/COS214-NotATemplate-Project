@@ -10,6 +10,7 @@
 
 #include <string>
 #include "Citizen.h"
+#include "EntityFactory.h"
 
 using namespace std; 
 

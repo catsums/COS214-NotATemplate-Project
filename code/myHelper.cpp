@@ -7,6 +7,7 @@
 #include <iostream>
 #include <ctime>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -52,6 +53,12 @@ public:
 	}
 	static int getRandomInt(int a, int b){
 		return randomInt(a,b);
+	}
+	template <typename T>
+	static T getRandomItemFrom(vector<T> arr){
+		int index = randomInt(0, arr.size());
+
+		return arr[index];
 	}
 	static double randomDouble(double a, double b){
 		if(a>b){
