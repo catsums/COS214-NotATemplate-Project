@@ -10,18 +10,34 @@ void Commissioner::add(Commissioner *n) {
         next = n;
 }
 
-virtual void Commissioner::commission(int i) {
+void Commissioner::commission(int i, bool c) {
     if(i > 0) { 
         if (next)
-            next->commission(i); 
-        else
+            next->commission(i, c); 
+        else {
             leftOver += i;
+        }
     } else
-        //cout << "Required amount was dispensed" << endl; 
+        cout << "Required amount was dispensed" << endl; 
+}
+
+void Commissioner::getInfo(vector<FOB*> f, Commissioner* c) {
+    if (next) {
+        for(FOB* i : facilities) 
+            f.push_back(i);
+        next->getInfo(f, c);
+    } else {
+        c->leftOver = leftOver;
+        c->facilities = f;
+    }
 }
 
 int Commissioner::getLeftOver() {
     return leftOver;
+}
+
+void Commissioner::setFacilities(FOB* fob) {
+    facilities.push_back(fob);
 }
 
 vector<FOB*> Commissioner::getFacilities() {

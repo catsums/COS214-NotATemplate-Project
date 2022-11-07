@@ -1,3 +1,4 @@
+#include <iostream>
 #include "BaseBuilder.h"
 
 BaseBuilder::BaseBuilder(int baseN, bool c)
