@@ -10,7 +10,7 @@ private:
 public:
     NavalForce(/*rgs */){};
     ~NavalForce(){};
-    virtual bool attack();
+    virtual bool attack(Army* other);
 };
 
 #endif

@@ -10,7 +10,7 @@ private:
 
 public:
     ~GroundForce(){};
-    virtual bool attack();
+    virtual bool attack(Army* other);
 };
 
 #endif

@@ -10,7 +10,7 @@ private:
 public:
     AirForce(/* args */){};
     ~AirForce(){};
-    virtual bool attack();
+    virtual bool attack(Army* other);
 };
 
 #endif
