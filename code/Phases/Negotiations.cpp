@@ -8,5 +8,5 @@ void Negotiations::handle(WarEngine* w) {
 }
 
 string Negotiations::getPhase() {
-    return "Peace"
+    return "Negotiations";
 }

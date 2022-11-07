@@ -1,5 +1,5 @@
-#ifndef PHASE_H
-#define PHASE_H
+#ifndef PEACE_H
+#define PEACE_H
 
 #include "Phase.h"
 

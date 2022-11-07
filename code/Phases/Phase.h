@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "WarEngine.h"
+#include "../WarEngine/WarEngine.h"
 
 using namespace std;
 

@@ -150,5 +150,5 @@ void War::handle(WarEngine* w) {
 }
 
 string War::getPhase() {
-    return "Peace"
+    return "War";
 }
