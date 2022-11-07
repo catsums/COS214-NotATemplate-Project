@@ -162,71 +162,71 @@ bool Country::hasEntity(Entity* ctn){
 //     return false;
 // }
 
-void Country::addResource(Resource* reso){
-    if(!hasResource(reso)){
-        resources.push_back(reso);
-        // reso->setCountry(this->name);
-    }
-}
-Resource* Country::removeResource(Resource* reso){
-    Resource* _reso = NULL;
-    if(hasResource(reso)){
-        for(int i=0; i<(int)resources.size();i++){
-            Resource* ent = resources[i];
-            if(ent == reso){
-                _reso = ent;
-                // reso->setCountry("");
-                resources.erase(resources.begin()+i);
-                break;
-            }
-        }
-    }
-    return _reso;
-}
-bool Country::hasResource(Resource* reso){
-    if(reso){
-        for(int i=0; i<(int)resources.size();i++){
-            Resource* _reso = resources[i];
-            if(_reso == reso){
-                return true;
-            }
-        }
-    } 
-    return false;
-}
+// void Country::addResource(Resource* reso){
+//     if(!hasResource(reso)){
+//         resources.push_back(reso);
+//         // reso->setCountry(this->name);
+//     }
+// }
+// Resource* Country::removeResource(Resource* reso){
+//     Resource* _reso = NULL;
+//     if(hasResource(reso)){
+//         for(int i=0; i<(int)resources.size();i++){
+//             Resource* ent = resources[i];
+//             if(ent == reso){
+//                 _reso = ent;
+//                 // reso->setCountry("");
+//                 resources.erase(resources.begin()+i);
+//                 break;
+//             }
+//         }
+//     }
+//     return _reso;
+// }
+// bool Country::hasResource(Resource* reso){
+//     if(reso){
+//         for(int i=0; i<(int)resources.size();i++){
+//             Resource* _reso = resources[i];
+//             if(_reso == reso){
+//                 return true;
+//             }
+//         }
+//     } 
+//     return false;
+// }
 
-void Country::addZone(Zone* zone){
-    if(!hasZone(zone)){
-        zones.push_back(zone);
-        zone->setCountry(this->name);
-    }
-}
-Zone* Country::removeZone(Zone* zone){
-    Zone* _zone = NULL;
-    if(hasZone(zone)){
-        for(int i=0; i<(int)zones.size();i++){
-            Zone* z = zones[i];
-            if(z == zone){
-                _zone = z;
-                zone->setCountry("");
-                zones.erase(zones.begin()+i);
-                break;
-            }
-        }
-    }
-    return _zone;
-}
-bool Country::hasZone(Zone* zone){
-    if(zone){
-        for(int i=0; i<(int)zones.size();i++){
-            Zone* _zone = zones[i];
-            if(_zone == zone){
-                return true;
-            }
-        }
-    } 
-    return false;
-}
+// void Country::addZone(Zone* zone){
+//     if(!hasZone(zone)){
+//         zones.push_back(zone);
+//         zone->setCountry(this->name);
+//     }
+// }
+// Zone* Country::removeZone(Zone* zone){
+//     Zone* _zone = NULL;
+//     if(hasZone(zone)){
+//         for(int i=0; i<(int)zones.size();i++){
+//             Zone* z = zones[i];
+//             if(z == zone){
+//                 _zone = z;
+//                 zone->setCountry("");
+//                 zones.erase(zones.begin()+i);
+//                 break;
+//             }
+//         }
+//     }
+//     return _zone;
+// }
+// bool Country::hasZone(Zone* zone){
+//     if(zone){
+//         for(int i=0; i<(int)zones.size();i++){
+//             Zone* _zone = zones[i];
+//             if(_zone == zone){
+//                 return true;
+//             }
+//         }
+//     } 
+//     return false;
+// }
 
 ///
 

@@ -4,7 +4,7 @@
 
 using namespace std;
 
-	Vehicle::Vehicle()// default constuctor 
+	Vehicle::Vehicle():Entity()// default constuctor 
 	{
 		
 		//cout<<"Vehicle’s Constructor was Called"<<endl;
@@ -14,16 +14,20 @@ using namespace std;
 		setXpos(2);
 		setYpos(2);
 
+		types.push_back("Vehicle");
+
 	} 
 
 
-	Vehicle::Vehicle(int h,string c, int d, int x , int y )// param constuctor 
+	Vehicle::Vehicle(int h,string c, int d, int x , int y ):Entity()// param constuctor 
 	{
 		setHp(h);
 		setDamage(d);
 		setCountry(c);
 		setXpos(x);
 		setYpos(y);
+
+		types.push_back("Vehicle");
 	}
 
 	

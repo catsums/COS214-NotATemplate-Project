@@ -4,7 +4,7 @@
 
 using namespace std;
 
-	Politician::Politician()// default constuctor 
+	Politician::Politician():Citizen()// default constuctor 
 	{
 		
 		//cout<<"Politician’s Constructor was Called"<<endl;
@@ -14,6 +14,7 @@ using namespace std;
 		setXpos(0);
 		setYpos(0);
 
+		types.push_back("Politician");
 	} 
 
 
@@ -24,6 +25,8 @@ using namespace std;
 		setCountry(c);
 		setXpos(x);
 		setYpos(y);
+
+		types.push_back("Politician");
 	}
 	
 	

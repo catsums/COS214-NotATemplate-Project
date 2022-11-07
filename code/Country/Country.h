@@ -17,17 +17,17 @@
 #include <vector>
 
 // includes
-#include "../NewEntity/Citizen.h"
-#include "../NewEntity/Politician.h"
-#include "../NewResource/Resource.h"
-#include "../Facility/Facility.h"
-#include "../Army/Army.h"
-#include "../Map/LandZone.h"
-#include "../Map/SeaZone.h"
+#include "../Entity/Entity.h"
+// #include "../NewEntity/Politician.h"
+// #include "../NewResource/Resource.h"
+// #include "../Facility/Facility.h"
+// #include "../Army/Army.h"
+// #include "../Map/LandZone.h"
+// #include "../Map/SeaZone.h"
 #include "../SignalHandler/SignalBus.h"
-#include "../Army/AirForce.h"
-#include "../Army/NavalForce.h"
-#include "../Army/GroundForce.h"
+// #include "../Army/AirForce.h"
+// #include "../Army/NavalForce.h"
+// #include "../Army/GroundForce.h"
 
 using namespace std;
 
@@ -90,107 +90,107 @@ class Country
         //     return facilities;
         // }
 
-        void addResource(Resource* reso);
-        Resource* removeResource(Resource* reso);
-        bool hasResource(Resource* reso);
+        // void addResource(Resource* reso);
+        // Resource* removeResource(Resource* reso);
+        // bool hasResource(Resource* reso);
 
-        vector<Resource*> getResources(){
-            return resources;
-        }
+        // vector<Resource*> getResources(){
+        //     return resources;
+        // }
 
-        void addZone(Zone* zone);
-        Zone* removeZone(Zone* zone);
-        bool hasZone(Zone* zone);
+        // void addZone(Zone* zone);
+        // Zone* removeZone(Zone* zone);
+        // bool hasZone(Zone* zone);
 
         void runProductions(){
             
         }
 
-        void useHospital(){
-            Facility* hospital = getFacilityByType("Hospital");
-            if(hospital){
-                try{
-                    Hospital* fac = static_cast<Hospital*>(hospital);
-                    vector<Citizen*> citizens = getCitizens();
-                    for(int i=0;i<(int)citizens;i++){
-                        Entity* ent = citizens[i];
-                        fac->healCitizen(ent);
-                    }
-                }catch(const& bad_cast err){
-                    cout<<"Couldn't cast Facility to Hospital"<<endl;
-                }
-            }
-        }
-        void useFortification(){
-            Facility* fort = getFacilityByType("Fortification");
-            if(fort){
-                try{
-                    Fortification* fac = static_cast<Fortification*>(fort);
-                    vector<Citizen*> citizens = getTroops();
-                    for(int i=0;i<(int)citizens;i++){
-                        Entity* ent = citizens[i];
-                        fac->healCitizen(ent);
-                    }
-                }catch(const& bad_cast err){
-                    cout<<"Couldn't cast Facility to Fortification"<<endl;
-                }
-            }
-        }
+        // void useHospital(){
+        //     Facility* hospital = getFacilityByType("Hospital");
+        //     if(hospital){
+        //         try{
+        //             Hospital* fac = static_cast<Hospital*>(hospital);
+        //             vector<Citizen*> citizens = getCitizens();
+        //             for(int i=0;i<(int)citizens;i++){
+        //                 Entity* ent = citizens[i];
+        //                 fac->healCitizen(ent);
+        //             }
+        //         }catch(const& bad_cast err){
+        //             cout<<"Couldn't cast Facility to Hospital"<<endl;
+        //         }
+        //     }
+        // }
+        // void useFortification(){
+        //     Facility* fort = getFacilityByType("Fortification");
+        //     if(fort){
+        //         try{
+        //             Fortification* fac = static_cast<Fortification*>(fort);
+        //             vector<Citizen*> citizens = getTroops();
+        //             for(int i=0;i<(int)citizens;i++){
+        //                 Entity* ent = citizens[i];
+        //                 fac->healCitizen(ent);
+        //             }
+        //         }catch(const& bad_cast err){
+        //             cout<<"Couldn't cast Facility to Fortification"<<endl;
+        //         }
+        //     }
+        // }
 
-        Facility* getFacilityByType(string type){
-            for(int i=0;i<(int)zones.size();i++){
-                Zone* zone = zones[i];
-                vector<Facility*> facs = zone->getFacilities();
-                for(int j=0;j<(int)facs.size();j++){
-                    Facility* fac = facs[i];
-                    if(fac->isType(type)){
-                        return fac;
-                    }
-                }
-            }
-            return NULL;
-        }
+        // Facility* getFacilityByType(string type){
+        //     for(int i=0;i<(int)zones.size();i++){
+        //         Zone* zone = zones[i];
+        //         vector<Facility*> facs = zone->getFacilities();
+        //         for(int j=0;j<(int)facs.size();j++){
+        //             Facility* fac = facs[i];
+        //             if(fac->isType(type)){
+        //                 return fac;
+        //             }
+        //         }
+        //     }
+        //     return NULL;
+        // }
 
-        vector<Zone*> getZones(){
-            return zones;
-        }
+        // vector<Zone*> getZones(){
+        //     return zones;
+        // }
 
-        ArmyForce* getLandForce(){
-            vector<Entity*> army;
-            for(int i=0; i<(int)entities.size();i++){
-                Entity* ent = entities[i];
-                if(ent->canTravelLand()){
-                    army.push_back(ent);
-                }
-            }
+        // ArmyForce* getLandForce(){
+        //     vector<Entity*> army;
+        //     for(int i=0; i<(int)entities.size();i++){
+        //         Entity* ent = entities[i];
+        //         if(ent->canTravelLand()){
+        //             army.push_back(ent);
+        //         }
+        //     }
 
-            ArmyForce* force = new GroundForce(army);
-            return force;
-        }
-        ArmyForce* getSeaForce(){
-            vector<Entity*> army;
-            for(int i=0; i<(int)entities.size();i++){
-                Entity* ent = entities[i];
-                if(ent->canTravelSea()){
-                    army.push_back(ent);
-                }
-            }
+        //     ArmyForce* force = new GroundForce(army);
+        //     return force;
+        // }
+        // ArmyForce* getSeaForce(){
+        //     vector<Entity*> army;
+        //     for(int i=0; i<(int)entities.size();i++){
+        //         Entity* ent = entities[i];
+        //         if(ent->canTravelSea()){
+        //             army.push_back(ent);
+        //         }
+        //     }
 
-            ArmyForce* force = new NavalForce(army);
-            return force;
-        }
-        ArmyForce* getAirForce(){
-            vector<Entity*> army;
-            for(int i=0; i<(int)entities.size();i++){
-                Entity* ent = entities[i];
-                if(ent->canTravelLand() && ent->canTravelSea()){
-                    army.push_back(ent);
-                }
-            }
+        //     ArmyForce* force = new NavalForce(army);
+        //     return force;
+        // }
+        // ArmyForce* getAirForce(){
+        //     vector<Entity*> army;
+        //     for(int i=0; i<(int)entities.size();i++){
+        //         Entity* ent = entities[i];
+        //         if(ent->canTravelLand() && ent->canTravelSea()){
+        //             army.push_back(ent);
+        //         }
+        //     }
 
-            ArmyForce* force = new AirForce(army);
-            return force;
-        }
+        //     ArmyForce* force = new AirForce(army);
+        //     return force;
+        // }
 
 
 
@@ -225,19 +225,19 @@ class Country
             //     }
             // }
             
-            ss<<"\n\t Resources:"<<"\n";
-            for(auto const&reso :resources){
-                if(reso){
-                    ss << reso->printInfo() << endl;
-                }
-            }
+            // ss<<"\n\t Resources:"<<"\n";
+            // for(auto const&reso :resources){
+            //     if(reso){
+            //         ss << reso->printInfo() << endl;
+            //     }
+            // }
 
-            ss<<"\n\t Zones:"<<"\n";
-            for(auto const&zone :zones){
-                if(zone){
-                    ss << zone->printInfo() << endl;
-                }
-            }
+            // ss<<"\n\t Zones:"<<"\n";
+            // for(auto const&zone :zones){
+            //     if(zone){
+            //         ss << zone->printInfo() << endl;
+            //     }
+            // }
 
             return ss.str();
         }
@@ -245,13 +245,13 @@ class Country
         string id;
 
         string name;   
-        Citizen* politician;
+        // Citizen* politician;
 
         vector<Entity*> entities;
 
-        vector<Resource*> resources;
+        // vector<Resource*> resources;
 
-        vector<Zone*> zones;
+        // vector<Zone*> zones;
 
         SignalBus signalBus;
 };

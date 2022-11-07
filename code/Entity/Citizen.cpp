@@ -4,7 +4,7 @@
 
 using namespace std;
 
-	Citizen::Citizen()// default constuctor 
+	Citizen::Citizen():Entity()// default constuctor 
 	{
 		
 		//cout<<"Citizen’s Constructor was Called"<<endl;
@@ -14,16 +14,19 @@ using namespace std;
 		setXpos(2);
 		setYpos(2);
 
+		types.push_back("Citizen");
 	} 
 
 
-	Citizen::Citizen(int h,string c, int d, int x , int y )// param constuctor 
+	Citizen::Citizen(int h,string c, int d, int x , int y ):Entity()// param constuctor 
 	{
 		setHp(h);
 		setDamage(d);
 		setCountry(c);
 		setXpos(x);
 		setYpos(y);
+
+		types.push_back("Citizen");
 	}
 	
 	

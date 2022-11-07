@@ -4,7 +4,7 @@
 
 using namespace std;
 
-	Transport::Transport()// default constuctor 
+	Transport::Transport():Vehicle()// default constuctor 
 	{
 		
 		//cout<<"Transport’s Constructor was Called"<<endl;
@@ -15,6 +15,7 @@ using namespace std;
 		setXpos(0);
 		setYpos(0);
 
+		types.push_back("Transport");
 	} 
 
 
@@ -26,6 +27,8 @@ using namespace std;
 		setCountry(c);
 		setXpos(x);
 		setYpos(y);
+
+		types.push_back("Transport");
 	}
 	
 	

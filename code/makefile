@@ -16,9 +16,7 @@ SRC      := 	\
 	$(filter-out SignalHandler/main.cpp, $(wildcard SignalHandler/*.cpp)) \
 	$(filter-out Army/main.cpp, $(wildcard Army/*.cpp)) \
 	$(filter-out ActionManager/main.cpp, $(wildcard ActionManager/*.cpp)) \
-	$(filter-out BattleStrat/main.cpp, $(wildcard BattleStrat/*.cpp)) \
-	$(filter-out Map/main.cpp, $(wildcard Map/*.cpp)) \
-	$(filter-out Adapter/main.cpp, $(wildcard Adapter/*.cpp)) \
+	$(filter-out Battle/main.cpp, $(wildcard Battle/*.cpp)) \
 	$(filter-out War/main.cpp, $(wildcard War/*.cpp)) \
 	$(filter-out WarEngine/main.cpp, $(wildcard WarEngine/*.cpp)) \
 	$(wildcard *.cpp) \

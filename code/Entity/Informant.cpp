@@ -4,7 +4,7 @@
 
 using namespace std;
 
-	Informant::Informant()// default constuctor 
+	Informant::Informant():Citizen()// default constuctor 
 	{
 		
 		//cout<<"Informant’s Constructor was Called"<<endl;
@@ -13,6 +13,8 @@ using namespace std;
 		setCountry("SA");
 		setXpos(0);
 		setYpos(0);
+
+		types.push_back("Informant");
 
 	} 
 
@@ -24,6 +26,8 @@ using namespace std;
 		setCountry(c);
 		setXpos(x);
 		setYpos(y);
+
+		types.push_back("Informant");
 	}
 	
 	

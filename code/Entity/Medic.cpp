@@ -4,7 +4,7 @@
 
 using namespace std;
 
-	Medic::Medic()// default constuctor 
+	Medic::Medic():Citizen()// default constuctor 
 	{
 		
 		//cout<<"Medic’s Constructor was Called"<<endl;
@@ -14,6 +14,8 @@ using namespace std;
 		setCountry("SA");
 		setXpos(0);
 		setYpos(0);
+
+		types.push_back("Medic");
 
 	} 
 
@@ -26,6 +28,8 @@ using namespace std;
 		setCountry(c);
 		setXpos(x);
 		setYpos(y);
+
+		types.push_back("Medic");
 	}
 	
 	

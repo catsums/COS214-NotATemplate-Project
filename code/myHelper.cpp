@@ -50,6 +50,9 @@ public:
 		}
 		return (int) uniformDistribution<int>(a,b);
 	}
+	static int getRandomInt(int a, int b){
+		return randomInt(a,b);
+	}
 	static double randomDouble(double a, double b){
 		if(a>b){
 			double temp = a;
