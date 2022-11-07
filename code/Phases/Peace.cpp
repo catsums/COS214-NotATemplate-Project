@@ -8,5 +8,5 @@ void Peace::handle(WarEngine* w) {
 }
 
 string Peace::getPhase() {
-    return "Peace"
+    return "Peace";
 }

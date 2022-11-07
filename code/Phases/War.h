@@ -5,7 +5,7 @@
 
 class War : public Phase { 
     public :
-        virtual void handle(WarEngine* w);
+        virtual void handle(WarEngine* w, vector<Country*> countryArr, int i);j
         virtual string getPhase(); 
 };
 

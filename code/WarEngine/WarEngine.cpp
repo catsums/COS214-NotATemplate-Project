@@ -310,3 +310,8 @@ int WarEngine::getCurrTurn()
 {
   return currTurn;
 }
+
+vector<Country*> WarEngine::getCountryArr()
+{
+  return countryArr;
+}

@@ -21,6 +21,7 @@ class WarEngine
 	int determineSideStrength(bool s);
 
 	int getCurrTurn();
+	vector<Country*> getCountryArr();
 
   protected:
 	WarEngine();

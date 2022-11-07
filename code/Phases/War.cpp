@@ -3,9 +3,9 @@
 
 using namespace std;
 
-void War::handle(WarEngine* w) {
+void War::handle(WarEngine* w, vector<Country*> countryArr, int i) {
     vector<int> potentialActions;
-    bool currSide = countryArr[i]->getSide();
+    bool currSide = w->getCountryArr()[i]->getSide();
     
     if(countryArr[i]->getTerritory() > 0)
     {
@@ -15,12 +15,12 @@ void War::handle(WarEngine* w) {
       potentialActions.push_back(4);
       potentialActions.push_back(5);
 
-      if((double) determineSideStrength(currSide) / determineSideStrength(!currSide) <= 0.4) //diplomacy
+      if((double) w->determineSideStrength(currSide) / w->determineSideStrength(!currSide) <= 0.4) //diplomacy
       {
         potentialActions.push_back(6);
       }
 
-      if((double) determineSideStrength(currSide) / determineSideStrength(!currSide) <= 0.2) //defection
+      if((double) w->determineSideStrength(currSide) / w->determineSideStrength(!currSide) <= 0.2) //defection
       {
         int cnt = 0;
         for(int i = 0; i < countryArr.size(); i++)
