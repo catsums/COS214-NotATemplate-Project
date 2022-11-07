@@ -17,8 +17,8 @@ class PhaseManager {
         void DecideAction(vector<Country*> countryArr, int i);
         void setPhase(Phase* p);
 
-    private: 
         WarEngine* w;
+    private: 
         Phase* phase;
 };
 

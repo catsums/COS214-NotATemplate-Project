@@ -1,27 +1,40 @@
 #include <iostream>
 #include "War.h"
+#include "../Commissioner/ConcreteCommissioner.h"
 
 using namespace std;
 
-void War::handle(WarEngine* w, vector<Country*> countryArr, int i) 
+void War::handle(PhaseManager* pm, vector<Country*> countryArr, int i) 
 {
   vector<int> potentialActions;
-  bool currSide = w->getCountryArr()[i]->getSide();
+  bool currSide = pm->w->getCountryArr()[i]->getSide();
   
   if(countryArr[i]->getTerritory() > 0)
   {
+    //decision making
+    //Corresponding decisions:
+    // 0: Withdraw
+    // 1: Land attack
+    // 2: Sea attack
+    // 3: Air attack
+    // 4: Recruit troops
+    // 5: Build base
+    // 6: Initiate diplomacy
+    // 7: Change sides
+    // 8: Peace talks
+    
     potentialActions.push_back(1);
     potentialActions.push_back(2);
     potentialActions.push_back(3);
     potentialActions.push_back(4);
     potentialActions.push_back(5);
 
-    if((double) w->determineSideStrength(currSide) / w->determineSideStrength(!currSide) <= 0.4) //diplomacy
+    if((double) pm->w->determineSideStrength(currSide) / pm->w->determineSideStrength(!currSide) <= 0.4) //diplomacy
     {
       potentialActions.push_back(6);
     }
 
-    if((double) w->determineSideStrength(currSide) / w->determineSideStrength(!currSide) <= 0.2) //defection
+    if((double) pm->w->determineSideStrength(currSide) / pm->w->determineSideStrength(!currSide) <= 0.2) //defection
     {
       int cnt = 0;
       for(int i = 0; i < countryArr.size(); i++)
@@ -39,7 +52,7 @@ void War::handle(WarEngine* w, vector<Country*> countryArr, int i)
       
     }
   }
-  else //withdrawal
+  else //withdraw
   {
     potentialActions.push_back(0); 
   }
@@ -113,6 +126,18 @@ void War::handle(WarEngine* w, vector<Country*> countryArr, int i)
     break;
     case 5: //Build base
     {
+      Commissioner* machine = new ConcreteCommissioner (20);
+      machine->add(new ConcreteCommissioner (15)); 
+      machine->add(new ConcreteCommissioner (10)); 
+      machine->add(new ConcreteCommissioner (5)); 
+
+      machine->commission(countryArr[i]->getFreeSpace(), countryArr[i]->getCoastal());
+      vector<FOB*> facilities;
+      machine->getInfo(facilities, machine);
+      facilities = machine->getFacilities();
+
+      
+
       cout << countryArr[i]->getName() << " is building a Forward Operating Base" << endl;
     }
     break;
@@ -122,7 +147,7 @@ void War::handle(WarEngine* w, vector<Country*> countryArr, int i)
       if(rand() % 10 + 1 == 1)
       {
         cout << countryArr[i]->getName() << " has successfuly initaited diplomacy, peace talks are underway." << endl;
-        
+
       }
       else
       {

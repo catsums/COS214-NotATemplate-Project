@@ -14,6 +14,9 @@ class FOB : public Facility
         void addFacility(Facility* f);
         void removeFacility();
 
+        vector<Facility*> getFacilities();
+        int getSpace();
+
     private:
         vector<Facility*> facilities;
 };

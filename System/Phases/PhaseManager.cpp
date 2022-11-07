@@ -14,7 +14,7 @@ PhaseManager::~PhaseManager()
 
 void PhaseManager::DecideAction(vector<Country*> countryArr, int i)
 {
-    phase->handle(w, countryArr, i);
+    phase->handle(this, countryArr, i);
 }
 
 void PhaseManager::setPhase(Phase* p)

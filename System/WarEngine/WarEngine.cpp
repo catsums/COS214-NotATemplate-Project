@@ -54,18 +54,6 @@ bool WarEngine::runTurn(){
   {
     countryArr[i]->generateResources();
 
-    //decision making
-    //Corresponding decisions:
-    // 0: Withdraw
-    // 1: Land attack
-    // 2: Sea attack
-    // 3: Air attack
-    // 4: Recruit troops
-    // 5: Build base
-    // 6: Initiate diplomacy
-    // 7: Change sides
-    // 8: Peace talks
-    
     vector<int> potentialActions;
     bool currSide = countryArr[i]->getSide();
     

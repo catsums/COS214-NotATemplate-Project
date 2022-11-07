@@ -31,3 +31,13 @@ void FOB::removeFacility()
         facilities.erase(facilities.begin()+position);
    }
 }
+
+vector<Facility*> FOB::getFacilities()
+{
+    return facilities;
+}
+
+int FOB::getSpace()
+{
+
+}

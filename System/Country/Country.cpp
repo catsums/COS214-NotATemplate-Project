@@ -39,9 +39,36 @@ void Country::updateResources(int u)
     resources += u;
 }
 
-void Country::updateTerritory(int u)
+void Country::updateTerritory(int t, int fs)
 {
-    territory += u;
+    territory += t;
+    freeSpace += fs;
+}
+
+void Country::addBases(vector<FOB*> nb)
+{
+    for(int i = 0; i < nb.size(); i++)
+    {
+        bases.push_back(nb[i]);
+    }
+}
+
+void Country::checkBaseCapacity()
+{
+    while()
+    for(int i = 0; i < bases.size(); i++)
+    {
+        
+    }
+}
+
+int Country::baseSpace()
+{
+    int n = 0;
+    for(int i = 0; i < bases.size(); i++)
+    {
+        n += bases[i].getSpace();
+    }
 }
 
 int Country::getResources(){
@@ -50,4 +77,8 @@ int Country::getResources(){
 
 int Country::getTerritory(){
     return territory;
+}
+
+int Country::getFreeSpace(){
+    return freeSpace;
 }
