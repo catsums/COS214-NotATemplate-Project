@@ -10,7 +10,9 @@ class Commissioner {
         Commissioner();
         void add(Commissioner *n);
         virtual void commission(int i, bool coastal);
+        virtual void getInfo(vector<FOB*> f, Commissioner* c);
         int getLeftOver();
+        void setFacilities(FOB* fob);
         vector<FOB*> getFacilities();
     private : 
         Commissioner* next;

@@ -1,15 +1,18 @@
 #include <iostream>
-#include "FOBCommissioner.h"
+#include "ConcreteCommissioner.h"
+#include "../BaseBuilder/BaseBuilder.h"
 
-FOBCommissioner::FOBCommissioner(int t) : Commissioner(), territory(t) {}; 
+ConcreteCommissioner::ConcreteCommissioner(int t) : Commissioner(), territory(t) {}; 
         
-void FOBCommissioner::commission(int ft, bool coastal) {
+void ConcreteCommissioner::commission(int ft, bool coastal) {
     while(ft >= territory) {
-        //pass territory/5 to builder
-        //cout << "R" << territory << " Commissioner dispenses R" << territory << endl; 
-        
+        BaseBuilder bb(territory/5, coastal);
+        FOB* fobbyb = bb.getResult();
+        setFacilities(fobbyb);
+        fobbyb->displayFacility();
+        cout << endl;
         ft -= territory;
     }
     //cout << "R" << ft << " to small for R" << territory << " Commissioner - passed on" << endl; 
-    Commissioner::commission(ft, bool coastal);
+    Commissioner::commission(ft, coastal);
 }
