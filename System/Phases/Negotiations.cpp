@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void Negotiations::handle(WarEngine* w) {
+void Negotiations::handle(WarEngine* w, vector<Country*> countryArr, int i) {
     
 }
 

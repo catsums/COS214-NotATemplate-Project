@@ -29,4 +29,4 @@ run:
 	./main
 
 clean:
-	rm *.o main
+	del *.o main
