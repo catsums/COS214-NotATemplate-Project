@@ -555,7 +555,8 @@ void battleTest(){
 	Country* c1 = new Country("Athens");
 	Country* c2 = new Country("Bobas");
 
-	for(int i=0;i<9;i++){
+	for(int i=0;i<2;i++){
+		c1->addEntity(new Soldier());
 		c1->addEntity(new Soldier());
 		c2->addEntity(new Soldier());
 	}
@@ -564,11 +565,12 @@ void battleTest(){
 
 	battle->commenceBattle();
 
-	// if(battle->getWinner()){
-	// 	cout<<"The winner is "<<battle->getWinner()->getName()<<endl;
-	// }else{
-	// 	cout<<"The battle is a draw"<<endl;
-	// }
+	if(battle->getWinner()){
+		Country* winner = battle->getWinner();
+		cout<<"The winner is "<<winner->getName()<<endl;
+	}else{
+		cout<<"The battle is a draw"<<endl;
+	}
 
 }
 

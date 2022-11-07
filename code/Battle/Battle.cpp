@@ -15,6 +15,7 @@ Battle::Battle(Country* aa,Country* bb){
 }
 Battle::~Battle(){
 	a = NULL; b = NULL;
+	winner = NULL;
 }
 
 void Battle::shiftBalance(string side){
@@ -218,10 +219,10 @@ ActionRequest* Battle::requestHeal(Entity* currEnt, Entity* targetEnt){
 void Battle::commenceBattle(){
 	cout<<"BATTLE-Preparation Phase..."<<endl;
 	preparationPhase();
-	int newBalance;
+	// cout<<"ended prep"<<endl;
 	if(!actionManager->isEmptyQueue()){
 		cout<<"BATTLE-Execution Phase..."<<endl;
-		newBalance = executionPhase();
+		executionPhase();
 	}
 	cout<<"BATTLE-Evaluation Phase..."<<endl;
 	evaluationPhase();
@@ -277,20 +278,27 @@ void Battle::preparationPhase(){
 	}
 	// cout<<"c"<<endl;
 	//teamB preparations
-	for(int i=0;i<(int)entsA.size();i++){
+	for(int i=0;i<(int)entsB.size();i++){
 		Entity* ent = entsB[i];
+		// cout<<"1"<<endl;
+		if(!ent) continue;
 		if(entsA.empty()){
 			ActionRequest* req = requestTakeover(ent);
 			actionManager->pushRequest(req);
 			cout<<ent->getTitle()<<" requested to takeover the zone directly "<<endl;
 			continue;
 		}
+		// cout<<"2"<<endl;
 		if(ent->isType("Citizen")){
+			// cout<<"3"<<endl;
 			if(ent->isType("Soldier")){
+				// cout<<"4"<<endl;
 				Entity* target = myHelper::getRandomItemFrom<Entity*>(entsA);
+				// cout<<"5"<<endl;
 				ActionRequest* req = requestAttack(ent,target);
 				actionManager->pushRequest(req);
 				cout<<ent->getTitle()<<" requested to attack "<<target->getTitle()<<endl;
+				// cout<<"6"<<endl;
 			}else if(ent->isType("Medic")){
 				Entity* target = myHelper::getRandomItemFrom<Entity*>(entsB);
 				ActionRequest* req = requestHeal(ent,target);

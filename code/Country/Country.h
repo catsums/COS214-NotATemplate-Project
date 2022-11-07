@@ -44,6 +44,9 @@ class Country
         void print();
 
         string getName() const;
+        string getName(){
+            return name;
+        }
 
         string getID() const;
 
