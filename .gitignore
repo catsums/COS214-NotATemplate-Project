@@ -31,3 +31,6 @@
 *.out
 *.app
 uml notes.txt
+
+*.DS_STORE
+*.json
