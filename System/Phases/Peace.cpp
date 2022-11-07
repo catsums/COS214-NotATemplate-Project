@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void Peace::handle(WarEngine* w, vector<Country*> countryArr, int i) {
+void Peace::handle(PhaseManager* pm, vector<Country*> countryArr, int i) {
     cout << "Country is not at war" << endl;
 }
 

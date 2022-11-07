@@ -5,7 +5,7 @@
 
 class Negotiations : public Phase { 
     public :
-        void handle(WarEngine* w, vector<Country*> countryArr, int i);
+        void handle(PhaseManager* pm, vector<Country*> countryArr, int i);
         string getPhase(); 
 };
 

@@ -55,9 +55,18 @@ void Country::addBases(vector<FOB*> nb)
 
 void Country::checkBaseCapacity()
 {
-    while()
-    for(int i = 0; i < bases.size(); i++)
+    while(baseSpace() > territory)
     {
+        int b2d = (rand() % bases.size());
+
+        if(bases[b2d]->getSpace() > 0)
+        {
+            bases[b2d]->removeFacility();
+            if(bases[b2d]->getSpace() == 0)
+            {
+                bases.erase(bases.begin() + b2d);
+            }
+        }
         
     }
 }
@@ -67,7 +76,7 @@ int Country::baseSpace()
     int n = 0;
     for(int i = 0; i < bases.size(); i++)
     {
-        n += bases[i].getSpace();
+        n += bases[i]->getSpace();
     }
 }
 

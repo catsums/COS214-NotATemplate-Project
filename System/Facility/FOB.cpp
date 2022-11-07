@@ -39,5 +39,10 @@ vector<Facility*> FOB::getFacilities()
 
 int FOB::getSpace()
 {
-
+    int n = 0;
+    for(auto i : facilities)
+    {
+        n += 5;
+    }
+    return n;
 }

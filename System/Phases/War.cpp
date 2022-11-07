@@ -87,6 +87,11 @@ void War::handle(PhaseManager* pm, vector<Country*> countryArr, int i)
     break;
     case 2: //sea attack
     {
+      if(countryArr[i]->getCoastal())
+      {
+
+      }
+      
       int theatre = 2;
       int targetId = 0;
 
@@ -136,9 +141,9 @@ void War::handle(PhaseManager* pm, vector<Country*> countryArr, int i)
       machine->getInfo(facilities, machine);
       facilities = machine->getFacilities();
 
-      
+      countryArr[i]->addBases(facilities);
 
-      cout << countryArr[i]->getName() << " is building a Forward Operating Base" << endl;
+      cout << countryArr[i]->getName() << " is constructing facilites. (Builder)(Chain of Responsibility)(Composite)";
     }
     break;
     case 6: //Initiate diplomacy
@@ -147,7 +152,7 @@ void War::handle(PhaseManager* pm, vector<Country*> countryArr, int i)
       if(rand() % 10 + 1 == 1)
       {
         cout << countryArr[i]->getName() << " has successfuly initaited diplomacy, peace talks are underway." << endl;
-
+        pm->setPhase(new Negotiations());
       }
       else
       {
