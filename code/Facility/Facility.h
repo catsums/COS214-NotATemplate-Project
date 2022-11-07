@@ -9,11 +9,11 @@ class Facility
         virtual void displayFacility() = 0;
 
     protected:
-        int getHangers();
-        int getGarages();
-        int getDefenseLevel();
-        int getCapacity();
-        int getDocks();
+        virtual int getHangers();
+        virtual int getGarages();
+        virtual int getDefenseLevel();
+        virtual int getCapacity();
+        virtual int getDocks();
 
 };
 
