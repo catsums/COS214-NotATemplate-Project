@@ -19,7 +19,7 @@ void WarEngine::initialiseWar(int numCountries, int sSize, int maxTurn){
   vector<bool> coastal;
 
   //srand(time(0));
-  ifstream nameFile("countryNames.txt");
+  ifstream nameFile("../Data/countryNames.txt");
 
   while(getline(nameFile, l))
   {
