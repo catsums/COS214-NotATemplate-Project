@@ -47,7 +47,7 @@ protected:
 	// ActionRequest* requestObserve(Entity* currEnt, Entity* targetEnt);
 	ActionRequest* requestTakeover(Entity* currEnt);
 
-	void onIntel(string act, string id);
+	// void onIntel(string act, string id);
 
 	ActionManager* actionManager;
 	SignalBus* signalBus;

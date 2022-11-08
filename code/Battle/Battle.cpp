@@ -367,40 +367,40 @@ vector<Entity*> Battle::getAllBattleEntities(){
 
 }
 
-void Battle::onIntel(string action, string id){
-	Entity* target;
+// void Battle::onIntel(string action, string id){
+// 	Entity* target;
 
-	vector<Entity*> ents = getAllBattleEntities();
+// 	vector<Entity*> ents = getAllBattleEntities();
 
-	for(int i=0;i<(int)ents.size();i++){
-		Entity* ent = ents[i];
-		if(ent && ent->getID() == id){
-			target = ent;
-			break;
-		}
-	}
+// 	for(int i=0;i<(int)ents.size();i++){
+// 		Entity* ent = ents[i];
+// 		if(ent && ent->getID() == id){
+// 			target = ent;
+// 			break;
+// 		}
+// 	}
 
-	if(target){
-		Country* currC;
-		if(target->getCountry() == a->getName()){
-			currC = a;
-		}else if(target->getCountry() == b->getName()){
-			currC = b;
-		}
-		if(!currC) return;
+// 	if(target){
+// 		Country* currC;
+// 		if(target->getCountry() == a->getName()){
+// 			currC = a;
+// 		}else if(target->getCountry() == b->getName()){
+// 			currC = b;
+// 		}
+// 		if(!currC) return;
 
-		vector<Entity*> activeForce = currC->getActiveForce();
-		if(activeForce.empty()) return;
+// 		vector<Entity*> activeForce = currC->getActiveForce();
+// 		if(activeForce.empty()) return;
 
-		if(action == "attack" || action == "heal"){
-			//take revenge
-			Entity* currEnt = myHelper::getRandomItemFrom<Entity*>(activeForce);
-			ActionRequest* req = requestAttack(currEnt,target);
-			actionManager->pushRequest(req);
-			cout<<currEnt->getTitle()<<" requested to attack "<<target->getTitle()<<endl;
-		}
+// 		if(action == "attack" || action == "heal"){
+// 			//take revenge
+// 			Entity* currEnt = myHelper::getRandomItemFrom<Entity*>(activeForce);
+// 			ActionRequest* req = requestAttack(currEnt,target);
+// 			actionManager->pushRequest(req);
+// 			cout<<currEnt->getTitle()<<" requested to attack "<<target->getTitle()<<endl;
+// 		}
 
-	}
-}
+// 	}
+// }
 
 #endif
