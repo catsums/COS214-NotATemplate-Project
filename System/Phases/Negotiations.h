@@ -6,7 +6,7 @@
 class Negotiations : public Phase { 
     public :
         void handle(PhaseManager* pm, vector<Country*> countryArr, int i);
-        string getPhase(); 
+        string getPhase();
 };
 
 #endif

@@ -5,9 +5,13 @@ Country::Country(string n, bool s, bool c) : name(n), side(s), coastal(c)
     //generate random territory
     //srand(time(0));
     territory = rand() % 40 + 10;
+    freeSpace = 0;
 
     //assign recources
     resources = territory * (rand() % 5 + 1);
+
+    cArmy = new Army(resources);
+    resources = 0;
 }
 
 int Country::generateResources()
@@ -18,9 +22,10 @@ int Country::generateResources()
     return resources;
 }
 
-void recruit()
+void Country::recruit()
 {
-    //cArmy->recruit();
+    cArmy->recruit(resources);
+    resources = 0;
 }
 
 bool Country::getSide(){
@@ -69,6 +74,7 @@ void Country::checkBaseCapacity()
             bases[b2d]->removeFacility();
             if(bases[b2d]->getSpace() == 0)
             {
+                freeSpace += bases[b2d]->getSpace();
                 bases.erase(bases.begin() + b2d);
             }
         }
@@ -83,6 +89,7 @@ int Country::baseSpace()
     {
         n += bases[i]->getSpace();
     }
+    return n;
 }
 
 int Country::getResources(){
@@ -95,4 +102,8 @@ int Country::getTerritory(){
 
 int Country::getFreeSpace(){
     return freeSpace;
+}
+
+Army* Country::getArmy(){
+    return cArmy;
 }

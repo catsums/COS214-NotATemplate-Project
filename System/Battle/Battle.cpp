@@ -5,7 +5,7 @@
 Battle::Battle(Country* country1, Country* country2, int t) : c1(country1), c2(country2), theatre(t) {}
 
 void Battle::commence() {
-    cout << "Battle commenced " << c1->getName() << " VS " << c2->getName() << " | Theatre: " << theatre << endl;
+    cout << c1->getName() << " launched an attack against " << c2->getName() << " (Strategy)" << endl;
     determineOutcome();
 }
 
@@ -13,22 +13,22 @@ void Battle::commence() {
 void Battle::determineOutcome()
 {
     int victoryChance = ((double) c1->getTerritory() / (c1->getTerritory() + c2->getTerritory())) * 100;
-    cout << "vic chance: " << victoryChance << endl;
     
     if((rand() % 100 + 1) <= victoryChance)
     {
-        int t = (rand() % 10 + 1);
-        cout << c1->getName() << " has defeated " << c2->getName() << " in battle | " << c2->getName() << " lost " << t << " territory" << endl;
+        int t = (rand() % 20 + 1);
+        cout << c1->getName() << " has defeated " << c2->getName() << " in battle | " << c1->getName() << " has captured " << t << " territory" << endl;
         
-        c1->updateTerritory(t);
-        c2->updateTerritory(-t);
+        c1->updateTerritory(t, t);
+        c2->updateTerritory(-t, -t);
+
+        c1->getArmy()->sufferCasualties(0.6);
+        c2->getArmy()->sufferCasualties(0.8);
     }
     else
     {
-        int t = (rand() % 10 + 1);
-        cout << c2->getName() << " has defeated " << c1->getName() << " in battle | " << c1->getName() << " lost " << t << " territory" << endl;
-        
-        c2->updateTerritory(t);
-        c1->updateTerritory(-t);
+        cout << c2->getName() << " has defeated " << c1->getName() << " in battle | " << c2->getName() << " has defended their territory" << endl;
+        c1->getArmy()->sufferCasualties(0.8);
+        c2->getArmy()->sufferCasualties(0.4);
     }
 }

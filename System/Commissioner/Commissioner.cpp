@@ -18,7 +18,10 @@ void Commissioner::commission(int i, bool c) {
             leftOver += i;
         }
     } else
-        cout << "Required amount was dispensed" << endl; 
+    {
+        //cout << "Required amount was dispensed" << endl;
+    }
+         
 }
 
 void Commissioner::getInfo(vector<FOB*> f, Commissioner* c) {

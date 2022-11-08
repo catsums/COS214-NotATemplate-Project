@@ -5,8 +5,8 @@
 
 class Peace : public Phase { 
     public :
-        virtual void handle(PhaseManager* pm, vector<Country*> countryArr, int i);
-        virtual string getPhase(); 
+        void handle(PhaseManager* pm, vector<Country*> countryArr, int i);
+        string getPhase();
 };
 
 #endif

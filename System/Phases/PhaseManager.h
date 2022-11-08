@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+#include "../WarEngine/WarEngine.h"
 #include "Peace.h"
 #include "Negotiations.h"
 #include "War.h"

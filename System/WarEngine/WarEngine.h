@@ -4,6 +4,7 @@
 #include <vector>
 #include "../Country/Country.h"
 #include "../Battle/Battle.h"
+#include "../Commissioner/ConcreteCommissioner.h"
 
 using namespace std;
 
@@ -16,12 +17,17 @@ class WarEngine
 
 	void initialiseWar(int c, int ss, int maxTurn);
 	bool runTurn();
+	void handleWar(int i);
+	void handleNeg(int i);
 
 	bool determineCurrentVictor();
 	int determineSideStrength(bool s);
 
 	int getCurrTurn();
 	vector<Country*> getCountryArr();
+	int getMCnt();
+
+	bool speedUp();
 
   protected:
 	WarEngine();
@@ -34,6 +40,8 @@ class WarEngine
 	vector<Country*> countryArr;
 	int currTurn;
 	int maxTurn;
+	string state;
+	int mCnt;
 };
 
 #endif

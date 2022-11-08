@@ -8,15 +8,26 @@ using namespace std;
 int main() {
   srand(time(0));
 
-  WarEngine::instance().initialiseWar(5, 3, 10);
-  cout << "The war has started" << endl;
-  cout << "The WarEngine has been initialised (Singleton, Facade)" << endl;
-
+  WarEngine::instance().initialiseWar(5, 3, 5);
+  
+  cout << "The WarEngine has been initialised (Singleton)(Facade)" << endl;
+  cout << "Phase changed to: War (State)" << endl;
   //WarEngine::instance().printWarEngineData();
 
   do
   {
     WarEngine::instance().printWarEngineData();
+
+    cin.get();
+
+    cout << "-----------------------------------" << endl;
+    cout << "Turn: " << WarEngine::instance().getCurrTurn() << endl;
+    cout << endl;
+  }
+  while (WarEngine::instance().runTurn() && !WarEngine::instance().speedUp());
+
+  do
+  {
     cout << "-----------------------------------" << endl;
     cout << "Turn: " << WarEngine::instance().getCurrTurn() << endl;
     cout << endl;
@@ -33,6 +44,7 @@ int main() {
   {
     cout << "Side B is the victor" << endl;
   }
+  cout << "The war lasted " << (WarEngine::instance().getMCnt() / 12) << " years and " << (WarEngine::instance().getMCnt() % 12) << " months";
   cout << endl;
 }
 

@@ -3,6 +3,7 @@
 
 #include <string>
 #include "../Facility/FOB.h"
+#include "../Army/Army.h"
 
 using namespace std;
 
@@ -26,10 +27,11 @@ class Country
         int getResources();
         int getTerritory();
         int getFreeSpace();
+        Army* getArmy();
 
         void setSide(bool s);
     private:
-        //Army* cArmy;
+        Army* cArmy;
         vector<FOB*> bases;
         bool side;
         bool coastal;

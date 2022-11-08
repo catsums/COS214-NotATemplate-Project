@@ -1,6 +1,5 @@
 #include <iostream>
 #include "War.h"
-#include "../Commissioner/ConcreteCommissioner.h"
 
 using namespace std;
 
