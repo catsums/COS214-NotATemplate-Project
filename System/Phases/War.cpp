@@ -85,7 +85,7 @@ void War::handle(PhaseManager* pm, vector<Country*> countryArr, int i)
       b->commence();
     } 
     break;
-    case 2: //sea attack
+    /*case 2: //sea attack
     {
       int theatre = 2;
       int targetId = 0;
@@ -122,9 +122,10 @@ void War::handle(PhaseManager* pm, vector<Country*> countryArr, int i)
       Battle* b = new Battle(countryArr[i], target, theatre);
       b->commence();
     }
-    break;
+    break;*/
     case 4: //Recruit troops
     {
+      countryArr[i]->recruit();
       cout << countryArr[i]->getName() << " is recruiting troops" << endl;
     }
     break;

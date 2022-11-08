@@ -18,6 +18,11 @@ int Country::generateResources()
     return resources;
 }
 
+void recruit()
+{
+    //cArmy->recruit();
+}
+
 bool Country::getSide(){
     return side;
 }

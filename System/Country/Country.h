@@ -12,6 +12,7 @@ class Country
         Country(string n, bool s, bool c);
         ~Country();
         int generateResources();
+        void recruit();
         
         void updateResources(int u);
         void updateTerritory(int t, int fs);
