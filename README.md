@@ -12,10 +12,10 @@
 
 ## GitHub requirements:
 - Documentation: https://docs.google.com/document/d/1CWKPtvwzalVicWGzoLPOSx-pxNT21ZMXWQfRGWV7Td4/edit?usp=sharing
-- Video: 
-- Final class diagram:
-- Description of how the code runs: 
-- The code: 
+- Video: https://drive.google.com/file/d/1hvqWfYHmrMncyzk9ilKD3lUz81HZeAJg/view?usp=share_link 
+- Final class diagram: https://drive.google.com/file/d/1qUrQLUSby9kHfMkncap9Jk7Hi6uyfrEa/view?usp=share_link 
+- Description of how the code runs: https://drive.google.com/file/d/16uUqWtHyxlaUZDhqLHW8buUAR_cPNgvF/view?usp=sharing 
+- The code: https://github.com/catsums/COS214-NotATemplate-Project 
 
 # Project Information Spec
 Check below for the stuff about the spec
