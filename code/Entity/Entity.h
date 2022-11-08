@@ -38,7 +38,7 @@ protected:
 
 public: 
 
-	SignalBus signalBus
+	SignalBus signalBus;
 
 	/** Default constructor for entity
     */
